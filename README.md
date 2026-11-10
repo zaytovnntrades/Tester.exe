@@ -1,87 +1,101 @@
-# Tester.exe — Simple MT5 Expert Advisor
+# Tester.exe: MT5 Expert Advisor
 
-`MQL5/Experts/SimpleMACrossEA.mq5` is a basic MetaTrader 5 Expert Advisor with:
+`MQL5/Experts/SimpleMACrossEA.mq5` (v5) is a MetaTrader 5 Expert Advisor with 5 selectable signal strategies, R-based trade management, loss limits, a news filter, and on-chart visuals.
+Only **one position at a time** (per symbol + magic number). Signals use **closed candles only** (no repainting).
 
-| Feature | How it works |
+---
+
+## 1. Buy/Sell signals (`InpSignalMode`)
+
+| Strategy | Style | BUY when | SELL when | Best market |
+|---|---|---|---|---|
+| **MA crossover** | Trend | Fast MA (9 EMA) crosses **above** slow MA (21 EMA) | Crosses **below** | Trending |
+| **RSI** | Reversal | RSI(14) climbs back **above 30** (leaves oversold) | Drops back **below 70** | Ranging |
+| **MACD** | Momentum | MACD line crosses **above** signal line | Crosses **below** | Trending |
+| **Bollinger** | Mean reversion | Candle closed **below** lower band, next closes back **inside** | Mirror at upper band | Ranging |
+| **Stochastic** | Reversal | %K crosses **above** %D while **below 20** | %K crosses below %D while **above 80** | Ranging |
+
+**Filters applied on top** (each is optional):
+- **Direction** (`InpDirection`): Both / **Buy only** / Sell only.
+- **HTF trend** (default ON): buy only if the last closed H4 candle is above its 200 EMA; sell only below.
+- **RSI 50 confirmation**: buy only if RSI > 50, sell only if RSI < 50 (momentum agrees).
+- **MACD confirmation**: buy only if MACD > signal line, sell only if below.
+
+> **Pro tip:** pair a *reversal* signal (RSI / Stochastic / Bollinger) with the **trend filter**.
+> "Buy the dip in an uptrend" is one of the most robust retail setups, and far better than catching every reversal.
+
+## 2. On-chart visuals
+- **Arrows** on every signal candle. Hover an arrow to see why it was skipped:
+  - 🟢 **Green ▲** = BUY taken · 🔴 **Red ▼** = SELL taken · ⚪ **Gray** = signal skipped (e.g. "against H4 trend", "news: USD CPI", "a position is already open")
+- **Indicators** for the selected strategy are added to the chart automatically (MAs/Bands on price; RSI/MACD/Stochastic in subwindows) and removed when the EA is removed.
+- **Dashboard** (top-left): status, trend, ATR & SL size, day/week P/L vs limits, next news event, open position in **R**, last signal.
+
+## 3. Risk
+| Feature | Default |
 |---|---|
-| **Buy/Sell signals** | Fast MA crossing above Slow MA → **BUY**; crossing below → **SELL** |
-| **Risk:Reward presets** | `InpRRMode` = **1:2**, **1:5** or **Custom** (`InpCustomRR`, e.g. 1.2). TP = SL × RR |
-| **Position size** | `InpLotMode` = Fixed lot (`InpLotSize`) or **Risk %** of balance (`InpRiskPercent`) |
-| **Stop Loss** | `InpSLMode` = **Fixed** (`InpStopLoss` points) or **ATR** (ATR × `InpATRMult`, clamped by `InpMinSL`/`InpMaxSL`). Pushed out to the broker's minimum stop distance if needed |
-| **Trend filter** | Buys only when the last closed `InpTrendTF` candle is above its `InpTrendMAPeriod` MA; sells only when it's below |
-| **Daily loss limit** | When today's P/L (closed + floating) reaches −`InpMaxDailyLoss`% of the day-start balance, the EA stops for the day and can close the open trade |
-| **Partial take-profit** | At +`InpPartialR` R (default **1R**), closes `InpPartialPct`% (default **50%**) once. The rest runs to the full TP |
-| **Breakeven** | `InpBEMode` = **R** (default: at **+1R**) or Points (`InpBETrigger`). SL moves to entry + `InpBELock` points |
-| **Trailing stop** | After `InpTrailStart` points, SL follows price at `InpTrailDist` points |
-| **Filters** | Trading session (server hours, overnight sessions work) and max spread |
-| **One position at a time** | No new trade while a position with this EA's magic number is open on the symbol |
-| **No repainting** | Signals are checked once per new bar, using only closed candles |
+| Stop Loss | **ATR(14) × 1.5**, min 100 / max 1500 pts (or Fixed points) |
+| Risk:Reward | **1:2** (presets 1:2, 1:5, or Custom e.g. 1.2) → TP = SL × RR |
+| Lot | Fixed 0.10, or **Risk %** of balance per trade |
+| Daily loss limit | **3%**: stops for the day (and closes the open trade) |
+| Weekly loss limit | **6%**: stops until next Monday 00:00 server time |
 
-## Default settings
-| Setting | Default |
-|---|---|
-| Signal | 9 / 21 EMA crossover on the chart timeframe |
-| Trend filter | ON: 200 EMA on H4 |
-| Stop Loss | ATR(14) × 1.5, min 100 / max 1500 points |
-| Risk:Reward | 1:2 |
-| Lot | Fixed 0.10 (switch to Risk % for proper sizing) |
-| Partial TP | ON: close 50% at +1R |
-| Breakeven | ON at +1R, lock +20 points |
-| Daily loss limit | ON, 3%, closes the open trade |
+## 4. Trade management (R-based)
+**1R = initial SL distance** (what you risk). Read from the opening order in history, so it survives restarts.
 
-> The daily limit only counts **this EA's** trades (same symbol and magic number). The day starts at **00:00 broker server time**.
-
-## What "R" means
-**1R = the initial Stop Loss distance**, i.e. what you risk. If the SL is 200 points away, +1R = 200 points of profit.
-The EA reads the original SL from the opening order in history, so R stays correct after the SL moves to breakeven or MT5 restarts.
-
-**Default 1:2 trade lifecycle**
+**Default lifecycle (1:2):**
 1. Entry, risking 1R.
-2. At **+1R**: close 50% (bank +0.5R) and move the SL to breakeven (+20 points).
-3. The remaining 50% either hits TP at **+2R** (another +1R, total **+1.5R**) or gets stopped near breakeven (total about **+0.5R**).
+2. **+1R** → close **50%** (bank +0.5R) and move the SL to **breakeven + 20 pts** → can no longer lose.
+3. The other 50% is **trailed at 2 × ATR** behind price (trailing starts only after the partial).
+4. It exits at TP (+2R) or wherever the ATR trail catches it.
 
-So once price reaches +1R, the trade can't turn into a loss. The cost: a full winner pays +1.5R instead of +2R.
-
-| Preset | Full winner (no partial) | Full winner (50% at 1R) | Hit 1R, then BE |
+| Preset | Full winner, no partial | Full winner, 50% at 1R | Hit 1R, then BE |
 |---|---|---|---|
 | 1:2 | +2R | +1.5R | +0.5R |
 | 1:5 | +5R | +3R | +0.5R |
 
-> Partial TP needs a lot that can be split. With min lot 0.01, the smallest workable trade is 0.02. If it can't be split, the EA logs this and skips the partial.
+> Partial TP needs a splittable lot. With min lot 0.01, the smallest is 0.02.
 
-## Install (about 2 minutes)
-1. In MT5: **File → Open Data Folder** → `MQL5/Experts/`
-2. Copy `SimpleMACrossEA.mq5` into that folder.
-3. Open it in **MetaEditor** (F4) and press **Compile** (F7). You should get 0 errors.
-4. In MT5's Navigator, drag the EA onto a chart and turn on **Algo Trading**.
+## 5. News filter
+- Uses MT5's built-in **economic calendar**. It blocks new trades **30 min before → 30 min after** high-impact news for the symbol's currencies (EURUSD → EUR + USD; override with `InpNewsCurrencies`, e.g. `"USD"` for gold).
+- Option: also **close** the open trade inside the news window.
+- ⚠️ The calendar is **not available in the Strategy Tester**, so the filter is automatically inactive in backtests (a log line says so). It works on demo/live charts.
 
-## Test before going live
-**View → Strategy Tester (Ctrl+R)** → choose the EA, symbol, and timeframe → Modeling: *Every tick based on real ticks* → Start.
-Run it on a **demo account** before using real money.
+---
+
+## Install
+1. MT5: **File → Open Data Folder** → `MQL5/Experts/`
+2. Copy `SimpleMACrossEA.mq5` there.
+3. Open it in **MetaEditor** (F4) → **Compile** (F7) → 0 errors.
+4. Drag the EA onto a chart and turn on **Algo Trading**.
 
 ## Points vs. pips
-On 5-digit FX pairs, **10 points = 1 pip**. Default SL 300 pts = 30 pips.
+On 5-digit FX pairs **10 points = 1 pip**. Gold and indices differ, so check the dashboard's ATR value to see the symbol's normal range in points.
 
-| Preset | SL | TP | Break-even win rate |
-|---|---|---|---|
-| 1:1.2 (Custom) | 30 pips | 36 pips | ~45% |
-| **1:2** | 30 pips | 60 pips | ~33% |
-| **1:5** | 30 pips | 150 pips | ~17% |
+| RR | Break-even win rate = 1 / (1 + RR) |
+|---|---|
+| 1:1.2 | ~45% |
+| 1:2 | ~33% |
+| 1:5 | ~17% |
 
-Break-even win rate = 1 / (1 + RR). A higher RR means fewer wins are needed, but each TP is harder to reach.
-On gold and indices a point is worth a different amount, so set SL per symbol.
-
-**Tip:** for 1:5, turn breakeven ON (or use trailing). Big targets often reverse before they're hit, and breakeven turns many would-be losers into scratch trades.
+---
 
 ## Learning path: beginner → mastery
-1. **Read the flow:** `OnInit` (setup) → `OnTick` → `IsNewBar` → `HasOpenPosition` → `GetSignal` → `OpenTrade`.
-2. **Tweak inputs:** try 20/50 SMA on H1, and change the SL/TP ratio. Use the tester's *Optimization* mode.
-3. **Swap the signal:** replace `GetSignal()` with RSI, Bollinger Bands, or breakout logic. Nothing else needs to change.
-4. **Size by risk:** set Lot mode = Risk %, starting at 0.5–1% per trade.
-5. **Manage trades:** compare BE on/off and trailing on/off in the tester for the same RR preset.
-6. **Adapt to volatility:** compare SL mode = ATR (1.5×) with Fixed. With ATR, wild days get a wider SL and a smaller lot (in Risk % mode), so the money at risk stays the same.
-7. **Trend alignment:** run the tester with the trend filter on and off. Fewer trades but a higher win rate is the usual result.
-8. **Protect the account:** keep the daily loss limit at 2–3%. A losing streak won't turn into a blown account.
-9. **Next:** a weekly loss limit, partial take-profit at 1R, news filter, or multiple-symbol support.
+**Stage 1: Observe (no money)**
+1. Run in the Strategy Tester in **visual mode**. Watch the arrows, then hover the gray ones to learn what each filter blocks.
+2. Read the code in order: `OnTick` → `GetRawSignal` → `FilterSignal` → `OpenTrade` → `ManagePosition`.
+
+**Stage 2: Compare signals**
+3. Same symbol/dates, change only `InpSignalMode`. Record profit factor, max drawdown, win rate and trade count in a spreadsheet.
+4. Keep the best 1–2 strategies for that symbol/timeframe.
+
+**Stage 3: Ablation test (find what really helps)**
+5. Turn **one** feature off per run: trend filter, confirmations, partial TP, BE, trailing, ATR SL. If removing it doesn't hurt, you don't need it.
+
+**Stage 4: Avoid over-fitting**
+6. Optimize on one period (e.g. 2022–2024), then test **unchanged** on a period you didn't optimize on (2025). If results collapse, the settings are curve-fit.
+
+**Stage 5: Go live safely**
+7. Demo for 4+ weeks → small live with **Risk % = 0.5%** → scale slowly.
+8. Keep the daily (3%) and weekly (6%) limits on. They're your circuit breakers.
 
 > Educational code. It does not guarantee profit, and trading involves risk.

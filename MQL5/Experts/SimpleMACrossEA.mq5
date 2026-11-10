@@ -1,22 +1,47 @@
 //+------------------------------------------------------------------+
 //|                                              SimpleMACrossEA.mq5 |
 //|  MT5 Expert Advisor                                              |
-//|  - Buy/Sell signals from a fast/slow Moving Average crossover    |
-//|  - Risk-Reward presets: 1:2, 1:5 or custom (TP = SL x RR)        |
-//|  - Fixed lot OR risk-% position sizing                           |
-//|  - Stop Loss: fixed points OR ATR-based (adapts to volatility)   |
+//|  SIGNALS                                                         |
+//|  - Strategy: MA cross / RSI / MACD / Bollinger / Stochastic      |
+//|  - Optional confirmations: RSI 50-line, MACD direction           |
+//|  - Direction: both / buy only / sell only                        |
 //|  - Higher-timeframe trend filter                                 |
-//|  - Daily loss limit (stops trading for the day)                  |
-//|  - Breakeven at +1R (or points) and partial take-profit at +1R   |
-//|  - Trailing stop, session filter, spread filter                  |
+//|  RISK                                                            |
+//|  - Risk-Reward presets: 1:2, 1:5 or custom (TP = SL x RR)        |
+//|  - Stop Loss: fixed points OR ATR-based                          |
+//|  - Fixed lot OR risk-% position sizing                           |
+//|  - Daily AND weekly loss limits                                  |
+//|  TRADE MANAGEMENT                                                |
+//|  - Partial take-profit at +1R, breakeven at +1R                  |
+//|  - Trailing stop (points or ATR), optionally only after partial  |
+//|  FILTERS                                                         |
+//|  - News filter (MT5 economic calendar), session, spread          |
+//|  VISUALS                                                         |
+//|  - Buy/Sell arrows on chart, indicators on chart, dashboard      |
 //|  - Only ONE open position at a time (per symbol + magic number)  |
 //+------------------------------------------------------------------+
 #property copyright "Tester.exe"
-#property version   "4.00"
+#property version   "5.00"
 
 #include <Trade\Trade.mqh>
 
-//--- Enums ------------------------------------------------------------
+//=== Enums ==========================================================
+enum ENUM_SIGNAL_MODE
+{
+   SIG_MA_CROSS = 0, // MA crossover (trend)
+   SIG_RSI      = 1, // RSI exits oversold/overbought (reversal)
+   SIG_MACD     = 2, // MACD crosses its signal line (momentum)
+   SIG_BB       = 3, // Bollinger Band re-entry (mean reversion)
+   SIG_STOCH    = 4  // Stochastic %K/%D cross in OB/OS zone (reversal)
+};
+
+enum ENUM_DIRECTION
+{
+   DIR_BOTH      = 0, // Buy and Sell
+   DIR_BUY_ONLY  = 1, // Buy only
+   DIR_SELL_ONLY = 2  // Sell only
+};
+
 enum ENUM_RR_MODE
 {
    RR_1_2    = 0,   // 1:2  (TP = 2 x SL)
@@ -30,24 +55,65 @@ enum ENUM_LOT_MODE
    LOT_RISK_PC = 1  // Risk % of balance per trade
 };
 
-enum ENUM_BE_MODE
-{
-   BE_R      = 0,   // R multiple (1R = initial SL distance)
-   BE_POINTS = 1    // Fixed points
-};
-
 enum ENUM_SL_MODE
 {
    SL_FIXED = 0,    // Fixed points
    SL_ATR   = 1     // ATR x multiplier
 };
 
-//--- Inputs -----------------------------------------------------------
-input group "Signal"
+enum ENUM_BE_MODE
+{
+   BE_R      = 0,   // R multiple (1R = initial SL distance)
+   BE_POINTS = 1    // Fixed points
+};
+
+enum ENUM_TRAIL_MODE
+{
+   TRAIL_POINTS = 0, // Fixed points distance
+   TRAIL_ATR    = 1  // ATR x multiplier distance
+};
+
+enum ENUM_NEWS_IMPORTANCE
+{
+   NEWS_HIGH        = 0, // High impact only
+   NEWS_HIGH_MEDIUM = 1  // High + Medium impact
+};
+
+//=== Inputs =========================================================
+input group "Signal Strategy"
+input ENUM_SIGNAL_MODE   InpSignalMode   = SIG_MA_CROSS; // Entry signal
+input ENUM_DIRECTION     InpDirection    = DIR_BOTH;     // Trade direction
+
+input group "MA Crossover"
 input int                InpFastMAPeriod = 9;          // Fast MA period
 input int                InpSlowMAPeriod = 21;         // Slow MA period
 input ENUM_MA_METHOD     InpMAMethod     = MODE_EMA;   // MA method
 input ENUM_APPLIED_PRICE InpMAPrice      = PRICE_CLOSE;// MA applied price
+
+input group "RSI"
+input int                InpRSIPeriod    = 14;         // RSI period
+input double             InpRSIOversold  = 30.0;       // Oversold level (buy zone)
+input double             InpRSIOverbought= 70.0;       // Overbought level (sell zone)
+
+input group "MACD"
+input int                InpMACDFast     = 12;         // MACD fast EMA
+input int                InpMACDSlow     = 26;         // MACD slow EMA
+input int                InpMACDSignal   = 9;          // MACD signal period
+
+input group "Bollinger Bands"
+input int                InpBBPeriod     = 20;         // BB period
+input double             InpBBDeviation  = 2.0;        // BB deviation
+
+input group "Stochastic"
+input int                InpStochK       = 14;         // %K period
+input int                InpStochD       = 3;          // %D period
+input int                InpStochSlowing = 3;          // Slowing
+input double             InpStochOversold  = 20.0;     // Oversold level
+input double             InpStochOverbought= 80.0;     // Overbought level
+
+input group "Signal Confirmations"
+input bool               InpConfirmRSI50 = false;      // Buy only if RSI > 50, sell only if < 50
+input bool               InpConfirmMACD  = false;      // Buy only if MACD > signal, sell only if <
 
 input group "Higher-Timeframe Trend Filter"
 input bool               InpUseTrend     = true;       // Trade only with the HTF trend
@@ -58,19 +124,14 @@ input ENUM_MA_METHOD     InpTrendMAMethod= MODE_EMA;   // Trend MA method
 input group "Stop Loss"
 input ENUM_SL_MODE       InpSLMode       = SL_ATR;     // Stop Loss mode
 input int                InpStopLoss     = 300;        // Fixed Stop Loss (points)
-input int                InpATRPeriod    = 14;         // ATR period (ATR mode)
-input double             InpATRMult      = 1.5;        // ATR multiplier (ATR mode)
+input int                InpATRPeriod    = 14;         // ATR period (SL + ATR trailing)
+input double             InpATRMult      = 1.5;        // ATR multiplier for SL
 input int                InpMinSL        = 100;        // Min SL (points, ATR mode)
 input int                InpMaxSL        = 1500;       // Max SL (points, ATR mode, 0 = no cap)
 
 input group "Risk : Reward"
 input ENUM_RR_MODE       InpRRMode       = RR_1_2;     // Risk:Reward preset
 input double             InpCustomRR     = 1.2;        // Custom RR (used when preset = Custom)
-
-input group "Daily Loss Limit"
-input bool               InpUseDailyLimit= true;       // Use daily loss limit
-input double             InpMaxDailyLoss = 3.0;        // Max loss per day (% of day-start balance)
-input bool               InpCloseOnLimit = true;       // Close open position when limit is hit
 
 input group "Position Size"
 input ENUM_LOT_MODE      InpLotMode      = LOT_FIXED;  // Lot mode
@@ -90,134 +151,206 @@ input int                InpBETrigger    = 300;        // Move SL to BE after pr
 input int                InpBELock       = 20;         // Points locked in beyond entry
 
 input group "Trailing Stop"
-input bool               InpUseTrailing  = false;      // Use trailing stop
-input int                InpTrailStart   = 400;        // Start trailing after profit (points)
-input int                InpTrailDist    = 250;        // Trail distance from price (points)
+input bool               InpUseTrailing  = true;       // Use trailing stop
+input ENUM_TRAIL_MODE    InpTrailMode    = TRAIL_ATR;  // Trailing distance mode
+input bool               InpTrailAfterPartial = true;  // Start trailing only after partial TP
+input int                InpTrailStart   = 400;        // Start after profit (points; if not after-partial)
+input int                InpTrailDist    = 250;        // Trail distance (points mode)
+input double             InpTrailATRMult = 2.0;        // Trail distance = ATR x this (ATR mode)
 input int                InpTrailStep    = 20;         // Min SL improvement per move (points)
 
-input group "Filters"
+input group "Loss Limits"
+input bool               InpUseDailyLimit = true;      // Use daily loss limit
+input double             InpMaxDailyLoss  = 3.0;       // Max loss per day (% of day-start balance)
+input bool               InpUseWeeklyLimit= true;      // Use weekly loss limit
+input double             InpMaxWeeklyLoss = 6.0;       // Max loss per week (% of week-start balance)
+input bool               InpCloseOnLimit  = true;      // Close open position when a limit is hit
+
+input group "News Filter (live only - calendar is not available in the Strategy Tester)"
+input bool               InpUseNews      = true;       // Block new trades around news
+input ENUM_NEWS_IMPORTANCE InpNewsImpact = NEWS_HIGH;  // Which news to avoid
+input int                InpNewsBefore   = 30;         // Minutes before news
+input int                InpNewsAfter    = 30;         // Minutes after news
+input string             InpNewsCurrencies = "";       // Currencies (e.g. "USD,EUR"; empty = from symbol)
+input bool               InpNewsClosePos = false;      // Close open position inside news window
+
+input group "Session & Spread Filters"
 input bool               InpUseSession   = false;      // Use trading-session filter
 input int                InpStartHour    = 8;          // Session start hour (server time)
 input int                InpEndHour      = 20;         // Session end hour (server time)
 input int                InpMaxSpread    = 30;         // Max spread (points, 0 = off)
+
+input group "Visuals"
+input bool               InpShowArrows   = true;       // Draw Buy/Sell signal arrows
+input bool               InpShowIndicators = true;     // Add the strategy's indicators to the chart
+input bool               InpShowDashboard  = true;     // Show info panel (top-left)
 
 input group "Trade"
 input int                InpSlippage     = 10;         // Max slippage (points)
 input ulong              InpMagicNumber  = 20261110;   // Magic number
 input string             InpTradeComment = "SimpleMACrossEA";
 
-//--- Globals ----------------------------------------------------------
+//=== Globals ========================================================
+#define OBJ_PREFIX "SMEA_"
+
 CTrade   trade;
+
+// indicator handles
 int      g_fastHandle  = INVALID_HANDLE;
 int      g_slowHandle  = INVALID_HANDLE;
+int      g_rsiHandle   = INVALID_HANDLE;
+int      g_macdHandle  = INVALID_HANDLE;
+int      g_bbHandle    = INVALID_HANDLE;
+int      g_stochHandle = INVALID_HANDLE;
 int      g_atrHandle   = INVALID_HANDLE;
 int      g_trendHandle = INVALID_HANDLE;
-datetime g_lastBarTime = 0;
-datetime g_limitDay    = 0;     // day on which the daily limit was hit (0 = not hit)
 
-// Initial-trade info for the open position (cached; rebuilt from history after restart)
-ulong    g_infoPosId   = 0;     // position identifier the cache belongs to
+datetime g_lastBarTime = 0;
+
+// loss limits
+datetime g_dayHit      = 0;     // day start on which the daily limit was hit
+datetime g_weekHit     = 0;     // week start on which the weekly limit was hit
+double   g_dayPLPct    = 0.0;   // for dashboard
+double   g_weekPLPct   = 0.0;
+
+// initial-trade info for the open position (cached; rebuilt from history after restart)
+ulong    g_infoPosId   = 0;
 double   g_infoRPts    = 0.0;   // 1R in points = initial SL distance
 double   g_infoVolume  = 0.0;   // initial position volume
+
+// news cache
+datetime g_newsTimes[];
+string   g_newsNames[];
+datetime g_newsLastLoad = 0;
+bool     g_newsAvailable = true;
+
+// chart indicators we added (to remove them on exit)
+string   g_chartIndNames[];
+int      g_chartIndWins[];
+
+// last signal info for dashboard
+string   g_lastSignalText = "none yet";
 
 //+------------------------------------------------------------------+
 //| Initialization                                                   |
 //+------------------------------------------------------------------+
 int OnInit()
 {
-   if(InpFastMAPeriod <= 0 || InpSlowMAPeriod <= 0 || InpFastMAPeriod >= InpSlowMAPeriod)
-   {
-      Print("Invalid MA periods: fast must be > 0 and less than slow.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+   //--- validate inputs
+   if(InpSignalMode == SIG_MA_CROSS &&
+      (InpFastMAPeriod <= 0 || InpSlowMAPeriod <= 0 || InpFastMAPeriod >= InpSlowMAPeriod))
+      return Fail("Invalid MA periods: fast must be > 0 and less than slow.");
+   if((InpSignalMode == SIG_RSI || InpConfirmRSI50) &&
+      (InpRSIPeriod <= 0 || InpRSIOversold >= InpRSIOverbought))
+      return Fail("Invalid RSI inputs (period > 0, oversold < overbought).");
+   if((InpSignalMode == SIG_MACD || InpConfirmMACD) &&
+      (InpMACDFast <= 0 || InpMACDSlow <= InpMACDFast || InpMACDSignal <= 0))
+      return Fail("Invalid MACD inputs (fast < slow, all > 0).");
+   if(InpSignalMode == SIG_BB && (InpBBPeriod <= 1 || InpBBDeviation <= 0.0))
+      return Fail("Invalid Bollinger inputs.");
+   if(InpSignalMode == SIG_STOCH &&
+      (InpStochK <= 0 || InpStochD <= 0 || InpStochSlowing <= 0 || InpStochOversold >= InpStochOverbought))
+      return Fail("Invalid Stochastic inputs.");
    if(InpSLMode == SL_FIXED && InpStopLoss <= 0)
-   {
-      Print("Stop Loss must be > 0 (TP and risk sizing are derived from it).");
-      return INIT_PARAMETERS_INCORRECT;
-   }
-   if(InpSLMode == SL_ATR && (InpATRPeriod <= 0 || InpATRMult <= 0.0 || InpMinSL < 0 ||
-                              (InpMaxSL > 0 && InpMaxSL < InpMinSL)))
-   {
-      Print("Invalid ATR stop inputs (period/multiplier > 0, max SL >= min SL).");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+      return Fail("Stop Loss must be > 0 (TP and risk sizing are derived from it).");
+   if(InpATRPeriod <= 0)
+      return Fail("ATR period must be > 0.");
+   if(InpSLMode == SL_ATR && (InpATRMult <= 0.0 || InpMinSL < 0 || (InpMaxSL > 0 && InpMaxSL < InpMinSL)))
+      return Fail("Invalid ATR stop inputs (multiplier > 0, max SL >= min SL).");
    if(InpUseTrend && InpTrendMAPeriod <= 0)
-   {
-      Print("Trend MA period must be > 0.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
-   if(InpUsePartial && (InpPartialR <= 0.0 || InpPartialPct <= 0.0 || InpPartialPct >= 100.0))
-   {
-      Print("Partial TP: R must be > 0 and % between 0 and 100 (exclusive).");
-      return INIT_PARAMETERS_INCORRECT;
-   }
-   if(InpUseBreakeven && InpBEMode == BE_R && InpBETriggerR <= 0.0)
-   {
-      Print("Breakeven R trigger must be > 0.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
-   if(InpUseDailyLimit && (InpMaxDailyLoss <= 0.0 || InpMaxDailyLoss > 100.0))
-   {
-      Print("Daily loss limit must be between 0 and 100 %.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+      return Fail("Trend MA period must be > 0.");
    if(InpRRMode == RR_CUSTOM && InpCustomRR <= 0.0)
-   {
-      Print("Custom RR must be > 0.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+      return Fail("Custom RR must be > 0.");
    if((InpLotMode == LOT_FIXED && InpLotSize <= 0.0) ||
       (InpLotMode == LOT_RISK_PC && (InpRiskPercent <= 0.0 || InpRiskPercent > 100.0)))
-   {
-      Print("Invalid lot size / risk percent.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
-   if(InpUseTrailing && (InpTrailDist <= 0 || InpTrailStart < 0 || InpTrailStep < 0))
-   {
-      Print("Invalid trailing stop inputs.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+      return Fail("Invalid lot size / risk percent.");
+   if(InpUsePartial && (InpPartialR <= 0.0 || InpPartialPct <= 0.0 || InpPartialPct >= 100.0))
+      return Fail("Partial TP: R must be > 0 and % between 0 and 100 (exclusive).");
+   if(InpUseBreakeven && InpBEMode == BE_R && InpBETriggerR <= 0.0)
+      return Fail("Breakeven R trigger must be > 0.");
+   if(InpUseTrailing && (InpTrailStep < 0 || InpTrailStart < 0 ||
+      (InpTrailMode == TRAIL_POINTS && InpTrailDist <= 0) ||
+      (InpTrailMode == TRAIL_ATR && InpTrailATRMult <= 0.0)))
+      return Fail("Invalid trailing stop inputs.");
+   if(InpUseDailyLimit && (InpMaxDailyLoss <= 0.0 || InpMaxDailyLoss > 100.0))
+      return Fail("Daily loss limit must be between 0 and 100 %.");
+   if(InpUseWeeklyLimit && (InpMaxWeeklyLoss <= 0.0 || InpMaxWeeklyLoss > 100.0))
+      return Fail("Weekly loss limit must be between 0 and 100 %.");
+   if(InpUseNews && (InpNewsBefore < 0 || InpNewsAfter < 0))
+      return Fail("News minutes must be >= 0.");
    if(InpUseSession && (InpStartHour < 0 || InpStartHour > 23 || InpEndHour < 0 || InpEndHour > 23))
-   {
-      Print("Session hours must be 0..23.");
-      return INIT_PARAMETERS_INCORRECT;
-   }
+      return Fail("Session hours must be 0..23.");
 
-   g_fastHandle = iMA(_Symbol, _Period, InpFastMAPeriod, 0, InpMAMethod, InpMAPrice);
-   g_slowHandle = iMA(_Symbol, _Period, InpSlowMAPeriod, 0, InpMAMethod, InpMAPrice);
-   if(g_fastHandle == INVALID_HANDLE || g_slowHandle == INVALID_HANDLE)
+   //--- create indicator handles (only the ones we need)
+   if(InpSignalMode == SIG_MA_CROSS)
    {
-      Print("Failed to create MA handles. Error: ", GetLastError());
-      return INIT_FAILED;
+      g_fastHandle = iMA(_Symbol, _Period, InpFastMAPeriod, 0, InpMAMethod, InpMAPrice);
+      g_slowHandle = iMA(_Symbol, _Period, InpSlowMAPeriod, 0, InpMAMethod, InpMAPrice);
+      if(g_fastHandle == INVALID_HANDLE || g_slowHandle == INVALID_HANDLE) return Fail("MA handle failed.", INIT_FAILED);
    }
-   if(InpSLMode == SL_ATR)
+   if(InpSignalMode == SIG_RSI || InpConfirmRSI50)
    {
-      g_atrHandle = iATR(_Symbol, _Period, InpATRPeriod);
-      if(g_atrHandle == INVALID_HANDLE)
-      {
-         Print("Failed to create ATR handle. Error: ", GetLastError());
-         return INIT_FAILED;
-      }
+      g_rsiHandle = iRSI(_Symbol, _Period, InpRSIPeriod, PRICE_CLOSE);
+      if(g_rsiHandle == INVALID_HANDLE) return Fail("RSI handle failed.", INIT_FAILED);
    }
+   if(InpSignalMode == SIG_MACD || InpConfirmMACD)
+   {
+      g_macdHandle = iMACD(_Symbol, _Period, InpMACDFast, InpMACDSlow, InpMACDSignal, PRICE_CLOSE);
+      if(g_macdHandle == INVALID_HANDLE) return Fail("MACD handle failed.", INIT_FAILED);
+   }
+   if(InpSignalMode == SIG_BB)
+   {
+      g_bbHandle = iBands(_Symbol, _Period, InpBBPeriod, 0, InpBBDeviation, PRICE_CLOSE);
+      if(g_bbHandle == INVALID_HANDLE) return Fail("Bollinger handle failed.", INIT_FAILED);
+   }
+   if(InpSignalMode == SIG_STOCH)
+   {
+      g_stochHandle = iStochastic(_Symbol, _Period, InpStochK, InpStochD, InpStochSlowing, MODE_SMA, STO_LOWHIGH);
+      if(g_stochHandle == INVALID_HANDLE) return Fail("Stochastic handle failed.", INIT_FAILED);
+   }
+   g_atrHandle = iATR(_Symbol, _Period, InpATRPeriod);           // SL, ATR trailing, dashboard
+   if(g_atrHandle == INVALID_HANDLE) return Fail("ATR handle failed.", INIT_FAILED);
    if(InpUseTrend)
    {
       g_trendHandle = iMA(_Symbol, InpTrendTF, InpTrendMAPeriod, 0, InpTrendMAMethod, PRICE_CLOSE);
-      if(g_trendHandle == INVALID_HANDLE)
-      {
-         Print("Failed to create trend MA handle. Error: ", GetLastError());
-         return INIT_FAILED;
-      }
+      if(g_trendHandle == INVALID_HANDLE) return Fail("Trend MA handle failed.", INIT_FAILED);
+   }
+
+   //--- show indicators on the chart (the Strategy Tester shows them automatically)
+   if(InpShowIndicators && !MQLInfoInteger(MQL_TESTER))
+   {
+      AddToChart(g_fastHandle, false);
+      AddToChart(g_slowHandle, false);
+      AddToChart(g_bbHandle,   false);
+      AddToChart(g_rsiHandle,  true);
+      AddToChart(g_macdHandle, true);
+      AddToChart(g_stochHandle,true);
    }
 
    trade.SetExpertMagicNumber(InpMagicNumber);
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
 
-   PrintFormat("SimpleMACrossEA started | SL mode %s | RR 1:%.2f | Trend filter %s | Daily limit %s",
+   if(InpUseNews && MQLInfoInteger(MQL_TESTER))
+   {
+      g_newsAvailable = false;
+      Print("News filter: economic calendar is not available in the Strategy Tester - filter inactive in this test.");
+   }
+
+   PrintFormat("EA started | Signal %s | Dir %s | SL %s | RR 1:%.2f | Trend %s | Limits D %s / W %s | News %s",
+               EnumToString(InpSignalMode), EnumToString(InpDirection),
                (InpSLMode == SL_ATR ? "ATR" : "Fixed"), GetRR(),
                (InpUseTrend ? EnumToString(InpTrendTF) : "off"),
-               (InpUseDailyLimit ? DoubleToString(InpMaxDailyLoss, 1) + "%" : "off"));
+               (InpUseDailyLimit  ? DoubleToString(InpMaxDailyLoss, 1)  + "%" : "off"),
+               (InpUseWeeklyLimit ? DoubleToString(InpMaxWeeklyLoss, 1) + "%" : "off"),
+               (InpUseNews ? "on" : "off"));
    return INIT_SUCCEEDED;
+}
+
+int Fail(string msg, int code = INIT_PARAMETERS_INCORRECT)
+{
+   Print(msg, (code == INIT_FAILED ? " Error: " + IntegerToString(GetLastError()) : ""));
+   return code;
 }
 
 //+------------------------------------------------------------------+
@@ -225,10 +358,25 @@ int OnInit()
 //+------------------------------------------------------------------+
 void OnDeinit(const int reason)
 {
-   if(g_fastHandle  != INVALID_HANDLE) IndicatorRelease(g_fastHandle);
-   if(g_slowHandle  != INVALID_HANDLE) IndicatorRelease(g_slowHandle);
-   if(g_atrHandle   != INVALID_HANDLE) IndicatorRelease(g_atrHandle);
-   if(g_trendHandle != INVALID_HANDLE) IndicatorRelease(g_trendHandle);
+   // remove the indicators we added (reverse order keeps subwindow indexes valid)
+   for(int i = ArraySize(g_chartIndNames) - 1; i >= 0; i--)
+      ChartIndicatorDelete(0, g_chartIndWins[i], g_chartIndNames[i]);
+
+   ReleaseHandle(g_fastHandle);  ReleaseHandle(g_slowHandle);
+   ReleaseHandle(g_rsiHandle);   ReleaseHandle(g_macdHandle);
+   ReleaseHandle(g_bbHandle);    ReleaseHandle(g_stochHandle);
+   ReleaseHandle(g_atrHandle);   ReleaseHandle(g_trendHandle);
+
+   // keep arrows when only the timeframe/parameters change, remove them when the EA is removed
+   if(reason == REASON_REMOVE)
+      ObjectsDeleteAll(0, OBJ_PREFIX);
+   Comment("");
+}
+
+void ReleaseHandle(int &h)
+{
+   if(h != INVALID_HANDLE) IndicatorRelease(h);
+   h = INVALID_HANDLE;
 }
 
 //+------------------------------------------------------------------+
@@ -236,31 +384,170 @@ void OnDeinit(const int reason)
 //+------------------------------------------------------------------+
 void OnTick()
 {
-   // 0) Daily loss limit: checked every tick, may close the open position
-   bool limitHit = DailyLimitHit();
+   // 0) Protection checks (every tick)
+   string limitWhy = "";
+   bool   limitHit = LossLimitHit(limitWhy);
 
-   // 1) Manage an open position on EVERY tick (breakeven / trailing)
+   string newsWhy  = "";
+   bool   newsTime = IsNewsTime(newsWhy);
+   if(newsTime && InpNewsClosePos && HasOpenPosition())
+   {
+      Print("News window (", newsWhy, ") - closing open position.");
+      CloseMyPosition();
+   }
+
+   // 1) Manage an open position (partial TP / breakeven / trailing)
    ManagePosition();
 
-   // 2) Look for entries once per new bar (closed candles -> no repainting)
+   // 2) Dashboard
+   UpdateDashboard(limitHit ? limitWhy : "", newsTime ? newsWhy : "");
+
+   // 3) Entries once per new bar (closed candles -> no repainting)
    if(!IsNewBar())
       return;
 
-   if(limitHit)               return;   // done for today
-   if(HasOpenPosition())      return;   // one position at a time
-   if(!IsInSession())         return;   // time filter
-   if(!IsSpreadOK())          return;   // spread filter
+   int signal = GetRawSignal();          // +1 = buy, -1 = sell, 0 = nothing
+   if(signal == 0)
+      return;
 
-   int signal = GetSignal();             // +1 = buy, -1 = sell, 0 = nothing
-   if(signal == 1)
-      OpenTrade(ORDER_TYPE_BUY);
-   else if(signal == -1)
-      OpenTrade(ORDER_TYPE_SELL);
+   // Every filter writes a reason when it blocks the signal
+   string why = "";
+   if(limitHit)                 why = limitWhy;
+   else if(newsTime)            why = "news: " + newsWhy;
+   else if(HasOpenPosition())   why = "a position is already open";
+   else if(!IsInSession())      why = "outside trading session";
+   else if(!IsSpreadOK())       why = StringFormat("spread %d > max %d",
+                                        (int)SymbolInfoInteger(_Symbol, SYMBOL_SPREAD), InpMaxSpread);
+   else                         FilterSignal(signal, why);
+
+   bool taken = false;
+   if(why == "")
+   {
+      taken = OpenTrade(signal == 1 ? ORDER_TYPE_BUY : ORDER_TYPE_SELL);
+      if(!taken) why = "order rejected (see log)";
+   }
+
+   string side = (signal == 1 ? "BUY" : "SELL");
+   g_lastSignalText = StringFormat("%s %s - %s", side, TimeToString(iTime(_Symbol, _Period, 1), TIME_DATE|TIME_MINUTES),
+                                   taken ? "TAKEN" : "skipped: " + why);
+   if(!taken)
+      PrintFormat("%s signal skipped: %s", side, why);
+
+   DrawSignalArrow(signal, taken, why);
+}
+
+//####################################################################
+//#  SIGNALS                                                         #
+//####################################################################
+
+//+------------------------------------------------------------------+
+//| Copy 3 values (bars 0..2) of an indicator buffer, as series      |
+//+------------------------------------------------------------------+
+bool Get3(int handle, int buffer, double &arr[])
+{
+   ArraySetAsSeries(arr, true);
+   return (handle != INVALID_HANDLE && CopyBuffer(handle, buffer, 0, 3, arr) == 3);
 }
 
 //+------------------------------------------------------------------+
-//| Risk:Reward multiplier                                           |
+//| Raw entry signal of the selected strategy (closed bars 1 and 2)  |
 //+------------------------------------------------------------------+
+int GetRawSignal()
+{
+   double a[], b[];
+   switch(InpSignalMode)
+   {
+      case SIG_MA_CROSS:   // fast MA crosses slow MA
+         if(!Get3(g_fastHandle, 0, a) || !Get3(g_slowHandle, 0, b)) return 0;
+         if(a[2] <= b[2] && a[1] > b[1]) return  1;
+         if(a[2] >= b[2] && a[1] < b[1]) return -1;
+         return 0;
+
+      case SIG_RSI:        // RSI climbs back above oversold / drops back below overbought
+         if(!Get3(g_rsiHandle, 0, a)) return 0;
+         if(a[2] < InpRSIOversold   && a[1] >= InpRSIOversold)   return  1;
+         if(a[2] > InpRSIOverbought && a[1] <= InpRSIOverbought) return -1;
+         return 0;
+
+      case SIG_MACD:       // MACD main line crosses signal line
+         if(!Get3(g_macdHandle, 0, a) || !Get3(g_macdHandle, 1, b)) return 0;
+         if(a[2] <= b[2] && a[1] > b[1]) return  1;
+         if(a[2] >= b[2] && a[1] < b[1]) return -1;
+         return 0;
+
+      case SIG_BB:         // close re-enters the bands after closing outside them
+      {
+         double up[], lo[];
+         if(!Get3(g_bbHandle, 1, up) || !Get3(g_bbHandle, 2, lo)) return 0;
+         double c2 = iClose(_Symbol, _Period, 2), c1 = iClose(_Symbol, _Period, 1);
+         if(c2 < lo[2] && c1 > lo[1]) return  1;
+         if(c2 > up[2] && c1 < up[1]) return -1;
+         return 0;
+      }
+
+      case SIG_STOCH:      // %K crosses %D inside the oversold / overbought zone
+         if(!Get3(g_stochHandle, 0, a) || !Get3(g_stochHandle, 1, b)) return 0;
+         if(a[2] <= b[2] && a[1] > b[1] && b[1] < InpStochOversold)   return  1;
+         if(a[2] >= b[2] && a[1] < b[1] && b[1] > InpStochOverbought) return -1;
+         return 0;
+   }
+   return 0;
+}
+
+//+------------------------------------------------------------------+
+//| Direction, trend and confirmation filters. Sets 'why' if blocked |
+//+------------------------------------------------------------------+
+bool FilterSignal(int signal, string &why)
+{
+   if(InpDirection == DIR_BUY_ONLY  && signal == -1) { why = "buy-only mode";  return false; }
+   if(InpDirection == DIR_SELL_ONLY && signal ==  1) { why = "sell-only mode"; return false; }
+
+   if(InpUseTrend && GetTrend() != signal)
+   {
+      why = "against " + EnumToString(InpTrendTF) + " trend";
+      return false;
+   }
+
+   double v[];
+   if(InpConfirmRSI50)
+   {
+      if(!Get3(g_rsiHandle, 0, v)) { why = "RSI not ready"; return false; }
+      if(signal ==  1 && v[1] <= 50.0) { why = StringFormat("RSI %.1f not above 50", v[1]); return false; }
+      if(signal == -1 && v[1] >= 50.0) { why = StringFormat("RSI %.1f not below 50", v[1]); return false; }
+   }
+
+   if(InpConfirmMACD)
+   {
+      double m[], s[];
+      if(!Get3(g_macdHandle, 0, m) || !Get3(g_macdHandle, 1, s)) { why = "MACD not ready"; return false; }
+      if(signal ==  1 && m[1] <= s[1]) { why = "MACD below its signal line"; return false; }
+      if(signal == -1 && m[1] >= s[1]) { why = "MACD above its signal line"; return false; }
+   }
+   return true;
+}
+
+//+------------------------------------------------------------------+
+//| HTF trend: +1 up, -1 down, 0 unknown (last CLOSED HTF bar)       |
+//+------------------------------------------------------------------+
+int GetTrend()
+{
+   if(!InpUseTrend)
+      return 0;
+   double ma[];
+   if(CopyBuffer(g_trendHandle, 0, 1, 1, ma) < 1)
+      return 0;
+   double close = iClose(_Symbol, InpTrendTF, 1);
+   if(close == 0.0)
+      return 0;
+   if(close > ma[0]) return  1;
+   if(close < ma[0]) return -1;
+   return 0;
+}
+
+//####################################################################
+//#  ENTRY / RISK                                                    #
+//####################################################################
+
 double GetRR()
 {
    switch(InpRRMode)
@@ -271,9 +558,6 @@ double GetRR()
    }
 }
 
-//+------------------------------------------------------------------+
-//| True on the first tick of a new bar                              |
-//+------------------------------------------------------------------+
 bool IsNewBar()
 {
    datetime barTime = iTime(_Symbol, _Period, 0);
@@ -302,174 +586,6 @@ ulong SelectMyPosition()
 
 bool HasOpenPosition() { return SelectMyPosition() != 0; }
 
-//+------------------------------------------------------------------+
-//| Session filter (server time). Handles overnight, e.g. 22 -> 6    |
-//+------------------------------------------------------------------+
-bool IsInSession()
-{
-   if(!InpUseSession)
-      return true;
-
-   MqlDateTime t;
-   TimeToStruct(TimeCurrent(), t);
-   int h = t.hour;
-
-   if(InpStartHour == InpEndHour) return true;                       // 24h
-   if(InpStartHour <  InpEndHour) return (h >= InpStartHour && h < InpEndHour);
-   return (h >= InpStartHour || h < InpEndHour);                     // wraps midnight
-}
-
-//+------------------------------------------------------------------+
-//| Spread filter                                                    |
-//+------------------------------------------------------------------+
-bool IsSpreadOK()
-{
-   if(InpMaxSpread <= 0)
-      return true;
-   long spread = SymbolInfoInteger(_Symbol, SYMBOL_SPREAD);
-   if(spread > InpMaxSpread)
-   {
-      PrintFormat("Signal skipped: spread %d > max %d", (int)spread, InpMaxSpread);
-      return false;
-   }
-   return true;
-}
-
-//+------------------------------------------------------------------+
-//| MA crossover on the last two CLOSED bars (index 1 and 2)         |
-//+------------------------------------------------------------------+
-int GetSignal()
-{
-   double fast[], slow[];
-   ArraySetAsSeries(fast, true);
-   ArraySetAsSeries(slow, true);
-
-   if(CopyBuffer(g_fastHandle, 0, 0, 3, fast) < 3) return 0;
-   if(CopyBuffer(g_slowHandle, 0, 0, 3, slow) < 3) return 0;
-
-   int signal = 0;
-   if(fast[2] <= slow[2] && fast[1] > slow[1]) signal =  1;  // cross up   -> BUY
-   if(fast[2] >= slow[2] && fast[1] < slow[1]) signal = -1;  // cross down -> SELL
-   if(signal == 0)
-      return 0;
-
-   // Only take signals in the direction of the higher-timeframe trend
-   int trend = GetTrend();
-   if(InpUseTrend && trend != signal)
-   {
-      PrintFormat("%s signal skipped: against %s trend",
-                  (signal == 1 ? "BUY" : "SELL"), EnumToString(InpTrendTF));
-      return 0;
-   }
-   return signal;
-}
-
-//+------------------------------------------------------------------+
-//| HTF trend: +1 up, -1 down, 0 unknown (last CLOSED HTF bar)       |
-//+------------------------------------------------------------------+
-int GetTrend()
-{
-   if(!InpUseTrend)
-      return 0;
-
-   double ma[];
-   if(CopyBuffer(g_trendHandle, 0, 1, 1, ma) < 1)   // bar 1 = last closed HTF bar
-      return 0;
-   double close = iClose(_Symbol, InpTrendTF, 1);
-   if(close == 0.0)
-      return 0;
-
-   if(close > ma[0]) return  1;
-   if(close < ma[0]) return -1;
-   return 0;
-}
-
-//+------------------------------------------------------------------+
-//| Stop Loss distance in points: fixed, or ATR x multiplier         |
-//+------------------------------------------------------------------+
-int GetSLPoints()
-{
-   if(InpSLMode == SL_FIXED)
-      return InpStopLoss;
-
-   double atr[];
-   if(CopyBuffer(g_atrHandle, 0, 1, 1, atr) < 1 || atr[0] <= 0.0)  // ATR of last closed bar
-   {
-      Print("ATR not ready - trade skipped.");
-      return 0;
-   }
-   double point = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
-   int pts = (int)MathRound(atr[0] * InpATRMult / point);
-   pts = (int)MathMax(pts, InpMinSL);
-   if(InpMaxSL > 0)
-      pts = (int)MathMin(pts, InpMaxSL);
-   return pts;
-}
-
-//+------------------------------------------------------------------+
-//| Daily loss limit. Today's P/L = closed deals today + floating.   |
-//| Limit is % of the balance at the start of the day.               |
-//+------------------------------------------------------------------+
-bool DailyLimitHit()
-{
-   if(!InpUseDailyLimit)
-      return false;
-
-   MqlDateTime t;
-   TimeToStruct(TimeCurrent(), t);
-   t.hour = 0; t.min = 0; t.sec = 0;
-   datetime dayStart = StructToTime(t);
-
-   if(g_limitDay == dayStart)          // already hit today -> stay blocked
-   {
-      if(InpCloseOnLimit) CloseMyPosition();
-      return true;
-   }
-
-   // Realized P/L from this EA's deals closed today
-   double closedPL = 0.0;
-   if(HistorySelect(dayStart, TimeCurrent() + 60))
-   {
-      int deals = HistoryDealsTotal();
-      for(int i = 0; i < deals; i++)
-      {
-         ulong d = HistoryDealGetTicket(i);
-         if(d == 0) continue;
-         if(HistoryDealGetString(d, DEAL_SYMBOL) != _Symbol) continue;
-         if((ulong)HistoryDealGetInteger(d, DEAL_MAGIC) != InpMagicNumber) continue;
-         long entry = HistoryDealGetInteger(d, DEAL_ENTRY);
-         if(entry != DEAL_ENTRY_OUT && entry != DEAL_ENTRY_INOUT && entry != DEAL_ENTRY_OUT_BY)
-            continue;
-         closedPL += HistoryDealGetDouble(d, DEAL_PROFIT)
-                   + HistoryDealGetDouble(d, DEAL_SWAP)
-                   + HistoryDealGetDouble(d, DEAL_COMMISSION);
-      }
-   }
-
-   // Floating P/L of the open position
-   double floatPL = 0.0;
-   if(SelectMyPosition() != 0)
-      floatPL = PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
-
-   double dayStartBalance = AccountInfoDouble(ACCOUNT_BALANCE) - closedPL;
-   if(dayStartBalance <= 0.0)
-      return false;
-
-   double dayPL = closedPL + floatPL;
-   if(dayPL <= -dayStartBalance * InpMaxDailyLoss / 100.0)
-   {
-      g_limitDay = dayStart;
-      PrintFormat("DAILY LOSS LIMIT HIT: %.2f (%.2f%% of %.2f). No more trades today.",
-                  dayPL, -dayPL / dayStartBalance * 100.0, dayStartBalance);
-      if(InpCloseOnLimit) CloseMyPosition();
-      return true;
-   }
-   return false;
-}
-
-//+------------------------------------------------------------------+
-//| Close this EA's open position (if any)                           |
-//+------------------------------------------------------------------+
 void CloseMyPosition()
 {
    ulong ticket = SelectMyPosition();
@@ -477,28 +593,66 @@ void CloseMyPosition()
       PrintFormat("Close failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
 }
 
-//+------------------------------------------------------------------+
-//| Round lot down to broker step and clamp to min/max               |
-//+------------------------------------------------------------------+
+bool IsInSession()
+{
+   if(!InpUseSession)
+      return true;
+   MqlDateTime t;
+   TimeToStruct(TimeCurrent(), t);
+   int h = t.hour;
+   if(InpStartHour == InpEndHour) return true;
+   if(InpStartHour <  InpEndHour) return (h >= InpStartHour && h < InpEndHour);
+   return (h >= InpStartHour || h < InpEndHour);               // wraps midnight
+}
+
+bool IsSpreadOK()
+{
+   return (InpMaxSpread <= 0 || SymbolInfoInteger(_Symbol, SYMBOL_SPREAD) <= InpMaxSpread);
+}
+
+double GetATR()
+{
+   double atr[];
+   if(CopyBuffer(g_atrHandle, 0, 1, 1, atr) < 1)   // ATR of the last closed bar
+      return 0.0;
+   return atr[0];
+}
+
+int GetSLPoints()
+{
+   if(InpSLMode == SL_FIXED)
+      return InpStopLoss;
+
+   double atr = GetATR();
+   if(atr <= 0.0)
+   {
+      Print("ATR not ready - trade skipped.");
+      return 0;
+   }
+   int pts = (int)MathRound(atr * InpATRMult / SymbolInfoDouble(_Symbol, SYMBOL_POINT));
+   pts = (int)MathMax(pts, InpMinSL);
+   if(InpMaxSL > 0)
+      pts = (int)MathMin(pts, InpMaxSL);
+   return pts;
+}
+
+int LotDigits()
+{
+   double step = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
+   return (step > 0.0) ? (int)MathMax(0, MathCeil(-MathLog10(step) - 1e-9)) : 2;
+}
+
 double NormalizeLot(double lot)
 {
    double minLot  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
    double maxLot  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
    double stepLot = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
-
    if(stepLot > 0.0)
       lot = MathFloor(lot / stepLot + 1e-9) * stepLot;
    lot = MathMax(minLot, MathMin(maxLot, lot));
-
-   int lotDigits = 0;
-   if(stepLot > 0.0)
-      lotDigits = (int)MathMax(0, MathCeil(-MathLog10(stepLot) - 1e-9));
-   return NormalizeDouble(lot, lotDigits);
+   return NormalizeDouble(lot, LotDigits());
 }
 
-//+------------------------------------------------------------------+
-//| Lot size: fixed, or sized so SL hit = InpRiskPercent of balance  |
-//+------------------------------------------------------------------+
 double CalcLot(ENUM_ORDER_TYPE type, double price, double sl)
 {
    if(InpLotMode == LOT_FIXED)
@@ -510,7 +664,6 @@ double CalcLot(ENUM_ORDER_TYPE type, double price, double sl)
       Print("Risk sizing failed, falling back to fixed lot.");
       return NormalizeLot(InpLotSize);
    }
-
    double riskMoney = AccountInfoDouble(ACCOUNT_BALANCE) * InpRiskPercent / 100.0;
    double lot = riskMoney / MathAbs(lossPerLot);
 
@@ -524,56 +677,215 @@ double CalcLot(ENUM_ORDER_TYPE type, double price, double sl)
 //+------------------------------------------------------------------+
 //| Open a market order. TP = SL distance x RR                       |
 //+------------------------------------------------------------------+
-void OpenTrade(ENUM_ORDER_TYPE type)
+bool OpenTrade(ENUM_ORDER_TYPE type)
 {
    MqlTick tick;
    if(!SymbolInfoTick(_Symbol, tick))
-      return;
+      return false;
 
    double point  = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
    int    digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
    int    stopsLevel = (int)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
 
-   // Respect broker minimum distance, then derive TP from the REAL SL distance
    int baseSL = GetSLPoints();
    if(baseSL <= 0)
-      return;
+      return false;
    int slPts = (int)MathMax(baseSL, stopsLevel + 1);
    int tpPts = (int)MathMax(MathRound(slPts * GetRR()), stopsLevel + 1);
 
-   double price, sl, tp;
-   if(type == ORDER_TYPE_BUY)
-   {
-      price = tick.ask;
-      sl = NormalizeDouble(price - slPts * point, digits);
-      tp = NormalizeDouble(price + tpPts * point, digits);
-   }
-   else
-   {
-      price = tick.bid;
-      sl = NormalizeDouble(price + slPts * point, digits);
-      tp = NormalizeDouble(price - tpPts * point, digits);
-   }
+   bool   isBuy = (type == ORDER_TYPE_BUY);
+   double price = isBuy ? tick.ask : tick.bid;
+   double sl = NormalizeDouble(isBuy ? price - slPts * point : price + slPts * point, digits);
+   double tp = NormalizeDouble(isBuy ? price + tpPts * point : price - tpPts * point, digits);
 
    double lot = CalcLot(type, price, sl);
-   bool ok = (type == ORDER_TYPE_BUY)
-             ? trade.Buy (lot, _Symbol, price, sl, tp, InpTradeComment)
-             : trade.Sell(lot, _Symbol, price, sl, tp, InpTradeComment);
-
+   bool ok = isBuy ? trade.Buy (lot, _Symbol, price, sl, tp, InpTradeComment)
+                   : trade.Sell(lot, _Symbol, price, sl, tp, InpTradeComment);
    if(ok)
       PrintFormat("%s %.2f lots @ %s | SL %s (%d pts) | TP %s (%d pts) | RR 1:%.2f",
-                  (type == ORDER_TYPE_BUY ? "BUY" : "SELL"), lot,
-                  DoubleToString(price, digits), DoubleToString(sl, digits), slPts,
-                  DoubleToString(tp, digits), tpPts, GetRR());
+                  (isBuy ? "BUY" : "SELL"), lot, DoubleToString(price, digits),
+                  DoubleToString(sl, digits), slPts, DoubleToString(tp, digits), tpPts, GetRR());
    else
-      PrintFormat("%s failed: %u %s", (type == ORDER_TYPE_BUY ? "BUY" : "SELL"),
+      PrintFormat("%s failed: %u %s", (isBuy ? "BUY" : "SELL"),
                   trade.ResultRetcode(), trade.ResultRetcodeDescription());
+   return ok;
+}
+
+//####################################################################
+//#  LOSS LIMITS                                                     #
+//####################################################################
+
+//+------------------------------------------------------------------+
+//| Daily + weekly loss limits. P/L = this EA's closed deals in the  |
+//| period + floating P/L. Limit is % of the period-start balance.   |
+//+------------------------------------------------------------------+
+bool LossLimitHit(string &why)
+{
+   MqlDateTime t;
+   TimeToStruct(TimeCurrent(), t);
+   int dow = t.day_of_week;                       // 0 = Sunday
+   t.hour = 0; t.min = 0; t.sec = 0;
+   datetime dayStart  = StructToTime(t);
+   datetime weekStart = dayStart - ((dow + 6) % 7) * 86400;   // Monday 00:00 server time
+
+   // closed P/L this week and today (one history scan)
+   double closedDay = 0.0, closedWeek = 0.0;
+   if(HistorySelect(weekStart, TimeCurrent() + 60))
+   {
+      int deals = HistoryDealsTotal();
+      for(int i = 0; i < deals; i++)
+      {
+         ulong d = HistoryDealGetTicket(i);
+         if(d == 0) continue;
+         if(HistoryDealGetString(d, DEAL_SYMBOL) != _Symbol) continue;
+         if((ulong)HistoryDealGetInteger(d, DEAL_MAGIC) != InpMagicNumber) continue;
+         long entry = HistoryDealGetInteger(d, DEAL_ENTRY);
+         if(entry != DEAL_ENTRY_OUT && entry != DEAL_ENTRY_INOUT && entry != DEAL_ENTRY_OUT_BY)
+            continue;
+         double pl = HistoryDealGetDouble(d, DEAL_PROFIT) + HistoryDealGetDouble(d, DEAL_SWAP)
+                   + HistoryDealGetDouble(d, DEAL_COMMISSION);
+         closedWeek += pl;
+         if((datetime)HistoryDealGetInteger(d, DEAL_TIME) >= dayStart)
+            closedDay += pl;
+      }
+   }
+
+   double floatPL = 0.0;
+   if(SelectMyPosition() != 0)
+      floatPL = PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
+
+   double balance   = AccountInfoDouble(ACCOUNT_BALANCE);
+   double dayBase   = balance - closedDay;
+   double weekBase  = balance - closedWeek;
+   g_dayPLPct  = (dayBase  > 0.0) ? (closedDay  + floatPL) / dayBase  * 100.0 : 0.0;
+   g_weekPLPct = (weekBase > 0.0) ? (closedWeek + floatPL) / weekBase * 100.0 : 0.0;
+
+   bool hit = false;
+
+   // weekly
+   if(InpUseWeeklyLimit)
+   {
+      if(g_weekHit != weekStart && g_weekPLPct <= -InpMaxWeeklyLoss)
+      {
+         g_weekHit = weekStart;
+         PrintFormat("WEEKLY LOSS LIMIT HIT: %.2f%%. No more trades until next Monday.", g_weekPLPct);
+      }
+      if(g_weekHit == weekStart) { hit = true; why = "weekly loss limit hit"; }
+   }
+   // daily
+   if(!hit && InpUseDailyLimit)
+   {
+      if(g_dayHit != dayStart && g_dayPLPct <= -InpMaxDailyLoss)
+      {
+         g_dayHit = dayStart;
+         PrintFormat("DAILY LOSS LIMIT HIT: %.2f%%. No more trades today.", g_dayPLPct);
+      }
+      if(g_dayHit == dayStart) { hit = true; why = "daily loss limit hit"; }
+   }
+
+   if(hit && InpCloseOnLimit)
+      CloseMyPosition();
+   return hit;
+}
+
+//####################################################################
+//#  NEWS FILTER (MT5 economic calendar)                             #
+//####################################################################
+
+//+------------------------------------------------------------------+
+//| Reload upcoming news for the symbol's currencies (every 15 min)  |
+//+------------------------------------------------------------------+
+void LoadNews()
+{
+   ArrayResize(g_newsTimes, 0);
+   ArrayResize(g_newsNames, 0);
+
+   string list = InpNewsCurrencies;
+   if(StringLen(list) == 0)
+   {
+      list = SymbolInfoString(_Symbol, SYMBOL_CURRENCY_BASE);
+      string profit = SymbolInfoString(_Symbol, SYMBOL_CURRENCY_PROFIT);
+      if(profit != list) list += "," + profit;
+   }
+   string cur[];
+   int n = StringSplit(list, ',', cur);
+
+   datetime now  = TimeCurrent();
+   datetime from = now - InpNewsAfter * 60;
+   datetime to   = now + 24 * 3600;
+
+   for(int c = 0; c < n; c++)
+   {
+      string ccy = cur[c];
+      StringTrimLeft(ccy); StringTrimRight(ccy); StringToUpper(ccy);
+      if(StringLen(ccy) == 0) continue;
+
+      MqlCalendarValue values[];
+      if(!CalendarValueHistory(values, from, to, NULL, ccy))
+         continue;
+      for(int i = 0; i < ArraySize(values); i++)
+      {
+         MqlCalendarEvent ev;
+         if(!CalendarEventById(values[i].event_id, ev)) continue;
+         bool wanted = (ev.importance == CALENDAR_IMPORTANCE_HIGH) ||
+                       (InpNewsImpact == NEWS_HIGH_MEDIUM && ev.importance == CALENDAR_IMPORTANCE_MODERATE);
+         if(!wanted) continue;
+         int k = ArraySize(g_newsTimes);
+         ArrayResize(g_newsTimes, k + 1);
+         ArrayResize(g_newsNames, k + 1);
+         g_newsTimes[k] = values[i].time;
+         g_newsNames[k] = ccy + " " + ev.name;
+      }
+   }
+   g_newsLastLoad = now;
 }
 
 //+------------------------------------------------------------------+
+//| True if now is inside [news - before, news + after]              |
+//+------------------------------------------------------------------+
+bool IsNewsTime(string &what)
+{
+   if(!InpUseNews || !g_newsAvailable)
+      return false;
+
+   datetime now = TimeCurrent();
+   if(now - g_newsLastLoad >= 15 * 60)
+      LoadNews();
+
+   for(int i = 0; i < ArraySize(g_newsTimes); i++)
+   {
+      if(now >= g_newsTimes[i] - InpNewsBefore * 60 && now <= g_newsTimes[i] + InpNewsAfter * 60)
+      {
+         what = g_newsNames[i] + " @ " + TimeToString(g_newsTimes[i], TIME_MINUTES);
+         return true;
+      }
+   }
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Next upcoming news (for the dashboard)                           |
+//+------------------------------------------------------------------+
+string NextNewsText()
+{
+   if(!InpUseNews)        return "off";
+   if(!g_newsAvailable)   return "inactive in tester";
+   datetime now = TimeCurrent(), best = 0;
+   string   name = "";
+   for(int i = 0; i < ArraySize(g_newsTimes); i++)
+      if(g_newsTimes[i] > now && (best == 0 || g_newsTimes[i] < best))
+      { best = g_newsTimes[i]; name = g_newsNames[i]; }
+   return (best == 0) ? "none in next 24h" : name + " @ " + TimeToString(best, TIME_MINUTES);
+}
+
+//####################################################################
+//#  TRADE MANAGEMENT                                                #
+//####################################################################
+
+//+------------------------------------------------------------------+
 //| Initial R (SL distance, points) and initial volume of a position |
-//| Taken from the opening order in history, so it survives restarts |
-//| and stays correct after SL is moved to breakeven.                |
+//| From the opening order in history -> survives restarts and stays |
+//| correct after SL is moved to breakeven.                          |
 //+------------------------------------------------------------------+
 bool GetInitialInfo(ulong posId, double open, double curSL, double curVol,
                     double &rPts, double &initVol)
@@ -596,13 +908,11 @@ bool GetInitialInfo(ulong posId, double open, double curSL, double curVol,
          rPts = MathAbs(open - sl) / point;
    }
 
-   // Fallbacks: SL not yet moved past entry -> its distance is still 1R
    bool isBuy = (PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY);
    if(rPts <= 0.0 && curSL > 0.0 && (isBuy ? curSL < open : curSL > open))
-      rPts = MathAbs(open - curSL) / point;
+      rPts = MathAbs(open - curSL) / point;     // SL not yet moved past entry -> still 1R
    if(initVol <= 0.0)
       initVol = curVol;
-
    if(rPts <= 0.0)
       return false;
 
@@ -610,21 +920,21 @@ bool GetInitialInfo(ulong posId, double open, double curSL, double curVol,
    return true;
 }
 
+bool PartialDone(double curVol, double initVol)
+{
+   return curVol < initVol - SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP) * 0.5;
+}
+
 //+------------------------------------------------------------------+
 //| Close InpPartialPct % of the position once, at +InpPartialR      |
-//| Returns true if a partial close was sent this tick.              |
 //+------------------------------------------------------------------+
 bool TryPartialClose(ulong ticket, double curVol, double initVol, double profitR)
 {
-   if(!InpUsePartial || profitR < InpPartialR)
+   if(!InpUsePartial || profitR < InpPartialR || PartialDone(curVol, initVol))
       return false;
 
    double step   = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
    double minLot = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
-
-   // Already partially closed? (current volume below the initial volume)
-   if(curVol < initVol - step * 0.5)
-      return false;
 
    double closeVol = initVol * InpPartialPct / 100.0;
    if(step > 0.0)
@@ -642,9 +952,7 @@ bool TryPartialClose(ulong ticket, double curVol, double initVol, double profitR
       }
       return false;
    }
-
-   int lotDigits = (step > 0.0) ? (int)MathMax(0, MathCeil(-MathLog10(step) - 1e-9)) : 2;
-   closeVol = NormalizeDouble(closeVol, lotDigits);
+   closeVol = NormalizeDouble(closeVol, LotDigits());
 
    if(trade.PositionClosePartial(ticket, closeVol))
    {
@@ -685,12 +993,11 @@ void ManagePosition()
    double price  = isBuy ? tick.bid : tick.ask;          // price the position closes at
    double profitPts = (isBuy ? price - open : open - price) / point;
 
-   // R-multiple of current profit (needs the initial SL distance)
    double rPts = 0.0, initVol = curVol;
-   bool   haveR = GetInitialInfo(posId, open, curSL, curVol, rPts, initVol);
+   bool   haveR   = GetInitialInfo(posId, open, curSL, curVol, rPts, initVol);
    double profitR = haveR ? profitPts / rPts : 0.0;
 
-   // --- 1) Partial take-profit (once). Manage SL on the next tick.
+   // --- 1) Partial take-profit (once). SL is managed on the next tick.
    if(haveR && TryPartialClose(ticket, curVol, initVol, profitR))
       return;
 
@@ -699,24 +1006,25 @@ void ManagePosition()
    // --- 2) Breakeven
    bool beReached = false;
    if(InpUseBreakeven)
-   {
-      if(InpBEMode == BE_R) beReached = haveR && profitR >= InpBETriggerR;
-      else                  beReached = profitPts >= InpBETrigger;
-   }
-   if(beReached)
-   {
-      double beSL = isBuy ? open + InpBELock * point : open - InpBELock * point;
-      if(isBuy ? (curSL < beSL || curSL == 0.0) : (curSL > beSL || curSL == 0.0))
-         newSL = beSL;
-   }
+      beReached = (InpBEMode == BE_R) ? (haveR && profitR >= InpBETriggerR)
+                                      : (profitPts >= InpBETrigger);
+   double beSL = NormalizeDouble(isBuy ? open + InpBELock * point : open - InpBELock * point, digits);
+   if(beReached && (curSL == 0.0 || (isBuy ? curSL < beSL : curSL > beSL)))
+      newSL = beSL;
 
-   // --- 3) Trailing stop
-   if(InpUseTrailing && profitPts >= InpTrailStart)
+   // --- 3) Trailing stop (points or ATR), optionally only after the partial
+   if(InpUseTrailing)
    {
-      double trSL = isBuy ? price - InpTrailDist * point : price + InpTrailDist * point;
-      double ref  = (newSL == 0.0) ? (isBuy ? 0.0 : DBL_MAX) : newSL;
-      if(isBuy ? (trSL >= ref + InpTrailStep * point) : (trSL <= ref - InpTrailStep * point))
-         newSL = trSL;
+      bool start = InpTrailAfterPartial ? (InpUsePartial && PartialDone(curVol, initVol))
+                                        : (profitPts >= InpTrailStart);
+      double dist = (InpTrailMode == TRAIL_ATR) ? GetATR() * InpTrailATRMult : InpTrailDist * point;
+      if(start && dist > 0.0)
+      {
+         double trSL = isBuy ? price - dist : price + dist;
+         double ref  = (newSL == 0.0) ? (isBuy ? 0.0 : DBL_MAX) : newSL;
+         if(isBuy ? (trSL >= ref + InpTrailStep * point) : (trSL <= ref - InpTrailStep * point))
+            newSL = trSL;
+      }
    }
 
    newSL = NormalizeDouble(newSL, digits);
@@ -729,11 +1037,125 @@ void ManagePosition()
 
    if(trade.PositionModify(ticket, newSL, curTP))
    {
-      if(beReached && newSL == NormalizeDouble(isBuy ? open + InpBELock * point
-                                                     : open - InpBELock * point, digits))
+      if(newSL == beSL)
          PrintFormat("BREAKEVEN: SL -> %s at +%.2fR", DoubleToString(newSL, digits), profitR);
    }
    else
       PrintFormat("SL modify failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+}
+
+//####################################################################
+//#  VISUALS                                                         #
+//####################################################################
+
+//+------------------------------------------------------------------+
+//| Add an indicator to the chart (main window or a new subwindow)   |
+//+------------------------------------------------------------------+
+void AddToChart(int handle, bool subwindow)
+{
+   if(handle == INVALID_HANDLE)
+      return;
+   int win = subwindow ? (int)ChartGetInteger(0, CHART_WINDOWS_TOTAL) : 0;
+   if(!ChartIndicatorAdd(0, win, handle))
+      return;
+   int total = ChartIndicatorsTotal(0, win);
+   if(total <= 0)
+      return;
+   int k = ArraySize(g_chartIndNames);
+   ArrayResize(g_chartIndNames, k + 1);
+   ArrayResize(g_chartIndWins,  k + 1);
+   g_chartIndNames[k] = ChartIndicatorName(0, win, total - 1);
+   g_chartIndWins[k]  = win;
+}
+
+//+------------------------------------------------------------------+
+//| Arrow on the signal candle. Green/Red = taken, Gray = skipped.   |
+//| Hover the arrow to see why it was skipped.                       |
+//+------------------------------------------------------------------+
+void DrawSignalArrow(int signal, bool taken, string why)
+{
+   if(!InpShowArrows)
+      return;
+
+   datetime t = iTime(_Symbol, _Period, 1);
+   bool   isBuy = (signal == 1);
+   double atr   = GetATR();
+   double y     = isBuy ? iLow(_Symbol, _Period, 1)  - atr * 0.3
+                        : iHigh(_Symbol, _Period, 1) + atr * 0.3;
+   string name  = OBJ_PREFIX + (isBuy ? "BUY_" : "SELL_") + IntegerToString((long)t);
+
+   ObjectDelete(0, name);
+   if(!ObjectCreate(0, name, OBJ_ARROW, 0, t, y))
+      return;
+   ObjectSetInteger(0, name, OBJPROP_ARROWCODE, isBuy ? 233 : 234);   // Wingdings up / down arrow
+   ObjectSetInteger(0, name, OBJPROP_ANCHOR, isBuy ? ANCHOR_TOP : ANCHOR_BOTTOM);
+   ObjectSetInteger(0, name, OBJPROP_COLOR, taken ? (isBuy ? clrLime : clrRed) : clrGray);
+   ObjectSetInteger(0, name, OBJPROP_WIDTH, taken ? 3 : 1);
+   ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
+   ObjectSetInteger(0, name, OBJPROP_HIDDEN, true);
+   string tip = isBuy ? "BUY" : "SELL";
+   tip += taken ? " - TAKEN" : " - skipped: " + why;
+   ObjectSetString (0, name, OBJPROP_TOOLTIP, tip);
+}
+
+//+------------------------------------------------------------------+
+//| Info panel (top-left). Updated at most once per second.          |
+//+------------------------------------------------------------------+
+void UpdateDashboard(string limitWhy, string newsWhy)
+{
+   if(!InpShowDashboard)
+      return;
+   static datetime last = 0;
+   datetime now = TimeCurrent();
+   if(now == last)
+      return;
+   last = now;
+
+   int    trend = GetTrend();
+   double point = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   double atr   = GetATR();
+   string slTxt = (InpSLMode == SL_FIXED) ? StringFormat("%d pts", InpStopLoss)
+                : (atr > 0.0)             ? StringFormat("%d pts (ATR)", GetSLPoints())
+                :                           "ATR not ready";
+   string trendTxt = !InpUseTrend ? "off" : (trend == 1 ? "UP (buys only)" : trend == -1 ? "DOWN (sells only)" : "flat/unknown");
+   string status = (limitWhy != "") ? "BLOCKED - " + limitWhy
+                 : (newsWhy  != "") ? "PAUSED - news: " + newsWhy
+                 : "active";
+
+   string pos = "none";
+   ulong ticket = SelectMyPosition();
+   if(ticket != 0)
+   {
+      bool   isBuy = (PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY);
+      double open  = PositionGetDouble(POSITION_PRICE_OPEN);
+      double vol   = PositionGetDouble(POSITION_VOLUME);
+      double cur   = PositionGetDouble(POSITION_PRICE_CURRENT);
+      double pts   = (isBuy ? cur - open : open - cur) / point;
+      string rTxt  = "";
+      if(g_infoPosId == (ulong)PositionGetInteger(POSITION_IDENTIFIER) && g_infoRPts > 0.0)
+         rTxt = StringFormat(" | %+.2fR%s", pts / g_infoRPts, PartialDone(vol, g_infoVolume) ? " | partial done" : "");
+      pos = StringFormat("%s %.2f lots | %+.0f pts%s", (isBuy ? "BUY" : "SELL"), vol, pts, rTxt);
+   }
+
+   Comment(StringFormat(
+      "=== SimpleMACrossEA v5 ===\n"
+      "Status: %s\n"
+      "Signal: %s | Direction: %s\n"
+      "Trend (%s): %s\n"
+      "ATR: %.0f pts | SL: %s | RR 1:%.2f\n"
+      "Day P/L: %+.2f%%  (limit %s)\n"
+      "Week P/L: %+.2f%%  (limit %s)\n"
+      "Next news: %s\n"
+      "Position: %s\n"
+      "Last signal: %s",
+      status,
+      EnumToString(InpSignalMode), EnumToString(InpDirection),
+      EnumToString(InpTrendTF), trendTxt,
+      atr / point, slTxt, GetRR(),
+      g_dayPLPct,  (InpUseDailyLimit  ? StringFormat("-%.1f%%", InpMaxDailyLoss)  : "off"),
+      g_weekPLPct, (InpUseWeeklyLimit ? StringFormat("-%.1f%%", InpMaxWeeklyLoss) : "off"),
+      NextNewsText(),
+      pos,
+      g_lastSignalText));
 }
 //+------------------------------------------------------------------+
