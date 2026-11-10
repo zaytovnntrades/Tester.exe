@@ -7,12 +7,27 @@
 | **Buy/Sell signals** | Fast MA crossing above Slow MA → **BUY**; crossing below → **SELL** |
 | **Risk:Reward presets** | `InpRRMode` = **1:2**, **1:5** or **Custom** (`InpCustomRR`, e.g. 1.2). TP = SL × RR |
 | **Position size** | `InpLotMode` = Fixed lot (`InpLotSize`) or **Risk %** of balance (`InpRiskPercent`) |
-| **Stop Loss** | `InpStopLoss` in **points**, pushed out to the broker's minimum stop distance if needed |
+| **Stop Loss** | `InpSLMode` = **Fixed** (`InpStopLoss` points) or **ATR** (ATR × `InpATRMult`, clamped by `InpMinSL`/`InpMaxSL`). Pushed out to the broker's minimum stop distance if needed |
+| **Trend filter** | Buys only when the last closed `InpTrendTF` candle is above its `InpTrendMAPeriod` MA; sells only when it's below |
+| **Daily loss limit** | When today's P/L (closed + floating) reaches −`InpMaxDailyLoss`% of the day-start balance, the EA stops for the day and can close the open trade |
 | **Breakeven** | After `InpBETrigger` points of profit, SL moves to entry + `InpBELock` points |
 | **Trailing stop** | After `InpTrailStart` points, SL follows price at `InpTrailDist` points |
 | **Filters** | Trading session (server hours, overnight sessions work) and max spread |
 | **One position at a time** | No new trade while a position with this EA's magic number is open on the symbol |
 | **No repainting** | Signals are checked once per new bar, using only closed candles |
+
+## Default settings
+| Setting | Default |
+|---|---|
+| Signal | 9 / 21 EMA crossover on the chart timeframe |
+| Trend filter | ON: 200 EMA on H4 |
+| Stop Loss | ATR(14) × 1.5, min 100 / max 1500 points |
+| Risk:Reward | 1:2 |
+| Lot | Fixed 0.10 (switch to Risk % for proper sizing) |
+| Breakeven | ON at +300 points, lock +20 |
+| Daily loss limit | ON, 3%, closes the open trade |
+
+> The daily limit only counts **this EA's** trades (same symbol and magic number). The day starts at **00:00 broker server time**.
 
 ## Install (about 2 minutes)
 1. In MT5: **File → Open Data Folder** → `MQL5/Experts/`
@@ -44,6 +59,9 @@ On gold and indices a point is worth a different amount, so set SL per symbol.
 3. **Swap the signal:** replace `GetSignal()` with RSI, Bollinger Bands, or breakout logic. Nothing else needs to change.
 4. **Size by risk:** set Lot mode = Risk %, starting at 0.5–1% per trade.
 5. **Manage trades:** compare BE on/off and trailing on/off in the tester for the same RR preset.
-6. **Next:** an ATR-based SL (adapts to volatility), a higher-timeframe trend filter, and a daily loss limit.
+6. **Adapt to volatility:** compare SL mode = ATR (1.5×) with Fixed. With ATR, wild days get a wider SL and a smaller lot (in Risk % mode), so the money at risk stays the same.
+7. **Trend alignment:** run the tester with the trend filter on and off. Fewer trades but a higher win rate is the usual result.
+8. **Protect the account:** keep the daily loss limit at 2–3%. A losing streak won't turn into a blown account.
+9. **Next:** a weekly loss limit, partial take-profit at 1R, news filter, or multiple-symbol support.
 
 > Educational code. It does not guarantee profit, and trading involves risk.
