@@ -1,15 +1,30 @@
 //+------------------------------------------------------------------+
 //|                                              SimpleMACrossEA.mq5 |
-//|  Basic MT5 Expert Advisor                                        |
+//|  MT5 Expert Advisor                                              |
 //|  - Buy/Sell signals from a fast/slow Moving Average crossover    |
-//|  - Fixed lot size                                                |
-//|  - Stop Loss & Take Profit in points                             |
+//|  - Risk-Reward presets: 1:2, 1:5 or custom (TP = SL x RR)        |
+//|  - Fixed lot OR risk-% position sizing                           |
+//|  - Breakeven, trailing stop, session filter, spread filter       |
 //|  - Only ONE open position at a time (per symbol + magic number)  |
 //+------------------------------------------------------------------+
 #property copyright "Tester.exe"
-#property version   "1.00"
+#property version   "2.00"
 
 #include <Trade\Trade.mqh>
+
+//--- Enums ------------------------------------------------------------
+enum ENUM_RR_MODE
+{
+   RR_1_2    = 0,   // 1:2  (TP = 2 x SL)
+   RR_1_5    = 1,   // 1:5  (TP = 5 x SL)
+   RR_CUSTOM = 2    // Custom (TP = InpCustomRR x SL)
+};
+
+enum ENUM_LOT_MODE
+{
+   LOT_FIXED   = 0, // Fixed lot
+   LOT_RISK_PC = 1  // Risk % of balance per trade
+};
 
 //--- Inputs -----------------------------------------------------------
 input group "Signal"
@@ -18,18 +33,42 @@ input int                InpSlowMAPeriod = 21;         // Slow MA period
 input ENUM_MA_METHOD     InpMAMethod     = MODE_EMA;   // MA method
 input ENUM_APPLIED_PRICE InpMAPrice      = PRICE_CLOSE;// MA applied price
 
-input group "Trade"
+input group "Risk : Reward"
+input int                InpStopLoss     = 300;        // Stop Loss (points)
+input ENUM_RR_MODE       InpRRMode       = RR_1_2;     // Risk:Reward preset
+input double             InpCustomRR     = 1.2;        // Custom RR (used when preset = Custom)
+
+input group "Position Size"
+input ENUM_LOT_MODE      InpLotMode      = LOT_FIXED;  // Lot mode
 input double             InpLotSize      = 0.10;       // Fixed lot size
-input int                InpStopLoss     = 300;        // Stop Loss (points, 0 = none)
-input int                InpTakeProfit   = 600;        // Take Profit (points, 0 = none)
+input double             InpRiskPercent  = 1.0;        // Risk % of balance (Risk mode)
+
+input group "Breakeven"
+input bool               InpUseBreakeven = true;       // Use breakeven
+input int                InpBETrigger    = 300;        // Move SL to BE after profit (points)
+input int                InpBELock       = 20;         // Points locked in beyond entry
+
+input group "Trailing Stop"
+input bool               InpUseTrailing  = false;      // Use trailing stop
+input int                InpTrailStart   = 400;        // Start trailing after profit (points)
+input int                InpTrailDist    = 250;        // Trail distance from price (points)
+input int                InpTrailStep    = 20;         // Min SL improvement per move (points)
+
+input group "Filters"
+input bool               InpUseSession   = false;      // Use trading-session filter
+input int                InpStartHour    = 8;          // Session start hour (server time)
+input int                InpEndHour      = 20;         // Session end hour (server time)
+input int                InpMaxSpread    = 30;         // Max spread (points, 0 = off)
+
+input group "Trade"
 input int                InpSlippage     = 10;         // Max slippage (points)
 input ulong              InpMagicNumber  = 20261110;   // Magic number
 input string             InpTradeComment = "SimpleMACrossEA";
 
 //--- Globals ----------------------------------------------------------
 CTrade   trade;
-int      g_fastHandle = INVALID_HANDLE;
-int      g_slowHandle = INVALID_HANDLE;
+int      g_fastHandle  = INVALID_HANDLE;
+int      g_slowHandle  = INVALID_HANDLE;
 datetime g_lastBarTime = 0;
 
 //+------------------------------------------------------------------+
@@ -42,9 +81,30 @@ int OnInit()
       Print("Invalid MA periods: fast must be > 0 and less than slow.");
       return INIT_PARAMETERS_INCORRECT;
    }
-   if(InpLotSize <= 0.0 || InpStopLoss < 0 || InpTakeProfit < 0)
+   if(InpStopLoss <= 0)
    {
-      Print("Invalid lot size / SL / TP inputs.");
+      Print("Stop Loss must be > 0 (TP and risk sizing are derived from it).");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpRRMode == RR_CUSTOM && InpCustomRR <= 0.0)
+   {
+      Print("Custom RR must be > 0.");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if((InpLotMode == LOT_FIXED && InpLotSize <= 0.0) ||
+      (InpLotMode == LOT_RISK_PC && (InpRiskPercent <= 0.0 || InpRiskPercent > 100.0)))
+   {
+      Print("Invalid lot size / risk percent.");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpUseTrailing && (InpTrailDist <= 0 || InpTrailStart < 0 || InpTrailStep < 0))
+   {
+      Print("Invalid trailing stop inputs.");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpUseSession && (InpStartHour < 0 || InpStartHour > 23 || InpEndHour < 0 || InpEndHour > 23))
+   {
+      Print("Session hours must be 0..23.");
       return INIT_PARAMETERS_INCORRECT;
    }
 
@@ -60,6 +120,8 @@ int OnInit()
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
 
+   PrintFormat("SimpleMACrossEA started | RR 1:%.2f | SL %d pts -> TP %d pts",
+               GetRR(), InpStopLoss, (int)MathRound(InpStopLoss * GetRR()));
    return INIT_SUCCEEDED;
 }
 
@@ -77,19 +139,35 @@ void OnDeinit(const int reason)
 //+------------------------------------------------------------------+
 void OnTick()
 {
-   // Work once per new bar -> signals use closed candles only (no repainting)
+   // 1) Manage an open position on EVERY tick (breakeven / trailing)
+   ManagePosition();
+
+   // 2) Look for entries once per new bar (closed candles -> no repainting)
    if(!IsNewBar())
       return;
 
-   // One position at a time
-   if(HasOpenPosition())
-      return;
+   if(HasOpenPosition())      return;   // one position at a time
+   if(!IsInSession())         return;   // time filter
+   if(!IsSpreadOK())          return;   // spread filter
 
-   int signal = GetSignal();   // +1 = buy, -1 = sell, 0 = nothing
+   int signal = GetSignal();             // +1 = buy, -1 = sell, 0 = nothing
    if(signal == 1)
       OpenTrade(ORDER_TYPE_BUY);
    else if(signal == -1)
       OpenTrade(ORDER_TYPE_SELL);
+}
+
+//+------------------------------------------------------------------+
+//| Risk:Reward multiplier                                           |
+//+------------------------------------------------------------------+
+double GetRR()
+{
+   switch(InpRRMode)
+   {
+      case RR_1_2: return 2.0;
+      case RR_1_5: return 5.0;
+      default:     return InpCustomRR;
+   }
 }
 
 //+------------------------------------------------------------------+
@@ -105,20 +183,55 @@ bool IsNewBar()
 }
 
 //+------------------------------------------------------------------+
-//| Does this EA already have a position on this symbol?             |
+//| Selects and returns this EA's position ticket (0 if none)        |
 //+------------------------------------------------------------------+
-bool HasOpenPosition()
+ulong SelectMyPosition()
 {
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
-      ulong ticket = PositionGetTicket(i);
+      ulong ticket = PositionGetTicket(i);   // also selects the position
       if(ticket == 0)
          continue;
       if(PositionGetString(POSITION_SYMBOL) == _Symbol &&
          (ulong)PositionGetInteger(POSITION_MAGIC) == InpMagicNumber)
-         return true;
+         return ticket;
    }
-   return false;
+   return 0;
+}
+
+bool HasOpenPosition() { return SelectMyPosition() != 0; }
+
+//+------------------------------------------------------------------+
+//| Session filter (server time). Handles overnight, e.g. 22 -> 6    |
+//+------------------------------------------------------------------+
+bool IsInSession()
+{
+   if(!InpUseSession)
+      return true;
+
+   MqlDateTime t;
+   TimeToStruct(TimeCurrent(), t);
+   int h = t.hour;
+
+   if(InpStartHour == InpEndHour) return true;                       // 24h
+   if(InpStartHour <  InpEndHour) return (h >= InpStartHour && h < InpEndHour);
+   return (h >= InpStartHour || h < InpEndHour);                     // wraps midnight
+}
+
+//+------------------------------------------------------------------+
+//| Spread filter                                                    |
+//+------------------------------------------------------------------+
+bool IsSpreadOK()
+{
+   if(InpMaxSpread <= 0)
+      return true;
+   long spread = SymbolInfoInteger(_Symbol, SYMBOL_SPREAD);
+   if(spread > InpMaxSpread)
+   {
+      PrintFormat("Signal skipped: spread %d > max %d", (int)spread, InpMaxSpread);
+      return false;
+   }
+   return true;
 }
 
 //+------------------------------------------------------------------+
@@ -133,18 +246,13 @@ int GetSignal()
    if(CopyBuffer(g_fastHandle, 0, 0, 3, fast) < 3) return 0;
    if(CopyBuffer(g_slowHandle, 0, 0, 3, slow) < 3) return 0;
 
-   // fast crossed ABOVE slow -> BUY
-   if(fast[2] <= slow[2] && fast[1] > slow[1])
-      return 1;
-   // fast crossed BELOW slow -> SELL
-   if(fast[2] >= slow[2] && fast[1] < slow[1])
-      return -1;
-
+   if(fast[2] <= slow[2] && fast[1] > slow[1]) return  1;  // cross up   -> BUY
+   if(fast[2] >= slow[2] && fast[1] < slow[1]) return -1;  // cross down -> SELL
    return 0;
 }
 
 //+------------------------------------------------------------------+
-//| Normalize lot to broker's min/max/step                           |
+//| Round lot down to broker step and clamp to min/max               |
 //+------------------------------------------------------------------+
 double NormalizeLot(double lot)
 {
@@ -155,11 +263,40 @@ double NormalizeLot(double lot)
    if(stepLot > 0.0)
       lot = MathFloor(lot / stepLot + 1e-9) * stepLot;
    lot = MathMax(minLot, MathMin(maxLot, lot));
-   return NormalizeDouble(lot, 2);
+
+   int lotDigits = 0;
+   if(stepLot > 0.0)
+      lotDigits = (int)MathMax(0, MathCeil(-MathLog10(stepLot) - 1e-9));
+   return NormalizeDouble(lot, lotDigits);
 }
 
 //+------------------------------------------------------------------+
-//| Open a market order with SL/TP                                   |
+//| Lot size: fixed, or sized so SL hit = InpRiskPercent of balance  |
+//+------------------------------------------------------------------+
+double CalcLot(ENUM_ORDER_TYPE type, double price, double sl)
+{
+   if(InpLotMode == LOT_FIXED)
+      return NormalizeLot(InpLotSize);
+
+   double lossPerLot = 0.0;   // money lost on 1.0 lot if SL is hit (negative)
+   if(!OrderCalcProfit(type, _Symbol, 1.0, price, sl, lossPerLot) || lossPerLot >= 0.0)
+   {
+      Print("Risk sizing failed, falling back to fixed lot.");
+      return NormalizeLot(InpLotSize);
+   }
+
+   double riskMoney = AccountInfoDouble(ACCOUNT_BALANCE) * InpRiskPercent / 100.0;
+   double lot = riskMoney / MathAbs(lossPerLot);
+
+   double minLot = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   if(lot < minLot)
+      PrintFormat("Warning: risk %.2f%% needs %.4f lots, below broker minimum %.2f. Using minimum.",
+                  InpRiskPercent, lot, minLot);
+   return NormalizeLot(lot);
+}
+
+//+------------------------------------------------------------------+
+//| Open a market order. TP = SL distance x RR                       |
 //+------------------------------------------------------------------+
 void OpenTrade(ENUM_ORDER_TYPE type)
 {
@@ -169,30 +306,97 @@ void OpenTrade(ENUM_ORDER_TYPE type)
 
    double point  = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
    int    digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
+   int    stopsLevel = (int)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
 
-   // Respect the broker's minimum stop distance
-   int stopsLevel = (int)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
-   int slPts = (InpStopLoss   > 0) ? (int)MathMax(InpStopLoss,   stopsLevel + 1) : 0;
-   int tpPts = (InpTakeProfit > 0) ? (int)MathMax(InpTakeProfit, stopsLevel + 1) : 0;
+   // Respect broker minimum distance, then derive TP from the REAL SL distance
+   int slPts = (int)MathMax(InpStopLoss, stopsLevel + 1);
+   int tpPts = (int)MathMax(MathRound(slPts * GetRR()), stopsLevel + 1);
 
-   double lot = NormalizeLot(InpLotSize);
-   double price, sl = 0.0, tp = 0.0;
-
+   double price, sl, tp;
    if(type == ORDER_TYPE_BUY)
    {
       price = tick.ask;
-      if(slPts > 0) sl = NormalizeDouble(price - slPts * point, digits);
-      if(tpPts > 0) tp = NormalizeDouble(price + tpPts * point, digits);
-      if(!trade.Buy(lot, _Symbol, price, sl, tp, InpTradeComment))
-         PrintFormat("BUY failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+      sl = NormalizeDouble(price - slPts * point, digits);
+      tp = NormalizeDouble(price + tpPts * point, digits);
    }
    else
    {
       price = tick.bid;
-      if(slPts > 0) sl = NormalizeDouble(price + slPts * point, digits);
-      if(tpPts > 0) tp = NormalizeDouble(price - tpPts * point, digits);
-      if(!trade.Sell(lot, _Symbol, price, sl, tp, InpTradeComment))
-         PrintFormat("SELL failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+      sl = NormalizeDouble(price + slPts * point, digits);
+      tp = NormalizeDouble(price - tpPts * point, digits);
    }
+
+   double lot = CalcLot(type, price, sl);
+   bool ok = (type == ORDER_TYPE_BUY)
+             ? trade.Buy (lot, _Symbol, price, sl, tp, InpTradeComment)
+             : trade.Sell(lot, _Symbol, price, sl, tp, InpTradeComment);
+
+   if(ok)
+      PrintFormat("%s %.2f lots @ %s | SL %s (%d pts) | TP %s (%d pts) | RR 1:%.2f",
+                  (type == ORDER_TYPE_BUY ? "BUY" : "SELL"), lot,
+                  DoubleToString(price, digits), DoubleToString(sl, digits), slPts,
+                  DoubleToString(tp, digits), tpPts, GetRR());
+   else
+      PrintFormat("%s failed: %u %s", (type == ORDER_TYPE_BUY ? "BUY" : "SELL"),
+                  trade.ResultRetcode(), trade.ResultRetcodeDescription());
+}
+
+//+------------------------------------------------------------------+
+//| Breakeven + trailing stop for this EA's open position            |
+//+------------------------------------------------------------------+
+void ManagePosition()
+{
+   if(!InpUseBreakeven && !InpUseTrailing)
+      return;
+
+   ulong ticket = SelectMyPosition();
+   if(ticket == 0)
+      return;
+
+   MqlTick tick;
+   if(!SymbolInfoTick(_Symbol, tick))
+      return;
+
+   double point  = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   int    digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
+   int    minDist = (int)MathMax(SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL),
+                                 SymbolInfoInteger(_Symbol, SYMBOL_TRADE_FREEZE_LEVEL));
+
+   bool   isBuy  = (PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY);
+   double open   = PositionGetDouble(POSITION_PRICE_OPEN);
+   double curSL  = PositionGetDouble(POSITION_SL);
+   double curTP  = PositionGetDouble(POSITION_TP);
+   double price  = isBuy ? tick.bid : tick.ask;          // price the position closes at
+   double profitPts = (isBuy ? price - open : open - price) / point;
+
+   double newSL = curSL;
+
+   // --- Breakeven
+   if(InpUseBreakeven && profitPts >= InpBETrigger)
+   {
+      double beSL = isBuy ? open + InpBELock * point : open - InpBELock * point;
+      if(isBuy ? (curSL < beSL || curSL == 0.0) : (curSL > beSL || curSL == 0.0))
+         newSL = beSL;
+   }
+
+   // --- Trailing stop
+   if(InpUseTrailing && profitPts >= InpTrailStart)
+   {
+      double trSL = isBuy ? price - InpTrailDist * point : price + InpTrailDist * point;
+      double ref  = (newSL == 0.0) ? (isBuy ? 0.0 : DBL_MAX) : newSL;
+      if(isBuy ? (trSL >= ref + InpTrailStep * point) : (trSL <= ref - InpTrailStep * point))
+         newSL = trSL;
+   }
+
+   newSL = NormalizeDouble(newSL, digits);
+   if(newSL == NormalizeDouble(curSL, digits))
+      return;
+
+   // SL must stay at least the broker's minimum distance from the current price
+   if(isBuy ? (price - newSL < (minDist + 1) * point) : (newSL - price < (minDist + 1) * point))
+      return;
+
+   if(!trade.PositionModify(ticket, newSL, curTP))
+      PrintFormat("SL modify failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
 }
 //+------------------------------------------------------------------+
