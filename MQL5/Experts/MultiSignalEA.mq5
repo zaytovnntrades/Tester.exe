@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                              SimpleMACrossEA.mq5 |
+//|                                                MultiSignalEA.mq5 |
 //|  MT5 Expert Advisor                                              |
 //|  SIGNALS                                                         |
 //|  - Strategy: MA cross / RSI / MACD / Bollinger / Stochastic      |
@@ -188,10 +188,10 @@ input bool               InpShowDashboard  = true;     // Show info panel (top-l
 input group "Trade"
 input int                InpSlippage     = 10;         // Max slippage (points)
 input ulong              InpMagicNumber  = 20261110;   // Magic number
-input string             InpTradeComment = "SimpleMACrossEA";
+input string             InpTradeComment = "MultiSignalEA";
 
 //=== Globals ========================================================
-#define OBJ_PREFIX "SMEA_"
+#define OBJ_PREFIX "MSEA_"
 
 CTrade   trade;
 
@@ -280,6 +280,15 @@ int OnInit()
       return Fail("News minutes must be >= 0.");
    if(InpUseSession && (InpStartHour < 0 || InpStartHour > 23 || InpEndHour < 0 || InpEndHour > 23))
       return Fail("Session hours must be 0..23.");
+
+   //--- warn about combinations that block (almost) every signal
+   if(InpSignalMode == SIG_RSI && InpConfirmRSI50)
+      Print("Warning: RSI signal + RSI-50 confirmation conflict (buys fire near 30). Turn the confirmation off.");
+   if(InpSignalMode == SIG_MACD && InpConfirmMACD)
+      Print("Note: MACD confirmation is redundant with the MACD signal.");
+   if(InpUsePartial && InpLotMode == LOT_FIXED &&
+      InpLotSize < 2.0 * SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN) - 1e-9)
+      Print("Warning: lot size too small to split - partial take-profit will be skipped.");
 
    //--- create indicator handles (only the ones we need)
    if(InpSignalMode == SIG_MA_CROSS)
@@ -428,8 +437,9 @@ void OnTick()
    }
 
    string side = (signal == 1 ? "BUY" : "SELL");
-   g_lastSignalText = StringFormat("%s %s - %s", side, TimeToString(iTime(_Symbol, _Period, 1), TIME_DATE|TIME_MINUTES),
-                                   taken ? "TAKEN" : "skipped: " + why);
+   string result = taken ? "TAKEN" : "skipped: " + why;
+   g_lastSignalText = StringFormat("%s %s - %s", side,
+                                   TimeToString(iTime(_Symbol, _Period, 1), TIME_DATE|TIME_MINUTES), result);
    if(!taken)
       PrintFormat("%s signal skipped: %s", side, why);
 
@@ -1137,17 +1147,18 @@ void UpdateDashboard(string limitWhy, string newsWhy)
       pos = StringFormat("%s %.2f lots | %+.0f pts%s", (isBuy ? "BUY" : "SELL"), vol, pts, rTxt);
    }
 
-   Comment(StringFormat(
-      "=== SimpleMACrossEA v5 ===\n"
-      "Status: %s\n"
-      "Signal: %s | Direction: %s\n"
-      "Trend (%s): %s\n"
-      "ATR: %.0f pts | SL: %s | RR 1:%.2f\n"
-      "Day P/L: %+.2f%%  (limit %s)\n"
-      "Week P/L: %+.2f%%  (limit %s)\n"
-      "Next news: %s\n"
-      "Position: %s\n"
-      "Last signal: %s",
+   string fmt = "=== MultiSignalEA v5 ===\n";
+   fmt += "Status: %s\n";
+   fmt += "Signal: %s | Direction: %s\n";
+   fmt += "Trend (%s): %s\n";
+   fmt += "ATR: %.0f pts | SL: %s | RR 1:%.2f\n";
+   fmt += "Day P/L: %+.2f%%  (limit %s)\n";
+   fmt += "Week P/L: %+.2f%%  (limit %s)\n";
+   fmt += "Next news: %s\n";
+   fmt += "Position: %s\n";
+   fmt += "Last signal: %s";
+
+   Comment(StringFormat(fmt,
       status,
       EnumToString(InpSignalMode), EnumToString(InpDirection),
       EnumToString(InpTrendTF), trendTxt,

@@ -1,6 +1,6 @@
 # Tester.exe: MT5 Expert Advisor
 
-`MQL5/Experts/SimpleMACrossEA.mq5` (v5) is a MetaTrader 5 Expert Advisor with 5 selectable signal strategies, R-based trade management, loss limits, a news filter, and on-chart visuals.
+`MQL5/Experts/MultiSignalEA.mq5` (v5) is a MetaTrader 5 Expert Advisor with 5 selectable signal strategies, R-based trade management, loss limits, a news filter, and on-chart visuals.
 Only **one position at a time** (per symbol + magic number). Signals use **closed candles only** (no repainting).
 
 ---
@@ -64,7 +64,7 @@ Only **one position at a time** (per symbol + magic number). Signals use **close
 
 ## Install
 1. MT5: **File → Open Data Folder** → `MQL5/Experts/`
-2. Copy `SimpleMACrossEA.mq5` there.
+2. Copy `MultiSignalEA.mq5` there.
 3. Open it in **MetaEditor** (F4) → **Compile** (F7) → 0 errors.
 4. Drag the EA onto a chart and turn on **Algo Trading**.
 
@@ -99,3 +99,16 @@ On 5-digit FX pairs **10 points = 1 pip**. Gold and indices differ, so check the
 8. Keep the daily (3%) and weekly (6%) limits on. They're your circuit breakers.
 
 > Educational code. It does not guarantee profit, and trading involves risk.
+
+---
+
+## Troubleshooting compile errors
+I wrote this without a local MetaEditor, so if F7 shows errors:
+1. Double-click the **first** error in the *Errors* tab to jump to the line. Later errors are often caused by the first.
+2. Copy the error text (file, line, message) and paste it back here, and it will be fixed.
+3. **Warnings** (yellow) don't stop the EA. Only **errors** (red) do.
+
+## Upgrading from SimpleMACrossEA
+The file was renamed to `MultiSignalEA.mq5`, its default trade comment is `MultiSignalEA`, and the chart-object prefix is `MSEA_`.
+The magic number is unchanged (20261110), so the EA still manages trades opened by the old version.
+Delete the old `SimpleMACrossEA.mq5`/`.ex5` from `MQL5/Experts/` to avoid running both.
