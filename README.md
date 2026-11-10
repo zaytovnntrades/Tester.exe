@@ -10,7 +10,8 @@
 | **Stop Loss** | `InpSLMode` = **Fixed** (`InpStopLoss` points) or **ATR** (ATR × `InpATRMult`, clamped by `InpMinSL`/`InpMaxSL`). Pushed out to the broker's minimum stop distance if needed |
 | **Trend filter** | Buys only when the last closed `InpTrendTF` candle is above its `InpTrendMAPeriod` MA; sells only when it's below |
 | **Daily loss limit** | When today's P/L (closed + floating) reaches −`InpMaxDailyLoss`% of the day-start balance, the EA stops for the day and can close the open trade |
-| **Breakeven** | After `InpBETrigger` points of profit, SL moves to entry + `InpBELock` points |
+| **Partial take-profit** | At +`InpPartialR` R (default **1R**), closes `InpPartialPct`% (default **50%**) once. The rest runs to the full TP |
+| **Breakeven** | `InpBEMode` = **R** (default: at **+1R**) or Points (`InpBETrigger`). SL moves to entry + `InpBELock` points |
 | **Trailing stop** | After `InpTrailStart` points, SL follows price at `InpTrailDist` points |
 | **Filters** | Trading session (server hours, overnight sessions work) and max spread |
 | **One position at a time** | No new trade while a position with this EA's magic number is open on the symbol |
@@ -24,10 +25,29 @@
 | Stop Loss | ATR(14) × 1.5, min 100 / max 1500 points |
 | Risk:Reward | 1:2 |
 | Lot | Fixed 0.10 (switch to Risk % for proper sizing) |
-| Breakeven | ON at +300 points, lock +20 |
+| Partial TP | ON: close 50% at +1R |
+| Breakeven | ON at +1R, lock +20 points |
 | Daily loss limit | ON, 3%, closes the open trade |
 
 > The daily limit only counts **this EA's** trades (same symbol and magic number). The day starts at **00:00 broker server time**.
+
+## What "R" means
+**1R = the initial Stop Loss distance**, i.e. what you risk. If the SL is 200 points away, +1R = 200 points of profit.
+The EA reads the original SL from the opening order in history, so R stays correct after the SL moves to breakeven or MT5 restarts.
+
+**Default 1:2 trade lifecycle**
+1. Entry, risking 1R.
+2. At **+1R**: close 50% (bank +0.5R) and move the SL to breakeven (+20 points).
+3. The remaining 50% either hits TP at **+2R** (another +1R, total **+1.5R**) or gets stopped near breakeven (total about **+0.5R**).
+
+So once price reaches +1R, the trade can't turn into a loss. The cost: a full winner pays +1.5R instead of +2R.
+
+| Preset | Full winner (no partial) | Full winner (50% at 1R) | Hit 1R, then BE |
+|---|---|---|---|
+| 1:2 | +2R | +1.5R | +0.5R |
+| 1:5 | +5R | +3R | +0.5R |
+
+> Partial TP needs a lot that can be split. With min lot 0.01, the smallest workable trade is 0.02. If it can't be split, the EA logs this and skips the partial.
 
 ## Install (about 2 minutes)
 1. In MT5: **File → Open Data Folder** → `MQL5/Experts/`

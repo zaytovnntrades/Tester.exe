@@ -7,11 +7,12 @@
 //|  - Stop Loss: fixed points OR ATR-based (adapts to volatility)   |
 //|  - Higher-timeframe trend filter                                 |
 //|  - Daily loss limit (stops trading for the day)                  |
-//|  - Breakeven, trailing stop, session filter, spread filter       |
+//|  - Breakeven at +1R (or points) and partial take-profit at +1R   |
+//|  - Trailing stop, session filter, spread filter                  |
 //|  - Only ONE open position at a time (per symbol + magic number)  |
 //+------------------------------------------------------------------+
 #property copyright "Tester.exe"
-#property version   "3.00"
+#property version   "4.00"
 
 #include <Trade\Trade.mqh>
 
@@ -27,6 +28,12 @@ enum ENUM_LOT_MODE
 {
    LOT_FIXED   = 0, // Fixed lot
    LOT_RISK_PC = 1  // Risk % of balance per trade
+};
+
+enum ENUM_BE_MODE
+{
+   BE_R      = 0,   // R multiple (1R = initial SL distance)
+   BE_POINTS = 1    // Fixed points
 };
 
 enum ENUM_SL_MODE
@@ -70,9 +77,16 @@ input ENUM_LOT_MODE      InpLotMode      = LOT_FIXED;  // Lot mode
 input double             InpLotSize      = 0.10;       // Fixed lot size
 input double             InpRiskPercent  = 1.0;        // Risk % of balance (Risk mode)
 
+input group "Partial Take-Profit"
+input bool               InpUsePartial   = true;       // Use partial take-profit
+input double             InpPartialR     = 1.0;        // Take partial at profit of (R)
+input double             InpPartialPct   = 50.0;       // % of position to close
+
 input group "Breakeven"
 input bool               InpUseBreakeven = true;       // Use breakeven
-input int                InpBETrigger    = 300;        // Move SL to BE after profit (points)
+input ENUM_BE_MODE       InpBEMode       = BE_R;       // Breakeven trigger mode
+input double             InpBETriggerR   = 1.0;        // Move SL to BE after profit (R)
+input int                InpBETrigger    = 300;        // Move SL to BE after profit (points mode)
 input int                InpBELock       = 20;         // Points locked in beyond entry
 
 input group "Trailing Stop"
@@ -101,6 +115,11 @@ int      g_trendHandle = INVALID_HANDLE;
 datetime g_lastBarTime = 0;
 datetime g_limitDay    = 0;     // day on which the daily limit was hit (0 = not hit)
 
+// Initial-trade info for the open position (cached; rebuilt from history after restart)
+ulong    g_infoPosId   = 0;     // position identifier the cache belongs to
+double   g_infoRPts    = 0.0;   // 1R in points = initial SL distance
+double   g_infoVolume  = 0.0;   // initial position volume
+
 //+------------------------------------------------------------------+
 //| Initialization                                                   |
 //+------------------------------------------------------------------+
@@ -125,6 +144,16 @@ int OnInit()
    if(InpUseTrend && InpTrendMAPeriod <= 0)
    {
       Print("Trend MA period must be > 0.");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpUsePartial && (InpPartialR <= 0.0 || InpPartialPct <= 0.0 || InpPartialPct >= 100.0))
+   {
+      Print("Partial TP: R must be > 0 and % between 0 and 100 (exclusive).");
+      return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpUseBreakeven && InpBEMode == BE_R && InpBETriggerR <= 0.0)
+   {
+      Print("Breakeven R trigger must be > 0.");
       return INIT_PARAMETERS_INCORRECT;
    }
    if(InpUseDailyLimit && (InpMaxDailyLoss <= 0.0 || InpMaxDailyLoss > 100.0))
@@ -542,11 +571,96 @@ void OpenTrade(ENUM_ORDER_TYPE type)
 }
 
 //+------------------------------------------------------------------+
-//| Breakeven + trailing stop for this EA's open position            |
+//| Initial R (SL distance, points) and initial volume of a position |
+//| Taken from the opening order in history, so it survives restarts |
+//| and stays correct after SL is moved to breakeven.                |
+//+------------------------------------------------------------------+
+bool GetInitialInfo(ulong posId, double open, double curSL, double curVol,
+                    double &rPts, double &initVol)
+{
+   if(posId == g_infoPosId && g_infoRPts > 0.0)
+   {
+      rPts = g_infoRPts; initVol = g_infoVolume;
+      return true;
+   }
+
+   double point = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   rPts = 0.0; initVol = 0.0;
+
+   // The position identifier = ticket of the order that opened it
+   if(HistorySelectByPosition(posId) && HistoryOrderSelect(posId))
+   {
+      double sl = HistoryOrderGetDouble(posId, ORDER_SL);
+      initVol   = HistoryOrderGetDouble(posId, ORDER_VOLUME_INITIAL);
+      if(sl > 0.0)
+         rPts = MathAbs(open - sl) / point;
+   }
+
+   // Fallbacks: SL not yet moved past entry -> its distance is still 1R
+   bool isBuy = (PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY);
+   if(rPts <= 0.0 && curSL > 0.0 && (isBuy ? curSL < open : curSL > open))
+      rPts = MathAbs(open - curSL) / point;
+   if(initVol <= 0.0)
+      initVol = curVol;
+
+   if(rPts <= 0.0)
+      return false;
+
+   g_infoPosId = posId; g_infoRPts = rPts; g_infoVolume = initVol;
+   return true;
+}
+
+//+------------------------------------------------------------------+
+//| Close InpPartialPct % of the position once, at +InpPartialR      |
+//| Returns true if a partial close was sent this tick.              |
+//+------------------------------------------------------------------+
+bool TryPartialClose(ulong ticket, double curVol, double initVol, double profitR)
+{
+   if(!InpUsePartial || profitR < InpPartialR)
+      return false;
+
+   double step   = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
+   double minLot = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+
+   // Already partially closed? (current volume below the initial volume)
+   if(curVol < initVol - step * 0.5)
+      return false;
+
+   double closeVol = initVol * InpPartialPct / 100.0;
+   if(step > 0.0)
+      closeVol = MathFloor(closeVol / step + 1e-9) * step;
+   double remain = curVol - closeVol;
+
+   if(closeVol < minLot || remain < minLot - 1e-9)
+   {
+      static ulong warned = 0;
+      if(warned != ticket)
+      {
+         PrintFormat("Partial TP skipped: %.2f lots can't be split (min lot %.2f). Use a bigger lot.",
+                     curVol, minLot);
+         warned = ticket;
+      }
+      return false;
+   }
+
+   int lotDigits = (step > 0.0) ? (int)MathMax(0, MathCeil(-MathLog10(step) - 1e-9)) : 2;
+   closeVol = NormalizeDouble(closeVol, lotDigits);
+
+   if(trade.PositionClosePartial(ticket, closeVol))
+   {
+      PrintFormat("PARTIAL TP: closed %.2f of %.2f lots at +%.2fR", closeVol, curVol, profitR);
+      return true;
+   }
+   PrintFormat("Partial close failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Partial TP + breakeven + trailing stop for the open position     |
 //+------------------------------------------------------------------+
 void ManagePosition()
 {
-   if(!InpUseBreakeven && !InpUseTrailing)
+   if(!InpUseBreakeven && !InpUseTrailing && !InpUsePartial)
       return;
 
    ulong ticket = SelectMyPosition();
@@ -563,23 +677,40 @@ void ManagePosition()
                                  SymbolInfoInteger(_Symbol, SYMBOL_TRADE_FREEZE_LEVEL));
 
    bool   isBuy  = (PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY);
+   ulong  posId  = (ulong)PositionGetInteger(POSITION_IDENTIFIER);
    double open   = PositionGetDouble(POSITION_PRICE_OPEN);
    double curSL  = PositionGetDouble(POSITION_SL);
    double curTP  = PositionGetDouble(POSITION_TP);
+   double curVol = PositionGetDouble(POSITION_VOLUME);
    double price  = isBuy ? tick.bid : tick.ask;          // price the position closes at
    double profitPts = (isBuy ? price - open : open - price) / point;
 
+   // R-multiple of current profit (needs the initial SL distance)
+   double rPts = 0.0, initVol = curVol;
+   bool   haveR = GetInitialInfo(posId, open, curSL, curVol, rPts, initVol);
+   double profitR = haveR ? profitPts / rPts : 0.0;
+
+   // --- 1) Partial take-profit (once). Manage SL on the next tick.
+   if(haveR && TryPartialClose(ticket, curVol, initVol, profitR))
+      return;
+
    double newSL = curSL;
 
-   // --- Breakeven
-   if(InpUseBreakeven && profitPts >= InpBETrigger)
+   // --- 2) Breakeven
+   bool beReached = false;
+   if(InpUseBreakeven)
+   {
+      if(InpBEMode == BE_R) beReached = haveR && profitR >= InpBETriggerR;
+      else                  beReached = profitPts >= InpBETrigger;
+   }
+   if(beReached)
    {
       double beSL = isBuy ? open + InpBELock * point : open - InpBELock * point;
       if(isBuy ? (curSL < beSL || curSL == 0.0) : (curSL > beSL || curSL == 0.0))
          newSL = beSL;
    }
 
-   // --- Trailing stop
+   // --- 3) Trailing stop
    if(InpUseTrailing && profitPts >= InpTrailStart)
    {
       double trSL = isBuy ? price - InpTrailDist * point : price + InpTrailDist * point;
@@ -596,7 +727,13 @@ void ManagePosition()
    if(isBuy ? (price - newSL < (minDist + 1) * point) : (newSL - price < (minDist + 1) * point))
       return;
 
-   if(!trade.PositionModify(ticket, newSL, curTP))
+   if(trade.PositionModify(ticket, newSL, curTP))
+   {
+      if(beReached && newSL == NormalizeDouble(isBuy ? open + InpBELock * point
+                                                     : open - InpBELock * point, digits))
+         PrintFormat("BREAKEVEN: SL -> %s at +%.2fR", DoubleToString(newSL, digits), profitR);
+   }
+   else
       PrintFormat("SL modify failed: %u %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
 }
 //+------------------------------------------------------------------+
