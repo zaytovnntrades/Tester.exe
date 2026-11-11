@@ -1,0 +1,12 @@
+# One public RSS/Atom feed URL per line. Lines starting with # are ignored.
+# Official / primary sources first. No TikTok, YouTube, Instagram, or X (CLAUDE.md §5.1).
+# Check that each URL still works before you rely on it. Feeds move.
+
+# Central banks (pillar 3: forex and sessions, macro context)
+https://www.federalreserve.gov/feeds/press_all.xml
+https://www.ecb.europa.eu/rss/press.html
+https://www.bankofengland.co.uk/rss/news
+
+# Regulators (pillar 1 survival, pillar 4 prop firms: fraud alerts, enforcement)
+https://www.cftc.gov/RSS/RSSGP/rssgp.xml
+https://www.sec.gov/news/pressreleases.rss

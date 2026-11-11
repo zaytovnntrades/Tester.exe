@@ -1,0 +1,5 @@
+tools/scout/.cache/
+__pycache__/
+.venv/
+*.mp4
+*.mov
