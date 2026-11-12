@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas><script src="lib.js"></script><script>
+// Silent draft of video 005 (Trading Basics 1: how to read a candle). All candles are illustrations.
+const ROW=Array.from({length:11},(_,i)=>{const o=860-i*14+(hash(i)-.5)*150,cl=o+(hash(i+20)-.55)*190;return[110+i*80,o,cl]});
+function row(hi){for(const [X,o,cl] of ROW){const up=cl<o,t=Math.min(o,cl),b=Math.max(o,cl);ohlc(X,t-30-hash(X)*50,t,Math.max(b,t+10),b+30+hash(X+3)*50,44,up?WH:RED)}
+  if(hi>0){const q=ROW[6];x.save();x.globalAlpha=hi;x.strokeStyle=WH;x.lineWidth=6;rr(q[0]-58,Math.min(q[1],q[2])-120,116,Math.abs(q[1]-q[2])+240,20);x.stroke();x.restore()}}
+const big=(X=CX,col=WH,wk)=>ohlc(X,600,720,980,1100,150,col,wk);
+function s1(t){txt('On almost every chart.',CX,310,72,WH,ap(t,0.1));txt('Can you read it?',CX,420,76,RED,ap(t,3.9));row(p(t,1.2,1.6)*(0.7+0.3*Math.sin(t*6)));ILL()}
+function s2(u){txt('It’s called a candle.',CX,310,80,WH,ap(u,0.05));txt('Can’t read it? You’re guessing.',CX,420,52,GR,ap(u,1.7),{w:800});big()}
+function s3(u){rich([['1 candle = ',WH],['1 slice of time',RED]],CX,310,70,ap(u,0.05));
+  const hs=[[70,150],[120,60],[60,190],[150,90],[90,130]];line(120,1010,900,1010,DIM,4);
+  for(let i=0;i<5;i++){const X=190+i*160,m=i===2;line(X,1000,X,1020,DIM,4);const [a,b]=hs[i],top=880-a-b;ohlc(X,top-40,top,top+b+40,top+b+90,70,m?WH:DIM)}
+  x.strokeStyle=RED;x.lineWidth=7;x.beginPath();x.moveTo(440,1040);x.lineTo(440,1062);x.lineTo(580,1062);x.lineTo(580,1040);x.stroke();
+  const L=u<2.5?'':u<3.3?'1 MINUTE':u<4.1?'1 HOUR':u<4.9?'1 DAY':'YOU CHOOSE',t0=u<3.3?2.5:u<4.1?3.3:u<4.9?4.1:4.9;if(L)txt(L,CX,1140,70,WH,ap(u,t0))}
+function s4(u){if(u<5.0){txt('The body',CX,310,90,WH,ap(u,0.05));big(CX-150);
+    x.strokeStyle=RED;x.lineWidth=7;const k=p(u,0.3,0.6);if(k>0){x.globalAlpha=k;rr(CX-150-92,704,184,292,10);x.stroke();x.globalAlpha=1}
+    lab('CLOSE',CX-75,722,CX+90,ap(u,3.3));lab('OPEN',CX-75,978,CX+90,ap(u,2.3));txt('BODY',CX+90,850,56,RED,ap(u,0.4),{al:'left'})}
+  else{txt('Colour = direction',CX,310,76,WH,ap(u,5.0));ohlc(CX-190,640,740,960,1040,130,WH);ohlc(CX+190,640,740,960,1040,130,RED);
+    txt('UP',CX-190,1100,56,WH);txt('DOWN',CX+190,1100,56,RED);txt('closed higher',CX-190,1150,28,GR,ON,{w:600});txt('closed lower',CX+190,1150,28,GR,ON,{w:600});
+    txt('Colours vary by platform.',CX,440,34,GR,ap(u,5.8),{w:600})}}
+function s5(u){txt('The wicks',CX,310,90,WH,ap(u,0.05));big(CX-150,WH,RED);lab('HIGH',CX-150,604,CX+90,ap(u,3.0),RED,52);lab('LOW',CX-150,1096,CX+90,ap(u,4.4),RED,52);
+  txt('highest price in that time',CX+90,660,26,GR,ap(u,3.0),{al:'left',w:600,max:330});txt('lowest price in that time',CX+90,1042,26,GR,ap(u,4.4),{al:'left',w:600,max:330})}
+function s6(u){rich([['4 prices. ',WH],['1 shape.',u>=0.8?RED:BG]],CX,310,84,ap(u,0.05));
+  if(u<4.8){ohlc(CX-200,520,610,800,890,120,WH);lab('OPEN',CX-140,798,CX+20,ap(u,1.6));lab('HIGH',CX-200,524,CX+20,ap(u,2.0));lab('LOW',CX-200,886,CX+20,ap(u,2.4));lab('CLOSE',CX-140,612,CX+20,ap(u,2.8));
+    txt('Learn this first.',CX,1040,60,GR,ap(u,3.1),{w:800})}
+  endCard(u,5.0,5.8,6.5,720)}
+setup({DUR:37,capEnd:36,KEY:/^(candle|body|wicks|open|high|low|close|survive)\b/i,scenes:[[0,s1],[5.2,s2],[9.6,s3],[15.6,s4],[23.6,s5],[29.6,s6]],VO:[
+[0,5.2,"You'll see this shape on almost every trading chart. Can you read it?"],
+[5.2,9.6,"It's called a candle. If you can't read it, you're guessing."],
+[9.6,15.6,"One candle is one slice of time. A minute. An hour. A day. You choose."],
+[15.6,23.6,"The thick part is the body. Where price opened and where it closed. Its colour tells you up or down."],
+[23.6,29.6,"The thin lines are wicks. They show the highest and lowest price in that time."],
+[29.6,36,"Four prices. One shape. Open, high, low, close. Learn that before anything else. Survive first. Follow."]]});
+</script></body></html>

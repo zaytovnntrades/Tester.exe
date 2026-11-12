@@ -26,6 +26,17 @@ function flag(X,Y,h){line(X,Y,X,Y+h,WH,7);x.fillStyle=RED;x.beginPath();x.moveTo
 // Falling account line: flat from x0 to xf at y0, then a jagged drop to (x1,y1).
 function fallPts(x0,y0,xf,x1,y1,seed=0){const a=[];for(let X=x0;X<=xf;X+=30)a.push([X,y0+(hash(X+seed)-.5)*14]);
   for(let k=1;k<=12;k++){const u=k/12;a.push([lerp(xf,x1,u),k===12?y1:lerp(y0,y1,Math.pow(u,1.5))+(hash(k+50+seed)-.5)*30])}return a}
+
+// ---- extras for the Trading Basics series (005-007)
+function ohlc(X,yH,yTop,yBot,yL,w,col,wick){line(X,yH,X,yL,wick||col,Math.max(4,w*0.09));x.fillStyle=col;x.fillRect(X-w/2,yTop,w,yBot-yTop)}
+function lab(s,x1,y,x2,A=ON,col=WH,size=44){if(A.a<=0)return;x.save();x.globalAlpha=A.a;line(x1,y,x2-16,y,col,4);dot(x1,y,8,col);x.restore();txt(s,x2,y+2,size,col,A,{al:'left',max:300})}
+function candle(X,cy,w,h,up,col){x.fillStyle=col;const top=up?cy-h:cy;line(X,top-h*0.28,X,top+h+h*0.28,col,Math.max(3,w*0.09));x.fillRect(X-w/2,top,w,h)}
+function warn(Y){x.fillStyle=RED;rr(CX-430,Y,860,116,22);x.fill();x.fillStyle=BG;x.beginPath();x.moveTo(108,Y+87);x.lineTo(144,Y+25);x.lineTo(180,Y+87);x.closePath();x.fill();
+  txt('!',144,Y+67,40,RED);txt('LEVERAGE MAGNIFIES LOSSES',CX+50,Y+60,46,BG,ON,{max:660})}
+function dash(x1,y,x2,col,w=7){x.save();x.setLineDash([22,16]);line(x1,y,x2,y,col,w);x.restore()}
+function box(s,X,Y,w,h,col,A=ON,fill=false){if(A.a<=0)return;x.save();x.globalAlpha=A.a;if(fill){x.fillStyle=col;rr(X-w/2,Y-h/2,w,h,18);x.fill()}else{x.strokeStyle=col;x.lineWidth=7;rr(X-w/2,Y-h/2,w,h,18);x.stroke()}x.restore();txt(s,X,Y+2,Math.min(60,h*0.5),fill?BG:col,A,{max:w-40})}
+const ILL=(y=1165)=>txt('illustration',CX,y,24,DIM,ON,{w:500});
+function endCard(u,tS,tF,tC,yS=1000){txt('Survive first.',CX,yS,100,RED,ap(u,tS));pill('Follow',CX,yS+130,46,WH,ap(u,tF),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,tC))}
 // setup(): captions (2-4 words, key word red, spread evenly over each scene's voice time) + frame wrapper.
 function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
   for(const [a,b,s] of VO){const sents=s.split(/(?<=[.?!:])\s+/),n=s.split(/\s+/).length,d=(b-a-0.2)/n;let i=0;

@@ -17,3 +17,15 @@ Ranked by hand on 2026-11-12. No performance data yet, so these scores are judgm
 | 10 | Sim-to-live checklist | 2 | 4 | 3 | 5 | 3 | 15 | idea |
 
 Why 6 and 7 aren't scripted even though they score highest: both need exact figures, and rule §6.6 says no number goes out without a source in `research/`. Allowing CME Group and a prop-firm rules page in the scout unlocks both.
+
+## Trading Basics series (added 2026-11-12, director's request: beginner-level education)
+First-week fundamentals. No figures, so nothing needs a source. Post in order.
+
+| Part | Idea | Pillar | Status |
+|------|------|--------|--------|
+| 1 | How to read a candle | 2 | scripted → `scripts/005` (draft) |
+| 2 | What a stop loss is | 1 | scripted → `scripts/006` (draft) |
+| 3 | What leverage is | 2 | scripted → `scripts/007` (draft) |
+| 4 | What sim (paper) trading is, and why to start there | 1 | idea |
+| 5 | Position size: how much to trade | 1 | idea |
+| 6 | Market order vs limit order | 2 | idea |
