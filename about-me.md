@@ -7,7 +7,7 @@ Built by hand on 2026-11-12 from four answers you gave (the voice-builder skill 
 - **What I practice:** micro futures (MES, MNQ).
 - **How the videos are made:** faceless. Charts and graphics on screen, AI-generated voiceover.
 - **Channel name:** Zaytovnn Trades
-- **Where the CTA points:** [DISCORD / HUB LINK], still a placeholder in CLAUDE.md.
+- **Where the CTA points:** https://youtube.com/@zaytovnntrades
 
 ## My position: the apprentice who goes first
 I'm not a guru. I'm one step ahead of the viewer and I show my work. The channel's promise is "survive first, then grow", and I'm living it in public: sim before live money, rules before strategy.

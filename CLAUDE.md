@@ -11,7 +11,7 @@ every session. Run stages with `/pipeline <stage>`.
 
 - **Promise:** Teach beginner-to-intermediate traders to survive first, then grow. Apprenticeship style, beginner → mastery.
 - **Philosophy:** Survival-first. Risk management before strategy. Simulation before live money.
-- **CTA destination:** [DISCORD / HUB LINK]
+- **CTA destination:** https://youtube.com/@zaytovnntrades
 - **Format:** 9:16 vertical, 1080×1920, 25–45 seconds.
 
 ## 2. Content pillars  (edit freely; content-matrix reads these)
