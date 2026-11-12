@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
 <canvas id="c" width="1080" height="1920"></canvas><script src="lib.js"></script><script>
 // Silent draft of video 005 (Trading Basics 1: how to read a candle). All candles are illustrations.
-const ROW=Array.from({length:11},(_,i)=>{const o=860-i*14+(hash(i)-.5)*150,cl=o+(hash(i+20)-.55)*190;return[110+i*80,o,cl]});
+const ROW=Array.from({length:11},(_,i)=>{const o=860-i*14+(hash(i)-.5)*150,cl=o+(hash(i+20)-.55)*190;return i===6?[110+i*80,930,690]:[110+i*80,o,cl]}); // candle 6 is the ringed one: tall and clear (brief 005, scene 1)
 function row(hi){for(const [X,o,cl] of ROW){const up=cl<o,t=Math.min(o,cl),b=Math.max(o,cl);ohlc(X,t-30-hash(X)*50,t,Math.max(b,t+10),b+30+hash(X+3)*50,44,up?WH:RED)}
   if(hi>0){const q=ROW[6];x.save();x.globalAlpha=hi;x.strokeStyle=WH;x.lineWidth=6;rr(q[0]-58,Math.min(q[1],q[2])-120,116,Math.abs(q[1]-q[2])+240,20);x.stroke();x.restore()}}
 const big=(X=CX,col=WH,wk)=>ohlc(X,600,720,980,1100,150,col,wk);
