@@ -4,7 +4,7 @@ series: Trading Basics, part 3
 pillar: 2
 hook_type: contrarian
 length_target: 32s
-status: draft        # draft | approved | blocked | produced | posted
+status: approved        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
 HOOK (0–6s)

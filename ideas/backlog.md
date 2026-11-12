@@ -23,9 +23,9 @@ First-week fundamentals. No figures, so nothing needs a source. Post in order.
 
 | Part | Idea | Pillar | Status |
 |------|------|--------|--------|
-| 1 | How to read a candle | 2 | scripted → `scripts/005` (draft) |
-| 2 | What a stop loss is | 1 | scripted → `scripts/006` (draft) |
-| 3 | What leverage is | 2 | scripted → `scripts/007` (draft) |
+| 1 | How to read a candle | 2 | approved → `scripts/005` |
+| 2 | What a stop loss is | 1 | approved → `scripts/006` |
+| 3 | What leverage is | 2 | approved → `scripts/007` |
 | 4 | What sim (paper) trading is, and why to start there | 1 | idea |
 | 5 | Position size: how much to trade | 1 | idea |
 | 6 | Market order vs limit order | 2 | idea |

@@ -4,7 +4,7 @@ series: Trading Basics, part 1
 pillar: 2
 hook_type: question
 length_target: 36s
-status: draft        # draft | approved | blocked | produced | posted
+status: approved        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
 HOOK (0–5s)
