@@ -84,3 +84,6 @@ Wait 48 hours, then paste one line per video and I'll add it to `published/log.c
 ```
 id, date posted, platform, views at 48h, average watch %, shares, saves, new follows, any notes
 ```
+
+## Update
+Director said yes to the fixes. E, F, G and H are applied: next-part lines on all three end cards, the 005 caption no longer names a length, the 005 hook candle is tall, and the 007 hook is now "A small account can control a big trade. That's the danger." (script 007 is about 31 seconds).

@@ -35,11 +35,11 @@ LESSON (10–29s): 3 beats, one idea each
 
 LOOP / CTA (29–36s): callback to the hook
   VO: Four prices. One shape. Open, high, low, close. Learn that before anything else. Survive first. Follow.
-  ON-SCREEN: 4 prices. 1 shape. · OPEN · HIGH · LOW · CLOSE · Survive first. · Follow
+  ON-SCREEN: 4 prices. 1 shape. · OPEN · HIGH · LOW · CLOSE · Survive first. · Follow · Next: Part 2 · The stop loss
   VISUAL: The candle with all four labels. Channel name.
 
 DISCLAIMER (on-screen): Educational only — not financial advice.
-CAPTION (≤150 chars): How to read a candlestick in 36 seconds: open, high, low, close. Trading basics, part 1. Educational only, not financial advice.
+CAPTION (≤150 chars): How to read a candlestick: open, high, low, close. Trading basics, part 1. Educational only, not financial advice.
 HASHTAGS (3–5): #tradingforbeginners #candlesticks #learntotrade #tradingbasics #daytrading
 PINNED COMMENT: Part 1 of Trading Basics. Did you already know what the wicks mean? Yes / No 👇
 COVER / THUMBNAIL: One big candle with four arrows and "READ THIS FIRST". Dark background.

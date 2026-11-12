@@ -6,13 +6,11 @@
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 36 seconds (90 words at 2.5 words per second). Final length follows the voiceover: time the scenes to the audio.
 - **Style:** faceless. Motion graphics and text only. Black, white and one red, the same as the other channel videos.
-- **Voice:** AI voiceover. Steady, lower, unhurried. Blunt coach. The same voice as every other video.
+- **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/005-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge. Check these against TikTok's current layout before the final export.
 
-## ⚠️ Paid steps: stop and confirm with the director first
-1. Generating the AI voiceover.
-2. Any AI image or video generation, or cloud GPU rendering.
-Everything else in this brief (layout, text, shapes drawn in code) costs nothing.
+## Costs
+The visuals are drawn in code and cost nothing. Voice and captions are made in CapCut, where some voices and tools need a paid plan: that is the director's call.
 
 ## Final voiceover text (read exactly as written)
 > You'll see this shape on almost every trading chart. Can you read it?
@@ -44,7 +42,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 | 4a | Beat 2: body | 15.6–20.6 | The big candle, shifted left. A red box outlines the thick part. Pointer lines come out to the right: first to the bottom edge, then to the top edge. | `The body` · `BODY` (red) · `OPEN` (bottom) · `CLOSE` (top) |
 | 4b | Beat 2: colour | 20.6–23.6 | Hard cut to two candles side by side: a white one and a red one, same size. | `Colour = direction` · `UP` / `closed higher` · `DOWN` / `closed lower` · small: `Colours vary by platform.` |
 | 5 | Beat 3: wicks | 23.6–29.6 | The big candle again. The thin lines turn red. Pointers to the top tip, then the bottom tip. | `The wicks` · `HIGH` / `highest price in that time` · `LOW` / `lowest price in that time` |
-| 6 | CTA | 29.6–36.0 | The candle with all four labels landing one by one as they're spoken, in this order: open, high, low, close. Then the end card with the channel name. Hold the end card 1 second after the voice stops. | `4 prices. 1 shape.` · `OPEN` `HIGH` `LOW` `CLOSE` · `Learn this first.` · `Survive first.` · `Follow` · `Zaytovnn Trades` |
+| 6 | CTA | 29.6–36.0 | The candle with all four labels landing one by one as they're spoken, in this order: open, high, low, close. Then the end card with the channel name. Hold the end card 1 second after the voice stops. | `4 prices. 1 shape.` · `OPEN` `HIGH` `LOW` `CLOSE` · `Learn this first.` · `Survive first.` · `Follow` · `Next: Part 2 · The stop loss` · `Zaytovnn Trades` |
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 
@@ -74,16 +72,16 @@ Burned-in captions of the voiceover, 2 to 4 words at a time, key word highlighte
 - Disclaimer on screen for the whole video.
 
 ## Post package (from the script)
-- **Caption:** How to read a candlestick in 36 seconds: open, high, low, close. Trading basics, part 1. Educational only, not financial advice.
+- **Caption:** How to read a candlestick: open, high, low, close. Trading basics, part 1. Educational only, not financial advice.
 - **Hashtags:** #tradingforbeginners #candlesticks #learntotrade #tradingbasics #daytrading
 - **Pinned comment:** Part 1 of Trading Basics. Did you already know what the wicks mean? Yes / No 👇
 - **Cover:** one big candle with four arrows and "READ THIS FIRST". Dark background.
 - **Before posting:** check TikTok's current rules on labelling AI-generated content and switch the label on if a synthetic voice counts.
 
-## Open review items (from `published/pre-post-review-basics-005-007.md`, not yet decided by the director)
-- **Fix E:** add `Next: Part 2 · The stop loss` to the end card. Not in this brief's scene list yet.
-- **Fix F:** the caption says "in 36 seconds", which will be wrong if the final length changes. Check the number against the finished video, or drop it.
-- **Fix G** (make the ringed candle tall) is already written into scene 1 above, because it changes no words in the approved script.
+## Review fixes (all approved by the director and applied)
+- **E:** `Next: Part 2 · The stop loss` is on the end card.
+- **F:** the caption no longer says "in 36 seconds".
+- **G:** the ringed candle in scene 1 is tall and clear.
 
 ## Deliverables
 1. `005-how-to-read-a-candle.mp4`: 1080×1920, H.264, about 37 seconds.

@@ -23,7 +23,7 @@ function s5(u){txt('The wicks',CX,310,90,WH,ap(u,0.05));big(CX-150,WH,RED);lab('
 function s6(u){rich([['4 prices. ',WH],['1 shape.',u>=0.8?RED:BG]],CX,310,84,ap(u,0.05));
   if(u<4.8){ohlc(CX-200,520,610,800,890,120,WH);lab('OPEN',CX-140,798,CX+20,ap(u,1.6));lab('HIGH',CX-200,524,CX+20,ap(u,2.0));lab('LOW',CX-200,886,CX+20,ap(u,2.4));lab('CLOSE',CX-140,612,CX+20,ap(u,2.8));
     txt('Learn this first.',CX,1040,60,GR,ap(u,3.1),{w:800})}
-  endCard(u,5.0,5.8,6.5,720)}
+  endCard(u,5.0,5.8,6.5,720,'Next: Part 2 · The stop loss')}
 setup({DUR:37,capEnd:36,KEY:/^(candle|body|wicks|open|high|low|close|survive)\b/i,scenes:[[0,s1],[5.2,s2],[9.6,s3],[15.6,s4],[23.6,s5],[29.6,s6]],VO:[
 [0,5.2,"You'll see this shape on almost every trading chart. Can you read it?"],
 [5.2,9.6,"It's called a candle. If you can't read it, you're guessing."],

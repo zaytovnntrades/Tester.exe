@@ -24,7 +24,7 @@ function s5(u){txt('Not a guarantee.',CX,310,84,WH,ap(u,0.05));txt('Still beats 
     txt('can fill lower',560,1130,36,RED,ap(u,2.2),{al:'left'});txt('GAP',470,880,30,GR,ap(u,1.6))}ILL(1195)}
 function s6(u){if(u<2.9){two(1,true);simBadge(850,520,u,1.5);txt('Exit first. Entry second.',CX,330,68,WH,ap(u,0.05))}
   else txt('Practice it on sim.',CX,330,68,GR,ON,{w:800});
-  endCard(u,3.0,3.8,4.6,720)}
+  endCard(u,3.0,3.8,4.6,720,'Next: Part 3 · Leverage')}
 setup({DUR:33.4,capEnd:32.4,KEY:/^(exit|stop|out|guarantee|sim|survive)\b/i,scenes:[[0,s1],[4,s2],[9.6,s3],[18,s4],[22.4,s5],[28,s6]],VO:[
 [0,4,"Every trade needs an exit before it needs an entry."],
 [4,9.6,"No exit plan? Then a small loss can grow into a big one. Fast."],

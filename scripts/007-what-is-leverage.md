@@ -3,21 +3,21 @@ id: 007
 series: Trading Basics, part 3
 pillar: 2
 hook_type: contrarian
-length_target: 32s
+length_target: 31s
 status: approved        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–6s)
-  VO: Leverage lets you control a big trade with a small account. That's the danger.
+HOOK (0–4s)
+  VO: A small account can control a big trade. That's the danger.
   ON-SCREEN: Small account. · Big trade. · That's the danger.
   VISUAL: A small ACCOUNT box linked to a TRADE box that grows much larger.
 
-STAKES (6–9s): what it costs to get this wrong
+STAKES (4–8s): what it costs to get this wrong
   VO: It magnifies everything. Your wins. And your losses.
   ON-SCREEN: Leverage = magnifier · GAIN · LOSS
   VISUAL: A lens passes over a gain candle, then a loss candle. Each grows the same amount.
 
-LESSON (9–27s): 3 beats, one idea each
+LESSON (8–26s): 3 beats, one idea each
   Beat 1:
   VO: Here's how. You put down a small deposit. It's called margin. It controls a much bigger position.
   ON-SCREEN: How it works · DEPOSIT → MARGIN · POSITION
@@ -33,9 +33,9 @@ LESSON (9–27s): 3 beats, one idea each
   ON-SCREEN: Futures · Forex = leveraged · ⚠️ LEVERAGE MAGNIFIES LOSSES · DEPOSIT vs LOSS
   VISUAL: Warning banner. A red LOSS bar grows past the white DEPOSIT bar.
 
-LOOP / CTA (27–32s)
+LOOP / CTA (26–31s)
   VO: Learn it on sim. With the smallest size. I'm on sim. Survive first. Follow.
-  ON-SCREEN: Learn it on sim. · Smallest size. · SIM · Survive first. · Follow
+  ON-SCREEN: Learn it on sim. · Smallest size. · SIM · Survive first. · Follow · Next: the one number that protects your account
   VISUAL: SIM stamp, centre screen. Channel name.
 
 DISCLAIMER (on-screen): Educational only — not financial advice.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Leverage explained: small deposit, big position, and why
 HASHTAGS (3–5): #tradingforbeginners #leverage #futurestrading #tradingbasics #riskmanagement
 PINNED COMMENT: Part 3 of Trading Basics. Did anyone explain margin to you before you first heard "leverage"? 👇
 COVER / THUMBNAIL: A small box and a huge box joined by a line, "SMALL ACCOUNT. BIG TRADE." and a red warning triangle.
-WORD COUNT: 81 (≈32s at 2.5 words/sec)
+WORD COUNT: 78 (≈31s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a mechanism; no product or trade is recommended

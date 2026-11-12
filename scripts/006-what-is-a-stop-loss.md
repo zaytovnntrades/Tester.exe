@@ -35,7 +35,7 @@ LESSON (9–27s): 3 beats, one idea each
 
 LOOP / CTA (27–32s): callback to the hook
   VO: Exit first. Entry second. Practice it on sim. Survive first. Follow.
-  ON-SCREEN: 1. EXIT 2. ENTRY · SIM · Survive first. · Follow
+  ON-SCREEN: 1. EXIT 2. ENTRY · SIM · Survive first. · Follow · Next: Part 3 · Leverage
   VISUAL: The two boxes from the hook, in the new order. SIM stamp. Channel name.
 
 DISCLAIMER (on-screen): Educational only — not financial advice.

@@ -36,7 +36,7 @@ function warn(Y){x.fillStyle=RED;rr(CX-430,Y,860,116,22);x.fill();x.fillStyle=BG
 function dash(x1,y,x2,col,w=7){x.save();x.setLineDash([22,16]);line(x1,y,x2,y,col,w);x.restore()}
 function box(s,X,Y,w,h,col,A=ON,fill=false){if(A.a<=0)return;x.save();x.globalAlpha=A.a;if(fill){x.fillStyle=col;rr(X-w/2,Y-h/2,w,h,18);x.fill()}else{x.strokeStyle=col;x.lineWidth=7;rr(X-w/2,Y-h/2,w,h,18);x.stroke()}x.restore();txt(s,X,Y+2,Math.min(60,h*0.5),fill?BG:col,A,{max:w-40})}
 const ILL=(y=1165)=>txt('illustration',CX,y,24,DIM,ON,{w:500});
-function endCard(u,tS,tF,tC,yS=1000){txt('Survive first.',CX,yS,100,RED,ap(u,tS));pill('Follow',CX,yS+130,46,WH,ap(u,tF),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,tC))}
+function endCard(u,tS,tF,tC,yS=1000,next=''){if(next)txt(next,CX,yS+245,40,GR,ap(u,tF+0.3),{w:800});txt('Survive first.',CX,yS,100,RED,ap(u,tS));pill('Follow',CX,yS+130,46,WH,ap(u,tF),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,tC))}
 // setup(): captions (2-4 words, key word red, spread evenly over each scene's voice time) + frame wrapper.
 function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
   // URL options: ?clean = no burned-in captions (CapCut adds them). ?d=5.1,4.3,... = seconds per scene, taken from the real voiceover.

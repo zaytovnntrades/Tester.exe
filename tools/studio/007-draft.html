@@ -1,10 +1,10 @@
 <!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
 <canvas id="c" width="1080" height="1920"></canvas><script src="lib.js"></script><script>
 // Silent draft of video 007 (Trading Basics 3: what is leverage). Bars and gauges are illustrations. No figures or ratios.
-function s1(t){txt('Small account.',CX,310,80,WH,ap(t,0.1));txt('Big trade.',CX,410,80,WH,ap(t,2.0));txt('That’s the danger.',CX,515,68,RED,ap(t,4.4));
-  const g=eo(p(t,2.0,3.0)),S=lerp(110,400,g),bx=CX+150,by=880;line(CX-250,by,bx-S/2,by,GR,6);
+function s1(t){txt('Small account.',CX,310,80,WH,ap(t,0.1));txt('Big trade.',CX,410,80,WH,ap(t,1.6));txt('That’s the danger.',CX,515,68,RED,ap(t,3.4));
+  const g=eo(p(t,1.6,2.5)),S=lerp(110,400,g),bx=CX+150,by=880;line(CX-250,by,bx-S/2,by,GR,6);
   box('',CX-290,by,110,110,WH,ON,true);txt('ACCOUNT',CX-290,by+95,28,GR,ON,{w:800});
-  x.strokeStyle=t>=4.4?RED:WH;x.lineWidth=8;rr(bx-S/2,by-S/2,S,S,22);x.stroke();txt('TRADE',bx,by,lerp(26,64,g),t>=4.4?RED:WH)}
+  x.strokeStyle=t>=3.4?RED:WH;x.lineWidth=8;rr(bx-S/2,by-S/2,S,S,22);x.stroke();txt('TRADE',bx,by,lerp(26,64,g),t>=3.4?RED:WH)}
 function s2(u){rich([['Leverage = ',WH],['magnifier',RED]],CX,320,76,ap(u,0.05));
   const sW=lerp(1,3,eo(p(u,1.1,1.6))),sR=lerp(1,3,eo(p(u,1.9,2.4)));
   candle(330,860,50*sW,45*sW,true,WH);candle(330,860,50*sW,45*sW,false,WH);candle(690,860,50*sR,45*sR,true,RED);candle(690,860,50*sR,45*sR,false,RED);
@@ -25,12 +25,12 @@ function s5(u){rich([['Futures · Forex',WH]],CX,300,80,ap(u,0.05));txt('= lever
   x.save();x.setLineDash([10,10]);line(370,720,370,1040,GR,3);x.restore();txt('can be bigger than your deposit',CX,1100,36,GR,ap(u,3.0),{w:700});ILL(1165)}
 function s6(u){txt('Learn it on sim.',CX,320,84,WH,ap(u,0.05));txt('Smallest size.',CX,425,60,GR,ap(u,1.55),{w:800});
   if(u>=3.1&&u<4.2){x.save();x.translate(CX,760);x.scale(1.9,1.9);simBadge(0,0,u,3.1);x.restore()}
-  if(u>=4.2)simBadge(850,560,u,0);endCard(u,4.3,5.1,5.8,720)}
-setup({DUR:33.4,capEnd:32.4,KEY:/^(danger|losses|margin|leveraged|sim|survive)\b/i,scenes:[[0,s1],[5.6,s2],[8.8,s3],[15.6,s4],[21.6,s5],[26.8,s6]],VO:[
-[0,5.6,"Leverage lets you control a big trade with a small account. That's the danger."],
-[5.6,8.8,"It magnifies everything. Your wins. And your losses."],
-[8.8,15.6,"Here's how. You put down a small deposit. It's called margin. It controls a much bigger position."],
-[15.6,21.6,"So a small move in price becomes a big move in your account. Both ways."],
-[21.6,26.8,"Futures and forex are leveraged. Losses can be bigger than your deposit. Fast."],
-[26.8,32.4,"Learn it on sim. With the smallest size. I'm on sim. Survive first. Follow."]]});
+  if(u>=4.2)simBadge(850,560,u,0);endCard(u,4.3,5.1,5.8,720,'Next: the one number that protects your account')}
+setup({DUR:32.2,capEnd:31.2,KEY:/^(danger|losses|margin|leveraged|sim|survive)\b/i,scenes:[[0,s1],[4.4,s2],[7.6,s3],[14.4,s4],[20.4,s5],[25.6,s6]],VO:[
+[0,4.4,"A small account can control a big trade. That's the danger."],
+[4.4,7.6,"It magnifies everything. Your wins. And your losses."],
+[7.6,14.4,"Here's how. You put down a small deposit. It's called margin. It controls a much bigger position."],
+[14.4,20.4,"So a small move in price becomes a big move in your account. Both ways."],
+[20.4,25.6,"Futures and forex are leveraged. Losses can be bigger than your deposit. Fast."],
+[25.6,31.2,"Learn it on sim. With the smallest size. I'm on sim. Survive first. Follow."]]});
 </script></body></html>
