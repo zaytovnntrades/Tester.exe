@@ -37,7 +37,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 | 3 | Beat 1: the rule | 10.5–16.5 | Back to the red horizontal line from scene 1. A label types onto it. The account line approaches it and stops. | `MAX DAILY LOSS` · `The most you can lose today.` |
 | 4 | Beat 2: when to set it | 16.5–22.0 | A clock showing "before the open", then a sticky note being written and stuck to a monitor edge. **The number on the note stays blank** (a line or box, no digits). | `Set it BEFORE the open.` · `Calm. Not mid-streak.` |
 | 5 | Beat 3: obey it | 22.0–28.5 | The line touches the red line. Big `DONE.` stamp. A laptop lid closes. On the last sentence a `SIM` badge appears in the corner. | `Hit it → DONE.` · `No last trade.` · `Practice on sim first.` |
-| 6 | CTA | 28.5–34.0 | Replay of scene 1 in two seconds, but this time the line stops at the red line and stays flat (the loop back to the hook). End on the channel name. | `1 bad day. 1 number.` · `Survive first.` · `Follow` · `[CHANNEL NAME]` |
+| 6 | CTA | 28.5–34.0 | Replay of scene 1 in two seconds, but this time the line stops at the red line and stays flat (the loop back to the hook). End on the channel name. | `1 bad day. 1 number.` · `Survive first.` · `Follow` · `Zaytovnn Trades` |
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 

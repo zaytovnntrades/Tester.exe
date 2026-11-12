@@ -6,7 +6,7 @@ Built by hand on 2026-11-12 from four answers you gave (the voice-builder skill 
 - **Where I am:** learning on a simulator. I have not traded real money yet.
 - **What I practice:** micro futures (MES, MNQ).
 - **How the videos are made:** faceless. Charts and graphics on screen, AI-generated voiceover.
-- **Channel name:** [CHANNEL NAME], still a placeholder in CLAUDE.md.
+- **Channel name:** Zaytovnn Trades
 - **Where the CTA points:** [DISCORD / HUB LINK], still a placeholder in CLAUDE.md.
 
 ## My position: the apprentice who goes first

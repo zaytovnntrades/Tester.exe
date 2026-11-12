@@ -37,7 +37,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 | 3 | Red flag 1 | 11.0–18.0 | Red flag icon drops in top-left with a "1". A simple line chart draws itself and goes down as well as up. | `🚩 1` · `"Risk-free" = not real` |
 | 4 | Red flag 2 | 18.0–24.0 | Flag "2". A phone notification mock-up reading "BUY NOW 🚀" slides in and gets swiped away. Generic phone frame, no real app design. | `🚩 2` · `"Just follow our signals"` |
 | 5 | Red flag 3 | 24.0–31.5 | Flag "3". A plain search bar types "firm name…" and a result card flips to a red ✗. Then the text "Investor.gov" lands large. | `🚩 3` · `"We're registered"` → `Check it: Investor.gov` |
-| 6 | CTA | 31.5–38.5 | Cut back to the frozen $130M counter from scene 1 (the loop). It shrinks to the top; "Survive first." takes the centre. End on the channel name. | `Survive first.` · `Follow for Part 2` · `[CHANNEL NAME]` |
+| 6 | CTA | 31.5–38.5 | Cut back to the frozen $130M counter from scene 1 (the loop). It shrinks to the top; "Survive first." takes the centre. End on the channel name. | `Survive first.` · `Follow for Part 2` · `Zaytovnn Trades` |
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 
