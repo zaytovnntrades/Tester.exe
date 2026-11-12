@@ -5,8 +5,8 @@ Ranked by hand on 2026-11-12. No performance data yet, so these scores are judgm
 
 | Rank | Idea | Pillar | Pain | Visual | Evergreen | Search | Total | Status |
 |------|------|--------|------|--------|-----------|--------|-------|--------|
-| 1 | 3 red flags from a $130M fraud case | 1 | 5 | 4 | 4 | 4 | 17 | scripted → `scripts/001` |
-| 2 | Max daily loss: the one number that stops a blow-up | 1 | 5 | 4 | 5 | 3 | 17 | scripted → `scripts/004` |
+| 1 | 3 red flags from a $130M fraud case | 1 | 5 | 4 | 4 | 4 | 17 | approved → `scripts/001` |
+| 2 | Max daily loss: the one number that stops a blow-up | 1 | 5 | 4 | 5 | 3 | 17 | approved → `scripts/004` |
 | 3 | Why Fed day is for trading smaller | 2 | 4 | 4 | 3 | 4 | 15 | scripted → `scripts/002` |
 | 4 | London–NY overlap on a clock | 3 | 3 | 5 | 5 | 4 | 17 | idea (teased at the end of 003) |
 | 5 | Hike, hold, hold: why pairs split | 3 | 3 | 4 | 2 | 3 | 12 | scripted → `scripts/003` (timely, post soon) |

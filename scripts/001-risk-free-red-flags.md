@@ -3,7 +3,7 @@ id: 001
 pillar: 1
 hook_type: number
 length_target: 38s
-status: draft        # draft | approved | blocked | produced | posted
+status: approved        # draft | approved | blocked | produced | posted
 sources: [research/2026-11-11.md#1]
 ---
 HOOK (0–3s)

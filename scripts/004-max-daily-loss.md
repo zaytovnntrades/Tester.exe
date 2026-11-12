@@ -3,7 +3,7 @@ id: 004
 pillar: 1
 hook_type: bold claim
 length_target: 38s
-status: draft        # draft | approved | blocked | produced | posted
+status: approved        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
 HOOK (0–3s)
