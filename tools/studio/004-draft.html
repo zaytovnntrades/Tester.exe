@@ -1,0 +1,52 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas><script src="lib.js"></script><script>
+// Silent draft of video 004 (max daily loss), drawn from briefs/004-brief.md. No figures anywhere, by design.
+const P1=fallPts(0,700,420,800,1050),P5=fallPts(0,540,240,640,692,7),P6=fallPts(0,560,300,520,752,3).concat(Array.from({length:19},(_,i)=>[550+i*30,752]));
+const P3=Array.from({length:21},(_,i)=>[i*35,i===20?892:600+292*Math.pow(i/20,1.3)+(hash(i+9)-.5)*20]);
+function s1(t){txt('1 bad day.',CX,330,110,WH,ap(t,0.1));txt('1 number.',CX,470,110,RED,ap(t,3.0));
+  const fr=t<0.6?(t/0.6)*(14/26):14/26+p(t,0.6,2.9)*(12/26);
+  if(t>=2.9)line(0,1058,W,1058,RED,10);
+  const e=drawPath(P1,fr,WH,9);dot(e[0],e[1],13,t>=2.9?RED:WH);
+  txt('ACCOUNT',60,650,32,GR,ON,{al:'left',w:700});txt('illustration',CX,1150,24,DIM,ON,{w:500})}
+function s2(u){const N=[['Lose',0],['Angry',0.7],['Bigger',1.75],['Lose more',2.9]],cy=720,R=250;
+  let act=0;for(let i=0;i<4;i++)if(u>=N[i][1])act=i;if(u>3.4)act=Math.floor(Math.pow(u-3.4,1.7)*3.2)%4;
+  x.strokeStyle=DIM;x.lineWidth=5;x.beginPath();x.arc(CX,cy,R,0,7);x.stroke();
+  for(let i=0;i<4;i++){const a=-Math.PI/2+i*Math.PI/2,X=CX+R*Math.cos(a),Y=cy+R*Math.sin(a);if(u<N[i][1])continue;
+    x.font=`900 54px ${F}`;const w=x.measureText(N[i][0]).width+44;x.fillStyle=BG;rr(X-w/2,Y-46,w,92,18);x.fill();
+    if(i===act){x.strokeStyle=RED;x.lineWidth=6;rr(X-w/2,Y-46,w,92,18);x.stroke()}
+    txt(N[i][0],X,Y+2,54,i===act?RED:WH,ap(u,N[i][1]))}
+  const sp=u*(1+u*0.9);for(let k=0;k<4;k++){const a=sp+k*Math.PI/2;x.fillStyle=GR;x.beginPath();x.arc(CX+R*Math.cos(a+0.75),cy+R*Math.sin(a+0.75),9,0,7);x.fill()}
+  txt('The spiral.',CX,310,100,RED,ap(u,4.2));
+  txt('POSITION SIZE',180,1085,30,GR,ON,{al:'left',w:700});line(180,1140,840,1140,DIM,14);line(180,1140,lerp(250,840,eo(p(u,1.75,5.3))),1140,RED,14)}
+function s3(u){line(0,900,W,900,RED,10);
+  const L='MAX DAILY LOSS';txt(L.slice(0,Math.round(L.length*p(u,0.3,1.5))),70,975,72,RED,ON,{al:'left'});
+  const e=drawPath(P3,p(u,0.4,3.4),WH,9);dot(e[0],e[1],13,WH);
+  txt('One number.',CX,310,84,WH,ap(u,2.7));txt('The most you can lose today.',CX,420,54,GR,ap(u,3.5),{w:800});
+  txt('illustration',CX,1150,24,DIM,ON,{w:500})}
+function s4(u){rich([['Set it ',WH],['BEFORE',RED],[' the open.',WH]],CX,310,72,ap(u,0.05));txt('Calm. Not mid-streak.',CX,420,56,GR,ap(u,2.1),{w:800});
+  const kx=CX-235,ky=800;x.strokeStyle=WH;x.lineWidth=8;x.beginPath();x.arc(kx,ky,135,0,7);x.stroke();
+  for(let i=0;i<12;i++){const a=i*Math.PI/6;line(kx+112*Math.cos(a),ky+112*Math.sin(a),kx+124*Math.cos(a),ky+124*Math.sin(a),GR,4)}
+  const ha=-Math.PI/2+Math.PI*2*(8.5/12),ma=-Math.PI/2+Math.PI*2*(0.5+0.04*u);
+  line(kx,ky,kx+70*Math.cos(ha),ky+70*Math.sin(ha),WH,10);line(kx,ky,kx+100*Math.cos(ma),ky+100*Math.sin(ma),WH,6);dot(kx,ky,9,RED);
+  txt('BEFORE THE OPEN',kx,ky+185,26,GR,ON,{w:700,max:300});
+  const A=ap(u,0.9);if(A.a>0){x.save();x.globalAlpha=A.a;x.translate(CX+215,800);x.rotate(0.07);x.scale(A.sc,A.sc);x.fillStyle=WH;x.fillRect(-150,-150,300,300);
+    txt('MAX DAILY LOSS',0,-90,29,BG,ON,{max:260});x.strokeStyle=BG;x.lineWidth=5;x.setLineDash([14,10]);x.strokeRect(-105,-35,210,110);x.setLineDash([]);
+    txt('your number',0,112,22,DIM,ON,{w:600});x.restore()}}
+function s5(u){rich([['Hit it → ',WH],['DONE.',RED]],CX,300,84,ap(u,1.2));txt('No last trade.',CX,405,66,WH,ap(u,3.1));txt('Practice on sim first.',CX,500,52,GR,ap(u,4.3),{w:800});
+  line(0,700,W,700,RED,10);drawPath(P5,1,WH,9);dot(640,692,13,RED);
+  x.save();x.font=`800 26px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=RED;x.fillText('MAX DAILY LOSS',950,740);x.restore();
+  const hS=lerp(210,10,eo(p(u,2.0,2.9)));x.strokeStyle=WH;x.lineWidth=8;rr(CX-165,1085-hS,330,hS,10);x.stroke();
+  if(hS>80){x.globalAlpha=p(hS,80,160);line(CX-110,1085-hS*0.4,CX-30,1085-hS*0.6,GR,5);line(CX-30,1085-hS*0.6,CX+40,1085-hS*0.35,GR,5);line(CX+40,1085-hS*0.35,CX+110,1085-hS*0.7,GR,5);x.globalAlpha=1}
+  line(CX-215,1098,CX+215,1098,WH,14);simBadge(845,880,u,4.3)}
+function s6(u){rich([['1 bad day. ',WH],['1 number.',u>=1.45?RED:BG]],CX,340,76,ap(u,0.05));
+  line(0,762,W,762,RED,10);const k=12+10;const fr=u<1.4?(u/1.4)*(k/(P6.length-1)):k/(P6.length-1)+p(u,1.4,3.2)*(1-k/(P6.length-1));
+  const e=drawPath(P6,fr,WH,9);dot(e[0],e[1],13,WH);
+  txt('Survive first.',CX,1000,100,RED,ap(u,3.85));pill('Follow',CX,1130,46,WH,ap(u,4.8),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,5.6))}
+setup({DUR:35,capEnd:34,KEY:/^(bad|number|spiral|before|done|survive)\b/i,scenes:[[0,s1],[5,s2],[10.5,s3],[16.5,s4],[22,s5],[28.5,s6]],VO:[
+[0,5,"One bad day can end your account. One number can stop it."],
+[5,10.5,"You lose. You get angry. You trade bigger to win it back. That's the spiral."],
+[10.5,16.5,"The fix is a max daily loss. One number. The most you're allowed to lose today."],
+[16.5,22,"Set it before the market opens. Calm. Not in the middle of a losing streak."],
+[22,28.5,"Hit the number? You're done. Close the platform. No last trade. Practice that on sim first."],
+[28.5,34,"One bad day. One number. Set yours tonight. Survive first. Follow."]]});
+</script></body></html>

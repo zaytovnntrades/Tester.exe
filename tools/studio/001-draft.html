@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas><script src="lib.js"></script><script>
+// Silent draft of video 001 (3 red flags from a $130M fraud case), drawn from briefs/001-brief.md.
+// "RISK-FREE" always appears in quotation marks, and no company is named.
+const Q='“',QE='”';
+function head(n,u){const d=lerp(-260,0,eo(p(u,0,0.3)));flag(CX-235,255+d,96);txt('RED FLAG '+n,CX+40,300+d,64,RED)}
+function s1(t){txt('2 words.',CX,330,96,WH,ap(t,0.1));
+  const v=Math.round(130e6*eo(p(t,0,1.5))),sh=t>1.5&&t<1.85?12*(1-p(t,1.5,1.85)):0;
+  x.save();x.translate((hash(Math.floor(t*60))-.5)*sh*2,(hash(Math.floor(t*60)+9)-.5)*sh*2);
+  txt('$'+v.toLocaleString('en-US')+(t>=1.5?'+':''),CX,620,120,WH,ON,{max:880});x.restore();
+  pill('SEC complaint',CX,745,34,GR);
+  x.save();x.filter='blur(18px)';txt(Q+'RISK-FREE'+QE,CX,960,120,RED);x.restore()}
+function s2(u){txt('$130,000,000+',CX,300,60,GR,ON,{w:800});pill('SEC complaint',CX,385,28,GR);
+  x.save();x.filter=`blur(${lerp(18,0,p(u,0,0.5)).toFixed(1)}px)`;x.translate(CX,660);x.rotate(-0.045);const s=lerp(1.3,1,eo(p(u,0,0.4)));x.scale(s,s);
+  x.strokeStyle=RED;x.lineWidth=10;rr(-440,-95,880,190,14);x.stroke();txt(Q+'RISK-FREE RETURNS'+QE,0,4,76,RED,ON,{max:810});x.restore();
+  pill('ALLEGED',CX,850,44,WH,ap(u,0.8));
+  txt('Source: SEC press release 2026-110, Oct 29, 2026',CX,1120,28,GR,{a:p(u,1.0,1.4),sc:1},{w:600})}
+const CH=[[120,900],[220,860],[300,880],[400,790],[480,820],[560,730],[640,760],[700,700],[760,840],[820,930],[880,1010],[930,1090]];
+function s3(u){head(1,u);txt(Q+'Risk-free'+QE,CX,430,88,WH,ap(u,1.2));txt('= not real',CX,535,60,GR,ap(u,1.6),{w:800});
+  const fr=p(u,1.6,5.6);drawPath(CH,Math.min(fr,7/11),WH,9);
+  if(fr>7/11){const sub=CH.slice(7);drawPath(sub,(fr-7/11)/(4/11),RED,9)}
+  txt('illustration',CX,1165,24,DIM,ON,{w:500})}
+function s4(u){head(2,u);txt(Q+'Just follow our signals'+QE,CX,430,70,WH,ap(u,1.2));
+  const px=CX-190,py=540;x.strokeStyle=WH;x.lineWidth=7;rr(px,py,380,620,44);x.stroke();line(CX-45,py+34,CX+45,py+34,DIM,10);
+  if(u>=1.2){x.save();rr(px+4,py+4,372,612,40);x.clip();const sl=lerp(-200,0,eo(p(u,1.2,1.5))),sw=eo(p(u,2.7,3.2));
+    x.globalAlpha=1-sw;x.translate(sw*460,sl);x.fillStyle=WH;rr(px+26,py+90,328,124,22);x.fill();
+    txt('SIGNAL',px+52,py+125,24,DIM,ON,{al:'left',w:800});txt('BUY NOW ↑↑',px+52,py+170,42,BG,ON,{al:'left'});x.restore()}
+  txt('Your decisions.',CX,py+330,40,GR,ap(u,2.9),{w:800});txt('Then your money.',CX,py+400,40,RED,ap(u,4.7),{w:800})}
+function s5(u){head(3,u);txt(Q+'We’re registered'+QE,CX,430,78,WH,ap(u,1.15));
+  x.strokeStyle=WH;x.lineWidth=6;rr(CX-390,560,780,104,52);x.stroke();x.beginPath();x.arc(CX-325,610,20,0,7);x.stroke();line(CX-311,625,CX-296,641,WH,6);
+  const T='firm name…';txt(T.slice(0,Math.round(T.length*p(u,1.3,2.2))),CX-270,613,42,GR,ON,{al:'left',w:600});
+  const A=ap(u,2.3);if(A.a>0){x.save();x.globalAlpha=A.a;x.strokeStyle=DIM;x.lineWidth=5;rr(CX-390,710,780,140,22);x.stroke();x.restore();
+    txt('Registered?',CX-350,780,46,WH,A,{al:'left',w:800});const k=eo(p(u,2.6,2.9));if(k>0){const X=CX+300,Y=780,r=34*k;line(X-r,Y-r,X+r,Y+r,RED,13);line(X+r,Y-r,X-r,Y+r,RED,13)}}
+  txt('Check it yourself:',CX,960,48,GR,ap(u,4.6),{w:800});txt('Investor.gov',CX,1080,118,WH,ap(u,6.2))}
+function s6(u){txt('$130,000,000+',CX,310,72,WH);pill('SEC complaint',CX,400,28,GR);
+  txt('Survive first.',CX,720,112,RED,ap(u,0.05));pill('Follow for Part 2',CX,900,46,WH,ap(u,2.65),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,7.1))}
+setup({DUR:39.5,capEnd:38.5,KEY:/^(risk-free|signals|registered|survive)\b/i,scenes:[[0,s1],[5,s2],[11,s3],[18,s4],[24,s5],[31.5,s6]],VO:[
+[0,5,"Two words helped take a hundred and thirty million dollars from everyday investors."],
+[5,11,"The SEC says a so-called wealth-sharing program promised risk-free returns. From crypto trading signals."],
+[11,18,"Red flag one. Risk-free. Every real trade has risk. Anyone who says otherwise is selling. Not trading."],
+[18,24,"Red flag two. Just follow our signals. You hand over your decisions. Then your money."],
+[24,31.5,"Red flag three. We're SEC registered. The SEC says that was false. Check any firm yourself. Investor dot gov."],
+[31.5,38.5,"Survive the people first. Then the market. Follow. Next up: the day the market itself turns on you."]]});
+</script></body></html>
