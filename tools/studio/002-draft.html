@@ -1,0 +1,98 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas><script>
+// Silent draft of video 002, drawn from briefs/002-brief.md. window.render(t) draws the frame at t seconds.
+const W=1080,H=1920,c=document.getElementById('c'),x=c.getContext('2d');
+const BG='#0a0a0c',WH='#f5f5f5',RED='#ff2d3d',GR='#8a8a92',DIM='#5a5a64';
+const F="'Inter','DejaVu Sans','Liberation Sans',Arial,sans-serif",CX=510,MAXW=860;
+const DUR=38.5;window.DUR=DUR;
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),p=(t,a,b)=>clamp((t-a)/(b-a)),eo=u=>1-Math.pow(1-u,3),lerp=(a,b,u)=>a+(b-a)*u;
+const hash=n=>{const s=Math.sin(n*127.1)*43758.5453;return s-Math.floor(s)};
+const ap=(t,t0)=>({a:p(t,t0,t0+0.1),sc:lerp(1.22,1,eo(p(t,t0,t0+0.22)))});
+function rich(parts,X,Y,size,A={a:1,sc:1},o={}){if(A.a<=0)return;x.save();const w=o.w??900;let tot;
+  for(;;){x.font=`${w} ${size}px ${F}`;tot=parts.reduce((s,q)=>s+x.measureText(q[0]).width,0);if(tot<=(o.max??MAXW))break;size*=0.96}
+  x.globalAlpha=A.a;x.translate(X,Y);x.scale(A.sc,A.sc);x.textBaseline='middle';x.textAlign='left';let cx=o.al==='left'?0:-tot/2;
+  for(const [s,col] of parts){x.fillStyle=col;x.fillText(s,cx,0);cx+=x.measureText(s).width}x.restore()}
+const txt=(s,X,Y,size,col=WH,A,o)=>rich([[s,col]],X,Y,size,A,o);
+function line(x1,y1,x2,y2,col,w){x.strokeStyle=col;x.lineWidth=w;x.lineCap='round';x.beginPath();x.moveTo(x1,y1);x.lineTo(x2,y2);x.stroke()}
+function rr(X,Y,w,h,r){x.beginPath();x.roundRect(X,Y,w,h,r)}
+function dot(X,Y,r,col){x.fillStyle=col;x.beginPath();x.arc(X,Y,r,0,7);x.fill()}
+function candle(X,cy,w,h,up,col){x.fillStyle=col;const top=up?cy-h:cy;line(X,top-h*0.28,X,top+h+h*0.28,col,Math.max(3,w*0.09));x.fillRect(X-w/2,top,w,h)}
+
+// ---------- captions (2-4 words, key word in red), spread evenly over each scene's voice time
+const VO=[[0,5.5,"October twenty-eighth. The Fed did nothing. That's the kind of day that hurts beginners."],
+[5.5,13.5,"Rates held. Three and three-quarters to four percent. But the vote split. Ten to two. Both dissenters wanted a hike."],
+[13.5,19,"Split votes mean nobody's sure what's next. Unsure markets can swing hard. Both ways."],
+[19,25,"MES and MNQ are leveraged. Leverage magnifies your losses. Exactly as much as your gains."],
+[25,31,"So Fed day isn't for guessing. Cut your size. Or stay on sim. I'm on sim."],
+[31,37.5,"The Fed did nothing. Make sure it does nothing to your account. Survive first. Follow."]];
+const KEY=/^(nothing|split|hike|losses|size|sim|survive)\b/i,CAPS=[];
+for(const [a,b,s] of VO){const sents=s.split(/(?<=[.?!])\s+/),n=s.split(/\s+/).length,d=(b-a-0.2)/n;let i=0;
+  for(const se of sents){const ws=se.split(/\s+/),k=Math.ceil(ws.length/4),per=Math.ceil(ws.length/k);
+    for(let j=0;j<ws.length;j+=per){const ch=ws.slice(j,j+per);CAPS.push([a+0.1+(i+j)*d,ch])}i+=ws.length}}
+function captions(t){let cur=null;for(const q of CAPS)if(q[0]<=t)cur=q;if(!cur||t>37.5)return;
+  const parts=cur[1].map((w,i)=>[(i?' ':'')+w,KEY.test(w)?RED:WH]);x.font=`900 62px ${F}`;
+  const tw=Math.min(MAXW,parts.reduce((s,q)=>s+x.measureText(q[0]).width,0));
+  x.fillStyle='rgba(0,0,0,.72)';rr(CX-tw/2-34,1290-58,tw+68,116,26);x.fill();
+  rich(parts,CX,1292,62,{a:1,sc:lerp(1.08,1,eo(p(t,cur[0],cur[0]+0.12)))})}
+
+// ---------- scenes
+function s1(t){txt('OCT 28',CX,290,38,GR,{a:1,sc:1},{w:700});
+  rich([['The Fed did ',WH],['NOTHING.',RED]],CX,400,86,ap(t,0.1));
+  txt('So why is it risky?',CX,520,62,WH,ap(t,3.0));
+  const amp=lerp(0,235,eo(p(t,0.5,1.7)));
+  if(amp>0){x.strokeStyle=GR;x.lineWidth=5;x.lineJoin='round';x.beginPath();
+    for(let i=0;i<=36;i++){const n=Math.sin(i*0.9+t*7)*0.42+Math.sin(i*0.37-t*11)*0.33+(hash(i+Math.floor(t*14)*57)-0.5)*0.6;
+      const X=i*30,Y=880+amp*n*Math.min(1,i/5);i?x.lineTo(X,Y):x.moveTo(X,Y)}x.stroke();
+    txt('PRICE',930,655,30,GR,{a:p(t,1.2,1.5),sc:1},{w:700,al:'left',max:200});txt('illustration',CX,1165,24,DIM,{a:1,sc:1},{w:500})}
+  line(0,880,W,880,WH,10);x.fillStyle=BG;x.fillRect(70,826,170,44);txt('RATES',90,848,36,WH,{a:1,sc:1},{al:'left'})}
+function s2(t){const u=t-5.5;
+  if(u<3.2){txt('3.75–4.00%',CX,560,170,WH,ap(u,0.05));
+    const A=ap(u,0.75);if(A.a>0){x.save();x.globalAlpha=A.a;x.strokeStyle=WH;x.lineWidth=7;rr(CX-150,720,300,116,18);x.stroke();x.restore();txt('HELD',CX,780,78,WH,A)}return}
+  rich([['3.75–4.00%  ',GR],['HELD',GR]],CX,300,46,{a:1,sc:1},{w:800});
+  for(let i=0;i<12;i++){const a=p(u,3.2+i*0.1,3.3+i*0.1);if(a<=0)continue;const red=i>=10;
+    const pulse=red&&u>6?1+0.2*Math.abs(Math.sin((u-6)*5)):1;dot(125+i*70,520,27*eo(a)*pulse,red?RED:GR)}
+  txt('Vote: 10–2',CX,720,120,WH,ap(u,4.8));
+  rich([['2 wanted a ',WH],['HIKE',RED]],CX,880,84,ap(u,6.0));
+  txt('Source: Federal Reserve FOMC statement, Oct 28, 2026',CX,1120,28,GR,{a:p(u,3.4,3.8),sc:1},{w:600})}
+function s3(t){const u=t-13.5,e=eo(p(u,0,1.2));
+  for(let i=0;i<12;i++){const red=i>=10;dot(213+i*54+(red?110*e:-45*e),320,20,red?RED:GR)}
+  if(u<1.4)txt('Split vote',CX,500,92,WH,ap(u,0.05));else if(u<2.75)txt("Nobody's sure",CX,500,92,WH,ap(u,1.4));
+  else{txt('Bigger swings.',CX,470,88,WH,ap(u,2.75));txt('Both ways.',CX,575,76,RED,ap(u,4.6))}
+  const g=eo(p(u,2.6,5.0));for(let i=0;i<9;i++){const up=i%2===0,h=lerp(26,58+i*24,g)*(0.9+0.1*Math.sin(u*9+i));candle(150+i*90,900,46,h,up,up?WH:RED)}
+  line(60,900,960,900,DIM,2);txt('illustration',CX,1190,24,DIM,{a:1,sc:1},{w:500})}
+function s4(t){const u=t-19;
+  txt('MES · MNQ',CX,310,104,WH,ap(u,0.05));txt('= leveraged',CX,415,58,GR,ap(u,0.9));
+  x.fillStyle=RED;rr(CX-430,505,860,116,22);x.fill();
+  x.fillStyle=BG;x.beginPath();x.moveTo(108,592);x.lineTo(144,530);x.lineTo(180,592);x.closePath();x.fill();txt('!',144,572,40,RED);
+  txt('LEVERAGE MAGNIFIES LOSSES',CX+50,565,46,BG,{a:1,sc:1},{max:660});
+  const sR=lerp(1,3,eo(p(u,2.1,2.8))),sW=lerp(1,3,eo(p(u,4.0,4.7)));
+  candle(330,900,50*sR,45*sR,true,RED);candle(330,900,50*sR,45*sR,false,RED);
+  candle(690,900,50*sW,45*sW,true,WH);candle(690,900,50*sW,45*sW,false,WH);
+  txt('LOSS',330,1150,40,RED);txt('GAIN',690,1150,40,WH);
+  const lx=u<3.5?lerp(-260,330,eo(p(u,1.4,2.1))):lerp(330,690,eo(p(u,3.5,4.0)));
+  x.strokeStyle=WH;x.lineWidth=9;x.beginPath();x.arc(lx,900,205,0,7);x.stroke();line(lx+145,1045,lx+215,1115,WH,16)}
+function s5(t){const u=t-25;
+  txt('Fed day plan:',CX,290,56,GR,ap(u,0.05),{w:800});txt('1. Cut your size',CX,385,76,WH,ap(u,2.25));txt('2. Or stay on sim',CX,480,76,WH,ap(u,3.4));
+  const X0=CX-220,Y0=570;x.strokeStyle=WH;x.lineWidth=6;rr(X0,Y0,440,400,24);x.stroke();x.fillStyle=WH;rr(X0,Y0,440,76,[24,24,0,0]);x.fill();
+  txt('CALENDAR',CX,Y0+40,34,BG,{a:1,sc:1},{w:900});x.fillStyle=BG;x.fillRect(X0+3,Y0+76,434,4);
+  for(let r=0;r<4;r++)for(let k=0;k<5;k++){x.fillStyle=DIM;rr(X0+38+k*76,Y0+108+r*70,52,44,8);x.fill()}
+  const cxx=X0+38+3*76+26,cyy=Y0+108+70+22,a=p(u,0.3,0.9);x.strokeStyle=RED;x.lineWidth=9;x.beginPath();x.arc(cxx,cyy,50,-1.6,-1.6+6.4*eo(a));x.stroke();
+  txt('FED DAY',cxx,cyy,22,WH,{a:p(u,0.8,1.0),sc:1},{max:90});
+  const kx=lerp(800,270,eo(p(u,2.25,3.2)));txt('POSITION SIZE',180,1050,30,GR,{a:1,sc:1},{al:'left',w:700});
+  line(180,1110,840,1110,DIM,12);line(180,1110,kx,1110,WH,12);dot(kx,1110,30,WH);
+  if(u>=4.9){const s=lerp(2.2,1,eo(p(u,4.9,5.1)));x.save();x.translate(850,650);x.rotate(-0.2);x.scale(s,s);x.globalAlpha=p(u,4.9,5.0);
+    x.fillStyle=BG;rr(-100,-52,200,104,16);x.fill();x.strokeStyle=RED;x.lineWidth=8;rr(-100,-52,200,104,16);x.stroke();x.restore();
+    x.save();x.translate(850,650);x.rotate(-0.2);txt('SIM',0,2,62,RED,{a:p(u,4.9,5.0),sc:s});x.restore()}}
+function s6(t){const u=t-31;
+  txt('The Fed did nothing.',CX,360,82,WH,ap(u,0.05));
+  line(0,640,W,640,WH,10);x.fillStyle=BG;x.fillRect(70,586,170,44);txt('RATES',90,608,36,WH,{a:1,sc:1},{al:'left'});
+  const a=eo(p(u,1.7,3.4));if(a>0){line(0,860,W*a,860,WH,10);if(a>0.3){x.fillStyle=BG;x.fillRect(70,806,330,44);txt('YOUR ACCOUNT',90,828,36,WH,{a:1,sc:1},{al:'left'})}}
+  txt('Survive first.',CX,1010,100,RED,ap(u,5.2));
+  const A=ap(u,6.0);if(A.a>0){x.save();x.globalAlpha=A.a;x.fillStyle=WH;rr(CX-140,1105,280,84,42);x.fill();x.restore();txt('Follow',CX,1148,46,BG,A)}
+  txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,6.5))}
+const SC=[[0,s1],[5.5,s2],[13.5,s3],[19,s4],[25,s5],[31,s6]];
+window.render=t=>{x.fillStyle=BG;x.fillRect(0,0,W,H);let f=s1;for(const [a,fn] of SC)if(t>=a)f=fn;f(t);captions(t);
+  txt('Educational only — not financial advice.',CX,1455,30,GR,{a:1,sc:1},{w:600});
+  x.fillStyle=RED;x.fillRect(0,1914,W*t/DUR,6)};
+render(0);
+</script></body></html>
