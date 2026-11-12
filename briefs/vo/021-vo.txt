@@ -1,0 +1,11 @@
+Futures come in sizes. Start by knowing the smallest one.
+
+Start too big, and one ordinary move hurts.
+
+A micro contract tracks the same market as the bigger one. It's just a fraction of the size.
+
+Smaller size means each move in price is worth less. Wins and losses both shrink.
+
+It's still leveraged. Leverage still magnifies losses. Smaller doesn't mean safe.
+
+Smallest size. On sim first. That's the path. Survive first. Follow.

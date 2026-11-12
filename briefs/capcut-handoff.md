@@ -9,7 +9,8 @@ CapCut's menus change between versions and between phone and desktop, so the but
 | `renders/clean/###-clean.mp4` | The video with no voice, no music and **no captions**. On-screen text, labels, source lines and the disclaimer are still in it. |
 | `briefs/vo/###-vo.txt` | The voiceover text. Six short paragraphs, one per scene, in order. |
 
-Ready now: 005, 006, 007 (Trading Basics), 004, 001, 002.
+Ready now: all 30 videos in the calendar (`ideas/calendar-30-day.md`): 005, 006, 007, 004, 001, 002, then 008 to 031.
+Scene start times for 008 to 031 are in `briefs/capcut-scene-times-008-031.md`.
 
 ## The fast way (recommended): voice first, then I re-time the video
 The clean videos are timed by estimate (2.5 words per second). A real voice will run faster or slower, so the pictures drift out of step. This order fixes that:
@@ -53,7 +54,7 @@ Each video holds its end card for 1 second after the voice ends.
 - **Source:** auto captions from the voice clips. Then proofread every line: auto captions often mishear "MES", "SEC", "wicks" and "sim".
 - **Length:** 2 to 4 words on screen at a time.
 - **Font:** a heavy sans-serif. White, with a dark background box or a thick black outline.
-- **Highlight colour:** red `#FF2D3D`, on the key word only. Key words per video:
+- **Highlight colour:** red `#FF2D3D`, on the key word only. For videos 008 to 031, highlight the same words that are red in that scene's on-screen headline. Key words for the first six:
   - 005: candle, body, wicks, open, high, low, close, survive
   - 006: exit, stop, out, guarantee, sim, survive
   - 007: danger, losses, margin, leveraged, sim, survive

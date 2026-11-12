@@ -32,3 +32,7 @@ python tools/scout/rss_spider.py --dev   # cached while you tweak feeds.txt
 3. Send the six voice-clip lengths back and the video is re-timed to match: add `"clean&d=4.8,4.1,6.3,8.9,5.7,6.6"` as the last argument.
 
 Rendered videos land in `renders/`, which is not committed.
+
+## The 30-day calendar
+- Plan: `ideas/calendar-30-day.md`
+- Days 7 to 30 (videos 008 to 031) come from one data file, `tools/studio/series.js`. After editing it, run `node tools/studio/gen-scripts.js` to rewrite the scripts, voiceover text and calendar, then re-render the video: `node tools/studio/render.js tools/studio/basics.html renders/clean/008-clean.mp4 "id=008&clean"`

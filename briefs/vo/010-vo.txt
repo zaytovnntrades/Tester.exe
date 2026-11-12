@@ -1,0 +1,11 @@
+Those bars under the chart aren't decoration. That's volume.
+
+Ignore it, and you can't tell a real move from a weak one.
+
+Volume counts how much was traded in each candle. Tall bar, lots of trading.
+
+A big move on high volume means many traders took part.
+
+The same move on low volume had fewer traders behind it. Treat it with more doubt.
+
+Price shows what happened. Volume shows how many showed up. Survive first. Follow.

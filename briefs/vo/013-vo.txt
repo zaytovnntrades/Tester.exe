@@ -1,0 +1,11 @@
+You clicked at one price. You got filled at another.
+
+That gap has a name. And it costs you.
+
+Slippage is the difference between the price you expected and the price you got.
+
+It shows up when price moves fast. Like around big news.
+
+It's part of trading. Calmer markets and limit orders can reduce it. Nothing removes it.
+
+Expect the gap. Plan for it. Survive first. Follow.

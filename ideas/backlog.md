@@ -29,3 +29,6 @@ First-week fundamentals. No figures, so nothing needs a source. Post in order.
 | 4 | What sim (paper) trading is, and why to start there | 1 | idea |
 | 5 | Position size: how much to trade | 1 | idea |
 | 6 | Market order vs limit order | 2 | idea |
+
+## 30-day calendar (added after the basics series)
+The full posting plan, days 1 to 30, is in `ideas/calendar-30-day.md`. Videos 008 to 031 were written for it and are drafts until approved.
