@@ -64,3 +64,6 @@ id, date posted, platform, views at 48h, average watch %, shares, saves, new fol
 Example of the shape only (not real data): `004, 2026-11-15, tiktok, <views>, <watch %>, <shares>, <saves>, <follows>, posted 6pm`
 
 After 10 rows, I update `ideas/insights.md` and re-rank the backlog.
+
+## Update, same day
+Director's decisions: fixes B, C and D applied. Script 002 approved, which resolves fix A (001's ending now points at an approved video). Script 004 is now about 34 seconds.

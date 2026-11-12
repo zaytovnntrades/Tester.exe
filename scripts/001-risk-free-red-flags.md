@@ -8,7 +8,7 @@ sources: [research/2026-11-11.md#1]
 ---
 HOOK (0–3s)
   VO: Two words helped take a hundred and thirty million dollars from everyday investors.
-  ON-SCREEN: $130,000,000+ · "2 words"
+  ON-SCREEN: $130,000,000+ · "2 words" · small tag from the first frame: SEC complaint
   VISUAL: Big counter racing up to $130M, then freezing. Hard cut to the two words blurred out.
 
 STAKES (3–9s): what it costs to get this wrong
@@ -38,7 +38,7 @@ LOOP / CTA (33–39s): open loop to video 002
   VISUAL: Back to the frozen $130M counter, then the channel logo.
 
 DISCLAIMER (on-screen): Educational only — not financial advice.
-CAPTION (≤150 chars): 3 red flags from a $130M fraud case the SEC just charged. If you hear "risk-free," leave. Educational only, not financial advice.
+CAPTION (≤150 chars): 3 red flags from a $130M fraud case charged by the SEC. If you hear "risk-free," leave. Educational only, not financial advice.
 HASHTAGS (3–5): #tradingforbeginners #scamalert #riskmanagement #daytrading #learntotrade
 PINNED COMMENT: Which red flag have you seen in your DMs? 🚩1 "risk-free" · 🚩2 "follow our signals" · 🚩3 "we're registered". Source: SEC press release 2026-110 (Oct 29, 2026).
 COVER / THUMBNAIL: Red "RISK-FREE" stamp crossed out, big "$130M" above it, small "3 red flags" below. Dark background, 2 colors max.

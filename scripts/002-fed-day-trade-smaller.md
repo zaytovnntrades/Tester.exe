@@ -3,7 +3,7 @@ id: 002
 pillar: 2
 hook_type: contrarian
 length_target: 38s
-status: draft        # draft | approved | blocked | produced | posted
+status: approved        # draft | approved | blocked | produced | posted
 sources: [research/2026-11-11.md#4]
 ---
 HOOK (0–3s)

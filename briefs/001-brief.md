@@ -32,7 +32,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 
 | # | Scene | Seconds | Visual | On-screen text |
 |---|-------|---------|--------|----------------|
-| 1 | Hook | 0.0–5.0 | Black background. A white counter races up and slams to a stop at $130,000,000+ **within the first 2 seconds**, with a small screen shake. Below it, two blurred words. | `$130,000,000+` · `2 words.` |
+| 1 | Hook | 0.0–5.0 | Black background. A white counter races up and slams to a stop at $130,000,000+ **within the first 2 seconds**, with a small screen shake. Below it, two blurred words. | `$130,000,000+` · `2 words.` · small tag under the counter from the first frame: `SEC complaint` |
 | 2 | Stakes | 5.0–11.0 | The blur lifts: "RISK-FREE" stamps in red, in quotation marks. Small source line fades in at the bottom of the safe area. | `"RISK-FREE RETURNS"` · tag: `ALLEGED` · source line: `Source: SEC press release 2026-110, Oct 29, 2026` |
 | 3 | Red flag 1 | 11.0–18.0 | Red flag icon drops in top-left with a "1". A simple line chart draws itself and goes down as well as up. | `🚩 1` · `"Risk-free" = not real` |
 | 4 | Red flag 2 | 18.0–24.0 | Flag "2". A phone notification mock-up reading "BUY NOW 🚀" slides in and gets swiped away. Generic phone frame, no real app design. | `🚩 2` · `"Just follow our signals"` |
@@ -61,13 +61,13 @@ Burned-in captions of the voiceover, 2 to 4 words at a time, centre screen, with
 
 ## Compliance must-haves (from the script's §6 check)
 - "RISK-FREE" always appears in quotation marks and is always being warned against.
-- These are SEC allegations. Keep the `ALLEGED` tag in scene 2, and never show the company names.
+- These are SEC allegations. Keep the `SEC complaint` tag in scene 1 from the first frame and the `ALLEGED` tag in scene 2, and never show the company names.
 - The source line in scene 2 stays on screen for at least 2 seconds.
 - Disclaimer on screen for the whole video.
 - No P&L, no account screenshots, no trade calls.
 
 ## Post package (from the script)
-- **Caption:** 3 red flags from a $130M fraud case the SEC just charged. If you hear "risk-free," leave. Educational only, not financial advice.
+- **Caption:** 3 red flags from a $130M fraud case charged by the SEC. If you hear "risk-free," leave. Educational only, not financial advice.
 - **Hashtags:** #tradingforbeginners #scamalert #riskmanagement #daytrading #learntotrade
 - **Pinned comment:** Which red flag have you seen in your DMs? 🚩1 "risk-free" · 🚩2 "follow our signals" · 🚩3 "we're registered". Source: SEC press release 2026-110 (Oct 29, 2026).
 - **Cover:** red "RISK-FREE" stamp crossed out, big "$130M" above it, small "3 red flags" below. Dark background.
