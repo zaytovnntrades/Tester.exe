@@ -3,26 +3,26 @@
 // Silent draft of video 007 (Trading Basics 3: what is leverage). Bars and gauges are illustrations. No figures or ratios.
 function s1(t){txt('Small account.',CX,310,80,WH,ap(t,0.1));txt('Big trade.',CX,410,80,WH,ap(t,1.6));txt('That’s the danger.',CX,515,68,RED,ap(t,3.4));
   const g=eo(p(t,1.6,2.5)),S=lerp(110,400,g),bx=CX+150,by=880;line(CX-250,by,bx-S/2,by,GR,6);
-  box('',CX-290,by,110,110,WH,ON,true);txt('ACCOUNT',CX-290,by+95,28,GR,ON,{w:800});
-  x.strokeStyle=t>=3.4?RED:WH;x.lineWidth=8;rr(bx-S/2,by-S/2,S,S,22);x.stroke();txt('TRADE',bx,by,lerp(26,64,g),t>=3.4?RED:WH)}
+  box('',CX-290,by,110,110,WH,ON,true);txt('ACCOUNT',CX-290,by+100,36,GR,ON,{w:800});
+  x.strokeStyle=t>=3.4?RED:WH;x.lineWidth=8;rr(bx-S/2,by-S/2,S,S,22);x.stroke();if(g<0.45)txt('TRADE',bx,by+100,36,GR,{a:1-p(g,0.15,0.45),sc:1},{w:800});if(g>0.45)txt('TRADE',bx,by,64,t>=3.4?RED:WH,{a:p(g,0.45,0.75),sc:1})}
 function s2(u){rich([['Leverage = ',WH],['magnifier',RED]],CX,320,76,ap(u,0.05));
   const sW=lerp(1,3,eo(p(u,1.1,1.6))),sR=lerp(1,3,eo(p(u,1.9,2.4)));
   candle(330,860,50*sW,45*sW,true,WH);candle(330,860,50*sW,45*sW,false,WH);candle(690,860,50*sR,45*sR,true,RED);candle(690,860,50*sR,45*sR,false,RED);
-  txt('GAIN',330,1110,40,WH);txt('LOSS',690,1110,40,RED);
+  txt('GAIN',330,1112,48,WH);txt('LOSS',690,1112,48,RED);
   const lx=u<1.7?lerp(-260,330,eo(p(u,0.5,1.1))):lerp(330,690,eo(p(u,1.7,2.0)));x.strokeStyle=WH;x.lineWidth=9;x.beginPath();x.arc(lx,860,205,0,7);x.stroke();line(lx+145,1005,lx+215,1075,WH,16)}
 function s3(u){txt('How it works',CX,310,80,WH,ap(u,0.05));const base=1090,h=lerp(0,470,eo(p(u,4.3,5.4)));
   line(140,base+6,880,base+6,DIM,4);x.fillStyle=WH;x.fillRect(CX-240,base-70,150,70);
-  txt(u<3.1?'DEPOSIT':'MARGIN',CX-165,base+50,36,u<3.1?WH:RED,ap(u,u<3.1?0.8:3.1));txt('(your deposit)',CX-165,base+92,24,GR,{a:p(u,3.1,3.4),sc:1},{w:600});
-  if(h>0){x.strokeStyle=WH;x.lineWidth=8;x.strokeRect(CX+60,base-h,190,h);txt('POSITION',CX+155,base+50,36,WH,ap(u,4.3));txt('(what you control)',CX+155,base+92,24,GR,{a:p(u,4.6,4.9),sc:1},{w:600})}
-  ILL(440)}
+  txt(u<3.1?'DEPOSIT':'MARGIN',CX-165,base+50,42,u<3.1?WH:RED,ap(u,u<3.1?0.8:3.1));txt('(your deposit)',CX-165,base+98,30,GR,{a:p(u,3.1,3.4),sc:1},{w:700});
+  if(h>0){x.strokeStyle=WH;x.lineWidth=8;x.strokeRect(CX+60,base-h,190,h);txt('POSITION',CX+155,base+50,42,WH,ap(u,4.3));txt('(what you control)',CX+155,base+98,30,GR,{a:p(u,4.6,4.9),sc:1},{w:700})}
+  x.save();x.font=`500 24px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=DIM;x.fillText('illustration',930,560);x.restore()}
 function s4(u){txt('Small move → big move',CX,310,70,WH,ap(u,0.05));txt('Both ways.',CX,415,68,RED,ap(u,5.1));
   const v=u<3.2?eo(p(u,0.4,1.4)):lerp(1,-1,eo(p(u,3.2,4.6))),zy=820;line(150,zy,870,zy,DIM,4);
-  const bar=(X,amp,name)=>{const h=amp*v,col=v>=0?WH:RED;x.fillStyle=col;x.fillRect(X-70,h>=0?zy-h:zy,140,Math.abs(h));txt(name,X,1130,34,GR,ON,{w:800})};
+  const bar=(X,amp,name)=>{const h=amp*v,col=v>=0?WH:RED;x.fillStyle=col;x.fillRect(X-70,h>=0?zy-h:zy,140,Math.abs(h));txt(name,X,1130,40,WH,ON,{w:800})};
   bar(CX-190,38,'PRICE');bar(CX+190,250,'YOUR ACCOUNT');ILL(1185)}
 function s5(u){rich([['Futures · Forex',WH]],CX,300,80,ap(u,0.05));txt('= leveraged',CX,395,52,GR,ap(u,0.9),{w:800});warn(470);
-  txt('DEPOSIT',70,740,34,WH,ON,{al:'left'});x.fillStyle=WH;x.fillRect(70,775,300,60);
-  txt('LOSS',70,920,34,RED,ON,{al:'left'});x.fillStyle=RED;x.fillRect(70,955,820*eo(p(u,1.9,3.8)),60);
-  x.save();x.setLineDash([10,10]);line(370,720,370,1040,GR,3);x.restore();txt('can be bigger than your deposit',CX,1100,36,GR,ap(u,3.0),{w:700});ILL(1165)}
+  txt('DEPOSIT',70,736,40,WH,ON,{al:'left'});x.fillStyle=WH;x.fillRect(70,775,300,60);
+  txt('LOSS',70,916,40,RED,ON,{al:'left'});x.fillStyle=RED;x.fillRect(70,955,820*eo(p(u,1.9,3.8)),60);
+  x.save();x.setLineDash([10,10]);line(370,720,370,1040,GR,3);x.restore();txt('can be bigger than your deposit',CX,1100,46,WH,ap(u,3.0),{w:800});ILL(1165)}
 function s6(u){txt('Learn it on sim.',CX,320,84,WH,ap(u,0.05));txt('Smallest size.',CX,425,60,GR,ap(u,1.55),{w:800});
   if(u>=3.1&&u<4.2){x.save();x.translate(CX,760);x.scale(1.9,1.9);simBadge(0,0,u,3.1);x.restore()}
   if(u>=4.2)simBadge(850,560,u,0);endCard(u,4.3,5.1,5.8,720,'Next: the one number that protects your account')}

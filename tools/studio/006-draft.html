@@ -4,25 +4,26 @@
 const wig=(x0,x1,y,seed,slope=0)=>{const a=[];for(let X=x0;X<=x1;X+=26)a.push([X,y+slope*(X-x0)+(hash(X+seed)-.5)*36]);return a};
 const PRE=wig(0,494,820,1,-0.04).concat([[520,800]]),DROP=[[520,800],[560,830],[590,815],[640,880],[680,870],[720,930],[760,960]];
 const FALL=Array.from({length:30},(_,i)=>[60+i*29,620+470*Math.pow(i/29,1.25)+(hash(i+4)-.5)*34]);
-function two(k,ex){const y1=620,y2=780,yE=lerp(y2,y1,k),yN=lerp(y1,y2,k);txt('1.',CX-300,y1,70,GR);txt('2.',CX-300,y2,70,GR);
-  box('ENTRY',CX+30,yN,460,116,WH);box('EXIT',CX+30,yE,460,116,ex?RED:WH,ON,ex)}
+function two(k,ex){const y1=620,y2=780,yE=lerp(y2,y1,k),yN=lerp(y1,y2,k),m=Math.min(1,Math.sin(Math.PI*k)*2.2),dx=m*245; // dx: the boxes pass side by side, never through each other
+  const na=1-Math.min(1,m/0.25);txt('1.',CX-300,y1,70,GR,{a:na,sc:1});txt('2.',CX-300,y2,70,GR,{a:na,sc:1}); // numbers hide while a box is passing over them
+  box('ENTRY',CX+30-dx,yN,460,116,WH);box('EXIT',CX+30+dx,yE,460,116,ex?RED:WH,ON,ex)}
 function s1(t){const k=eo(p(t,1.5,2.1));two(k,k>0.5);txt('Exit first.',CX,330,96,WH,ap(t,2.4))}
 function s2(u){txt('No exit plan?',CX,310,84,WH,ap(u,0.05));rich([['Small loss → ',WH],['big loss.',RED]],CX,420,64,ap(u,1.6));
   const f=p(u,0.2,5.2),e=drawPath(FALL,f,WH,9);dot(e[0],e[1],13,WH);
-  txt('LOSS',70,1150,34,RED,ON,{al:'left'});line(190,1150,190+700*f*f,1150,RED,26);ILL(1205)}
+  txt('LOSS',70,1150,40,RED,ON,{al:'left'});line(210,1150,210+690*f*f,1150,RED,26);ILL(1205)}
 function stopLine(A){if(A<=0)return;x.save();x.globalAlpha=A;dash(0,960,W,RED);x.restore();txt('STOP LOSS',70,1010,44,RED,{a:A,sc:1},{al:'left'})}
 function s3(u){txt('Stop loss',CX,310,100,WH,ap(u,0.05));txt(u<4.8?'= an order that closes your trade':'…at a price you pick.',CX,420,48,GR,ap(u,u<4.8?0.8:4.8),{w:800});
   drawPath(PRE,p(u,0.2,1.6),WH,9);stopLine(p(u,2.3,2.6));
-  const A=ap(u,3.6);if(A.a>0){dot(520,800,16,WH);txt('ENTRY',520,740,40,WH,A)}ILL()}
-function s4(u){rich([['Hit → ',WH],['OUT.',RED]],CX,310,96,ap(u,1.15));txt('Trade again tomorrow.',CX,420,52,GR,ap(u,2.7),{w:800});
-  drawPath(PRE,1,WH,9);stopLine(1);dot(520,800,16,WH);txt('ENTRY',520,740,40,WH);
+  const A=ap(u,3.6);if(A.a>0){dot(520,800,16,WH);txt('ENTRY',520,736,46,WH,A)}ILL()}
+function s4(u){if(u<1.15)txt('Price hits it?',CX,310,84,WH,ap(u,0.05));else rich([['Hit → ',WH],['OUT.',RED]],CX,310,96,ap(u,1.15));txt('Trade again tomorrow.',CX,420,52,GR,ap(u,2.7),{w:800});
+  drawPath(PRE,1,WH,9);stopLine(1);dot(520,800,16,WH);txt('ENTRY',520,736,46,WH);
   const e=drawPath(DROP,p(u,0,1.1),WH,9);dot(e[0],e[1],14,u>=1.1?RED:WH);
-  if(u>=1.9){const A=ap(u,1.9);x.save();x.globalAlpha=A.a;line(850,800,850,960,RED,6);line(832,800,868,800,RED,6);line(832,960,868,960,RED,6);x.restore();txt('small',905,862,30,RED,A,{al:'left',max:120});txt('loss',905,900,30,RED,A,{al:'left',max:120})}ILL()}
+  if(u>=1.9){const A=ap(u,1.9);x.save();x.globalAlpha=A.a;line(810,800,810,960,RED,6);line(792,800,828,800,RED,6);line(792,960,828,960,RED,6);x.restore();txt('small',838,858,40,RED,A,{al:'left',max:120});txt('loss',838,904,40,RED,A,{al:'left',max:120})}ILL()}
 function s5(u){txt('Not a guarantee.',CX,310,84,WH,ap(u,0.05));txt('Still beats hoping.',CX,420,56,GR,ap(u,3.9),{w:800});
   const A=wig(0,420,810,5),B=wig(520,1080,1050,8,0.02);drawPath(A,p(u,0,1.2),WH,9);stopLine(1);
   if(u>=1.5){x.save();x.setLineDash([6,14]);line(420,A[A.length-1][1],520,B[0][1],GR,5);x.restore();drawPath(B,p(u,1.7,3.6),WH,9);dot(520,B[0][1],15,RED);
-    txt('can fill lower',560,1130,36,RED,ap(u,2.2),{al:'left'});txt('GAP',470,880,30,GR,ap(u,1.6))}ILL(1195)}
-function s6(u){if(u<2.9){two(1,true);simBadge(850,520,u,1.5);txt('Exit first. Entry second.',CX,330,68,WH,ap(u,0.05))}
+    txt('can fill lower',560,1135,46,RED,ap(u,2.2),{al:'left',max:400});txt('GAP',400,905,38,GR,ap(u,1.6))}ILL(1195)}
+function s6(u){if(u<2.9){two(1,true);simBadge(840,455,u,1.5);txt('Exit first. Entry second.',CX,330,68,WH,ap(u,0.05))}
   else txt('Practice it on sim.',CX,330,68,GR,ON,{w:800});
   endCard(u,3.0,3.8,4.6,720,'Next: Part 3 · Leverage')}
 setup({DUR:33.4,capEnd:32.4,KEY:/^(exit|stop|out|guarantee|sim|survive)\b/i,scenes:[[0,s1],[4,s2],[9.6,s3],[18,s4],[22.4,s5],[28,s6]],VO:[
