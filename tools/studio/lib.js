@@ -39,6 +39,11 @@ const ILL=(y=1165)=>txt('illustration',CX,y,24,DIM,ON,{w:500});
 function endCard(u,tS,tF,tC,yS=1000){txt('Survive first.',CX,yS,100,RED,ap(u,tS));pill('Follow',CX,yS+130,46,WH,ap(u,tF),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,tC))}
 // setup(): captions (2-4 words, key word red, spread evenly over each scene's voice time) + frame wrapper.
 function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
+  // URL options: ?clean = no burned-in captions (CapCut adds them). ?d=5.1,4.3,... = seconds per scene, taken from the real voiceover.
+  const QS=new URLSearchParams(location.search),CLEAN=QS.has('clean'),S=scenes.map(q=>q[0]),E=S.slice(1).concat([capEnd]);
+  const N=QS.get('d')?QS.get('d').split(',').map(Number):E.map((e,i)=>e-S[i]);if(N.length!==S.length||N.some(v=>!(v>0)))throw new Error('d needs '+S.length+' positive numbers');
+  const NS=[];N.reduce((acc,v,i)=>(NS[i]=acc,acc+v),0);const NEND=NS[NS.length-1]+N[N.length-1],TAIL=DUR-capEnd;
+  const warp=t=>{if(t>=NEND)return capEnd+(t-NEND);let i=0;while(i<NS.length-1&&t>=NS[i+1])i++;return S[i]+(t-NS[i])*(E[i]-S[i])/N[i]};
   for(const [a,b,s] of VO){const sents=s.split(/(?<=[.?!:])\s+/),n=s.split(/\s+/).length,d=(b-a-0.2)/n;let i=0;
     for(const se of sents){const ws=se.split(/\s+/),k=Math.ceil(ws.length/4),per=Math.ceil(ws.length/k);
       for(let j=0;j<ws.length;j+=per)CAPS.push([a+0.1+(i+j)*d,ws.slice(j,j+per)]);i+=ws.length}}
@@ -47,6 +52,6 @@ function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
     const tw=Math.min(MAXW,parts.reduce((s,q)=>s+x.measureText(q[0]).width,0));
     x.fillStyle='rgba(0,0,0,.72)';rr(CX-tw/2-34,1290-58,tw+68,116,26);x.fill();
     rich(parts,CX,1292,62,{a:1,sc:lerp(1.08,1,eo(p(t,cur[0],cur[0]+0.12)))})}
-  window.DUR=DUR;window.render=t=>{x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,W,H);
-    let f=scenes[0][1],t0=0;for(const [a,fn] of scenes)if(t>=a){f=fn;t0=a}f(t-t0);captions(t);
-    txt('Educational only — not financial advice.',CX,1455,30,GR,ON,{w:600});x.fillStyle=RED;x.fillRect(0,1914,W*t/DUR,6)};window.render(0)}
+  const OUT=NEND+TAIL;window.DUR=OUT;window.render=tt=>{const t=warp(tt);x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,W,H);
+    let f=scenes[0][1],t0=0;for(const [a,fn] of scenes)if(t>=a){f=fn;t0=a}f(t-t0);if(!CLEAN)captions(t);
+    txt('Educational only — not financial advice.',CX,1455,30,GR,ON,{w:600});x.fillStyle=RED;x.fillRect(0,1914,W*tt/OUT,6)};window.render(0)}

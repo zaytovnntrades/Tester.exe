@@ -42,6 +42,7 @@ A tough coach who is honest that they're still training. Blunt about the rules, 
 - After: "Fed day isn't for guessing. Cut your size. Or stay on sim. I'm on sim."
 
 ## AI voice notes
-- Generating voiceover spends paid credits. I'll confirm with you before each batch (CLAUDE.md §5.5).
+- Voiceover and captions are made by you in CapCut (decided 2026-11-12). Steps are in `briefs/capcut-handoff.md`; the text to paste is in `briefs/vo/`.
+- Some CapCut voices need a paid plan. That's your call inside CapCut.
 - Pick one voice and keep it for every video: a steady, lower, unhurried voice suits this tone better than an excited one.
 - TikTok has a setting to label AI-generated content. Check its current rules for synthetic voices and switch the label on if they apply.

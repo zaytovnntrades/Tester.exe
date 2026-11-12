@@ -1,0 +1,11 @@
+Every trade needs an exit before it needs an entry.
+
+No exit plan? Then a small loss can grow into a big one. Fast.
+
+A stop loss is an order. You set it before you enter. It closes your trade at a price you pick.
+
+Price hits it? You're out. Small loss. You trade again tomorrow.
+
+It's not a guarantee. Fast markets can jump past it. But it beats hoping.
+
+Exit first. Entry second. Practice it on sim. Survive first. Follow.

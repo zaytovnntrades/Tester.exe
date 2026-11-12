@@ -91,8 +91,12 @@ function s6(t){const u=t-31;
   const A=ap(u,6.0);if(A.a>0){x.save();x.globalAlpha=A.a;x.fillStyle=WH;rr(CX-140,1105,280,84,42);x.fill();x.restore();txt('Follow',CX,1148,46,BG,A)}
   txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,6.5))}
 const SC=[[0,s1],[5.5,s2],[13.5,s3],[19,s4],[25,s5],[31,s6]];
-window.render=t=>{x.fillStyle=BG;x.fillRect(0,0,W,H);let f=s1;for(const [a,fn] of SC)if(t>=a)f=fn;f(t);captions(t);
+const QS=new URLSearchParams(location.search),CLEAN=QS.has('clean'),S0=SC.map(q=>q[0]),E0=S0.slice(1).concat([37.5]);
+const N0=QS.get('d')?QS.get('d').split(',').map(Number):E0.map((e,i)=>e-S0[i]);if(N0.length!==6||N0.some(v=>!(v>0)))throw new Error('d needs 6 positive numbers');
+const NS0=[];N0.reduce((acc,v,i)=>(NS0[i]=acc,acc+v),0);const NEND0=NS0[5]+N0[5],OUT=NEND0+1;
+const warp=t=>{if(t>=NEND0)return 37.5+(t-NEND0);let i=0;while(i<5&&t>=NS0[i+1])i++;return S0[i]+(t-NS0[i])*(E0[i]-S0[i])/N0[i]};
+window.render=tt=>{const t=warp(tt);x.fillStyle=BG;x.fillRect(0,0,W,H);let f=s1;for(const [a,fn] of SC)if(t>=a)f=fn;f(t);if(!CLEAN)captions(t);
   txt('Educational only — not financial advice.',CX,1455,30,GR,{a:1,sc:1},{w:600});
-  x.fillStyle=RED;x.fillRect(0,1914,W*t/DUR,6)};
+  x.fillStyle=RED;x.fillRect(0,1914,W*tt/OUT,6)};window.DUR=OUT;
 render(0);
 </script></body></html>

@@ -1,0 +1,11 @@
+You'll see this shape on almost every trading chart. Can you read it?
+
+It's called a candle. If you can't read it, you're guessing.
+
+One candle is one slice of time. A minute. An hour. A day. You choose.
+
+The thick part is the body. Where price opened and where it closed. Its colour tells you up or down.
+
+The thin lines are wicks. They show the highest and lowest price in that time.
+
+Four prices. One shape. Open, high, low, close. Learn that before anything else. Survive first. Follow.
