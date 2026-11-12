@@ -1,41 +1,39 @@
-> **DRAFT — voice not set** (run `/pipeline voice`, then I'll rewrite in your voice)
-
 ---
 id: 001
 pillar: 1
 hook_type: number
-length_target: 40s
+length_target: 38s
 status: draft        # draft | approved | blocked | produced | posted
 sources: [research/2026-11-11.md#1]
 ---
 HOOK (0–3s)
-  VO: Two words helped take over a hundred and thirty million dollars from everyday investors.
+  VO: Two words helped take a hundred and thirty million dollars from everyday investors.
   ON-SCREEN: $130,000,000+ · "2 words"
   VISUAL: Big counter racing up to $130M, then freezing. Hard cut to the two words blurred out.
 
 STAKES (3–9s): what it costs to get this wrong
-  VO: The SEC says a so-called wealth-sharing program promised risk-free returns from crypto trading signals.
+  VO: The SEC says a so-called wealth-sharing program promised risk-free returns. From crypto trading signals.
   ON-SCREEN: SEC complaint, Oct 29 2026 · "risk-free returns" (in quotes, marked ALLEGED)
   VISUAL: The blur lifts to show "RISK-FREE" stamped in red. Small source line: sec.gov.
 
 LESSON (9–33s): 3 beats, one idea each
   Beat 1:
-  VO: Red flag one: risk-free. Every real trade carries risk. Anyone who says otherwise is selling, not trading.
+  VO: Red flag one. Risk-free. Every real trade has risk. Anyone who says otherwise is selling. Not trading.
   ON-SCREEN: 🚩 1 · "Risk-free" = not real
   VISUAL: Red flag icon drops in. A simple chart line goes down as well as up.
 
   Beat 2:
-  VO: Red flag two: just follow our signals. You hand over your decisions, and then your money.
+  VO: Red flag two. Just follow our signals. You hand over your decisions. Then your money.
   ON-SCREEN: 🚩 2 · "Just follow our signals"
   VISUAL: Phone notification "BUY NOW 🚀" being swiped away.
 
   Beat 3:
-  VO: Red flag three: we're SEC registered. According to the SEC, that claim was false. Check any firm yourself on Investor dot gov.
+  VO: Red flag three. We're SEC registered. The SEC says that was false. Check any firm yourself. Investor dot gov.
   ON-SCREEN: 🚩 3 · "We're registered" → check: Investor.gov
   VISUAL: Search bar typing a firm name on a generic lookup page (mock-up, not a real firm).
 
 LOOP / CTA (33–39s): open loop to video 002
-  VO: Survive the people first, then the market. Follow, because next is the day the market itself gets dangerous.
+  VO: Survive the people first. Then the market. Follow. Next up: the day the market itself turns on you.
   ON-SCREEN: Survive first. · Follow for Part 2
   VISUAL: Back to the frozen $130M counter, then the channel logo.
 
@@ -44,7 +42,7 @@ CAPTION (≤150 chars): 3 red flags from a $130M fraud case the SEC just charged
 HASHTAGS (3–5): #tradingforbeginners #scamalert #riskmanagement #daytrading #learntotrade
 PINNED COMMENT: Which red flag have you seen in your DMs? 🚩1 "risk-free" · 🚩2 "follow our signals" · 🚩3 "we're registered". Source: SEC press release 2026-110 (Oct 29, 2026).
 COVER / THUMBNAIL: Red "RISK-FREE" stamp crossed out, big "$130M" above it, small "3 red flags" below. Dark background, 2 colors max.
-WORD COUNT: 101 (≈40s at 2.5 words/sec)
+WORD COUNT: 96 (≈38s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ no buy/sell calls

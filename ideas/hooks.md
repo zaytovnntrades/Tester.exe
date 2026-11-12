@@ -11,7 +11,7 @@ Written by hand on 2026-11-12 (hook-generator isn't installed, and `breakdowns/`
 6. (contrarian) The riskiest thing in trading isn't the market.
 
 ## 002 · Why Fed day is for trading smaller
-1. ★ (contrarian) On October twenty-eighth the Fed did nothing. That's exactly why beginners got hurt.
+1. ★ (contrarian) October twenty-eighth. The Fed did nothing. That's the kind of day that hurts beginners.
 2. (number) Ten to two. That vote tells you more than the rate decision did.
 3. (question) Why would the market move when the Fed changes nothing?
 4. (mistake) Trading your normal size on Fed day is the mistake.
