@@ -11,11 +11,12 @@ function s1(t){txt('1 bad day.',CX,330,110,WH,ap(t,0.1));txt('1 number.',CX,470,
 function s2(u){const N=[['Lose',0],['Angry',0.7],['Bigger',1.75],['Lose more',2.9]],cy=720,R=250;
   let act=0;for(let i=0;i<4;i++)if(u>=N[i][1])act=i;if(u>3.4)act=Math.floor(Math.pow(u-3.4,1.7)*3.2)%4;
   x.strokeStyle=DIM;x.lineWidth=5;x.beginPath();x.arc(CX,cy,R,0,7);x.stroke();
+  // orbiting dots are drawn first, so the word labels always sit on top of them
+  const sp=u*(1+u*0.9);for(let k=0;k<4;k++){const a=sp+k*Math.PI/2;x.fillStyle=GR;x.beginPath();x.arc(CX+R*Math.cos(a+0.75),cy+R*Math.sin(a+0.75),9,0,7);x.fill()}
   for(let i=0;i<4;i++){const a=-Math.PI/2+i*Math.PI/2,X=CX+R*Math.cos(a),Y=cy+R*Math.sin(a);if(u<N[i][1])continue;
     x.font=`900 54px ${F}`;const w=x.measureText(N[i][0]).width+44;x.fillStyle=BG;rr(X-w/2,Y-46,w,92,18);x.fill();
     if(i===act){x.strokeStyle=RED;x.lineWidth=6;rr(X-w/2,Y-46,w,92,18);x.stroke()}
     txt(N[i][0],X,Y+2,54,i===act?RED:WH,ap(u,N[i][1]))}
-  const sp=u*(1+u*0.9);for(let k=0;k<4;k++){const a=sp+k*Math.PI/2;x.fillStyle=GR;x.beginPath();x.arc(CX+R*Math.cos(a+0.75),cy+R*Math.sin(a+0.75),9,0,7);x.fill()}
   txt('The spiral.',CX,310,100,RED,ap(u,4.2));
   txt('POSITION SIZE',180,1085,30,GR,ON,{al:'left',w:700});line(180,1140,840,1140,DIM,14);line(180,1140,lerp(250,840,eo(p(u,1.75,5.3))),1140,RED,14)}
 function s3(u){line(0,900,W,900,RED,10);

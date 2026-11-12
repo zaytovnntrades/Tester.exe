@@ -4,13 +4,12 @@
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 34 seconds (85 words at 2.5 words per second). Final length follows the voiceover: time the scenes to the audio.
 - **Style:** faceless. Motion graphics and text only. Same look as brief 001 so the channel reads as one series.
-- **Voice:** AI voiceover. Steady, lower, unhurried. Blunt coach. The same voice as video 001.
+- **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/004-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
+- **Visuals:** built in this repo. Rebuild the clean video with `node tools/studio/render.js tools/studio/004-draft.html renders/clean/004-clean.mp4 clean`.
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge. Check these against TikTok's current layout before the final export.
 
-## ⚠️ Paid steps: stop and confirm with the director first
-1. Generating the AI voiceover.
-2. Any AI image or video generation, or cloud GPU rendering.
-Everything else in this brief (layout, text, lines drawn in code) costs nothing.
+## Costs
+The visuals are drawn in code and cost nothing. Voice and captions are made in CapCut, where some voices and tools need a paid plan: that is the director's call.
 
 ## Final voiceover text (read exactly as written)
 > One bad day can end your account. One number can stop it.
@@ -41,8 +40,8 @@ Timings are estimates from word counts. Lock them to the real audio.
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 
-## Captions
-Burned-in captions of the voiceover, 2 to 4 words at a time, centre screen, key word highlighted in red (bad day, number, spiral, before, done, survive). Captions must not cover the on-screen text in the table above.
+## Captions (added in CapCut)
+2 to 4 words at a time, about two-thirds down the screen, above the disclaimer line, key word in red `#FF2D3D` (bad day, number, spiral, before, done, survive).
 
 ## Chart and data needs
 - **The account line is an illustration, not real data.** No axes, no dollar values, no percentages, no platform screenshots. Add a tiny `illustration` label in scene 1 so nobody reads it as a real account.

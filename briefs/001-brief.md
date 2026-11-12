@@ -4,13 +4,12 @@
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 38.5 seconds (96 words at 2.5 words per second). Final length follows the voiceover: time the scenes to the audio, not the other way round.
 - **Style:** faceless. Motion graphics and text only. No stock footage of people, no real company logos, no real firm names.
-- **Voice:** AI voiceover. Steady, lower, unhurried. Blunt coach, not excited. Same voice for every video on the channel.
+- **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/001-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
+- **Visuals:** built in this repo. Rebuild the clean video with `node tools/studio/render.js tools/studio/001-draft.html renders/clean/001-clean.mp4 clean`.
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge where the buttons sit. Check these against TikTok's current layout before the final export.
 
-## ⚠️ Paid steps: stop and confirm with the director first
-1. Generating the AI voiceover.
-2. Any AI image or video generation, or cloud GPU rendering.
-Everything else in this brief (layout, text, charts drawn in code) costs nothing.
+## Costs
+The visuals are drawn in code and cost nothing. Voice and captions are made in CapCut, where some voices and tools need a paid plan: that is the director's call.
 
 ## Final voiceover text (read exactly as written)
 > Two words helped take a hundred and thirty million dollars from everyday investors.
@@ -32,20 +31,20 @@ Timings are estimates from word counts. Lock them to the real audio.
 
 | # | Scene | Seconds | Visual | On-screen text |
 |---|-------|---------|--------|----------------|
-| 1 | Hook | 0.0–5.0 | Black background. A white counter races up and slams to a stop at $130,000,000+ **within the first 2 seconds**, with a small screen shake. Below it, two blurred words. | `$130,000,000+` · `2 words.` · small tag under the counter from the first frame: `SEC complaint` |
+| 1 | Hook | 0.0–5.0 | Black background. The figure $130,000,000+ slams in at full size **in the first half second**, with a small screen shake. No count-up: a running counter would show in-between figures that are in no source. Below it, two blurred words. | `$130,000,000+` · `2 words.` · small tag under the counter from the first frame: `SEC complaint` |
 | 2 | Stakes | 5.0–11.0 | The blur lifts: "RISK-FREE" stamps in red, in quotation marks. Small source line fades in at the bottom of the safe area. | `"RISK-FREE RETURNS"` · tag: `ALLEGED` · source line: `Source: SEC press release 2026-110, Oct 29, 2026` |
 | 3 | Red flag 1 | 11.0–18.0 | Red flag icon drops in top-left with a "1". A simple line chart draws itself and goes down as well as up. | `🚩 1` · `"Risk-free" = not real` |
-| 4 | Red flag 2 | 18.0–24.0 | Flag "2". A phone notification mock-up reading "BUY NOW 🚀" slides in and gets swiped away. Generic phone frame, no real app design. | `🚩 2` · `"Just follow our signals"` |
+| 4 | Red flag 2 | 18.0–24.0 | Flag "2". A phone notification mock-up reading "BUY NOW ↑↑" slides in and gets swiped away. Generic phone frame, no real app design. | `🚩 2` · `"Just follow our signals"` |
 | 5 | Red flag 3 | 24.0–31.5 | Flag "3". A plain search bar types "firm name…" and a result card flips to a red ✗. Then the text "Investor.gov" lands large. | `🚩 3` · `"We're registered"` → `Check it: Investor.gov` |
-| 6 | CTA | 31.5–38.5 | Cut back to the frozen $130M counter from scene 1 (the loop). It shrinks to the top; "Survive first." takes the centre. End on the channel name. | `Survive first.` · `Follow for Part 2` · `Zaytovnn Trades` |
+| 6 | CTA | 31.5–38.5 | Cut back to the $130,000,000+ figure from scene 1 (the loop). It shrinks to the top; "Survive first." takes the centre. End on the channel name. | `Survive first.` · `Follow for Part 2` · `Zaytovnn Trades` |
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 
-## Captions
-Burned-in captions of the voiceover, 2 to 4 words at a time, centre screen, with the key word highlighted in red (risk-free, signals, registered, survive). Captions must not cover the on-screen text in the table above.
+## Captions (added in CapCut)
+2 to 4 words at a time, about two-thirds down the screen, above the disclaimer line, key word in red `#FF2D3D` (risk-free, signals, registered, survive).
 
 ## Chart and data needs
-- **Scene 1:** counter animation only. The figure is "more than $130 million", so always show the `+`.
+- **Scene 1:** the figure lands at once, with no count-up. It is "more than $130 million", so always show the `+`.
 - **Scene 3:** one generic line chart with no axes, no ticker and no real price data. It only needs to show that lines go down too.
 - No real market data is needed anywhere in this video.
 
@@ -56,7 +55,7 @@ Burned-in captions of the voiceover, 2 to 4 words at a time, centre screen, with
 
 ## Music and sound
 - Mood: tense, minimal, low pulse. Think investigation, not hype. No vocals. Keep it well under the voice.
-- Sound effects: a hit when the counter stops, a stamp for "RISK-FREE", a soft thud for each flag, a swipe in scene 4.
+- Sound effects: a hit when the figure lands, a stamp for "RISK-FREE", a soft thud for each flag, a swipe in scene 4.
 - Use music you have the rights to: the toolkit's own library or TikTok's commercial library.
 
 ## Compliance must-haves (from the script's §6 check)

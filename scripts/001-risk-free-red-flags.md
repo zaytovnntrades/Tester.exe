@@ -9,7 +9,7 @@ sources: [research/2026-11-11.md#1]
 HOOK (0–3s)
   VO: Two words helped take a hundred and thirty million dollars from everyday investors.
   ON-SCREEN: $130,000,000+ · "2 words" · small tag from the first frame: SEC complaint
-  VISUAL: Big counter racing up to $130M, then freezing. Hard cut to the two words blurred out.
+  VISUAL: The figure $130,000,000+ slams in at once (no count-up), with the two words blurred out below it.
 
 STAKES (3–9s): what it costs to get this wrong
   VO: The SEC says a so-called wealth-sharing program promised risk-free returns. From crypto trading signals.
@@ -35,7 +35,7 @@ LESSON (9–33s): 3 beats, one idea each
 LOOP / CTA (33–39s): open loop to video 002
   VO: Survive the people first. Then the market. Follow. Next up: the day the market itself turns on you.
   ON-SCREEN: Survive first. · Follow for Part 2
-  VISUAL: Back to the frozen $130M counter, then the channel logo.
+  VISUAL: Back to the $130,000,000+ figure, then the channel name.
 
 DISCLAIMER (on-screen): Educational only — not financial advice.
 CAPTION (≤150 chars): 3 red flags from a $130M fraud case charged by the SEC. If you hear "risk-free," leave. Educational only, not financial advice.

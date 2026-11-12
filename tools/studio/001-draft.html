@@ -5,9 +5,9 @@
 const Q='“',QE='”';
 function head(n,u){const d=lerp(-260,0,eo(p(u,0,0.3)));flag(CX-235,255+d,96);txt('RED FLAG '+n,CX+40,300+d,64,RED)}
 function s1(t){txt('2 words.',CX,330,96,WH,ap(t,0.1));
-  const v=Math.round(130e6*eo(p(t,0,1.5))),sh=t>1.5&&t<1.85?12*(1-p(t,1.5,1.85)):0;
+  const sh=t>0.15&&t<0.6?12*(1-p(t,0.15,0.6)):0; // lands at once: a count-up would flash figures that are in no source
   x.save();x.translate((hash(Math.floor(t*60))-.5)*sh*2,(hash(Math.floor(t*60)+9)-.5)*sh*2);
-  txt('$'+v.toLocaleString('en-US')+(t>=1.5?'+':''),CX,620,120,WH,ON,{max:880});x.restore();
+  txt('$130,000,000+',CX,620,120,WH,{a:p(t,0.03,0.1),sc:lerp(1.6,1,eo(p(t,0.03,0.3)))},{max:880});x.restore();
   pill('SEC complaint',CX,745,34,GR);
   x.save();x.filter='blur(18px)';txt(Q+'RISK-FREE'+QE,CX,960,120,RED);x.restore()}
 function s2(u){txt('$130,000,000+',CX,300,60,GR,ON,{w:800});pill('SEC complaint',CX,385,28,GR);

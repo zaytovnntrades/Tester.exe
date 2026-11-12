@@ -5,14 +5,13 @@
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 37.5 seconds (94 words at 2.5 words per second). Final length follows the voiceover: time the scenes to the audio.
 - **Style:** faceless. Motion graphics and text only. Same look as videos 001 and 004.
-- **Voice:** AI voiceover. Steady, lower, unhurried. Blunt coach. The same voice as the other videos.
+- **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/002-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
+- **Visuals:** built in this repo. Rebuild the clean video with `node tools/studio/render.js tools/studio/002-draft.html renders/clean/002-clean.mp4 clean`.
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge. Check these against TikTok's current layout before the final export.
 - **Shelf life:** the video refers to the October 28, 2026 Fed decision. Post it before the next Fed meeting (check the date on the Fed's own calendar). After that, it needs a new hook.
 
-## ⚠️ Paid steps: stop and confirm with the director first
-1. Generating the AI voiceover.
-2. Any AI image or video generation, or cloud GPU rendering.
-Everything else in this brief (layout, text, shapes drawn in code) costs nothing.
+## Costs
+The visuals are drawn in code and cost nothing. Voice and captions are made in CapCut, where some voices and tools need a paid plan: that is the director's call.
 
 ## Final voiceover text (read exactly as written)
 > October twenty-eighth. The Fed did nothing. That's the kind of day that hurts beginners.
@@ -47,8 +46,8 @@ Timings are estimates from word counts. Lock them to the real audio.
 
 **On every scene, bottom of the safe area, small but readable:** `Educational only — not financial advice.`
 
-## Captions
-Burned-in captions of the voiceover, 2 to 4 words at a time, centre screen, key word highlighted in red (nothing, split, hike, losses, size, sim, survive). Captions must not cover the on-screen text in the table above.
+## Captions (added in CapCut)
+2 to 4 words at a time, about two-thirds down the screen, above the disclaimer line, key word in red `#FF2D3D` (nothing, split, hike, losses, size, sim, survive).
 
 ## Chart and data needs
 - **The only real figures are the three from the Fed statement:** the 3.75–4.00% range, the 10–2 vote, and two dissenters who preferred a quarter-point raise. They trace to `research/2026-11-11.md#4`. Show nothing else as fact.
