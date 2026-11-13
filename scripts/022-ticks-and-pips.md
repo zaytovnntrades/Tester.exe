@@ -3,21 +3,21 @@ id: 022
 series: Trading Basics, day 21 of 30
 pillar: 2
 hook_type: bold claim
-length_target: 28s
+length_target: 30s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: Price doesn't move smoothly. It moves in tiny steps.
+HOOK (0–3s)
+  VO: Price doesn't glide. It steps.
   ON-SCREEN: Price moves in steps
   VISUAL: A staircase line (illustration).
 
-STAKES (4–8s): what it costs to get this wrong
-  VO: Each step is worth money. Not knowing how much is trading blind.
+STAKES (3–9s): what it costs to get this wrong
+  VO: It moves in tiny steps. Each step is worth money. Not knowing how much is trading blind.
   ON-SCREEN: Each step = money
   VISUAL: A staircase line (illustration).
 
-LESSON (8–24s): 3 beats, one idea each
+LESSON (9–27s): 3 beats, one idea each
   Beat 1:
   VO: In futures, the smallest step is called a tick.
   ON-SCREEN: Tick = smallest step · in futures · FUTURES · FOREX · tick
@@ -29,11 +29,11 @@ LESSON (8–24s): 3 beats, one idea each
   VISUAL: Two columns side by side: FUTURES and FOREX.
 
   Beat 3:
-  VO: Every market sets its own value per step. Look it up before you trade it. With leverage, steps add up fast.
+  VO: Every market sets its own value per step. Look it up on the exchange or your platform before you trade it. With leverage, steps add up fast.
   ON-SCREEN: Look up the value first · Find your market · Find its step value · Then size the trade
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (24–28s)
+LOOP / CTA (27–31s)
   VO: Know what one step costs you. Survive first. Follow.
   ON-SCREEN: Know your step. · Survive first. · Follow · Next: Trading sessions · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -44,7 +44,7 @@ CAPTION (≤150 chars): Ticks and pips: the smallest steps price can take. Tradi
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #ticks #pips
 PINNED COMMENT: Do you know what one step is worth in the market you practice? 👇
 COVER / THUMBNAIL: "Price moves in steps" in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 69 (≈28s at 2.5 words/sec)
+WORD COUNT: 76 (≈30s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

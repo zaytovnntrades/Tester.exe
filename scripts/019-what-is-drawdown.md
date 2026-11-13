@@ -3,21 +3,21 @@ id: 019
 series: Trading Basics, day 18 of 30
 pillar: 1
 hook_type: bold claim
-length_target: 32s
+length_target: 30s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: Every trader meets this word sooner or later. Drawdown.
+HOOK (0–3s)
+  VO: Every trader meets this word. Drawdown.
   ON-SCREEN: Drawdown
   VISUAL: A line that climbs to a peak, then falls (illustration).
 
-STAKES (4–8s): what it costs to get this wrong
+STAKES (3–7s): what it costs to get this wrong
   VO: Ignore it, and a bad stretch quietly becomes a blown account.
   ON-SCREEN: Bad stretch → blown account
   VISUAL: A price line stepping downward (illustration).
 
-LESSON (8–27s): 3 beats, one idea each
+LESSON (7–26s): 3 beats, one idea each
   Beat 1:
   VO: Drawdown is how far your account has fallen from its highest point.
   ON-SCREEN: From the peak, how far down? · PEAK · NOW
@@ -33,7 +33,7 @@ LESSON (8–27s): 3 beats, one idea each
   ON-SCREEN: Set a limit. Stop there. · PEAK · MY LIMIT
   VISUAL: A line that climbs to a peak, then falls (illustration).
 
-LOOP / CTA (27–32s)
+LOOP / CTA (26–31s)
   VO: Small drawdowns are normal. Deep ones end accounts. Survive first. Follow.
   ON-SCREEN: Keep it small. · Survive first. · Follow · Next: What a futures contract is · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Drawdown: the word every trader needs to understand. Tra
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #drawdown #riskmanagement
 PINNED COMMENT: Had you heard the word "drawdown" before this video? Yes / No 👇
 COVER / THUMBNAIL: "Drawdown" in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 79 (≈32s at 2.5 words/sec)
+WORD COUNT: 76 (≈30s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

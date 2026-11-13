@@ -1,10 +1,10 @@
-A futures contract sounds complicated. It's an agreement. That's all.
+Futures sound complicated. They're agreements.
 
 But it's a leveraged one. And leverage magnifies losses.
 
 A buyer and a seller agree on a price now, for a set date in the future.
 
-Traders usually don't wait for that date. They close the trade and take the difference. Gain or loss.
+Traders usually don't wait for that date. They close the trade before it and take the difference. Gain or loss. Most never touch the actual oil or gold.
 
 Each contract follows a market. A stock index. Oil. Gold.
 

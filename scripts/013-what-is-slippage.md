@@ -3,37 +3,37 @@ id: 013
 series: Trading Basics, day 12 of 30
 pillar: 2
 hook_type: story
-length_target: 27s
+length_target: 31s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: You clicked at one price. You got filled at another.
+HOOK (0–3s)
+  VO: You clicked one price. Got another.
   ON-SCREEN: Clicked here. Filled there.
   VISUAL: A price line that jumps straight from one level to a worse one (a buy that fills higher) (illustration).
 
-STAKES (4–8s): what it costs to get this wrong
+STAKES (3–6s): what it costs to get this wrong
   VO: That gap has a name. And it costs you.
   ON-SCREEN: It's called slippage
   VISUAL: A price line that jumps straight from one level to a worse one (a buy that fills higher) (illustration).
 
-LESSON (8–24s): 3 beats, one idea each
+LESSON (6–28s): 3 beats, one idea each
   Beat 1:
   VO: Slippage is the difference between the price you expected and the price you got.
   ON-SCREEN: Slippage · expected vs got · EXPECTED · GOT
   VISUAL: A price line that jumps straight from one level to a worse one (a buy that fills higher) (illustration).
 
   Beat 2:
-  VO: It shows up when price moves fast. Like around big news.
+  VO: It shows up when price moves fast. Like around big news, or when few traders are active.
   ON-SCREEN: Fast market = more slippage
   VISUAL: A price line that is flat, then shoots up (illustration).
 
   Beat 3:
-  VO: It's part of trading. Calmer markets and limit orders can reduce it. Nothing removes it.
+  VO: It's part of trading. Calmer markets and limit orders can reduce it. Nothing removes it. So count it as a cost, every time.
   ON-SCREEN: Reduce it. Never remove it. · Calmer markets · Limit orders · Never zero
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (24–27s)
+LOOP / CTA (28–31s)
   VO: Expect the gap. Plan for it. Survive first. Follow.
   ON-SCREEN: Expect the gap. · Survive first. · Follow · Next: Long vs short · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Why you got a different price than you clicked: slippage
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #slippage #ordertypes
 PINNED COMMENT: Has a fill ever surprised you on sim? What happened? 👇
 COVER / THUMBNAIL: "Clicked here. Filled there." in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 68 (≈27s at 2.5 words/sec)
+WORD COUNT: 78 (≈31s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

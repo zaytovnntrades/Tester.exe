@@ -44,5 +44,6 @@ A tough coach who is honest that they're still training. Blunt about the rules, 
 ## AI voice notes
 - Voiceover and captions are made by you in CapCut (decided 2026-11-12). Steps are in `briefs/capcut-handoff.md`; the text to paste is in `briefs/vo/`.
 - Some CapCut voices need a paid plan. That's your call inside CapCut.
+- **CapCut voice (2026-11-13):** the male "sly villain" voice. It reads darker than the blunt-coach style, so keep the words as they are: plain, short, no menace added in the script. Same voice every video.
 - Pick one voice and keep it for every video: a steady, lower, unhurried voice suits this tone better than an excited one.
 - TikTok has a setting to label AI-generated content. Check its current rules for synthetic voices and switch the label on if they apply.

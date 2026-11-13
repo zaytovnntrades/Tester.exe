@@ -23,8 +23,11 @@ const labels=v=>{const [k,o]=v;switch(k){
   case 'loop':return o.labels;
   case 'levels':return [...(o.labels||['TARGET','ENTRY','STOP']),...(o.mode==='both'?(o.br||['RISK','REWARD']):o.mode==='risk'?[(o.br||['RISK'])[0]]:[(o.br||['RISK','REWARD'])[1]])];
   case 'candles':return ['VOLUME'];default:return []}};
+// Critical = survival-first ideas: if you can only post some days, post these first.
+const CRITICAL=new Set(['006','007','004','001','015','016','019','024','028','031']);
 const cal=[];
-for(const id of ORDER){const v=SERIES[id],n=v.s.map(s=>W(s[0])),tot=n.reduce((a,b)=>a+b),sec=Math.round(tot/2.5),t=[0];n.forEach(k=>t.push(t[t.length-1]+Math.max(2.6,k/2.5)));
+for(const id of ORDER){const v=SERIES[id],n=v.s.map(s=>W(s[0])),tot=n.reduce((a,b)=>a+b),sec=Math.round(tot/2.5),t=[0];
+  if(n[0]>7)throw new Error(id+': hook over 7 words (3-second rule)');if(sec<30||sec>45)throw new Error(id+': length '+sec+'s, outside 30-45s');n.forEach(k=>t.push(t[t.length-1]+Math.max(2.6,k/2.5)));
   const r=i=>`${Math.round(t[i])}–${Math.round(t[i+1])}s`,file=path.join(ROOT,'scripts',`${id}-${v.slug}.md`);
   let status='draft';if(fs.existsSync(file)){const m=fs.readFileSync(file,'utf8').match(/^status: (\w+)/m);if(m)status=m[1]}
   const cap=`${v.cap} Trading basics, day ${v.day} of 30. Educational only, not financial advice.`;if(cap.length>150)throw new Error(id+' caption too long');
@@ -87,15 +90,15 @@ One video a day for 30 days. Every video teaches one beginner idea in 25 to 45 s
 Days are numbered, not dated: day 1 is whichever day you post the first video.
 Days 7 to 30 are generated from \`tools/studio/series.js\`; re-run \`node tools/studio/gen-scripts.js\` after any change.
 
-**Status key:** approved = you signed it off · draft = written, waiting for your approval. Every video has a clean (no-caption) render ready for CapCut.
+**★ Critical:** the survival-first ideas. If you can only post some days, post the ★ ones first. Posting order stays as listed, because each end card names the next day's video.\n**Hooks:** days 7 to 30 open in 7 words or fewer (under 3 seconds). Days 1 to 6 keep their approved hooks, which run 4 to 5 seconds.\n**Status key:** approved = you signed it off · draft = written, waiting for your approval. Every video has a clean (no-caption) render ready for CapCut.
 `;
-all.forEach((r,i)=>{if(i%7===0&&i<28)out+=`\n## ${wk[i/7]}\n| Day | Video | Topic | Pillar | Length | Status | Hook |\n|-----|-------|-------|--------|--------|--------|------|\n`;
-  if(i===28)out+=`\n## Days 29 and 30 · Wrap-up\n| Day | Video | Topic | Pillar | Length | Status | Hook |\n|-----|-------|-------|--------|--------|--------|------|\n`;
-  out+=`| ${r[0]} | ${r[1]} | ${r[2]} | ${r[3]} | ${r[5]}s | ${r[6]} | ${r[4]} |\n`});
+all.forEach((r,i)=>{if(i%7===0&&i<28)out+=`\n## ${wk[i/7]}\n| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |\n|-----|-------|----------|-------|--------|--------|--------|------|\n`;
+  if(i===28)out+=`\n## Days 29 and 30 · Wrap-up\n| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |\n|-----|-------|----------|-------|--------|--------|--------|------|\n`;
+  out+=`| ${r[0]} | ${r[1]} | ${CRITICAL.has(r[1])?'★':''} | ${r[2]} | ${r[3]} | ${r[5]}s | ${r[6]} | ${r[4]} |\n`});
 const pc={};all.forEach(r=>pc[r[3]]=(pc[r[3]]||0)+1);
 out+=`
 ## Things to know
-- **Day 6 (video 002) has a shelf life.** It refers to the October 28, 2026 Fed decision, so it must go out before the next Fed meeting. If that meeting has passed when you reach day 6, skip it, move every later day up by one, and re-post your best performer on day 30.
+- **Day 6 (video 002) has a shelf life.** It refers to the October 28, 2026 Fed decision. The Fed's own calendar lists the next meeting as **December 8–9, 2026** (\`research/raw/fed-fomc-calendar-2026-11-13.md\`, read 2026-11-13). So day 6 must be posted by **December 7**, which means day 1 must go out by **December 2**. If that's missed, skip day 6, move every later day up by one, and re-post your best performer on day 30.
 - **Days 1 to 6 are the hand-built videos.** Their end cards already point to each other (005 → 006 → 007 → 004, then 001 → 002), which is why they open the calendar in that order.
 - **Days 7 to 30 each end on a "Next:" line** naming the following day's topic. If you change the order, change it in \`series.js\` and re-render, or the end cards will point to the wrong video.
 - **Pillar mix:** ${Object.keys(pc).sort().map(k=>`pillar ${k}: ${pc[k]} videos`).join(' · ')}. Forex (pillar 3) and prop firms (pillar 4) are light on purpose: you don't trade them, so they're taught from general knowledge only, with no figures.

@@ -7,13 +7,13 @@ length_target: 32s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–5s)
-  VO: The biggest decision in a trade isn't where to enter. It's how much.
+HOOK (0–3s)
+  VO: Not where to enter. How much.
   ON-SCREEN: Not where. How much. · SMALL · BIG
   VISUAL: Bars growing from a baseline (illustration): SMALL, BIG.
 
-STAKES (5–10s): what it costs to get this wrong
-  VO: Too big, and one normal loss does real damage to your account.
+STAKES (3–10s): what it costs to get this wrong
+  VO: That's the biggest decision in a trade. Too big, and one normal loss does real damage to your account.
   ON-SCREEN: Too big = real damage · ACCOUNT · ONE LOSS
   VISUAL: Bars growing from a baseline (illustration): ACCOUNT, ONE LOSS in red.
 
@@ -33,7 +33,7 @@ LESSON (10–28s): 3 beats, one idea each
   ON-SCREEN: Loss first. Size second. · 1. Loss you can accept · 2. Size to fit it · 3. Then enter
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (28–32s)
+LOOP / CTA (28–33s)
   VO: Start with the smallest size there is. On sim. Survive first. Follow.
   ON-SCREEN: Start small. · Survive first. · Follow · Next: Risk vs reward · Zaytovnn Trades
   VISUAL: End card with the channel name.

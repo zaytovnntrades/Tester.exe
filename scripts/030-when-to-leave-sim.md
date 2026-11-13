@@ -7,19 +7,19 @@ length_target: 31s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–5s)
-  VO: When are you ready for real money? Not when you feel ready.
+HOOK (0–3s)
+  VO: Ready for real money? Feelings don't decide.
   ON-SCREEN: Ready for real money? · READY?
   VISUAL: A big red stamp: READY?.
 
-STAKES (5–10s): what it costs to get this wrong
+STAKES (3–8s): what it costs to get this wrong
   VO: Go live too early, and you pay real money for beginner mistakes.
   ON-SCREEN: Too early = paid lessons · SIM · LIVE · mistakes: free · mistakes: paid
   VISUAL: Two columns side by side: SIM and LIVE.
 
-LESSON (10–25s): 3 beats, one idea each
+LESSON (8–25s): 3 beats, one idea each
   Beat 1:
-  VO: First sign. You follow your own rules on sim. Not once. For weeks.
+  VO: First sign. You follow your own rules on sim. Not once. For weeks. Even on your bad days.
   ON-SCREEN: 1. Rules followed. For weeks. · Rules followed · A written plan · Money I can afford to lose
   VISUAL: A stack of boxes appearing one by one, with the current one lit in red.
 

@@ -3,21 +3,21 @@ id: 011
 series: Trading Basics, day 10 of 30
 pillar: 2
 hook_type: number
-length_target: 30s
+length_target: 32s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: There are two prices for everything you trade. Not one.
+HOOK (0–3s)
+  VO: Every trade has two prices. Not one.
   ON-SCREEN: Two prices. Not one. · ASK · lowest seller · BID · highest buyer
   VISUAL: Two price rows, ASK above BID.
 
-STAKES (4–9s): what it costs to get this wrong
+STAKES (3–8s): what it costs to get this wrong
   VO: The gap between them is a cost. You pay it on every trade.
   ON-SCREEN: The gap = a cost · ASK · lowest seller · BID · highest buyer · SPREAD
   VISUAL: Two price rows, ASK above BID, with the gap between them marked.
 
-LESSON (9–26s): 3 beats, one idea each
+LESSON (8–27s): 3 beats, one idea each
   Beat 1:
   VO: The bid is the highest price a buyer is offering right now.
   ON-SCREEN: Bid · what buyers offer · ASK · lowest seller · BID · highest buyer
@@ -29,11 +29,11 @@ LESSON (9–26s): 3 beats, one idea each
   VISUAL: Two price rows, ASK above BID, with ASK lit in red.
 
   Beat 3:
-  VO: The space between them is the spread. Buy, then sell straight away, and you lose that gap.
+  VO: The space between them is the spread. Buy, then sell straight away, and you lose that gap. Busy markets usually have smaller spreads.
   ON-SCREEN: Spread = the gap · you pay it each trade · ASK · lowest seller · BID · highest buyer · SPREAD
   VISUAL: Two price rows, ASK above BID, with the gap between them marked.
 
-LOOP / CTA (26–30s)
+LOOP / CTA (27–32s)
   VO: Bid. Ask. Spread. Know your cost before you click. Survive first. Follow.
   ON-SCREEN: Know your cost. · Survive first. · Follow · Next: Market vs limit orders · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Bid, ask and spread: the hidden cost in every trade. Tra
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #bidask #spread
 PINNED COMMENT: Did you know you pay the spread on every trade? Yes / No 👇
 COVER / THUMBNAIL: "Two prices. Not one." in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 76 (≈30s at 2.5 words/sec)
+WORD COUNT: 79 (≈32s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

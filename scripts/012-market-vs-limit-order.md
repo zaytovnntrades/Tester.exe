@@ -3,21 +3,21 @@ id: 012
 series: Trading Basics, day 11 of 30
 pillar: 2
 hook_type: mistake
-length_target: 34s
+length_target: 36s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–6s)
-  VO: Click buy the wrong way, and you pay a price you never agreed to.
+HOOK (0–3s)
+  VO: The wrong click costs you money.
   ON-SCREEN: Wrong click. Wrong price. · MARKET · LIMIT
   VISUAL: Two columns side by side: MARKET and LIMIT.
 
-STAKES (6–10s): what it costs to get this wrong
-  VO: There are two basic order types. They do opposite jobs.
+STAKES (3–12s): what it costs to get this wrong
+  VO: Click buy the wrong way, and you pay a price you never agreed to. There are two basic order types. They do opposite jobs.
   ON-SCREEN: Two order types · MARKET · LIMIT
   VISUAL: Two columns side by side: MARKET and LIMIT.
 
-LESSON (10–28s): 3 beats, one idea each
+LESSON (12–31s): 3 beats, one idea each
   Beat 1:
   VO: A market order says: fill me now. You get speed. You don't control the price.
   ON-SCREEN: Market order · fill me now · MARKET · LIMIT · speed: yes · price: no control
@@ -33,7 +33,7 @@ LESSON (10–28s): 3 beats, one idea each
   ON-SCREEN: Speed or price. · MARKET · LIMIT · speed: yes · price: no control · price: yours · fill: not certain
   VISUAL: Two columns side by side: MARKET and LIMIT.
 
-LOOP / CTA (28–34s)
+LOOP / CTA (31–36s)
   VO: Market for speed. Limit for price. Practice both on sim. Survive first. Follow.
   ON-SCREEN: Practice both on sim. · Survive first. · Follow · Next: What slippage is · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Market order or limit order? Speed or price: you pick on
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #ordertypes #limitorder
 PINNED COMMENT: Which do you use more on sim: market or limit? 👇
 COVER / THUMBNAIL: "Wrong click. Wrong price." in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 84 (≈34s at 2.5 words/sec)
+WORD COUNT: 90 (≈36s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

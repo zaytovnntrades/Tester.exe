@@ -3,21 +3,21 @@ id: 010
 series: Trading Basics, day 9 of 30
 pillar: 2
 hook_type: contrarian
-length_target: 30s
+length_target: 31s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: Those bars under the chart aren't decoration. That's volume.
+HOOK (0–3s)
+  VO: Those bars under your chart? That's volume.
   ON-SCREEN: Those bars = volume · VOLUME
   VISUAL: A row of candles with volume bars underneath (illustration).
 
-STAKES (4–9s): what it costs to get this wrong
-  VO: Ignore it, and you can't tell a real move from a weak one.
+STAKES (3–9s): what it costs to get this wrong
+  VO: They aren't decoration. Ignore them, and you can't tell a real move from a weak one.
   ON-SCREEN: Real move or weak move? · VOLUME
   VISUAL: A row of candles with volume bars underneath (illustration).
 
-LESSON (9–25s): 3 beats, one idea each
+LESSON (9–26s): 3 beats, one idea each
   Beat 1:
   VO: Volume counts how much was traded in each candle. Tall bar, lots of trading.
   ON-SCREEN: Volume = how much traded · tall bar = busy · VOLUME
@@ -33,7 +33,7 @@ LESSON (9–25s): 3 beats, one idea each
   ON-SCREEN: Big move + low volume · fewer behind it · MOVE · VOLUME
   VISUAL: Bars growing from a baseline (illustration): MOVE, VOLUME in red.
 
-LOOP / CTA (25–30s)
+LOOP / CTA (26–31s)
   VO: Price shows what happened. Volume shows how many showed up. Survive first. Follow.
   ON-SCREEN: Price + volume · Survive first. · Follow · Next: Bid, ask and spread · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): What the volume bars under your chart are telling you. T
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #volume #chartreading
 PINNED COMMENT: Do you have volume switched on in your chart? Yes / No 👇
 COVER / THUMBNAIL: "Those bars = volume" in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 76 (≈30s at 2.5 words/sec)
+WORD COUNT: 77 (≈31s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

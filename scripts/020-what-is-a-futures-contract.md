@@ -3,28 +3,28 @@ id: 020
 series: Trading Basics, day 19 of 30
 pillar: 2
 hook_type: contrarian
-length_target: 30s
+length_target: 32s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–4s)
-  VO: A futures contract sounds complicated. It's an agreement. That's all.
+HOOK (0–3s)
+  VO: Futures sound complicated. They're agreements.
   ON-SCREEN: It's an agreement. · BUYER · SELLER
   VISUAL: Two columns side by side: BUYER and SELLER.
 
-STAKES (4–8s): what it costs to get this wrong
+STAKES (3–6s): what it costs to get this wrong
   VO: But it's a leveraged one. And leverage magnifies losses.
   ON-SCREEN: Leverage magnifies losses · DEPOSIT · POSITION
   VISUAL: Bars growing from a baseline (illustration): DEPOSIT, POSITION in red.
 
-LESSON (8–26s): 3 beats, one idea each
+LESSON (6–28s): 3 beats, one idea each
   Beat 1:
   VO: A buyer and a seller agree on a price now, for a set date in the future.
   ON-SCREEN: A price now. A date later. · same price · same date · BUYER · SELLER · agrees to buy · agrees to sell
   VISUAL: Two columns side by side: BUYER and SELLER.
 
   Beat 2:
-  VO: Traders usually don't wait for that date. They close the trade and take the difference. Gain or loss.
+  VO: Traders usually don't wait for that date. They close the trade before it and take the difference. Gain or loss. Most never touch the actual oil or gold.
   ON-SCREEN: Close early. Take the difference. · gain or loss · ENTRY · EXIT
   VISUAL: A zig-zag price line (illustration).
 
@@ -33,7 +33,7 @@ LESSON (8–26s): 3 beats, one idea each
   ON-SCREEN: Each one tracks a market · Stock index · Oil · Gold
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (26–30s)
+LOOP / CTA (28–33s)
   VO: An agreement. With leverage. Learn it on sim. Survive first. Follow.
   ON-SCREEN: Learn it on sim. · Survive first. · Follow · Next: What micro futures are · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -44,7 +44,7 @@ CAPTION (≤150 chars): What a futures contract is, in plain words. Leverage mag
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #futurestrading #futures
 PINNED COMMENT: What part of futures confuses you most? I'll make a video on it 👇
 COVER / THUMBNAIL: "It's an agreement." in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 75 (≈30s at 2.5 words/sec)
+WORD COUNT: 80 (≈32s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

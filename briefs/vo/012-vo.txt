@@ -1,6 +1,6 @@
-Click buy the wrong way, and you pay a price you never agreed to.
+The wrong click costs you money.
 
-There are two basic order types. They do opposite jobs.
+Click buy the wrong way, and you pay a price you never agreed to. There are two basic order types. They do opposite jobs.
 
 A market order says: fill me now. You get speed. You don't control the price.
 

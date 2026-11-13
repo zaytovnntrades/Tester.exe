@@ -3,21 +3,21 @@ id: 014
 series: Trading Basics, day 13 of 30
 pillar: 2
 hook_type: question
-length_target: 32s
+length_target: 31s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–5s)
-  VO: You can trade a market that's going down. It's called going short.
+HOOK (0–3s)
+  VO: You can trade a falling market.
   ON-SCREEN: Trade it going down?
   VISUAL: A price line stepping downward (illustration).
 
-STAKES (5–9s): what it costs to get this wrong
-  VO: Mix up the two directions, and you're working against yourself.
+STAKES (3–8s): what it costs to get this wrong
+  VO: It's called going short. Mix up the two directions, and you're working against yourself.
   ON-SCREEN: Know your direction · LONG · SHORT
   VISUAL: Two columns side by side: LONG and SHORT.
 
-LESSON (9–27s): 3 beats, one idea each
+LESSON (8–26s): 3 beats, one idea each
   Beat 1:
   VO: Going long means you buy first. You gain if price rises. You lose if it falls.
   ON-SCREEN: Long = buy first · gain if price rises
@@ -33,7 +33,7 @@ LESSON (9–27s): 3 beats, one idea each
   ON-SCREEN: Both can lose · LONG · SHORT · rises: gain · falls: loss · falls: gain · rises: loss
   VISUAL: Two columns side by side: LONG and SHORT.
 
-LOOP / CTA (27–32s)
+LOOP / CTA (26–31s)
   VO: Long is up. Short is down. Practice both on sim. Survive first. Follow.
   ON-SCREEN: Long = up. Short = down. · Survive first. · Follow · Next: What sim trading is · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Long vs short: the two directions of a trade, explained.
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #longvsshort #shortselling
 PINNED COMMENT: Was "going short" confusing when you first heard it? 👇
 COVER / THUMBNAIL: "Trade it going down?" in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 80 (≈32s at 2.5 words/sec)
+WORD COUNT: 78 (≈31s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

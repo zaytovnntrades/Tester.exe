@@ -3,21 +3,21 @@ id: 029
 series: Trading Basics, day 28 of 30
 pillar: 4
 hook_type: bold claim
-length_target: 35s
+length_target: 36s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–5s)
-  VO: Prop firms offer to let you trade their money. Read the rules first.
+HOOK (0–3s)
+  VO: Their money. Their rules. Read them first.
   ON-SCREEN: Their money. Their rules. · THE FIRM · YOU · its capital · its rules · pay a fee · follow every rule
   VISUAL: Two columns side by side: THE FIRM and YOU.
 
-STAKES (5–9s): what it costs to get this wrong
-  VO: The hard part is often the rules, not the trading.
+STAKES (3–10s): what it costs to get this wrong
+  VO: Prop firms offer to let you trade their money. The hard part is often the rules, not the trading.
   ON-SCREEN: The hard part: the rules · THE FIRM · YOU · its capital · its rules · pay a fee · follow every rule
   VISUAL: Two columns side by side: THE FIRM and YOU.
 
-LESSON (9–30s): 3 beats, one idea each
+LESSON (10–31s): 3 beats, one idea each
   Beat 1:
   VO: A prop firm lets traders trade the firm's capital. Usually you pay a fee to take a test first.
   ON-SCREEN: Pay a fee. Take a test. · Pay a fee · Take the evaluation · Follow every rule
@@ -33,7 +33,7 @@ LESSON (9–30s): 3 beats, one idea each
   ON-SCREEN: Break a rule = over · retries cost money · Break a rule · Attempt over · Pay again to retry
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (30–35s)
+LOOP / CTA (31–36s)
   VO: It's leveraged trading with strict rules. Practice on sim first. Survive first. Follow.
   ON-SCREEN: Rules first. Sim first. · Survive first. · Follow · Next: When to leave sim · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -44,7 +44,7 @@ CAPTION (≤150 chars): Prop firms explained: their money, their rules. Leverage
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #propfirm #futurestrading
 PINNED COMMENT: Have you read a prop firm's full rules page start to finish? Yes / No 👇
 COVER / THUMBNAIL: "Their money. Their rules." in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 87 (≈35s at 2.5 words/sec)
+WORD COUNT: 90 (≈36s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

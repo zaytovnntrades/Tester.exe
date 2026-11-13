@@ -1,10 +1,10 @@
-Futures come in sizes. Start by knowing the smallest one.
+Futures come in sizes. Know the smallest.
 
 Start too big, and one ordinary move hurts.
 
 A micro contract tracks the same market as the bigger one. It's just a fraction of the size.
 
-Smaller size means each move in price is worth less. Wins and losses both shrink.
+Smaller size means each move in price is worth less. Wins and losses both shrink. That makes it a gentler place to learn.
 
 It's still leveraged. Leverage still magnifies losses. Smaller doesn't mean safe.
 

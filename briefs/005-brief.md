@@ -87,3 +87,10 @@ Burned-in captions of the voiceover, 2 to 4 words at a time, key word highlighte
 1. `005-how-to-read-a-candle.mp4`: 1080×1920, H.264, about 37 seconds.
 2. A cover image, 1080×1920.
 3. The voiceover audio file on its own, so hook variants can be re-cut later without paying for the whole read again.
+
+## Polished Reel (Remotion, 2026-11-13)
+- Source: `tools/reel/src/Reel005.tsx`. Words are this brief's voiceover, unchanged.
+- Render with captions: `cd tools/reel && npx remotion render src/index.ts Reel005 ../../renders/reel/005-reel-captions.mp4`
+- Render without captions (for CapCut): add `--props='{"captions":false}'`
+- Re-time to the CapCut voice: add the six clip lengths, e.g. `--props='{"captions":false,"durations":[5.6,4.1,6.3,8.9,5.7,6.6]}'`
+- Voice: CapCut, male "sly villain" voice. Faceless for now: no portraits were provided.

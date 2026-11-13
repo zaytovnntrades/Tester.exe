@@ -3,21 +3,21 @@ id: 026
 series: Trading Basics, day 25 of 30
 pillar: 5
 hook_type: contrarian
-length_target: 31s
+length_target: 32s
 status: draft        # draft | approved | blocked | produced | posted
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
-HOOK (0–6s)
-  VO: More trades doesn't mean more money. Often it means more mistakes and more costs.
+HOOK (0–3s)
+  VO: More trades doesn't mean more money.
   ON-SCREEN: More trades ≠ more money
   VISUAL: Bars growing from a baseline (illustration): unlabelled, unlabelled, unlabelled, unlabelled, unlabelled, unlabelled, unlabelled.
 
-STAKES (6–12s): what it costs to get this wrong
-  VO: Every trade has a cost. And every trade is a chance to break your rules.
+STAKES (3–11s): what it costs to get this wrong
+  VO: Often it means more mistakes. Every trade has a cost. And every trade is a chance to break your rules.
   ON-SCREEN: Every trade costs · TRADES · COSTS
   VISUAL: Bars growing from a baseline (illustration): TRADES, COSTS in red.
 
-LESSON (12–28s): 3 beats, one idea each
+LESSON (11–29s): 3 beats, one idea each
   Beat 1:
   VO: Overtrading is trading because you're bored. Or behind. Or itching to click.
   ON-SCREEN: Overtrading · Bored · Behind · Itching to click
@@ -29,11 +29,11 @@ LESSON (12–28s): 3 beats, one idea each
   VISUAL: A big red stamp: WHY?.
 
   Beat 3:
-  VO: The fix is a limit. A set number of trades per day. Decided before the open.
+  VO: The fix is a limit. A set number of trades per day. Decided before the open. Hit it, and you're done.
   ON-SCREEN: Set a limit · before the open · Your limit · Hit it · Done for the day
   VISUAL: A stack of boxes appearing one by one.
 
-LOOP / CTA (28–31s)
+LOOP / CTA (29–32s)
   VO: Fewer trades. Better trades. Survive first. Follow.
   ON-SCREEN: Fewer. Better. · Survive first. · Follow · Next: The trading journal · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -43,7 +43,7 @@ CAPTION (≤150 chars): Overtrading: why more trades is not more money. Trading 
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #tradingpsychology #overtrading
 PINNED COMMENT: Do you set a maximum number of trades per day? Yes / No 👇
 COVER / THUMBNAIL: "More trades ≠ more money" in white and red on a dark background, with the hook's graphic.
-WORD COUNT: 77 (≈31s at 2.5 words/sec)
+WORD COUNT: 79 (≈32s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets
