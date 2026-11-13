@@ -1,0 +1,11 @@
+Price has floors and ceilings.
+
+Nobody draws them for you. Miss them, and you enter right where price tends to turn.
+
+Support is a floor. An area where price fell, stopped, and bounced before.
+
+Resistance is a ceiling. An area where price rose, stalled, and dropped before.
+
+They're zones, not exact lines. Price can poke through and come back. And they do break. Nothing holds forever.
+
+Find the floor. Find the ceiling. Then decide. Survive first. Follow.

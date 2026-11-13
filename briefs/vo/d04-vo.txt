@@ -1,0 +1,11 @@
+Can you read this shape?
+
+It's called a candle. It's on almost every chart. If you can't read it, you're guessing.
+
+One candle covers one slice of time. Inside it are four prices.
+
+The thick part is the body. It shows where price opened and where it closed. Green means it closed higher. Red means it closed lower.
+
+The thin lines are wicks. They show the highest and lowest price in that time. Colours vary by platform, so check yours.
+
+Open. High. Low. Close. Four prices, one shape. Survive first. Follow.

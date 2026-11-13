@@ -1,0 +1,11 @@
+Futures sound scary. They're agreements.
+
+But they're leveraged ones. And leverage magnifies losses, so understand them first.
+
+A futures contract is an agreement to buy or sell something at a set price on a set date. Traders usually close early and take the difference.
+
+Each contract tracks a market. A stock index. Oil. Gold.
+
+Many come in smaller micro sizes. Same market, a fraction of the size. Smaller, but still leveraged.
+
+Smallest size. On sim first. Survive first. Follow.

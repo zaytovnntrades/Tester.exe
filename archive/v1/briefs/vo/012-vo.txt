@@ -1,0 +1,11 @@
+The wrong click costs you money.
+
+Click buy the wrong way, and you pay a price you never agreed to. There are two basic order types. They do opposite jobs.
+
+A market order says: fill me now. You get speed. You don't control the price.
+
+A limit order says: fill me at this price or better. You control the price. It might never fill.
+
+Speed or price. You pick one. Know which you picked before you click.
+
+Market for speed. Limit for price. Practice both on sim. Survive first. Follow.

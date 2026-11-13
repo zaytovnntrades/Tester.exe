@@ -1,0 +1,11 @@
+Price doesn't glide. It steps.
+
+It moves in tiny steps. Each step is worth money. Not knowing how much is trading blind.
+
+In futures, the smallest step is called a tick.
+
+In forex, the common unit is called a pip.
+
+Every market sets its own value per step. Look it up on the exchange or your platform before you trade it. With leverage, steps add up fast.
+
+Know what one step costs you. Survive first. Follow.

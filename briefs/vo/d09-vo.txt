@@ -1,0 +1,11 @@
+You can trade a falling market.
+
+It's called going short. Mix up the two directions, and you're working against yourself.
+
+Going long means you buy first. You gain if price rises. You lose if it falls.
+
+Going short means you sell first. You gain if price falls. You lose if it rises.
+
+Either way, both directions can lose. Know which one you're in before you click.
+
+Long is up. Short is down. Practice both on sim. Survive first. Follow.

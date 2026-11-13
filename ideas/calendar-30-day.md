@@ -1,71 +1,64 @@
-# 30-day content calendar: Trading Basics for beginners
+# 30-day content calendar: Trading Basics for beginners (v2)
 
-One video a day for 30 days. Every video teaches one beginner idea in 25 to 45 seconds.
-Days are numbered, not dated: day 1 is whichever day you post the first video.
-Days 7 to 30 are generated from `tools/studio/series.js`; re-run `node tools/studio/gen-scripts.js` after any change.
+One beginner lesson a day for 30 days, in learning order: each day uses only ideas taught on earlier days (checked automatically).
+Every lesson has a slot for **your own IRL video** that day. Those are yours to film; nothing here scripts them.
+Days are numbered, not dated: day 1 is whichever day you post the first one. Post package time: **11:30 am Eastern**.
+Source for every day: `tools/studio/series.js`. After any change run `node tools/studio/gen-scripts.js`.
 
-**★ Critical:** the survival-first ideas. If you can only post some days, post the ★ ones first. Posting order stays as listed, because each end card names the next day's video.
-**Hooks:** days 7 to 30 open in 7 words or fewer (under 3 seconds). Days 1 to 6 keep their approved hooks, which run 4 to 5 seconds.
-**Status key:** approved = you signed it off · draft = written, waiting for your approval. Every video has a clean (no-caption) render ready for CapCut.
+**★ Critical:** survival-first lessons. If you ever skip days, never skip these.
+**Status:** all 30 are drafts until you approve the full set.
 
-## Week 1 · Foundations
-| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |
-|-----|-------|----------|-------|--------|--------|--------|------|
-| 1 | 005 |  | How to read a candle | 2 | 36s | approved | You'll see this shape on almost every trading chart. Can you read it? |
-| 2 | 006 | ★ | What a stop loss is | 1 | 32s | approved | Every trade needs an exit before it needs an entry. |
-| 3 | 007 | ★ | What leverage is | 2 | 31s | approved | A small account can control a big trade. That's the danger. |
-| 4 | 004 | ★ | Max daily loss | 1 | 34s | approved | One bad day can end your account. One number can stop it. |
-| 5 | 001 | ★ | 3 red flags from a $130M fraud case | 1 | 38s | approved | Two words helped take a hundred and thirty million dollars from everyday investors. |
-| 6 | 002 |  | Why Fed day is for trading smaller | 2 | 38s | approved | October twenty-eighth. The Fed did nothing. That's the kind of day that hurts beginners. |
-| 7 | 008 |  | Up, down, sideways | 2 | 31s | draft | Which way is the market going? |
+## Week 1 · Start here: markets, practice, charts
+| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
+|-----|--------|---|---------|--------|------|--------|----------------|
+| 1 | What a market is |  | — | 35s | Someone is always on the other side. | draft | ☐ |
+| 2 | Where to practice first | ★ | sim | 36s | Don't learn to trade with real money. | draft | ☐ |
+| 3 | Bid, ask and spread |  | bid, ask, spread | 32s | Every trade has two prices. Not one. | draft | ☐ |
+| 4 | How to read a candle |  | candle, wick | 36s | Can you read this shape? | draft | ☐ |
+| 5 | Timeframes |  | timeframe | 30s | Same market. Different stories. | draft | ☐ |
+| 6 | Up, down, sideways |  | uptrend, downtrend, sideways | 31s | Which way is the market going? | draft | ☐ |
+| 7 | Support and resistance |  | support, resistance | 31s | Price has floors and ceilings. | draft | ☐ |
 
-## Week 2 · Chart reading, orders and direction
-| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |
-|-----|-------|----------|-------|--------|--------|--------|------|
-| 8 | 009 |  | Support and resistance | 2 | 31s | draft | Price has floors and ceilings. |
-| 9 | 010 |  | What volume tells you | 2 | 31s | draft | Those bars under your chart? That's volume. |
-| 10 | 011 |  | Bid, ask and spread | 2 | 32s | draft | Every trade has two prices. Not one. |
-| 11 | 012 |  | Market vs limit orders | 2 | 36s | draft | The wrong click costs you money. |
-| 12 | 013 |  | What slippage is | 2 | 31s | draft | You clicked one price. Got another. |
-| 13 | 014 |  | Long vs short | 2 | 31s | draft | You can trade a falling market. |
-| 14 | 015 | ★ | What sim trading is | 1 | 31s | draft | Don't learn to trade with real money. |
+## Week 2 · Placing a trade
+| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
+|-----|--------|---|---------|--------|------|--------|----------------|
+| 8 | What volume tells you |  | volume | 31s | Those bars under your chart? That's volume. | draft | ☐ |
+| 9 | Long vs short |  | going long, going short | 32s | You can trade a falling market. | draft | ☐ |
+| 10 | Market vs limit orders |  | market order, limit order | 36s | The wrong click costs you money. | draft | ☐ |
+| 11 | What slippage is |  | slippage | 31s | You clicked one price. Got another. | draft | ☐ |
+| 12 | What a stop loss is | ★ | stop loss | 32s | Plan your exit before your entry. | draft | ☐ |
+| 13 | Where you take profit |  | target, take profit, take-profit | 36s | Know where you'll take profit. | draft | ☐ |
+| 14 | When markets are busy |  | session | 35s | Markets have rush hours. | draft | ☐ |
 
-## Week 3 · Risk, and the futures basics
-| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |
-|-----|-------|----------|-------|--------|--------|--------|------|
-| 15 | 016 | ★ | Position size | 1 | 32s | draft | Not where to enter. How much. |
-| 16 | 017 |  | Risk vs reward | 1 | 32s | draft | Two questions before every trade. |
-| 17 | 018 |  | Why win rate lies | 1 | 31s | draft | Win most trades. Still lose money. |
-| 18 | 019 | ★ | What drawdown means | 1 | 30s | draft | Every trader meets this word. Drawdown. |
-| 19 | 020 |  | What a futures contract is | 2 | 32s | draft | Futures sound complicated. They're agreements. |
-| 20 | 021 |  | What micro futures are | 2 | 31s | draft | Futures come in sizes. Know the smallest. |
-| 21 | 022 |  | Ticks and pips | 2 | 30s | draft | Price doesn't glide. It steps. |
+## Week 3 · Risk: the survival core
+| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
+|-----|--------|---|---------|--------|------|--------|----------------|
+| 15 | Position size | ★ | position size | 34s | Not where to enter. How much. | draft | ☐ |
+| 16 | Risk vs reward | ★ | reward | 32s | Two questions before every trade. | draft | ☐ |
+| 17 | Why win rate lies |  | win rate | 31s | Win most trades. Still lose money. | draft | ☐ |
+| 18 | Max daily loss | ★ | max daily loss | 33s | One bad day can end an account. | draft | ☐ |
+| 19 | What drawdown means | ★ | drawdown | 30s | Every trader meets this word. Drawdown. | draft | ☐ |
+| 20 | What leverage is | ★ | leverage, margin | 31s | Small money can control big trades. | draft | ☐ |
+| 21 | Futures and micro futures |  | futures, micro | 32s | Futures sound scary. They're agreements. | draft | ☐ |
 
-## Week 4 · Sessions, mindset and habits
-| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |
-|-----|-------|----------|-------|--------|--------|--------|------|
-| 22 | 023 |  | Trading sessions | 3 | 31s | draft | The market has rush hours. |
-| 23 | 024 | ★ | Revenge trading | 5 | 33s | draft | The trade after a loss is dangerous. |
-| 24 | 025 |  | FOMO | 5 | 32s | draft | Price is flying. You want in. |
-| 25 | 026 |  | Overtrading | 5 | 32s | draft | More trades doesn't mean more money. |
-| 26 | 027 |  | The trading journal | 5 | 32s | draft | One useful trading tool costs nothing. |
-| 27 | 028 | ★ | 3 questions before every trade | 1 | 31s | draft | Pilots use checklists. Traders need one. |
-| 28 | 029 |  | What a prop firm is | 4 | 36s | draft | Their money. Their rules. Read them first. |
+## Week 4 · Plans and habits
+| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
+|-----|--------|---|---------|--------|------|--------|----------------|
+| 22 | Ticks and pips |  | tick, pip | 30s | Price doesn't glide. It steps. | draft | ☐ |
+| 23 | Your trading plan |  | trading plan | 32s | Trade without a plan, and you're guessing. | draft | ☐ |
+| 24 | 3 questions before every trade |  | checklist | 31s | Pilots use checklists. Traders need one. | draft | ☐ |
+| 25 | The trading journal |  | journal | 32s | One useful trading tool costs nothing. | draft | ☐ |
+| 26 | Revenge trading | ★ | revenge | 33s | The trade after a loss is dangerous. | draft | ☐ |
+| 27 | FOMO |  | fomo | 32s | Price is flying. You want in. | draft | ☐ |
+| 28 | Overtrading |  | overtrading | 32s | More trades doesn't mean more money. | draft | ☐ |
 
-## Days 29 and 30 · Wrap-up
-| Day | Video | Critical | Topic | Pillar | Length | Status | Hook |
-|-----|-------|----------|-------|--------|--------|--------|------|
-| 29 | 030 |  | When to leave sim | 1 | 31s | draft | Ready for real money? Feelings don't decide. |
-| 30 | 031 | ★ | 5 survival rules | 1 | 32s | draft | Thirty days. Five rules that matter. |
+## Days 29–30 · Protect yourself, then graduate
+| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
+|-----|--------|---|---------|--------|------|--------|----------------|
+| 29 | Spotting trading scams | ★ | — | 30s | Some trading offers are traps. | draft | ☐ |
+| 30 | When to leave sim | ★ | — | 32s | Ready for real money? Check first. | draft | ☐ |
 
-## Things to know
-- **Day 6 (video 002) has a shelf life.** It refers to the October 28, 2026 Fed decision. The Fed's own calendar lists the next meeting as **December 8–9, 2026** (`research/raw/fed-fomc-calendar-2026-11-13.md`, read 2026-11-13). So day 6 must be posted by **December 7**, which means day 1 must go out by **December 2**. If that's missed, skip day 6, move every later day up by one, and re-post your best performer on day 30.
-- **Days 1 to 6 are the hand-built videos.** Their end cards already point to each other (005 → 006 → 007 → 004, then 001 → 002), which is why they open the calendar in that order.
-- **Days 7 to 30 each end on a "Next:" line** naming the following day's topic. If you change the order, change it in `series.js` and re-render, or the end cards will point to the wrong video.
-- **Pillar mix:** pillar 1: 11 videos · pillar 2: 13 videos · pillar 3: 1 videos · pillar 4: 1 videos · pillar 5: 4 videos. Forex (pillar 3) and prop firms (pillar 4) are light on purpose: you don't trade them, so they're taught from general knowledge only, with no figures.
-- **No video uses a figure** except day 5 (SEC case) and day 6 (Fed decision), whose numbers trace to `research/2026-11-11.md`.
-
-## After each post
-Wait 48 hours, then paste one line per video and I'll add it to `published/log.csv`:
-`id, date posted, platform, views at 48h, average watch %, shares, saves, new follows, notes`
-After 10 rows I'll work out which pillars and hook types win and re-rank what comes next.
+## How each day runs
+1. 11:30 am Eastern: that day's post package (video, caption, hashtags, pinned comment).
+2. You post it to TikTok and Instagram Reels, and post your IRL video for the day.
+3. 48 hours later, paste the stats: `day, date posted, platform, views at 48h, average watch %, shares, saves, new follows, notes`.

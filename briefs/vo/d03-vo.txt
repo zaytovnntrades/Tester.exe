@@ -1,0 +1,11 @@
+Every trade has two prices. Not one.
+
+Miss the gap between them, and you pay a cost on every trade without noticing.
+
+The bid is the highest price a buyer is offering right now.
+
+The ask is the lowest price a seller will accept right now.
+
+The space between them is the spread. Buy, then sell straight away, and you lose that gap. Busy markets usually have smaller spreads.
+
+Bid. Ask. Spread. Know your cost before you click. Survive first. Follow.
