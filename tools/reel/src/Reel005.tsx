@@ -79,7 +79,7 @@ const Background: React.FC = () => {
   const drift = (f * 0.6) % 90;
   return (
     <AbsoluteFill style={{background: C.bg}}>
-      <AbsoluteFill style={{background: `radial-gradient(900px 700px at 50% ${38 + Math.sin(f / 90) * 3}%, rgba(255,45,61,0.13), rgba(10,10,12,0) 70%)`}} />
+      <AbsoluteFill style={{background: `radial-gradient(900px 700px at 50% ${38 + Math.sin(f / 90) * 3}%, rgba(255,255,255,0.05), rgba(10,10,12,0) 70%)`}} />
       <AbsoluteFill style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.035) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.035) 2px, transparent 2px)', backgroundSize: '90px 90px', backgroundPosition: `0 ${drift}px`, maskImage: 'radial-gradient(closest-side at 50% 45%, black, transparent)'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.65) 100%)'}} />
       <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, opacity: 0.07, mixBlendMode: 'overlay'}}>
@@ -110,7 +110,7 @@ const S1: React.FC<{d: number}> = ({d}) => {
         <div style={usePop(Math.round(d * 0.62))}><T size={92} style={{marginTop: 18}}><Red>Can you read it?</Red></T></div>
       </div>
       <Stage>
-        {ROW.map((c, i) => <Candle key={i} x={c.x} high={c.top - 40} top={c.top} bottom={c.bottom} low={c.bottom + 40} w={46} color={c.up ? C.white : C.red} />)}
+        {ROW.map((c, i) => <Candle key={i} x={c.x} high={c.top - 40} top={c.top} bottom={c.bottom} low={c.bottom + 40} w={46} color={c.up ? C.green : C.red} />)}
         <rect x={q.x - 62} y={q.top - 92} width={124} height={q.bottom - q.top + 184} rx={22} fill="none" stroke={C.red} strokeWidth={7} opacity={ring}
           style={{transformOrigin: `${q.x}px ${(q.top + q.bottom) / 2}px`, transform: `scale(${pulse})`}} />
       </Stage>
@@ -125,7 +125,7 @@ const S2: React.FC<{d: number}> = ({d}) => {
   return (
     <>
       <Head sub={<>Can't read it? <span style={{color: C.white}}>You're guessing.</span></>} subDelay={Math.round(d * 0.45)}>It's called a <Red>candle.</Red></Head>
-      <Stage><g style={{transformOrigin: `${CX}px 860px`, transform: `scale(${0.35 + 0.65 * z})`}}><Candle {...BIG} x={CX} color={C.white} /></g></Stage>
+      <Stage><g style={{transformOrigin: `${CX}px 860px`, transform: `scale(${0.35 + 0.65 * z})`}}><Candle {...BIG} x={CX} color={C.green} /></g></Stage>
     </>
   );
 };
@@ -143,7 +143,7 @@ const S3: React.FC<{d: number}> = ({d}) => {
         {hs.map(([a, b], i) => {
           const X = 190 + i * 160, top = 900 - a - b, m = i === 2;
           return <g key={i}><line x1={X} x2={X} y1={1020} y2={1042} stroke={C.dim} strokeWidth={4} />
-            <Candle x={X} high={top - 40} top={top} bottom={top + b} low={top + b + 50} w={78} color={m ? C.white : '#3a3a44'} grow={interpolate(f, [i * 3, i * 3 + 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} /></g>;
+            <Candle x={X} high={top - 40} top={top} bottom={top + b} low={top + b + 50} w={78} color={m ? C.green : '#3a3a44'} grow={interpolate(f, [i * 3, i * 3 + 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} /></g>;
         })}
         <path d="M 430 1058 L 430 1082 L 590 1082 L 590 1058" fill="none" stroke={C.red} strokeWidth={7} />
       </Stage>
@@ -166,9 +166,9 @@ const S4: React.FC<{d: number}> = ({d}) => {
       <>
         <Head>The <Red>body</Red></Head>
         <Stage>
-          <Candle {...BIG} color={C.white} />
-          <rect x={BIG.x - 102} y={BIG.top - 12} width={204} height={BIG.bottom - BIG.top + 24} rx={12} fill="none" stroke={C.red} strokeWidth={7} opacity={interpolate(f, [6, 14], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
-          <text x={BIG.x + 140} y={(BIG.top + BIG.bottom) / 2 + 20} fill={C.red} fontFamily={FONT} fontWeight={900} fontSize={56} opacity={interpolate(f, [8, 14], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}>BODY</text>
+          <Candle {...BIG} color={C.green} />
+          <rect x={BIG.x - 102} y={BIG.top - 12} width={204} height={BIG.bottom - BIG.top + 24} rx={12} fill="none" stroke={C.white} strokeWidth={7} opacity={interpolate(f, [6, 14], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
+          <text x={BIG.x + 140} y={(BIG.top + BIG.bottom) / 2 + 20} fill={C.white} fontFamily={FONT} fontWeight={900} fontSize={56} opacity={interpolate(f, [8, 14], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}>BODY</text>
           <Pointer x1={BIG.x + 85} y={BIG.bottom} x2={BIG.x + 140} label="OPEN" progress={p(8)} />
           <Pointer x1={BIG.x + 85} y={BIG.top} x2={BIG.x + 140} label="CLOSE" progress={p(11.5)} />
         </Stage>
@@ -179,9 +179,9 @@ const S4: React.FC<{d: number}> = ({d}) => {
     <Sequence from={split} layout="none">
       <Head sub="Colours vary by platform." subDelay={10} size={84}>Colour = <Red>direction</Red></Head>
       <Stage>
-        <Candle x={CX - 190} high={640} top={740} bottom={980} low={1060} w={140} color={C.white} />
+        <Candle x={CX - 190} high={640} top={740} bottom={980} low={1060} w={140} color={C.green} />
         <Candle x={CX + 190} high={640} top={740} bottom={980} low={1060} w={140} color={C.red} />
-        <text x={CX - 190} y={1140} textAnchor="middle" fill={C.white} fontFamily={FONT} fontWeight={900} fontSize={60}>UP</text>
+        <text x={CX - 190} y={1140} textAnchor="middle" fill={C.green} fontFamily={FONT} fontWeight={900} fontSize={60}>UP</text>
         <text x={CX + 190} y={1140} textAnchor="middle" fill={C.red} fontFamily={FONT} fontWeight={900} fontSize={60}>DOWN</text>
         <text x={CX - 190} y={1190} textAnchor="middle" fill={C.grey} fontFamily={FONT} fontWeight={700} fontSize={30}>closed higher</text>
         <text x={CX + 190} y={1190} textAnchor="middle" fill={C.grey} fontFamily={FONT} fontWeight={700} fontSize={30}>closed lower</text>
@@ -197,9 +197,9 @@ const S5: React.FC<{d: number}> = ({d}) => {
     <>
       <Head>The <Red>wicks</Red></Head>
       <Stage>
-        <Candle {...BIG} color={C.white} wick={wickOn > 0.5 ? C.red : C.white} />
-        <Pointer x1={BIG.x} y={BIG.high} x2={BIG.x + 140} label="HIGH" color={C.red} size={60} progress={p(9)} note="highest price in that time" />
-        <Pointer x1={BIG.x} y={BIG.low} x2={BIG.x + 140} label="LOW" color={C.red} size={60} progress={p(11)} note="lowest price in that time" />
+        <Candle {...BIG} color={C.green} wick={wickOn > 0.5 ? C.white : C.green} />
+        <Pointer x1={BIG.x} y={BIG.high} x2={BIG.x + 140} label="HIGH" color={C.white} size={60} progress={p(9)} note="highest price in that time" />
+        <Pointer x1={BIG.x} y={BIG.low} x2={BIG.x + 140} label="LOW" color={C.white} size={60} progress={p(11)} note="lowest price in that time" />
       </Stage>
       <Illustration />
     </>
@@ -217,7 +217,7 @@ const S6: React.FC<{d: number}> = ({d}) => {
       {f < endAt ? (
         <>
           <Stage>
-            <Candle {...c} color={C.white} />
+            <Candle {...c} color={C.green} />
             <Pointer x1={c.x + 65} y={c.bottom} x2={c.x + 140} label="OPEN" progress={p(4)} />
             <Pointer x1={c.x} y={c.high} x2={c.x + 140} label="HIGH" progress={p(5)} />
             <Pointer x1={c.x} y={c.low} x2={c.x + 140} label="LOW" progress={p(6)} />

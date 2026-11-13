@@ -10,28 +10,28 @@ sources: []          # no figures used, so nothing to source (§6.6)
 HOOK (0–3s)
   VO: Win most trades. Still lose money.
   ON-SCREEN: Win most. Still lose. · WIN · WIN · WIN · WIN · LOSS
-  VISUAL: Bars growing from a baseline (illustration): WIN, WIN, WIN, WIN, LOSS in red.
+  VISUAL: Bars growing from a baseline (illustration): WIN in green, WIN in green, WIN in green, WIN in green, LOSS in red.
 
 STAKES (3–6s): what it costs to get this wrong
   VO: Because win rate is only half the picture.
   ON-SCREEN: Win rate = half the picture · WIN · WIN · WIN · WIN · LOSS
-  VISUAL: Bars growing from a baseline (illustration): WIN, WIN, WIN, WIN, LOSS in red.
+  VISUAL: Bars growing from a baseline (illustration): WIN in green, WIN in green, WIN in green, WIN in green, LOSS in red.
 
 LESSON (6–27s): 3 beats, one idea each
   Beat 1:
   VO: Win rate is how often you win. Nothing more. It says nothing about how much.
   ON-SCREEN: Win rate · how often you win · WIN · WIN · WIN · WIN · LOSS
-  VISUAL: Bars growing from a baseline (illustration): WIN, WIN, WIN, WIN, LOSS in red.
+  VISUAL: Bars growing from a baseline (illustration): WIN in green, WIN in green, WIN in green, WIN in green, LOSS in red.
 
   Beat 2:
   VO: The other half is size. How big are the wins? How big are the losses? You need both answers.
   ON-SCREEN: The other half: size · AVERAGE WIN · AVERAGE LOSS
-  VISUAL: Bars growing from a baseline (illustration): AVERAGE WIN, AVERAGE LOSS in red.
+  VISUAL: Bars growing from a baseline (illustration): AVERAGE WIN in green, AVERAGE LOSS in red.
 
   Beat 3:
   VO: Small wins and one big loss can wipe out a whole week. That's why the stop loss matters.
   ON-SCREEN: Small wins. One big loss. · WIN · WIN · WIN · WIN · LOSS
-  VISUAL: Bars growing from a baseline (illustration): WIN, WIN, WIN, WIN, LOSS in red.
+  VISUAL: Bars growing from a baseline (illustration): WIN in green, WIN in green, WIN in green, WIN in green, LOSS in red.
 
 LOOP / CTA (27–31s)
   VO: Stop asking how often. Start asking how much. Survive first. Follow.

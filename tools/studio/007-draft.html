@@ -7,8 +7,8 @@ function s1(t){txt('Small account.',CX,310,80,WH,ap(t,0.1));txt('Big trade.',CX,
   x.strokeStyle=t>=3.4?RED:WH;x.lineWidth=8;rr(bx-S/2,by-S/2,S,S,22);x.stroke();if(g<0.45)txt('TRADE',bx,by+100,36,GR,{a:1-p(g,0.15,0.45),sc:1},{w:800});if(g>0.45)txt('TRADE',bx,by,64,t>=3.4?RED:WH,{a:p(g,0.45,0.75),sc:1})}
 function s2(u){rich([['Leverage = ',WH],['magnifier',RED]],CX,320,76,ap(u,0.05));
   const sW=lerp(1,3,eo(p(u,1.1,1.6))),sR=lerp(1,3,eo(p(u,1.9,2.4)));
-  candle(330,860,50*sW,45*sW,true,WH);candle(330,860,50*sW,45*sW,false,WH);candle(690,860,50*sR,45*sR,true,RED);candle(690,860,50*sR,45*sR,false,RED);
-  txt('GAIN',330,1112,48,WH);txt('LOSS',690,1112,48,RED);
+  candle(330,860,50*sW,45*sW,true,GRN);candle(330,860,50*sW,45*sW,false,GRN);candle(690,860,50*sR,45*sR,true,RED);candle(690,860,50*sR,45*sR,false,RED);
+  txt('GAIN',330,1112,48,GRN);txt('LOSS',690,1112,48,RED);
   const lx=u<1.7?lerp(-260,330,eo(p(u,0.5,1.1))):lerp(330,690,eo(p(u,1.7,2.0)));x.strokeStyle=WH;x.lineWidth=9;x.beginPath();x.arc(lx,860,205,0,7);x.stroke();line(lx+145,1005,lx+215,1075,WH,16)}
 function s3(u){txt('How it works',CX,310,80,WH,ap(u,0.05));const base=1090,h=lerp(0,470,eo(p(u,4.3,5.4)));
   line(140,base+6,880,base+6,DIM,4);x.fillStyle=WH;x.fillRect(CX-240,base-70,150,70);

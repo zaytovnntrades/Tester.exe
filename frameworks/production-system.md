@@ -24,6 +24,10 @@ Last updated 2026-11-13.
 - **No figures** unless they're in `research/` with a URL and date. **No real market data:** every chart is labelled "illustration".
 - **Leverage warning** on screen in every scene of any futures, forex or prop-firm video.
 
+## Chart colours
+- Background black. **Green = up or gain, red = down or loss** on every candle, bar and line (changed 2026-11-13).
+- White = neutral. Red is also the warning accent in headlines; green headline words mark an up or gain idea.
+
 ## Captions (on screen)
 - 2 to 4 words at a time, on one line, about two-thirds of the way down the screen.
 - White, heavy font, dark box behind. The key word in red `#FF2D3D`.

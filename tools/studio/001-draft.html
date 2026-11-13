@@ -17,7 +17,7 @@ function s2(u){txt('$130,000,000+',CX,300,60,GR,ON,{w:800});pill('SEC complaint'
   txt('Source: SEC press release 2026-110, Oct 29, 2026',CX,1120,28,GR,{a:p(u,1.0,1.4),sc:1},{w:600})}
 const CH=[[120,900],[220,860],[300,880],[400,790],[480,820],[560,730],[640,760],[700,700],[760,840],[820,930],[880,1010],[930,1090]];
 function s3(u){head(1,u);txt(Q+'Risk-free'+QE,CX,430,88,WH,ap(u,1.2));txt('= not real',CX,535,60,GR,ap(u,1.6),{w:800});
-  const fr=p(u,1.6,5.6);drawPath(CH,Math.min(fr,7/11),WH,9);
+  const fr=p(u,1.6,5.6);drawPath(CH,Math.min(fr,7/11),GRN,9);
   if(fr>7/11){const sub=CH.slice(7);drawPath(sub,(fr-7/11)/(4/11),RED,9)}
   txt('illustration',CX,1165,28,DIM,ON,{w:600})}
 function s4(u){head(2,u);txt(Q+'Just follow our signals'+QE,CX,430,70,WH,ap(u,1.2));

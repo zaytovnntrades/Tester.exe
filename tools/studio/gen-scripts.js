@@ -1,10 +1,10 @@
 // Writes scripts/NNN-slug.md, briefs/vo/NNN-vo.txt and ideas/calendar-30-day.md from series.js.
 // Run: node tools/studio/gen-scripts.js   (keeps an existing script's status line, so approvals survive a re-run)
 const fs=require('fs'),path=require('path'),{SERIES,ORDER}=require('./series.js'),ROOT=path.resolve(__dirname,'../..');
-const plain=s=>s.replace(/\*/g,''),W=s=>s.split(/\s+/).length;
+const plain=s=>s.replace(/[*^]/g,''),W=s=>s.split(/\s+/).length;
 const see=v=>{const [k,o]=v;switch(k){
   case 'line':return ({up:'A price line stepping upward',down:'A price line stepping downward',side:'A price line moving sideways',zig:'A zig-zag price line',range:'A price line bouncing between a floor and a ceiling',break:'A price line that ranges, then breaks above the ceiling',spike:'A price line that is flat, then shoots up',steps:'A staircase line',dd:'A line that climbs to a peak, then falls',gap:'A price line that jumps straight from one level to a worse one (a buy that fills higher)'})[o.shape]+' (illustration).';
-  case 'bars':return 'Bars growing from a baseline (illustration): '+o.map(b=>(b[0]||'unlabelled')+(b[2]==='red'?' in red':'')).join(', ')+'.';
+  case 'bars':return 'Bars growing from a baseline (illustration): '+o.map(b=>(b[0]||'unlabelled')+(b[2]==='red'?' in red':b[2]==='green'?' in green':'')).join(', ')+'.';
   case 'steps':return 'A stack of boxes appearing one by one'+(o.hi!==undefined?', with the current one lit in red':'')+'.';
   case 'vs':return 'Two columns side by side: '+o.L[0]+' and '+o.R[0]+'.';
   case 'word':return 'A big red stamp: '+o.w+'.';

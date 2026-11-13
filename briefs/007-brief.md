@@ -6,7 +6,7 @@
 - **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/007-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 31 seconds of voice (78 words at 2.5 words per second) plus a 1-second end-card hold. Final length follows the real voiceover: send the six clip lengths and the scenes are re-timed to match.
-- **Style:** faceless. Motion graphics and text only. Black, white and one red.
+- **Style:** faceless. Motion graphics and text only. Black background, white text; charts in green (up) and red (down).
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge. Check these against TikTok's current layout before the final export.
 
 ## Costs
@@ -56,7 +56,7 @@ Timings are estimates from word counts. They get locked to the real voice clips.
 - **Equal growth in scene 2.** The gain candle and the loss candle must grow by the same amount. That is the whole point of the scene.
 
 ## Look
-- Colours: near-black background, white text, one accent red. White means gain or neutral; red means loss or danger. Keep that consistent in every scene.
+- Colours: black background, white text. Charts: **green = up or gain, red = down or loss** (changed 2026-11-13). Red is also the warning accent. Green means gain; white means neutral; red means loss or danger. Keep that consistent in every scene.
 - Font: the same heavy sans-serif as the other videos.
 - Cut pace: a visible change every 2 to 3 seconds, hard cuts between scenes.
 

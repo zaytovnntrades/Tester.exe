@@ -49,7 +49,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 - No real market data is needed in this video.
 
 ## Look
-- Colours: near-black background, white text, one accent red. The red line is the hero of the video: nothing else on screen is red until `DONE.`
+- Colours: black background, white text. Charts: **green = up or gain, red = down or loss** (changed 2026-11-13). Red is also the warning accent. The red line is the hero of the video: nothing else on screen is red until `DONE.`
 - Font: the same heavy sans-serif as video 001.
 - Cut pace: a visible change every 2 to 3 seconds, hard cuts between scenes.
 

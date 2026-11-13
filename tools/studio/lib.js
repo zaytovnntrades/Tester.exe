@@ -1,6 +1,6 @@
 // Shared drawing kit for the silent drafts (videos 001 and 004). 1080x1920, black / white / one red.
 const W=1080,H=1920,c=document.getElementById('c'),x=c.getContext('2d');
-const BG='#0a0a0c',WH='#f5f5f5',RED='#ff2d3d',GR='#8a8a92',DIM='#5a5a64';
+const BG='#0a0a0c',WH='#f5f5f5',RED='#ff2d3d',GRN='#22c55e',GR='#8a8a92',DIM='#5a5a64'; // chart colours: green = up/gain, red = down/loss
 const F="'Inter','DejaVu Sans','Liberation Sans',Arial,sans-serif",CX=510,MAXW=860,ON={a:1,sc:1};
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),p=(t,a,b)=>clamp((t-a)/(b-a)),eo=u=>1-Math.pow(1-u,3),lerp=(a,b,u)=>a+(b-a)*u;
 const hash=n=>{const s=Math.sin(n*127.1)*43758.5453;return s-Math.floor(s)};

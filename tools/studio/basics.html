@@ -3,8 +3,9 @@
 // Template for Trading Basics days 7-30. Usage: basics.html?id=008  (add &clean and/or &d=... as with the other videos).
 // Everything shown comes from series.js. Every chart, bar and line is an illustration: no figures, no real market data.
 const V=SERIES[new URLSearchParams(location.search).get('id')];if(!V)throw new Error('unknown id');
-const parse=s=>s.split('*').map((t,i)=>[t,i%2?RED:WH]).filter(q=>q[0]);
-const col=c=>c==='red'?RED:c==='dim'?DIM:WH;
+// headline markup: *red* for warnings/loss, ^green^ for up/gain
+const parse=s=>s.split(/(\*[^*]+\*|\^[^^]+\^)/).filter(Boolean).map(t=>t[0]==='*'?[t.slice(1,-1),RED]:t[0]==='^'?[t.slice(1,-1),GRN]:[t,WH]);
+const col=c=>c==='red'?RED:c==='green'?GRN:c==='dim'?DIM:WH;
 const X0=110,XW=800,Y0=1100,YH=470,px=a=>[X0+a[0]*XW,Y0-a[1]*YH];
 const UP=[[0,.08],[.15,.35],[.28,.24],[.45,.56],[.58,.45],[.75,.8],[.88,.7],[1,.95]];
 const SH={up:UP,down:UP.map(([a,b])=>[a,1-b]),
@@ -23,7 +24,7 @@ function vLine(o,q){
   for(const [yn,label,c,dashed,right] of (o.lines||[])){const Y=Y0-yn*YH,a=p(q,0.05,0.2);x.save();x.globalAlpha=a;if(dashed)dash(X0,Y,X0+XW,col(c),6);else line(X0,Y,X0+XW,Y,col(c),6);x.restore();
     if(label&&right){x.save();x.globalAlpha=a;x.font=`900 40px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=col(c);x.fillText(label,X0+XW,Y-36);x.restore()}
     else if(label)txt(label,X0,yn>=.5?Y-36:Y+40,40,col(c),{a,sc:1},{al:'left'})}
-  const pts=SH[o.shape].map(px),fr=ABS<0.3&&q<0.2?1:p(q,0.02,0.72),e=drawPath(pts,fr,WH,9);dot(e[0],e[1],13,WH);
+  const pts=SH[o.shape].map(px),fr=ABS<0.3&&q<0.2?1:p(q,0.02,0.72),LC={up:GRN,spike:GRN,down:RED}[o.shape]||WH,e=drawPath(pts,fr,LC,9);dot(e[0],e[1],13,LC);
   for(const [i,label,c] of (o.dots||[])){if(fr<i/(pts.length-1))continue;dot(pts[i][0],pts[i][1],16,col(c));txt(label,pts[i][0],pts[i][1]-48,40,col(c))}}
 function vBars(list,q){const n=list.length,slot=780/n,bw=Math.min(170,slot*0.62);line(120,1086,900,1086,DIM,4);
   list.forEach(([label,h,c],i)=>{const X=120+slot*(i+.5),hh=440*h*eo(p(q,i*0.45/n,i*0.45/n+0.3));x.fillStyle=col(c);x.fillRect(X-bw/2,1084-hh,bw,hh);
@@ -43,13 +44,13 @@ function vLoop(o,q){const cy=850,R=235,act=Math.floor(q*6)%4;x.strokeStyle=DIM;x
   o.labels.forEach((s,i)=>{const a=-Math.PI/2+i*Math.PI/2,X=CX+R*Math.cos(a),Y=cy+R*Math.sin(a);x.font=`900 50px ${F}`;const w=x.measureText(s).width+44;
     x.fillStyle=BG;rr(X-w/2,Y-44,w,88,18);x.fill();if(i===act){x.strokeStyle=RED;x.lineWidth=6;rr(X-w/2,Y-44,w,88,18);x.stroke()}txt(s,X,Y+2,50,i===act?RED:WH)})}
 function vLevels(o,q){const L=o.labels||['TARGET','ENTRY','STOP'],[yT,yE,yS]=o.ys||[660,860,1030],br=o.br||['RISK','REWARD'],a=p(q,0.03,0.15);x.save();x.globalAlpha=a;
-  line(110,yT,640,yT,WH,6);line(110,yE,640,yE,WH,6);dash(110,yS,640,RED,6);x.restore();
-  txt(L[0],110,yT-34,38,WH,{a,sc:1},{al:'left'});txt(L[1],110,yE-34,38,WH,{a,sc:1},{al:'left'});txt(L[2],110,yS+40,38,RED,{a,sc:1},{al:'left'});
+  line(110,yT,640,yT,GRN,6);line(110,yE,640,yE,WH,6);dash(110,yS,640,RED,6);x.restore();
+  txt(L[0],110,yT-34,38,GRN,{a,sc:1},{al:'left'});txt(L[1],110,yE-34,38,WH,{a,sc:1},{al:'left'});txt(L[2],110,yS+40,38,RED,{a,sc:1},{al:'left'});
   const brk=(y1,y2,c,label,t0)=>{const k=p(q,t0,t0+0.15);if(k<=0)return;x.save();x.globalAlpha=k;line(690,y1,690,y2,c,7);line(670,y1,710,y1,c,7);line(670,y2,710,y2,c,7);x.restore();txt(label,730,(y1+y2)/2+2,40,c,{a:k,sc:1},{al:'left',max:220})};
-  if(o.mode==='risk'||o.mode==='both')brk(yE,yS,RED,br[0],0.2);if(o.mode==='reward'||o.mode==='both')brk(yT,yE,WH,br[1],o.mode==='both'?0.35:0.2)}
+  if(o.mode==='risk'||o.mode==='both')brk(yE,yS,RED,br[0],0.2);if(o.mode==='reward'||o.mode==='both')brk(yT,yE,GRN,br[1],o.mode==='both'?0.35:0.2)}
 const CD=Array.from({length:9},(_,i)=>{const o=800-i*12+(hash(i+40)-.5)*120,cl=o+(hash(i+70)-.55)*150;return i===6?[850,690,1]:[o,cl,0.25+hash(i+90)*0.45]});
-function vCandles(o,q){CD.forEach(([op,cl,v],i)=>{const X=150+i*90,up=cl<op,t=Math.min(op,cl),b=Math.max(op,cl,t+10);ohlc(X,t-26-hash(i)*30,t,b,b+26+hash(i+3)*30,46,up?WH:RED);
-    if(o.vol){const hh=170*v*eo(p(q,i*0.04,i*0.04+0.25)),on=o.hi===i;x.fillStyle=on?RED:(o.hi===undefined?GR:DIM);x.fillRect(X-23,1110-hh,46,hh)}});
+function vCandles(o,q){CD.forEach(([op,cl,v],i)=>{const X=150+i*90,up=cl<op,t=Math.min(op,cl),b=Math.max(op,cl,t+10);ohlc(X,t-26-hash(i)*30,t,b,b+26+hash(i+3)*30,46,up?GRN:RED);
+    if(o.vol){const hh=170*v*eo(p(q,i*0.04,i*0.04+0.25)),on=o.hi===i;x.fillStyle=on?WH:(o.hi===undefined?GR:DIM);x.fillRect(X-23,1110-hh,46,hh)}});
   if(o.vol){line(110,1112,910,1112,DIM,3);txt('VOLUME',110,950,34,GR,ON,{al:'left',w:800})}}
 const DRAW={line:vLine,bars:vBars,steps:vSteps,vs:vVs,word:vWord,ladder:vLadder,loop:vLoop,levels:vLevels,candles:vCandles},ILLS=['line','bars','levels','candles'];
 const WORDS=V.s.map(s=>s[0].split(/\s+/).length),D=WORDS.map(n=>Math.max(2.6,n/2.5)),ST=[];D.reduce((a,v,i)=>(ST[i]=a,a+v),0);const END=ST[5]+D[5];

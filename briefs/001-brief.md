@@ -49,7 +49,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 - No real market data is needed anywhere in this video.
 
 ## Look
-- Colours: near-black background, white text, one accent red. Nothing else.
+- Colours: black background, white text. Charts: **green = up or gain, red = down or loss** (changed 2026-11-13). Red is also the warning accent. Nothing else.
 - Font: one heavy sans-serif for headlines, the same family in regular for small text.
 - Cut pace: a visible change every 2 to 3 seconds (new text, icon, or movement), hard cuts between scenes.
 

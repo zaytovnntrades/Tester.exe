@@ -5,7 +5,7 @@
 - **Reference draft:** a silent version already exists. Rebuild it with `node tools/studio/render.js tools/studio/005-draft.html renders/005-draft-silent.mp4`. Use it as the layout reference.
 - **Format:** 1080×1920 vertical (9:16), 30 fps
 - **Duration:** about 36 seconds (90 words at 2.5 words per second). Final length follows the voiceover: time the scenes to the audio.
-- **Style:** faceless. Motion graphics and text only. Black, white and one red, the same as the other channel videos.
+- **Style:** faceless. Motion graphics and text only. Black background, white text; charts in green (up) and red (down), the same as the other channel videos.
 - **Voice and captions:** added by the director in CapCut (see `briefs/capcut-handoff.md`; text in `briefs/vo/005-vo.txt`). Steady, lower, unhurried voice. Blunt coach. The same voice as every other video.
 - **Platform:** TikTok first. Keep all text inside the safe area: clear of the top 220 px and bottom 420 px, and 120 px off the right edge. Check these against TikTok's current layout before the final export.
 
@@ -52,11 +52,11 @@ Burned-in captions of the voiceover, 2 to 4 words at a time, key word highlighte
 ## Chart and data needs
 - **Every candle is an illustration.** No axes with prices, no ticker, no real market data, no times of day. Add a tiny `illustration` label in scene 1.
 - **No numbers anywhere.** The time labels ("1 MINUTE", "1 HOUR", "1 DAY") are the only digits, and they name chart settings, not market figures.
-- **Up is white, down is red** in this video. Scene 4b must keep the `Colours vary by platform.` note, because many platforms use green and red.
+- **Up is green, down is red** in this video (changed from white on 2026-11-13). The wicks scene highlights the wicks in white, because red now means down. Scene 4b must keep the `Colours vary by platform.` note, because many platforms use green and red.
 - **The labelled candle is an up candle** in scenes 4a, 5 and 6, so OPEN is at the bottom of the body and CLOSE is at the top. Don't swap in a down candle without swapping the labels.
 
 ## Look
-- Colours: near-black background, white text, one accent red.
+- Colours: black background, white text. Charts: **green = up or gain, red = down or loss** (changed 2026-11-13). Red is also the warning accent.
 - Font: the same heavy sans-serif as the other videos.
 - Cut pace: a visible change every 2 to 3 seconds. Scenes 2 and 5 are single-object shots, so the labels and pointers must do the moving.
 

@@ -56,7 +56,7 @@ Timings are estimates from word counts. Lock them to the real audio.
 - **No names on screen.** The two dissenters are in the source, but the video doesn't need them.
 
 ## Look
-- Colours: near-black background, white text, one accent red. The two red dots in scene 2 are the visual centre of the video.
+- Colours: black background, white text. Charts: **green = up or gain, red = down or loss** (changed 2026-11-13). Red is also the warning accent. The two red dots in scene 2 are the visual centre of the video.
 - Font: the same heavy sans-serif as videos 001 and 004.
 - Cut pace: a visible change every 2 to 3 seconds, hard cuts between scenes.
 

@@ -10,12 +10,12 @@ sources: []          # no figures used, so nothing to source (§6.6)
 HOOK (0–3s)
   VO: Two questions before every trade.
   ON-SCREEN: Two questions. Every trade. · RISK · REWARD
-  VISUAL: Bars growing from a baseline (illustration): RISK in red, REWARD.
+  VISUAL: Bars growing from a baseline (illustration): RISK in red, REWARD in green.
 
 STAKES (3–10s): what it costs to get this wrong
   VO: What can I lose? What can I make? Skip them, and you'll risk a lot to make a little.
   ON-SCREEN: Risk a lot. Make a little. · RISK · REWARD
-  VISUAL: Bars growing from a baseline (illustration): RISK in red, REWARD.
+  VISUAL: Bars growing from a baseline (illustration): RISK in red, REWARD in green.
 
 LESSON (10–29s): 3 beats, one idea each
   Beat 1:

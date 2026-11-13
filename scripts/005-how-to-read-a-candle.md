@@ -53,4 +53,4 @@ WORD COUNT: 90 (≈36s at 2.5 words/sec)
 5. Disclose connections: ✅ none
 6. Sourced numbers: ✅ no figures used
 7. Disclaimer: ✅ on-screen
-Accuracy note: up/down colours differ between platforms, so the video says so on screen and uses white for up and red for down.
+Accuracy note: up/down colours differ between platforms, so the video says so on screen and uses green for up and red for down.
