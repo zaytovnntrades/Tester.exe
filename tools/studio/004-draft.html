@@ -7,7 +7,7 @@ function s1(t){txt('1 bad day.',CX,330,110,WH,ap(t,0.1));txt('1 number.',CX,470,
   const fr=t<0.6?(t/0.6)*(14/26):14/26+p(t,0.6,2.9)*(12/26);
   if(t>=2.9)line(0,1058,W,1058,RED,10);
   const e=drawPath(P1,fr,WH,9);dot(e[0],e[1],13,t>=2.9?RED:WH);
-  txt('ACCOUNT',60,646,38,GR,ON,{al:'left',w:800});txt('illustration',CX,1150,24,DIM,ON,{w:500})}
+  txt('ACCOUNT',60,646,38,GR,ON,{al:'left',w:800});txt('illustration',CX,1150,28,DIM,ON,{w:600})}
 function s2(u){const N=[['Lose',0],['Angry',0.7],['Bigger',1.75],['Lose more',2.9]],cy=720,R=250;
   let act=0;for(let i=0;i<4;i++)if(u>=N[i][1])act=i;if(u>3.4)act=Math.floor(Math.pow(u-3.4,1.7)*3.2)%4;
   x.strokeStyle=DIM;x.lineWidth=5;x.beginPath();x.arc(CX,cy,R,0,7);x.stroke();
@@ -21,7 +21,7 @@ function s3(u){line(0,900,W,900,RED,10);
   const L='MAX DAILY LOSS';txt(L.slice(0,Math.round(L.length*p(u,0.3,1.5))),70,975,72,RED,ON,{al:'left'});
   const e=drawPath(P3,p(u,0.4,3.4),WH,9);dot(e[0],e[1],13,WH);
   txt('One number.',CX,310,84,WH,ap(u,2.7));txt('The most you can lose today.',CX,420,54,GR,ap(u,3.5),{w:800});
-  txt('illustration',CX,1150,24,DIM,ON,{w:500})}
+  txt('illustration',CX,1150,28,DIM,ON,{w:600})}
 function s4(u){rich([['Set it ',WH],['BEFORE',RED],[' the open.',WH]],CX,310,72,ap(u,0.05));txt('Calm. Not mid-streak.',CX,420,56,GR,ap(u,2.1),{w:800});
   const kx=CX-235,ky=800;x.strokeStyle=WH;x.lineWidth=8;x.beginPath();x.arc(kx,ky,135,0,7);x.stroke();
   for(let i=0;i<12;i++){const a=i*Math.PI/6;line(kx+112*Math.cos(a),ky+112*Math.sin(a),kx+124*Math.cos(a),ky+124*Math.sin(a),GR,4)}

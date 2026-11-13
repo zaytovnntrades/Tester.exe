@@ -23,7 +23,7 @@ function vLine(o,q){
   for(const [yn,label,c,dashed,right] of (o.lines||[])){const Y=Y0-yn*YH,a=p(q,0.05,0.2);x.save();x.globalAlpha=a;if(dashed)dash(X0,Y,X0+XW,col(c),6);else line(X0,Y,X0+XW,Y,col(c),6);x.restore();
     if(label&&right){x.save();x.globalAlpha=a;x.font=`900 40px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=col(c);x.fillText(label,X0+XW,Y-36);x.restore()}
     else if(label)txt(label,X0,yn>=.5?Y-36:Y+40,40,col(c),{a,sc:1},{al:'left'})}
-  const pts=SH[o.shape].map(px),fr=p(q,0.02,0.72),e=drawPath(pts,fr,WH,9);dot(e[0],e[1],13,WH);
+  const pts=SH[o.shape].map(px),fr=ABS<0.3&&q<0.2?1:p(q,0.02,0.72),e=drawPath(pts,fr,WH,9);dot(e[0],e[1],13,WH);
   for(const [i,label,c] of (o.dots||[])){if(fr<i/(pts.length-1))continue;dot(pts[i][0],pts[i][1],16,col(c));txt(label,pts[i][0],pts[i][1]-48,40,col(c))}}
 function vBars(list,q){const n=list.length,slot=780/n,bw=Math.min(170,slot*0.62);line(120,1086,900,1086,DIM,4);
   list.forEach(([label,h,c],i)=>{const X=120+slot*(i+.5),hh=440*h*eo(p(q,i*0.45/n,i*0.45/n+0.3));x.fillStyle=col(c);x.fillRect(X-bw/2,1084-hh,bw,hh);

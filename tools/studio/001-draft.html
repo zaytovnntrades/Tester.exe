@@ -19,7 +19,7 @@ const CH=[[120,900],[220,860],[300,880],[400,790],[480,820],[560,730],[640,760],
 function s3(u){head(1,u);txt(Q+'Risk-free'+QE,CX,430,88,WH,ap(u,1.2));txt('= not real',CX,535,60,GR,ap(u,1.6),{w:800});
   const fr=p(u,1.6,5.6);drawPath(CH,Math.min(fr,7/11),WH,9);
   if(fr>7/11){const sub=CH.slice(7);drawPath(sub,(fr-7/11)/(4/11),RED,9)}
-  txt('illustration',CX,1165,24,DIM,ON,{w:500})}
+  txt('illustration',CX,1165,28,DIM,ON,{w:600})}
 function s4(u){head(2,u);txt(Q+'Just follow our signals'+QE,CX,430,70,WH,ap(u,1.2));
   const px=CX-190,py=540;x.strokeStyle=WH;x.lineWidth=7;rr(px,py,380,620,44);x.stroke();line(CX-45,py+34,CX+45,py+34,DIM,10);
   if(u>=1.2){x.save();rr(px+4,py+4,372,612,40);x.clip();const sl=lerp(-200,0,eo(p(u,1.2,1.5))),sw=eo(p(u,2.7,3.2));

@@ -33,8 +33,8 @@ Last updated 2026-11-13.
 | | TikTok | Instagram Reels |
 |-|--------|-----------------|
 | Format | 9:16, 1080×1920 | 9:16, 1080×1920 (same file) |
-| Safe area used here | text inside 60–960 px across, 220–1500 px down | same box: it clears both apps' top bar, bottom caption block and side buttons |
-| Cover | frame 0 is the cover, so every video opens with the headline already on screen | pick the first frame as the cover, or upload the cover image |
+| Safe area used here | text inside 60–960 px across, 220–1500 px down | the same box, chosen to clear the top bar, bottom caption block and side buttons. Check it against each app's current layout before export: both change. |
+| Cover | frame 0 is the cover, so every video opens with its first headline or hook graphic already on screen | pick the first frame as the cover, or upload the cover image |
 | CTA wording | "Follow" | "Follow" works the same. "Link in bio" points to the YouTube hub. |
 | AI voice label | check TikTok's current AI-generated content setting and switch it on if a synthetic voice counts | check Instagram's current "AI info" label rules and switch it on if they apply |
 | Hashtags | 3–5 from the script | the same 3–5 |
@@ -49,8 +49,8 @@ Check each app's own help pages for the current label rules: they change, and th
 | **Remotion** (the toolkit's renderer) | The polished Reels: `tools/reel/`. Reel 005 is built. | — |
 | **Canvas drafts** (`tools/studio/`) | Fast clean visuals for all 30 days. | Final polish: that's Remotion's job. |
 | **Hyperframes** | Not used. Remotion already covers everything; a second renderer would mean two looks and two sets of bugs. | — |
-| **claude-code-video-toolkit** | Workflow reference: its 9:16 rules (frame 0 is the cover, no text under 28 px, check the render frame by frame). Cloned beside this repo. | Its paid voice and image steps: you voice in CapCut. |
-| **Zernio** (MCP) | Saved in `.mcp.json`. Could post or schedule to your accounts. | **Nothing is posted or scheduled without your explicit OK for that post.** Not used to pull analytics, because CLAUDE.md says only stats you paste. |
+| **claude-code-video-toolkit** | Workflow reference: its renderer (Remotion) and its 9:16 rules (frame 0 is the cover, no text under 28 px, check the render frame by frame). Cloned beside this repo. Reel 005 follows these rules; it was not built through the toolkit's `/video` command or its Python 9:16 template. | Its paid voice and image steps: you voice in CapCut. Its QC script was not run in the cloud session. |
+| **Zernio** (MCP) | Saved in `.mcp.json`; its host is allowed in the Tester.exe environment. **Needs your sign-in** before any tool works (the server answers "sign in required"). Could post or schedule to your accounts. | **Nothing is posted or scheduled without your explicit OK for that post.** Not used to pull analytics, because CLAUDE.md says only stats you paste. |
 
 ## Originality
 - Never copy a creator's script, hook wording, footage, music or visual style. Breakdowns note **structure** only (hook type, cut pace, where the payoff lands).

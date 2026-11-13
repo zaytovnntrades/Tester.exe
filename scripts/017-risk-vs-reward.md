@@ -9,7 +9,7 @@ sources: []          # no figures used, so nothing to source (§6.6)
 ---
 HOOK (0–3s)
   VO: Two questions before every trade.
-  ON-SCREEN: Lose what? Make what? · RISK · REWARD
+  ON-SCREEN: Two questions. Every trade. · RISK · REWARD
   VISUAL: Bars growing from a baseline (illustration): RISK in red, REWARD.
 
 STAKES (3–10s): what it costs to get this wrong
@@ -42,7 +42,7 @@ DISCLAIMER (on-screen): Educational only — not financial advice.
 CAPTION (≤150 chars): Risk vs reward: two questions to ask before every trade. Trading basics, day 16 of 30. Educational only, not financial advice.
 HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #riskreward #riskmanagement
 PINNED COMMENT: Do you know your risk before you enter, every time? Be honest 👇
-COVER / THUMBNAIL: "Lose what? Make what?" in white and red on a dark background, with the hook's graphic.
+COVER / THUMBNAIL: "Two questions. Every trade." in white and red on a dark background, with the hook's graphic.
 WORD COUNT: 81 (≈32s at 2.5 words/sec)
 
 ## Compliance check (§6)

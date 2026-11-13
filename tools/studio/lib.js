@@ -4,7 +4,8 @@ const BG='#0a0a0c',WH='#f5f5f5',RED='#ff2d3d',GR='#8a8a92',DIM='#5a5a64';
 const F="'Inter','DejaVu Sans','Liberation Sans',Arial,sans-serif",CX=510,MAXW=860,ON={a:1,sc:1};
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),p=(t,a,b)=>clamp((t-a)/(b-a)),eo=u=>1-Math.pow(1-u,3),lerp=(a,b,u)=>a+(b-a)*u;
 const hash=n=>{const s=Math.sin(n*127.1)*43758.5453;return s-Math.floor(s)};
-const ap=(t,t0)=>({a:p(t,t0,t0+0.1),sc:lerp(1.22,1,eo(p(t,t0,t0+0.22)))});
+let ABS=1; // absolute video time, set every frame by render()
+const ap=(t,t0)=>ABS<0.3&&t0<=0.15?ON:({a:p(t,t0,t0+0.1),sc:lerp(1.22,1,eo(p(t,t0,t0+0.22)))}); // frame 0 is the cover
 function rich(parts,X,Y,size,A=ON,o={}){if(A.a<=0)return;x.save();const w=o.w??900;let tot;
   for(;;){x.font=`${w} ${size}px ${F}`;tot=parts.reduce((s,q)=>s+x.measureText(q[0]).width,0);if(tot<=(o.max??MAXW))break;size*=0.96}
   x.globalAlpha*=A.a;x.translate(X,Y);x.scale(A.sc,A.sc);x.textBaseline='middle';x.textAlign='left';let cx=o.al==='left'?0:-tot/2;
@@ -35,7 +36,7 @@ function warn(Y){x.fillStyle=RED;rr(CX-430,Y,860,116,22);x.fill();x.fillStyle=BG
   txt('!',144,Y+67,40,RED);txt('LEVERAGE MAGNIFIES LOSSES',CX+50,Y+60,46,BG,ON,{max:660})}
 function dash(x1,y,x2,col,w=7){x.save();x.setLineDash([22,16]);line(x1,y,x2,y,col,w);x.restore()}
 function box(s,X,Y,w,h,col,A=ON,fill=false){if(A.a<=0)return;x.save();x.globalAlpha=A.a;if(fill){x.fillStyle=col;rr(X-w/2,Y-h/2,w,h,18);x.fill()}else{x.strokeStyle=col;x.lineWidth=7;rr(X-w/2,Y-h/2,w,h,18);x.stroke()}x.restore();txt(s,X,Y+2,Math.min(60,h*0.5),fill?BG:col,A,{max:w-40})}
-const ILL=(y=1165)=>txt('illustration',CX,y,24,DIM,ON,{w:500});
+const ILL=(y=1165)=>txt('illustration',CX,y,28,DIM,ON,{w:600});
 function endCard(u,tS,tF,tC,yS=1000,next=''){if(next)txt(next,CX,yS+245,40,GR,ap(u,tF+0.3),{w:800});txt('Survive first.',CX,yS,100,RED,ap(u,tS));pill('Follow',CX,yS+130,46,WH,ap(u,tF),true);txt('Zaytovnn Trades',CX,1292,60,WH,ap(u,tC))}
 // setup(): captions (2-4 words, key word red, spread evenly over each scene's voice time) + frame wrapper.
 function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
@@ -52,6 +53,6 @@ function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
     const tw=Math.min(MAXW,parts.reduce((s,q)=>s+x.measureText(q[0]).width,0));
     x.fillStyle='rgba(0,0,0,.72)';rr(CX-tw/2-34,1290-58,tw+68,116,26);x.fill();
     rich(parts,CX,1292,62,{a:1,sc:lerp(1.08,1,eo(p(t,cur[0],cur[0]+0.12)))})}
-  const OUT=NEND+TAIL;window.DUR=OUT;window.render=tt=>{const t=warp(tt);x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,W,H);
+  const OUT=NEND+TAIL;window.DUR=OUT;window.render=tt=>{const t=warp(tt);ABS=tt;x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,W,H);
     let f=scenes[0][1],t0=0;for(const [a,fn] of scenes)if(t>=a){f=fn;t0=a}f(t-t0);if(!CLEAN)captions(t);
     txt('Educational only — not financial advice.',CX,1455,30,GR,ON,{w:600});x.fillStyle=RED;x.fillRect(0,1914,W*tt/OUT,6)};window.render(0)}

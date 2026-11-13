@@ -76,7 +76,7 @@ const SERIES={
  ["Start with the smallest size there is. On sim. Survive first. Follow.","Start *small.*","",['end']]]},
 '017':{t:'Risk vs reward',slug:'risk-vs-reward',pillar:1,hook:'question',tags:['#riskreward','#riskmanagement'],
  cap:'Risk vs reward: two questions to ask before every trade.',pin:'Do you know your risk before you enter, every time? Be honest 👇',s:[
- ["Two questions before every trade.","Lose *what?* Make *what?*","",['bars',[['RISK',.5,'red'],['REWARD',.5,'white']]]],
+ ["Two questions before every trade.","*Two* questions. *Every* trade.","",['bars',[['RISK',.5,'red'],['REWARD',.5,'white']]]],
  ["What can I lose? What can I make? Skip them, and you'll risk a lot to make a little.","Risk a lot. Make *a little.*","",['bars',[['RISK',.9,'red'],['REWARD',.2,'white']]]],
  ["Risk is the distance from your entry to your stop loss.","*Risk*","entry → stop",['levels',{mode:'risk'}]],
  ["Reward is the distance from your entry to your target.","*Reward*","entry → target",['levels',{mode:'reward'}]],

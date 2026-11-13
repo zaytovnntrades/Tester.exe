@@ -7,7 +7,7 @@ const F="'Inter','DejaVu Sans','Liberation Sans',Arial,sans-serif",CX=510,MAXW=8
 const DUR=38.5;window.DUR=DUR;
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),p=(t,a,b)=>clamp((t-a)/(b-a)),eo=u=>1-Math.pow(1-u,3),lerp=(a,b,u)=>a+(b-a)*u;
 const hash=n=>{const s=Math.sin(n*127.1)*43758.5453;return s-Math.floor(s)};
-const ap=(t,t0)=>({a:p(t,t0,t0+0.1),sc:lerp(1.22,1,eo(p(t,t0,t0+0.22)))});
+let ABS=1;const ap=(t,t0)=>ABS<0.3&&t0<=0.15?{a:1,sc:1}:({a:p(t,t0,t0+0.1),sc:lerp(1.22,1,eo(p(t,t0,t0+0.22)))}); // frame 0 is the cover
 function rich(parts,X,Y,size,A={a:1,sc:1},o={}){if(A.a<=0)return;x.save();const w=o.w??900;let tot;
   for(;;){x.font=`${w} ${size}px ${F}`;tot=parts.reduce((s,q)=>s+x.measureText(q[0]).width,0);if(tot<=(o.max??MAXW))break;size*=0.96}
   x.globalAlpha=A.a;x.translate(X,Y);x.scale(A.sc,A.sc);x.textBaseline='middle';x.textAlign='left';let cx=o.al==='left'?0:-tot/2;
@@ -43,7 +43,7 @@ function s1(t){txt('OCT 28',CX,290,38,GR,{a:1,sc:1},{w:700});
   if(amp>0){x.strokeStyle=GR;x.lineWidth=5;x.lineJoin='round';x.beginPath();
     for(let i=0;i<=36;i++){const n=Math.sin(i*0.9+t*7)*0.42+Math.sin(i*0.37-t*11)*0.33+(hash(i+Math.floor(t*14)*57)-0.5)*0.6;
       const X=i*30,Y=880+amp*n*Math.min(1,i/5);i?x.lineTo(X,Y):x.moveTo(X,Y)}x.stroke();
-    txt('PRICE',930,655,30,GR,{a:p(t,1.2,1.5),sc:1},{w:700,al:'left',max:200});txt('illustration',CX,1165,24,DIM,{a:1,sc:1},{w:500})}
+    txt('PRICE',930,655,30,GR,{a:p(t,1.2,1.5),sc:1},{w:700,al:'left',max:200});txt('illustration',CX,1165,28,DIM,{a:1,sc:1},{w:600})}
   line(0,880,W,880,WH,10);x.fillStyle=BG;x.fillRect(70,826,170,44);txt('RATES',90,848,36,WH,{a:1,sc:1},{al:'left'})}
 function s2(t){const u=t-5.5;
   if(u<3.2){txt('3.75–4.00%',CX,560,170,WH,ap(u,0.05));
@@ -59,7 +59,7 @@ function s3(t){const u=t-13.5,e=eo(p(u,0,1.2));
   if(u<1.4)txt('Split vote',CX,500,92,WH,ap(u,0.05));else if(u<2.75)txt("Nobody's sure",CX,500,92,WH,ap(u,1.4));
   else{txt('Bigger swings.',CX,470,88,WH,ap(u,2.75));txt('Both ways.',CX,575,76,RED,ap(u,4.6))}
   const g=eo(p(u,2.6,5.0));for(let i=0;i<9;i++){const up=i%2===0,h=lerp(26,58+i*24,g)*(0.9+0.1*Math.sin(u*9+i));candle(150+i*90,900,46,h,up,up?WH:RED)}
-  line(60,900,960,900,DIM,2);txt('illustration',CX,1190,24,DIM,{a:1,sc:1},{w:500})}
+  line(60,900,960,900,DIM,2);txt('illustration',CX,1190,28,DIM,{a:1,sc:1},{w:600})}
 function s4(t){const u=t-19;
   txt('MES · MNQ',CX,310,104,WH,ap(u,0.05));txt('= leveraged',CX,415,58,GR,ap(u,0.9));
   x.fillStyle=RED;rr(CX-430,505,860,116,22);x.fill();
@@ -95,7 +95,7 @@ const QS=new URLSearchParams(location.search),CLEAN=QS.has('clean'),S0=SC.map(q=
 const N0=QS.get('d')?QS.get('d').split(',').map(Number):E0.map((e,i)=>e-S0[i]);if(N0.length!==6||N0.some(v=>!(v>0)))throw new Error('d needs 6 positive numbers');
 const NS0=[];N0.reduce((acc,v,i)=>(NS0[i]=acc,acc+v),0);const NEND0=NS0[5]+N0[5],OUT=NEND0+1;
 const warp=t=>{if(t>=NEND0)return 37.5+(t-NEND0);let i=0;while(i<5&&t>=NS0[i+1])i++;return S0[i]+(t-NS0[i])*(E0[i]-S0[i])/N0[i]};
-window.render=tt=>{const t=warp(tt);x.fillStyle=BG;x.fillRect(0,0,W,H);let f=s1;for(const [a,fn] of SC)if(t>=a)f=fn;f(t);if(!CLEAN)captions(t);
+window.render=tt=>{const t=warp(tt);ABS=tt;x.fillStyle=BG;x.fillRect(0,0,W,H);let f=s1;for(const [a,fn] of SC)if(t>=a)f=fn;f(t);if(!CLEAN)captions(t);
   txt('Educational only — not financial advice.',CX,1455,30,GR,{a:1,sc:1},{w:600});
   x.fillStyle=RED;x.fillRect(0,1914,W*tt/OUT,6)};window.DUR=OUT;
 render(0);

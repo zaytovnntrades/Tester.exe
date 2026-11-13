@@ -14,7 +14,7 @@ function s3(u){txt('How it works',CX,310,80,WH,ap(u,0.05));const base=1090,h=ler
   line(140,base+6,880,base+6,DIM,4);x.fillStyle=WH;x.fillRect(CX-240,base-70,150,70);
   txt(u<3.1?'DEPOSIT':'MARGIN',CX-165,base+50,42,u<3.1?WH:RED,ap(u,u<3.1?0.8:3.1));txt('(your deposit)',CX-165,base+98,30,GR,{a:p(u,3.1,3.4),sc:1},{w:700});
   if(h>0){x.strokeStyle=WH;x.lineWidth=8;x.strokeRect(CX+60,base-h,190,h);txt('POSITION',CX+155,base+50,42,WH,ap(u,4.3));txt('(what you control)',CX+155,base+98,30,GR,{a:p(u,4.6,4.9),sc:1},{w:700})}
-  x.save();x.font=`500 24px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=DIM;x.fillText('illustration',930,560);x.restore()}
+  x.save();x.font=`600 28px ${F}`;x.textAlign='right';x.textBaseline='middle';x.fillStyle=DIM;x.fillText('illustration',930,560);x.restore()}
 function s4(u){txt('Small move → big move',CX,310,70,WH,ap(u,0.05));txt('Both ways.',CX,415,68,RED,ap(u,5.1));
   const v=u<3.2?eo(p(u,0.4,1.4)):lerp(1,-1,eo(p(u,3.2,4.6))),zy=820;line(150,zy,870,zy,DIM,4);
   const bar=(X,amp,name)=>{const h=amp*v,col=v>=0?WH:RED;x.fillStyle=col;x.fillRect(X-70,h>=0?zy-h:zy,140,Math.abs(h));txt(name,X,1130,40,WH,ON,{w:800})};
