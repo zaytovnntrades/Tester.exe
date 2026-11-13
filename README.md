@@ -26,13 +26,13 @@ python tools/scout/rss_spider.py --dev   # cached while you tweak feeds.txt
 - Writer: social-media-skills plugin
 - Studio: claude-code-video-toolkit, cloned next to this repo at `../claude-code-video-toolkit` (not in use right now: see below)
 
-## How videos get made right now
-1. Visuals are drawn in code here: `node tools/studio/render.js tools/studio/005-draft.html renders/clean/005-clean.mp4 clean`
+## How videos get made right now (v2)
+1. Visuals are drawn in code here: `bash tools/render-all.sh` (all 30) or `bash tools/render-all.sh d04` (one day)
 2. Voice and captions are added in CapCut. Steps: `briefs/capcut-handoff.md`. Text to paste: `briefs/vo/`.
-3. Send the six voice-clip lengths back and the video is re-timed to match: add `"clean&d=4.8,4.1,6.3,8.9,5.7,6.6"` as the last argument.
+3. Send the six voice-clip lengths back and the video is re-timed to match: see `briefs/capcut-handoff.md`.
 
 Rendered videos land in `renders/`, which is not committed.
 
 ## The 30-day calendar
-- Plan: `ideas/calendar-30-day.md`
-- Days 7 to 30 (videos 008 to 031) come from one data file, `tools/studio/series.js`. After editing it, run `node tools/studio/gen-scripts.js` to rewrite the scripts, voiceover text and calendar, then re-render the video: `node tools/studio/render.js tools/studio/basics.html renders/clean/008-clean.mp4 "id=008&clean"`
+- Plan: `ideas/calendar-30-day.md` (v2, days d01–d30)
+- All 30 days come from one data file, `tools/studio/series.js`. After editing it, run `node tools/studio/gen-scripts.js` to rewrite the scripts, voiceover text and calendar, then re-render the video: `node tools/studio/render.js tools/studio/basics.html renders/clean/d01-clean.mp4 "id=d01&clean"`, or all 30 at once: `bash tools/render-all.sh`

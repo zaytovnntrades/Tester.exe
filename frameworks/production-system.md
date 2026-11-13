@@ -1,14 +1,14 @@
 # Reel and TikTok production system: Zaytovnn Trades
 
 One page for how a video goes from idea to posted. It overrides the defaults in CLAUDE.md where they differ.
-Last updated 2026-11-13.
+Last updated 2026-11-13 (v2: 30-day beginner curriculum d01–d30; the v1 set is in `archive/v1`).
 
 ## The daily loop
 | Step | What happens | Who | Where it lands |
 |------|--------------|-----|----------------|
-| 1. Topic | Take the next day from the 30-day plan. Post ★ critical days first if you have to skip any. | Plan | `ideas/calendar-30-day.md` |
-| 2. Script | Hook (under 3 seconds), stakes, 3 lesson beats, CTA. 30–45 seconds. Compliance check at the bottom. | Claude writes, you approve | `scripts/###-*.md` |
-| 3. Visuals | Silent, caption-free video drawn in code. | Claude | `renders/clean/###-clean.mp4` |
+| 1. Topic | Take the next day from the 30-day plan. Post package ready by 11:30 am Eastern. Film your IRL video for the same day. | Plan | `ideas/calendar-30-day.md` |
+| 2. Script | Hook (under 3 seconds), stakes, 3 lesson beats, CTA. 30–45 seconds. Compliance check at the bottom. Uses only terms taught on earlier days. | Claude writes, you approve | `scripts/dNN-*.md` |
+| 3. Visuals | Silent, caption-free video drawn in code. | Claude | `renders/clean/dNN-clean.mp4` (`bash tools/render-all.sh`) |
 | 4. Voice | Paste the six paragraphs into CapCut text-to-speech. Voice: **the male "sly villain" voice in CapCut** (your choice, 2026-11-13). Same voice every video. | You | CapCut |
 | 5. Re-time | Send the six clip lengths. The video is re-rendered so every cut lands on your voice. | You → Claude | `renders/` |
 | 6. Captions, music, export | CapCut auto-captions, proofread. Highlight the red headline word. Music under the voice. | You | `###-final.mp4` |
@@ -17,7 +17,8 @@ Last updated 2026-11-13.
 | 9. Stats | After 48 hours, paste the numbers. Every 10 posts, the plan is re-ranked. | You → Claude | `published/log.csv`, `ideas/insights.md` |
 
 ## Script rules (checked automatically for days 7–30)
-- **Hook: 7 spoken words or fewer**, which is under 3 seconds at the channel's pace. Days 1–6 keep their approved 4–5 second hooks.
+- **Hook: 7 spoken words or fewer**, which is under 3 seconds at the channel's pace.
+- **Learning order:** no day uses a term before the day that teaches it (checked automatically).
 - **Length: 30–45 seconds** of voice (about 75–110 words).
 - **One idea per beat.** Three beats, never more.
 - **CTA:** every video ends on "Survive first. Follow." plus an on-screen "Next:" line naming tomorrow's topic.
@@ -49,9 +50,10 @@ Check each app's own help pages for the current label rules: they change, and th
 | Tool | Used for | Not used for |
 |------|----------|--------------|
 | **Scrapling** (`tools/scout/`) | Public RSS feeds and official pages: central banks, regulators. Example: the Fed's meeting calendar, which fixes day 6's deadline. | TikTok, YouTube, Instagram or X. Logins, paywalls, bot checks. |
-| **Video Watch** (claude-video plugin) | Breaking down a reference Short **you give me**: hook, cuts, pacing. Structure only. | Copying any creator's words, footage or look. Not installed in this cloud session; use it on your computer. |
-| **Remotion** (the toolkit's renderer) | The polished Reels: `tools/reel/`. Reel 005 is built. | — |
-| **Canvas drafts** (`tools/studio/`) | Fast clean visuals for all 30 days. | Final polish: that's Remotion's job. |
+| **Video Watch** (bradautomates/claude-video) | Breaking down a reference Short **you give me** (structure only), and checking finished videos: once your voiced files exist, its local engine transcribes them so I can diff the words against the script. Set up in the cloud session in local mode (its Gemini mode would upload files to Google). | Copying any creator's words, footage or look. |
+| **Remotion** (the toolkit's renderer) | `tools/reel/` holds the v1 polished Reel 005. Not used for the v2 set: one renderer for all 30 keeps them consistent. | — |
+| **Lesson renderer** (`tools/studio/`) | All 30 v2 lessons, from one data file (`series.js`). | — |
+| **Higgsfield** | Possible text-free background animation. You said not now; 10 credits on the account. AI video invents prices and shapes, so the teaching charts always stay drawn in code. | Charts, prices, candles, people. |
 | **Hyperframes** | Not used. Remotion already covers everything; a second renderer would mean two looks and two sets of bugs. | — |
 | **claude-code-video-toolkit** | Workflow reference: its renderer (Remotion) and its 9:16 rules (frame 0 is the cover, no text under 28 px, check the render frame by frame). Cloned beside this repo. Reel 005 follows these rules; it was not built through the toolkit's `/video` command or its Python 9:16 template. | Its paid voice and image steps: you voice in CapCut. Its QC script was not run in the cloud session. |
 | **Zernio** (MCP) | Saved in `.mcp.json`; its host is allowed in the Tester.exe environment. **Needs your sign-in** before any tool works (the server answers "sign in required"). Could post or schedule to your accounts. | **Nothing is posted or scheduled without your explicit OK for that post.** Not used to pull analytics, because CLAUDE.md says only stats you paste. |
