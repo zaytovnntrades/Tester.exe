@@ -4,7 +4,7 @@ series: Trading Basics, day 29 of 30
 pillar: 1
 hook_type: bold claim
 length_target: 30s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: []
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

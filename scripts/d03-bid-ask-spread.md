@@ -4,7 +4,7 @@ series: Trading Basics, day 3 of 30
 pillar: 2
 hook_type: number
 length_target: 32s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [bid, ask, spread]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

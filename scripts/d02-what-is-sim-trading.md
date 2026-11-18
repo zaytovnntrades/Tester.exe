@@ -4,7 +4,7 @@ series: Trading Basics, day 2 of 30
 pillar: 1
 hook_type: contrarian
 length_target: 36s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [sim]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

@@ -4,7 +4,7 @@ series: Trading Basics, day 11 of 30
 pillar: 2
 hook_type: story
 length_target: 31s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [slippage]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

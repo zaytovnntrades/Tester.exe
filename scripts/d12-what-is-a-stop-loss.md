@@ -4,7 +4,7 @@ series: Trading Basics, day 12 of 30
 pillar: 1
 hook_type: bold claim
 length_target: 32s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [stop loss]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

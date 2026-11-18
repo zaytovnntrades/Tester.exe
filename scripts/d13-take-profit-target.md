@@ -4,7 +4,7 @@ series: Trading Basics, day 13 of 30
 pillar: 1
 hook_type: question
 length_target: 36s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [target, take profit, take-profit]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

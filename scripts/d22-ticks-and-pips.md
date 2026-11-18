@@ -4,7 +4,7 @@ series: Trading Basics, day 22 of 30
 pillar: 2
 hook_type: bold claim
 length_target: 30s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [tick, pip]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

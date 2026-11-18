@@ -4,7 +4,7 @@ series: Trading Basics, day 27 of 30
 pillar: 5
 hook_type: story
 length_target: 32s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [fomo]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

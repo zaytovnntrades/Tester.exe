@@ -4,7 +4,7 @@ series: Trading Basics, day 26 of 30
 pillar: 5
 hook_type: bold claim
 length_target: 33s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: [revenge]
 sources: []          # no figures used, so nothing to source (§6.6)
 ---

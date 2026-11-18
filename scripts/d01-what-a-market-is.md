@@ -4,7 +4,7 @@ series: Trading Basics, day 1 of 30
 pillar: 1
 hook_type: bold claim
 length_target: 35s
-status: draft        # draft | approved | blocked | produced | posted
+status: produced        # draft | approved | blocked | produced | posted
 teaches: []
 sources: []          # no figures used, so nothing to source (§6.6)
 ---
@@ -43,7 +43,7 @@ LOOP / CTA (30–35s)
 
 DISCLAIMER (on-screen): Educational only — not financial advice.
 CAPTION (≤150 chars): What a market really is: buyers, sellers, and you. Trading basics, day 1 of 30. Educational only, not financial advice.
-HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #howmarketswork #tradingbasics
+HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #howmarketswork
 PINNED COMMENT: Did you ever think about who is on the other side of your trade? 👇
 COVER / THUMBNAIL: frame 0 of the video ("Someone's on the other side.").
 IRL COMPANION: your own real-life video for day 1, filmed by you. Not scripted here.

@@ -51,7 +51,7 @@ for(const id of ORDER){const v=SERIES[id],n=v.s.map(s=>W(s[0])),tot=n.reduce((a,
   const r=i=>`${Math.round(t[i])}–${Math.round(t[i+1])}s`,file=path.join(ROOT,'scripts',`${id}-${v.slug}.md`);
   let status='draft';if(fs.existsSync(file)){const m=fs.readFileSync(file,'utf8').match(/^status: (\w+)/m);if(m)status=m[1]}
   const cap=`${v.cap} Trading basics, day ${v.day} of 30. Educational only, not financial advice.`;
-  const tags=['#tradingforbeginners','#tradingbasics','#learntotrade',...v.tags];
+  const tags=[...new Set(['#tradingforbeginners','#tradingbasics','#learntotrade',...v.tags])];
   const blk=i=>`  VO: ${v.s[i][0]}\n  ON-SCREEN: ${onscreen(v,i)}\n  VISUAL: ${see(v.s[i][3])}`;
   const vo=v.s.map(s=>s[0]).join(' ');
   const md=`---
@@ -104,7 +104,8 @@ WORD COUNT: ${tot} (≈${sec}s at 2.5 words/sec)
 Learning order: ✅ uses no term before the day that teaches it (checked by gen-scripts.js).
 `;
   fs.writeFileSync(file,md);fs.writeFileSync(path.join(ROOT,'briefs/vo',`${id}-vo.txt`),v.s.map(s=>s[0]).join('\n\n')+'\n');
-  cal.push({day:v.day,id,t:v.t,pillar:v.pillar,hook:v.s[0][0],sec,status,terms:v.terms})}
+  const vj=path.join(ROOT,'tools/reel/public/voice',id+'.json'),real=fs.existsSync(vj)?Math.round(JSON.parse(fs.readFileSync(vj,'utf8')).total+1.2):null;
+  cal.push({day:v.day,id,t:v.t,pillar:v.pillar,hook:v.s[0][0],sec:real||sec,status,terms:v.terms,cap,tags:tags.slice(0,5),pin:v.pin,slug:v.slug})}
 const wk=[['Week 1 · Start here: markets, practice, charts',0,7],['Week 2 · Placing a trade',7,14],['Week 3 · Risk: the survival core',14,21],['Week 4 · Plans and habits',21,28],['Days 29–30 · Protect yourself, then graduate',28,30]];
 let out=`# 30-day content calendar: Trading Basics for beginners (v2)
 
@@ -114,7 +115,7 @@ Days are numbered, not dated: day 1 is whichever day you post the first one. Pos
 Source for every day: \`tools/studio/series.js\`. After any change run \`node tools/studio/gen-scripts.js\`.
 
 **★ Critical:** survival-first lessons. If you ever skip days, never skip these.
-**Status:** all 30 are drafts until you approve the full set.
+**Status:** ${cal.every(r=>r.status==='draft')?'all 30 are drafts until you approve the full set.':cal.filter(r=>r.status!=='draft').length+' of 30 approved by you; videos are in `renders/final/`. Lengths are the real finished videos.'}
 `;
 for(const [name,a,b] of wk){out+=`\n## ${name}\n| Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |\n|-----|--------|---|---------|--------|------|--------|----------------|\n`;
   for(const r of cal.slice(a,b))out+=`| ${r.day} | ${r.t} | ${CRITICAL.has(r.id)?'★':''} | ${r.terms.join(', ')||'—'} | ${r.sec}s | ${r.hook} | ${r.status} | ☐ |\n`}
@@ -128,4 +129,7 @@ fs.mkdirSync(path.join(ROOT,'ideas'),{recursive:true});fs.writeFileSync(path.joi
 let st=`# Estimated scene start times (seconds), days 1–30\n\nEstimates at 2.5 words per second. Final videos are timed to the real voice.\n\n| Day | Scene 1 | 2 | 3 | 4 | 5 | 6 | Voice ends |\n|-----|---------|---|---|---|---|---|-----------|\n`;
 for(const id of ORDER){const v=SERIES[id],t=[0];v.s.forEach(x=>t.push(t[t.length-1]+Math.max(2.6,W(x[0])/2.5)));st+=`| ${v.day} · ${v.t} | ${t.map(x=>x.toFixed(1)).join(' | ')} |\n`}
 fs.writeFileSync(path.join(ROOT,'briefs/scene-times.md'),st);
+let pk=`# Post packages: days 1–30\n\nPost time: **11:30 am Eastern** each day. Day 1 is the day you post the first one.\nEach package: video file, caption, hashtags, pinned comment, cover. Built from \`tools/studio/series.js\` by \`gen-scripts.js\`.\n\n**Every post:** turn on the platform's AI-generated content label if asked (the voice is AI), add no affiliate links, and post your IRL video for the day alongside.\n`;
+for(const r of cal)pk+=`\n## Day ${r.day} · ${r.t}${CRITICAL.has(r.id)?' ★':''}\n- **Video:** \`renders/final/${r.id}.mp4\` (${r.sec}s) · status: ${r.status}\n- **Caption:** ${r.cap}\n- **Hashtags:** ${r.tags.join(' ')}\n- **Pinned comment:** ${r.pin}\n- **Cover:** first frame (the hook: "${r.hook}")\n- **Posted:** ☐ TikTok ☐ Instagram ☐ YouTube Shorts · ☐ IRL video · ☐ stats pasted at 48h\n`;
+fs.mkdirSync(path.join(ROOT,'published'),{recursive:true});fs.writeFileSync(path.join(ROOT,'published/post-packages.md'),pk);
 console.log('ok: 30 scripts, calendar, voice text and scene times written; all checks passed');
