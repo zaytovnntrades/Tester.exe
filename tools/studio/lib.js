@@ -53,6 +53,7 @@ function setup({DUR,VO,KEY,scenes,capEnd}){const CAPS=[];
     const tw=Math.min(MAXW,parts.reduce((s,q)=>s+x.measureText(q[0]).width,0));
     x.fillStyle='rgba(0,0,0,.72)';rr(CX-tw/2-34,1290-58,tw+68,116,26);x.fill();
     rich(parts,CX,1292,62,{a:1,sc:lerp(1.08,1,eo(p(t,cur[0],cur[0]+0.12)))})}
-  const OUT=NEND+TAIL;window.DUR=OUT;window.render=tt=>{const t=warp(tt);ABS=tt;x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,W,H);
+  const OUT=NEND+TAIL;const TRANSPARENT=QS.has('transparent'); // Remotion paints its own background behind the canvas
+  window.DUR=OUT;window.render=tt=>{const t=warp(tt);ABS=tt;x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;if(TRANSPARENT)x.clearRect(0,0,W,H);else{x.fillStyle=BG;x.fillRect(0,0,W,H)}
     let f=scenes[0][1],t0=0;for(const [a,fn] of scenes)if(t>=a){f=fn;t0=a}f(t-t0);if(!CLEAN)captions(t);
     txt('Educational only — not financial advice.',CX,1455,30,GR,ON,{w:600});x.fillStyle=RED;x.fillRect(0,1914,W*tt/OUT,6)};window.render(0)}
