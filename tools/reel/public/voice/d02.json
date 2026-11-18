@@ -1,0 +1,139 @@
+{
+ "id": "d02",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 42.295,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.808,
+   "sentences": [
+    {
+     "text": "Don't learn to trade with real money.",
+     "start": 0.15,
+     "end": 2.558
+    }
+   ]
+  },
+  {
+   "start": 2.958,
+   "dur": 8.208,
+   "sentences": [
+    {
+     "text": "You wouldn't learn to drive on a motorway.",
+     "start": 2.958,
+     "end": 5.381
+    },
+    {
+     "text": "Every beginner mistake costs money.",
+     "start": 5.561,
+     "end": 8.304
+    },
+    {
+     "text": "Unless you make it on sim.",
+     "start": 8.484,
+     "end": 10.766
+    }
+   ]
+  },
+  {
+   "start": 11.166,
+   "dur": 7.234,
+   "sentences": [
+    {
+     "text": "Sim is a practice account.",
+     "start": 11.166,
+     "end": 13.454
+    },
+    {
+     "text": "The same charts.",
+     "start": 13.634,
+     "end": 14.936
+    },
+    {
+     "text": "The same prices.",
+     "start": 15.116,
+     "end": 16.534
+    },
+    {
+     "text": "Pretend money.",
+     "start": 16.714,
+     "end": 17.999
+    }
+   ]
+  },
+  {
+   "start": 18.399,
+   "dur": 7.624,
+   "sentences": [
+    {
+     "text": "Use it to practice one skill at a time.",
+     "start": 18.399,
+     "end": 21.367
+    },
+    {
+     "text": "Reading charts.",
+     "start": 21.547,
+     "end": 22.787
+    },
+    {
+     "text": "Placing orders.",
+     "start": 22.966,
+     "end": 24.129
+    },
+    {
+     "text": "Following rules.",
+     "start": 24.309,
+     "end": 25.623
+    }
+   ]
+  },
+  {
+   "start": 26.023,
+   "dur": 8.719,
+   "sentences": [
+    {
+     "text": "Sim won't feel like real money.",
+     "start": 26.023,
+     "end": 28.543
+    },
+    {
+     "text": "Your emotions stay quieter.",
+     "start": 28.723,
+     "end": 31.033
+    },
+    {
+     "text": "But it shows whether you can follow your own rules.",
+     "start": 31.213,
+     "end": 34.342
+    }
+   ]
+  },
+  {
+   "start": 34.742,
+   "dur": 7.553,
+   "sentences": [
+    {
+     "text": "Every lesson in this series, practice it on sim.",
+     "start": 34.742,
+     "end": 38.003
+    },
+    {
+     "text": "I'm on sim too.",
+     "start": 38.183,
+     "end": 39.841
+    },
+    {
+     "text": "Survive first.",
+     "start": 40.021,
+     "end": 41.196
+    },
+    {
+     "text": "Follow.",
+     "start": 41.376,
+     "end": 42.115
+    }
+   ]
+  }
+ ]
+}

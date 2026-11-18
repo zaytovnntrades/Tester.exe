@@ -1,0 +1,124 @@
+{
+ "id": "d17",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 34.659,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 3.012,
+   "sentences": [
+    {
+     "text": "Win most trades.",
+     "start": 0.15,
+     "end": 1.356
+    },
+    {
+     "text": "Still lose money.",
+     "start": 1.416,
+     "end": 2.762
+    }
+   ]
+  },
+  {
+   "start": 3.162,
+   "dur": 3.355,
+   "sentences": [
+    {
+     "text": "Because win rate is only half the picture.",
+     "start": 3.162,
+     "end": 6.118
+    }
+   ]
+  },
+  {
+   "start": 6.518,
+   "dur": 6.632,
+   "sentences": [
+    {
+     "text": "Win rate is how often you win.",
+     "start": 6.518,
+     "end": 8.931
+    },
+    {
+     "text": "Nothing more.",
+     "start": 9.111,
+     "end": 10.138
+    },
+    {
+     "text": "It says nothing about how much.",
+     "start": 10.318,
+     "end": 12.749
+    }
+   ]
+  },
+  {
+   "start": 13.149,
+   "dur": 8.543,
+   "sentences": [
+    {
+     "text": "The other half is size.",
+     "start": 13.149,
+     "end": 15.103
+    },
+    {
+     "text": "How big are the wins?",
+     "start": 15.283,
+     "end": 16.994
+    },
+    {
+     "text": "How big are the losses?",
+     "start": 17.174,
+     "end": 19.22
+    },
+    {
+     "text": "You need both answers.",
+     "start": 19.4,
+     "end": 21.293
+    }
+   ]
+  },
+  {
+   "start": 21.693,
+   "dur": 6.398,
+   "sentences": [
+    {
+     "text": "Small wins and one big loss can wipe out a whole week.",
+     "start": 21.693,
+     "end": 25.025
+    },
+    {
+     "text": "That's why the stop loss matters.",
+     "start": 25.205,
+     "end": 27.69
+    }
+   ]
+  },
+  {
+   "start": 28.09,
+   "dur": 6.569,
+   "sentences": [
+    {
+     "text": "Stop asking how often.",
+     "start": 28.09,
+     "end": 30.163
+    },
+    {
+     "text": "Start asking how much.",
+     "start": 30.343,
+     "end": 32.204
+    },
+    {
+     "text": "Survive first.",
+     "start": 32.384,
+     "end": 33.559
+    },
+    {
+     "text": "Follow.",
+     "start": 33.739,
+     "end": 34.479
+    }
+   ]
+  }
+ ]
+}

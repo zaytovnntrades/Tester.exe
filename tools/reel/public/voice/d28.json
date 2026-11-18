@@ -1,0 +1,129 @@
+{
+ "id": "d28",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 37.112,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.659,
+   "sentences": [
+    {
+     "text": "More trades doesn't mean more money.",
+     "start": 0.15,
+     "end": 2.409
+    }
+   ]
+  },
+  {
+   "start": 2.809,
+   "dur": 8.545,
+   "sentences": [
+    {
+     "text": "Often it means more mistakes.",
+     "start": 2.809,
+     "end": 5.195
+    },
+    {
+     "text": "Every trade has a cost.",
+     "start": 5.375,
+     "end": 7.508
+    },
+    {
+     "text": "And every trade is a chance to break your rules.",
+     "start": 7.688,
+     "end": 10.954
+    }
+   ]
+  },
+  {
+   "start": 11.354,
+   "dur": 6.255,
+   "sentences": [
+    {
+     "text": "Overtrading is trading because you're bored.",
+     "start": 11.354,
+     "end": 14.041
+    },
+    {
+     "text": "Or behind.",
+     "start": 14.221,
+     "end": 15.237
+    },
+    {
+     "text": "Or itching to click.",
+     "start": 15.417,
+     "end": 17.208
+    }
+   ]
+  },
+  {
+   "start": 17.608,
+   "dur": 5.45,
+   "sentences": [
+    {
+     "text": "The warning sign is simple.",
+     "start": 17.608,
+     "end": 19.84
+    },
+    {
+     "text": "You can't say why you took the trade.",
+     "start": 20.02,
+     "end": 22.658
+    }
+   ]
+  },
+  {
+   "start": 23.058,
+   "dur": 9.097,
+   "sentences": [
+    {
+     "text": "The fix is a limit.",
+     "start": 23.058,
+     "end": 24.837
+    },
+    {
+     "text": "A set number of trades per day.",
+     "start": 25.017,
+     "end": 27.498
+    },
+    {
+     "text": "Decided before the open.",
+     "start": 27.678,
+     "end": 29.964
+    },
+    {
+     "text": "Hit it, and you're done.",
+     "start": 30.144,
+     "end": 31.755
+    }
+   ]
+  },
+  {
+   "start": 32.155,
+   "dur": 4.957,
+   "sentences": [
+    {
+     "text": "Fewer trades.",
+     "start": 32.155,
+     "end": 33.303
+    },
+    {
+     "text": "Better trades.",
+     "start": 33.483,
+     "end": 34.657
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.837,
+     "end": 36.012
+    },
+    {
+     "text": "Follow.",
+     "start": 36.192,
+     "end": 36.932
+    }
+   ]
+  }
+ ]
+}

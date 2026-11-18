@@ -1,0 +1,139 @@
+{
+ "id": "d23",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 36.546,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.755,
+   "sentences": [
+    {
+     "text": "Trade without a plan, and you're guessing.",
+     "start": 0.15,
+     "end": 2.505
+    }
+   ]
+  },
+  {
+   "start": 2.905,
+   "dur": 5.752,
+   "sentences": [
+    {
+     "text": "Guessing feels fine on good days.",
+     "start": 2.905,
+     "end": 5.584
+    },
+    {
+     "text": "On bad days, it costs you money.",
+     "start": 5.764,
+     "end": 8.258
+    }
+   ]
+  },
+  {
+   "start": 8.658,
+   "dur": 7.144,
+   "sentences": [
+    {
+     "text": "A trading plan is a written page.",
+     "start": 8.658,
+     "end": 11.273
+    },
+    {
+     "text": "What you trade.",
+     "start": 11.453,
+     "end": 12.616
+    },
+    {
+     "text": "When you trade.",
+     "start": 12.796,
+     "end": 13.807
+    },
+    {
+     "text": "How much you risk.",
+     "start": 13.987,
+     "end": 15.402
+    }
+   ]
+  },
+  {
+   "start": 15.802,
+   "dur": 7.259,
+   "sentences": [
+    {
+     "text": "It also says how you exit.",
+     "start": 15.802,
+     "end": 17.991
+    },
+    {
+     "text": "Your stop loss.",
+     "start": 18.171,
+     "end": 19.411
+    },
+    {
+     "text": "Your target.",
+     "start": 19.591,
+     "end": 20.635
+    },
+    {
+     "text": "Your max daily loss.",
+     "start": 20.815,
+     "end": 22.661
+    }
+   ]
+  },
+  {
+   "start": 23.061,
+   "dur": 6.697,
+   "sentences": [
+    {
+     "text": "Write it when you're calm.",
+     "start": 23.061,
+     "end": 24.564
+    },
+    {
+     "text": "Follow it when you're not.",
+     "start": 24.744,
+     "end": 26.254
+    },
+    {
+     "text": "Change it only after the market closes.",
+     "start": 26.434,
+     "end": 29.358
+    }
+   ]
+  },
+  {
+   "start": 29.758,
+   "dur": 6.789,
+   "sentences": [
+    {
+     "text": "One page.",
+     "start": 29.758,
+     "end": 30.769
+    },
+    {
+     "text": "Written down.",
+     "start": 30.949,
+     "end": 32.065
+    },
+    {
+     "text": "Test it on sim.",
+     "start": 32.245,
+     "end": 34.092
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.272,
+     "end": 35.447
+    },
+    {
+     "text": "Follow.",
+     "start": 35.627,
+     "end": 36.366
+    }
+   ]
+  }
+ ]
+}

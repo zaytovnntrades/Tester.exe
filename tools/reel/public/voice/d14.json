@@ -1,0 +1,129 @@
+{
+ "id": "d14",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 40.067,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.447,
+   "sentences": [
+    {
+     "text": "Markets have rush hours.",
+     "start": 0.15,
+     "end": 2.197
+    }
+   ]
+  },
+  {
+   "start": 2.597,
+   "dur": 5.579,
+   "sentences": [
+    {
+     "text": "And dead hours.",
+     "start": 2.597,
+     "end": 3.9
+    },
+    {
+     "text": "Trade the dead ones, and you sit in slow, choppy price.",
+     "start": 4.08,
+     "end": 7.776
+    }
+   ]
+  },
+  {
+   "start": 8.176,
+   "dur": 9.202,
+   "sentences": [
+    {
+     "text": "Many markets trade across time zones.",
+     "start": 8.176,
+     "end": 11.111
+    },
+    {
+     "text": "Asia.",
+     "start": 11.291,
+     "end": 12.049
+    },
+    {
+     "text": "Then Europe.",
+     "start": 12.229,
+     "end": 13.236
+    },
+    {
+     "text": "Then America.",
+     "start": 13.416,
+     "end": 14.54
+    },
+    {
+     "text": "Each region is a session.",
+     "start": 14.72,
+     "end": 16.977
+    }
+   ]
+  },
+  {
+   "start": 17.377,
+   "dur": 7.386,
+   "sentences": [
+    {
+     "text": "When a big region opens, more traders show up.",
+     "start": 17.377,
+     "end": 20.569
+    },
+    {
+     "text": "Moves tend to get bigger, and spreads often get smaller.",
+     "start": 20.749,
+     "end": 24.364
+    }
+   ]
+  },
+  {
+   "start": 24.764,
+   "dur": 7.716,
+   "sentences": [
+    {
+     "text": "When two regions are open together, it's often the busiest time of the day.",
+     "start": 24.764,
+     "end": 28.811
+    },
+    {
+     "text": "Busier can mean faster.",
+     "start": 28.991,
+     "end": 30.86
+    },
+    {
+     "text": "Not safer.",
+     "start": 31.04,
+     "end": 32.079
+    }
+   ]
+  },
+  {
+   "start": 32.479,
+   "dur": 7.588,
+   "sentences": [
+    {
+     "text": "Learn when your market is awake.",
+     "start": 32.479,
+     "end": 34.861
+    },
+    {
+     "text": "Check its hours before you trade.",
+     "start": 35.041,
+     "end": 37.612
+    },
+    {
+     "text": "Survive first.",
+     "start": 37.792,
+     "end": 38.967
+    },
+    {
+     "text": "Follow.",
+     "start": 39.147,
+     "end": 39.887
+    }
+   ]
+  }
+ ]
+}

@@ -22,7 +22,7 @@ const LESSONS=[
  ["Every lesson in this series, practice it on sim. I'm on sim too. Survive first. Follow.","Practice *on sim.*","",['end']]]},
 {t:'Bid, ask and spread',slug:'bid-ask-spread',pillar:2,hook:'number',terms:['bid','ask','spread'],tags:['#bidask','#spread'],
  cap:'Bid, ask and spread: the hidden cost in every trade.',pin:'Did you know you pay the spread on every trade? Yes / No 👇',s:[
- ["Every trade has two prices. Not one.","*Two* prices. Not one.","",['ladder',{hi:'none'}]],
+ ["Every trade has two prices.","*Two* prices. Not one.","",['ladder',{hi:'none'}]],
  ["Miss the gap between them, and you pay a cost on every trade without noticing.","The gap = a *cost*","",['ladder',{hi:'spread'}]],
  ["The bid is the highest price a buyer is offering right now.","*Bid*","what buyers offer",['ladder',{hi:'bid'}]],
  ["The ask is the lowest price a seller will accept right now.","*Ask*","what sellers accept",['ladder',{hi:'ask'}]],
@@ -62,7 +62,7 @@ const LESSONS=[
  ["Find the floor. Find the ceiling. Then decide. Survive first. Follow.","Floor. Ceiling. *Then decide.*","",['end']]]},
 {t:'What volume tells you',slug:'what-volume-tells-you',pillar:2,hook:'contrarian',terms:['volume'],tags:['#volume','#chartreading'],
  cap:'What the volume bars under your chart are telling you.',pin:'Do you have volume switched on in your chart? Yes / No 👇',s:[
- ["Those bars under your chart? That's volume.","Those bars = *volume*","",['candles',{vol:true}]],
+ ["See those bars? That's volume.","Those bars = *volume*","",['candles',{vol:true}]],
  ["They aren't decoration. Ignore them, and you can't tell a real move from a weak one.","Real move or *weak* move?","",['candles',{vol:true}]],
  ["Volume counts how much was traded in each candle. Tall bar, lots of trading.","*Volume* = how much traded","tall bar = busy",['candles',{vol:true,hi:6}]],
  ["A big move on high volume means many traders took part.","Big move + ^high^ volume","many took part",['bars',[['MOVE',.8,'white'],['VOLUME',.9,'green']]]],
@@ -150,11 +150,11 @@ const LESSONS=[
  ["One bad day. One number. Set yours tonight, and practice it on sim. Survive first. Follow.","One *number.*","",['end']]]},
 {t:'What drawdown means',slug:'what-is-drawdown',pillar:1,hook:'bold claim',terms:['drawdown'],tags:['#drawdown','#riskmanagement'],
  cap:'Drawdown: the word every trader needs to understand.',pin:'Had you heard the word "drawdown" before this video? Yes / No 👇',s:[
- ["Every trader meets this word. Drawdown.","*Drawdown*","",['line',{shape:'dd'}]],
+ ["Every trader meets drawdown.","*Drawdown*","",['line',{shape:'dd'}]],
  ["Ignore it, and a bad stretch quietly becomes a blown account.","Bad stretch → *blown account*","",['line',{shape:'down'}]],
  ["Drawdown is how far your account has fallen from its highest point.","From the *peak*, how far down?","",['line',{shape:'dd',lines:[[.95,'PEAK','white',false],[.3,'NOW','red',false]]}]],
  ["The deeper it gets, the harder the climb back. A big hole needs an even bigger gain to fill.","Deeper hole. *Harder climb.*","",['bars',[['LOSS',.5,'red'],['GAIN NEEDED',.85,'green']]]],
- ["So traders set a limit. Reach it, and they stop and review. Before the hole gets deep.","Set a *limit.* Stop there.","",['line',{shape:'dd',lines:[[.95,'PEAK','white',false],[.55,'MY LIMIT','red',true,true]]}]],
+ ["So traders set a limit. Reach it, and they stop and review. Before the hole gets too deep to climb out of.","Set a *limit.* Stop there.","",['line',{shape:'dd',lines:[[.95,'PEAK','white',false],[.55,'MY LIMIT','red',true,true]]}]],
  ["Small drawdowns are normal. Deep ones end accounts. Survive first. Follow.","Keep it *small.*","",['end']]]},
 {t:'What leverage is',slug:'what-is-leverage',pillar:2,hook:'contrarian',lev:true,terms:['leverage','margin'],tags:['#leverage','#riskmanagement'],
  cap:'Leverage explained: small deposit, big position, bigger losses.',pin:'Did anyone explain margin to you before you first heard "leverage"? 👇',s:[
@@ -166,7 +166,7 @@ const LESSONS=[
  ["Learn it on sim, with the smallest size. I'm on sim. Survive first. Follow.","Learn it on *sim.*","",['end']]]},
 {t:'Futures and micro futures',slug:'futures-and-micro-futures',pillar:2,hook:'contrarian',lev:true,terms:['futures','micro'],tags:['#futurestrading','#microfutures'],
  cap:'Futures and micro futures, in plain words. Leverage magnifies losses.',pin:'What part of futures confuses you most? I\'ll make a video on it 👇',s:[
- ["Futures sound scary. They're agreements.","They're *agreements.*","",['vs',{L:['BUYER',[]],R:['SELLER',[]],show:'heads'}]],
+ ["Futures are just agreements.","They're *agreements.*","",['vs',{L:['BUYER',[]],R:['SELLER',[]],show:'heads'}]],
  ["But they're leveraged ones. And leverage magnifies losses, so understand them first.","*Leveraged* agreements","",['bars',[['MARGIN',.2,'white'],['POSITION',.9,'red']]]],
  ["A futures contract is an agreement to buy or sell something at a set price on a set date. Traders usually close early and take the difference.","A price now. A date *later.*","most close early",['vs',{L:['BUYER',['agrees to buy']],R:['SELLER',['agrees to sell']],show:'both'}]],
  ["Each contract tracks a market. A stock index. Oil. Gold.","Each one tracks a *market*","",['steps',{items:['Stock index','Oil','Gold']}]],
@@ -190,8 +190,8 @@ const LESSONS=[
  ["One page. Written down. Test it on sim. Survive first. Follow.","One page. *Written.*","",['end']]]},
 {t:'3 questions before every trade',slug:'pre-trade-checklist',pillar:1,hook:'number',terms:['checklist'],tags:['#tradingplan','#riskmanagement'],
  cap:'3 questions to answer before every trade.',pin:'Which of the three do you skip most often? 1, 2 or 3 👇',s:[
- ["Pilots use checklists. Traders need one.","Checklist *before* every trade","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?']}]],
- ["Before every flight, every time. Without one, you decide everything in the heat of the moment.","No checklist = *heat of the moment*","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?']}]],
+ ["Traders need a checklist.","Checklist *before* every trade","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?']}]],
+ ["Pilots run one before every flight. Without one, you decide everything in the heat of the moment.","No checklist = *heat of the moment*","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?']}]],
  ["One. Why am I entering? If you can't answer in a sentence, stop.","1. *Why* this trade?","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?'],hi:0}]],
  ["Two. Where is my exit if I'm wrong? Set it before you enter.","2. Where is my *exit?*","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?'],hi:1}]],
  ["Three. How much am I risking? Decide the size last, not first. It has to fit your exit.","3. How much at *risk?*","",['steps',{items:['Why this trade?','Where is my exit?','How much am I risking?'],hi:2}]],

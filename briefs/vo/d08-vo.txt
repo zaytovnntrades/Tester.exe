@@ -1,4 +1,4 @@
-Those bars under your chart? That's volume.
+See those bars? That's volume.
 
 They aren't decoration. Ignore them, and you can't tell a real move from a weak one.
 

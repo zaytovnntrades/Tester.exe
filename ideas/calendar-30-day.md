@@ -13,7 +13,7 @@ Source for every day: `tools/studio/series.js`. After any change run `node tools
 |-----|--------|---|---------|--------|------|--------|----------------|
 | 1 | What a market is |  | — | 35s | Someone is always on the other side. | draft | ☐ |
 | 2 | Where to practice first | ★ | sim | 36s | Don't learn to trade with real money. | draft | ☐ |
-| 3 | Bid, ask and spread |  | bid, ask, spread | 32s | Every trade has two prices. Not one. | draft | ☐ |
+| 3 | Bid, ask and spread |  | bid, ask, spread | 32s | Every trade has two prices. | draft | ☐ |
 | 4 | How to read a candle |  | candle, wick | 36s | Can you read this shape? | draft | ☐ |
 | 5 | Timeframes |  | timeframe | 30s | Same market. Different stories. | draft | ☐ |
 | 6 | Up, down, sideways |  | uptrend, downtrend, sideways | 31s | Which way is the market going? | draft | ☐ |
@@ -22,7 +22,7 @@ Source for every day: `tools/studio/series.js`. After any change run `node tools
 ## Week 2 · Placing a trade
 | Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
 |-----|--------|---|---------|--------|------|--------|----------------|
-| 8 | What volume tells you |  | volume | 31s | Those bars under your chart? That's volume. | draft | ☐ |
+| 8 | What volume tells you |  | volume | 30s | See those bars? That's volume. | draft | ☐ |
 | 9 | Long vs short |  | going long, going short | 32s | You can trade a falling market. | draft | ☐ |
 | 10 | Market vs limit orders |  | market order, limit order | 36s | The wrong click costs you money. | draft | ☐ |
 | 11 | What slippage is |  | slippage | 31s | You clicked one price. Got another. | draft | ☐ |
@@ -37,16 +37,16 @@ Source for every day: `tools/studio/series.js`. After any change run `node tools
 | 16 | Risk vs reward | ★ | reward | 32s | Two questions before every trade. | draft | ☐ |
 | 17 | Why win rate lies |  | win rate | 31s | Win most trades. Still lose money. | draft | ☐ |
 | 18 | Max daily loss | ★ | max daily loss | 33s | One bad day can end an account. | draft | ☐ |
-| 19 | What drawdown means | ★ | drawdown | 30s | Every trader meets this word. Drawdown. | draft | ☐ |
+| 19 | What drawdown means | ★ | drawdown | 32s | Every trader meets drawdown. | draft | ☐ |
 | 20 | What leverage is | ★ | leverage, margin | 31s | Small money can control big trades. | draft | ☐ |
-| 21 | Futures and micro futures |  | futures, micro | 32s | Futures sound scary. They're agreements. | draft | ☐ |
+| 21 | Futures and micro futures |  | futures, micro | 31s | Futures are just agreements. | draft | ☐ |
 
 ## Week 4 · Plans and habits
 | Day | Lesson | ★ | Teaches | Length | Hook | Status | Your IRL video |
 |-----|--------|---|---------|--------|------|--------|----------------|
 | 22 | Ticks and pips |  | tick, pip | 30s | Price doesn't glide. It steps. | draft | ☐ |
 | 23 | Your trading plan |  | trading plan | 32s | Trade without a plan, and you're guessing. | draft | ☐ |
-| 24 | 3 questions before every trade |  | checklist | 31s | Pilots use checklists. Traders need one. | draft | ☐ |
+| 24 | 3 questions before every trade |  | checklist | 30s | Traders need a checklist. | draft | ☐ |
 | 25 | The trading journal |  | journal | 32s | One useful trading tool costs nothing. | draft | ☐ |
 | 26 | Revenge trading | ★ | revenge | 33s | The trade after a loss is dangerous. | draft | ☐ |
 | 27 | FOMO |  | fomo | 32s | Price is flying. You want in. | draft | ☐ |

@@ -1,117 +1,117 @@
 {
  "id": "d01",
  "voice": "am_onyx",
- "speed": 0.84,
- "total": 41.92,
+ "speed": 0.92,
+ "total": 38.886,
  "scenes": [
   {
    "start": 0.15,
-   "dur": 2.856,
+   "dur": 2.549,
    "sentences": [
     {
      "text": "Someone is always on the other side.",
      "start": 0.15,
-     "end": 2.605
+     "end": 2.299
     }
    ]
   },
   {
-   "start": 3.006,
-   "dur": 6.955,
+   "start": 2.699,
+   "dur": 6.599,
    "sentences": [
     {
      "text": "When you buy, someone sells to you.",
-     "start": 3.006,
-     "end": 5.716
+     "start": 2.699,
+     "end": 5.349
     },
     {
      "text": "Forget that, and you'll think price moves by magic.",
-     "start": 5.896,
-     "end": 9.56
+     "start": 5.529,
+     "end": 8.898
     }
    ]
   },
   {
-   "start": 9.96,
-   "dur": 7.115,
+   "start": 9.298,
+   "dur": 6.631,
    "sentences": [
     {
      "text": "A market is just a place where buyers and sellers meet.",
-     "start": 9.96,
-     "end": 13.482
+     "start": 9.298,
+     "end": 12.548
     },
     {
      "text": "Today that place is mostly a screen.",
-     "start": 13.662,
-     "end": 16.675
+     "start": 12.728,
+     "end": 15.528
     }
    ]
   },
   {
-   "start": 17.075,
-   "dur": 8.749,
+   "start": 15.928,
+   "dur": 8.1,
    "sentences": [
     {
      "text": "Price moves when one side is more eager.",
-     "start": 17.075,
-     "end": 19.863
+     "start": 15.928,
+     "end": 18.527
     },
     {
      "text": "Eager buyers push price up.",
-     "start": 20.043,
-     "end": 22.63
+     "start": 18.707,
+     "end": 21.067
     },
     {
      "text": "Eager sellers push it down.",
-     "start": 22.81,
-     "end": 25.424
+     "start": 21.247,
+     "end": 23.628
     }
    ]
   },
   {
-   "start": 25.824,
-   "dur": 8.764,
+   "start": 24.028,
+   "dur": 8.215,
    "sentences": [
     {
      "text": "You're not trading against a chart.",
-     "start": 25.824,
-     "end": 28.581
+     "start": 24.028,
+     "end": 26.615
     },
     {
      "text": "You're trading against other people.",
-     "start": 28.761,
-     "end": 31.35
+     "start": 26.795,
+     "end": 29.208
     },
     {
      "text": "Many of them are professionals.",
-     "start": 31.53,
-     "end": 34.188
+     "start": 29.388,
+     "end": 31.843
     }
    ]
   },
   {
-   "start": 34.588,
-   "dur": 7.332,
+   "start": 32.243,
+   "dur": 6.643,
    "sentences": [
     {
      "text": "Respect the other side.",
-     "start": 34.588,
-     "end": 36.558
+     "start": 32.243,
+     "end": 34.087
     },
     {
      "text": "Learn before you risk money.",
-     "start": 36.738,
-     "end": 39.219
+     "start": 34.267,
+     "end": 36.431
     },
     {
      "text": "Survive first.",
-     "start": 39.399,
-     "end": 40.719
+     "start": 36.611,
+     "end": 37.786
     },
     {
      "text": "Follow.",
-     "start": 40.899,
-     "end": 41.74
+     "start": 37.966,
+     "end": 38.706
     }
    ]
   }

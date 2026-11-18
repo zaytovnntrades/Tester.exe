@@ -1,0 +1,124 @@
+{
+ "id": "d15",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 36.352,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.322,
+   "sentences": [
+    {
+     "text": "Not where to enter.",
+     "start": 0.15,
+     "end": 1.286
+    },
+    {
+     "text": "How much.",
+     "start": 1.346,
+     "end": 2.072
+    }
+   ]
+  },
+  {
+   "start": 2.472,
+   "dur": 6.94,
+   "sentences": [
+    {
+     "text": "That's the biggest decision in a trade.",
+     "start": 2.472,
+     "end": 5.167
+    },
+    {
+     "text": "Too big, and one normal loss does real damage to your account.",
+     "start": 5.347,
+     "end": 9.012
+    }
+   ]
+  },
+  {
+   "start": 9.412,
+   "dur": 5.984,
+   "sentences": [
+    {
+     "text": "Position size is how much you trade.",
+     "start": 9.412,
+     "end": 12.323
+    },
+    {
+     "text": "How many shares or contracts.",
+     "start": 12.503,
+     "end": 14.996
+    }
+   ]
+  },
+  {
+   "start": 15.396,
+   "dur": 4.935,
+   "sentences": [
+    {
+     "text": "Bigger size means every move in price counts for more.",
+     "start": 15.396,
+     "end": 18.588
+    },
+    {
+     "text": "Up and down.",
+     "start": 18.768,
+     "end": 19.931
+    }
+   ]
+  },
+  {
+   "start": 20.331,
+   "dur": 9.747,
+   "sentences": [
+    {
+     "text": "So decide the loss you can accept first.",
+     "start": 20.331,
+     "end": 23.343
+    },
+    {
+     "text": "Set your stop loss.",
+     "start": 23.523,
+     "end": 25.16
+    },
+    {
+     "text": "Then size the trade to fit it.",
+     "start": 25.34,
+     "end": 27.847
+    },
+    {
+     "text": "Not the other way round.",
+     "start": 28.027,
+     "end": 29.678
+    }
+   ]
+  },
+  {
+   "start": 30.078,
+   "dur": 6.275,
+   "sentences": [
+    {
+     "text": "Start with the smallest size there is.",
+     "start": 30.078,
+     "end": 32.824
+    },
+    {
+     "text": "On sim.",
+     "start": 33.004,
+     "end": 33.897
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.077,
+     "end": 35.252
+    },
+    {
+     "text": "Follow.",
+     "start": 35.432,
+     "end": 36.172
+    }
+   ]
+  }
+ ]
+}

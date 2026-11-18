@@ -1,0 +1,134 @@
+{
+ "id": "d05",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 36.547,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.521,
+   "sentences": [
+    {
+     "text": "Same market.",
+     "start": 0.15,
+     "end": 1.164
+    },
+    {
+     "text": "Different stories.",
+     "start": 1.224,
+     "end": 2.271
+    }
+   ]
+  },
+  {
+   "start": 2.671,
+   "dur": 3.905,
+   "sentences": [
+    {
+     "text": "Pick the wrong timeframe, and a small dip can look like a crash.",
+     "start": 2.671,
+     "end": 6.176
+    }
+   ]
+  },
+  {
+   "start": 6.576,
+   "dur": 8.3,
+   "sentences": [
+    {
+     "text": "A timeframe is how much time each candle covers.",
+     "start": 6.576,
+     "end": 10.153
+    },
+    {
+     "text": "One minute.",
+     "start": 10.333,
+     "end": 11.236
+    },
+    {
+     "text": "One hour.",
+     "start": 11.416,
+     "end": 12.271
+    },
+    {
+     "text": "One day.",
+     "start": 12.451,
+     "end": 13.256
+    },
+    {
+     "text": "You choose it.",
+     "start": 13.436,
+     "end": 14.475
+    }
+   ]
+  },
+  {
+   "start": 14.875,
+   "dur": 6.837,
+   "sentences": [
+    {
+     "text": "Short timeframes show every wiggle.",
+     "start": 14.875,
+     "end": 17.568
+    },
+    {
+     "text": "Lots of noise.",
+     "start": 17.748,
+     "end": 18.945
+    },
+    {
+     "text": "Lots of false alarms.",
+     "start": 19.125,
+     "end": 21.312
+    }
+   ]
+  },
+  {
+   "start": 21.712,
+   "dur": 7.83,
+   "sentences": [
+    {
+     "text": "Long timeframes show the bigger direction.",
+     "start": 21.712,
+     "end": 24.299
+    },
+    {
+     "text": "Many traders check the bigger one first.",
+     "start": 24.479,
+     "end": 27.467
+    },
+    {
+     "text": "Then they zoom in.",
+     "start": 27.647,
+     "end": 29.142
+    }
+   ]
+  },
+  {
+   "start": 29.542,
+   "dur": 7.005,
+   "sentences": [
+    {
+     "text": "Pick your timeframe on purpose.",
+     "start": 29.542,
+     "end": 31.97
+    },
+    {
+     "text": "Practice it on sim.",
+     "start": 32.15,
+     "end": 34.093
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.273,
+     "end": 35.448
+    },
+    {
+     "text": "Follow.",
+     "start": 35.628,
+     "end": 36.367
+    }
+   ]
+  }
+ ]
+}

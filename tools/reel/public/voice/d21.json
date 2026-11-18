@@ -1,0 +1,124 @@
+{
+ "id": "d21",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 38.344,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.524,
+   "sentences": [
+    {
+     "text": "Futures are just agreements.",
+     "start": 0.15,
+     "end": 2.274
+    }
+   ]
+  },
+  {
+   "start": 2.674,
+   "dur": 6.232,
+   "sentences": [
+    {
+     "text": "But they're leveraged ones.",
+     "start": 2.674,
+     "end": 4.829
+    },
+    {
+     "text": "And leverage magnifies losses, so understand them first.",
+     "start": 5.009,
+     "end": 8.507
+    }
+   ]
+  },
+  {
+   "start": 8.907,
+   "dur": 9.214,
+   "sentences": [
+    {
+     "text": "A futures contract is an agreement to buy or sell something at a set price on a set date.",
+     "start": 8.907,
+     "end": 14.017
+    },
+    {
+     "text": "Traders usually close early and take the difference.",
+     "start": 14.197,
+     "end": 17.721
+    }
+   ]
+  },
+  {
+   "start": 18.121,
+   "dur": 6.043,
+   "sentences": [
+    {
+     "text": "Each contract tracks a market.",
+     "start": 18.121,
+     "end": 20.579
+    },
+    {
+     "text": "A stock index.",
+     "start": 20.759,
+     "end": 21.959
+    },
+    {
+     "text": "Oil.",
+     "start": 22.139,
+     "end": 22.829
+    },
+    {
+     "text": "Gold.",
+     "start": 23.009,
+     "end": 23.764
+    }
+   ]
+  },
+  {
+   "start": 24.164,
+   "dur": 8.79,
+   "sentences": [
+    {
+     "text": "Many come in smaller micro sizes.",
+     "start": 24.164,
+     "end": 27.007
+    },
+    {
+     "text": "Same market, a fraction of the size.",
+     "start": 27.187,
+     "end": 30.055
+    },
+    {
+     "text": "Smaller, but still leveraged.",
+     "start": 30.235,
+     "end": 32.554
+    }
+   ]
+  },
+  {
+   "start": 32.954,
+   "dur": 5.39,
+   "sentences": [
+    {
+     "text": "Smallest size.",
+     "start": 32.954,
+     "end": 34.314
+    },
+    {
+     "text": "On sim first.",
+     "start": 34.494,
+     "end": 35.889
+    },
+    {
+     "text": "Survive first.",
+     "start": 36.069,
+     "end": 37.244
+    },
+    {
+     "text": "Follow.",
+     "start": 37.424,
+     "end": 38.164
+    }
+   ]
+  }
+ ]
+}

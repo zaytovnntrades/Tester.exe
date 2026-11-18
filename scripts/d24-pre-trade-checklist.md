@@ -3,7 +3,7 @@ id: d24
 series: Trading Basics, day 24 of 30
 pillar: 1
 hook_type: number
-length_target: 31s
+length_target: 30s
 status: draft        # draft | approved | blocked | produced | posted
 teaches: [checklist]
 sources: []          # no figures used, so nothing to source (§6.6)
@@ -11,12 +11,12 @@ sources: []          # no figures used, so nothing to source (§6.6)
 # Day 24 · 3 questions before every trade
 
 HOOK (0–3s)
-  VO: Pilots use checklists. Traders need one.
+  VO: Traders need a checklist.
   ON-SCREEN: Checklist before every trade · Why this trade? · Where is my exit? · How much am I risking?
   VISUAL: A stack of boxes appearing one by one.
 
 STAKES (3–9s): what it costs to get this wrong
-  VO: Before every flight, every time. Without one, you decide everything in the heat of the moment.
+  VO: Pilots run one before every flight. Without one, you decide everything in the heat of the moment.
   ON-SCREEN: No checklist = heat of the moment · Why this trade? · Where is my exit? · How much am I risking?
   VISUAL: A stack of boxes appearing one by one.
 
@@ -47,7 +47,7 @@ HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #tradingplan
 PINNED COMMENT: Which of the three do you skip most often? 1, 2 or 3 👇
 COVER / THUMBNAIL: frame 0 of the video ("Checklist before every trade").
 IRL COMPANION: your own real-life video for day 24, filmed by you. Not scripted here.
-WORD COUNT: 77 (≈31s at 2.5 words/sec)
+WORD COUNT: 76 (≈30s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

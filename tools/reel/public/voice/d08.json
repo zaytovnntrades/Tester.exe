@@ -1,0 +1,109 @@
+{
+ "id": "d08",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 31.612,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.774,
+   "sentences": [
+    {
+     "text": "See those bars?",
+     "start": 0.15,
+     "end": 1.367
+    },
+    {
+     "text": "That's volume.",
+     "start": 1.427,
+     "end": 2.524
+    }
+   ]
+  },
+  {
+   "start": 2.924,
+   "dur": 5.589,
+   "sentences": [
+    {
+     "text": "They aren't decoration.",
+     "start": 2.924,
+     "end": 4.646
+    },
+    {
+     "text": "Ignore them, and you can't tell a real move from a weak one.",
+     "start": 4.826,
+     "end": 8.113
+    }
+   ]
+  },
+  {
+   "start": 8.513,
+   "dur": 6.5,
+   "sentences": [
+    {
+     "text": "Volume counts how much was traded in each candle.",
+     "start": 8.513,
+     "end": 12.128
+    },
+    {
+     "text": "Tall bar, lots of trading.",
+     "start": 12.308,
+     "end": 14.613
+    }
+   ]
+  },
+  {
+   "start": 15.013,
+   "dur": 3.816,
+   "sentences": [
+    {
+     "text": "A big move on high volume means many traders took part.",
+     "start": 15.013,
+     "end": 18.429
+    }
+   ]
+  },
+  {
+   "start": 18.829,
+   "dur": 5.586,
+   "sentences": [
+    {
+     "text": "The same move on low volume had fewer traders behind it.",
+     "start": 18.829,
+     "end": 22.3
+    },
+    {
+     "text": "Treat it with more doubt.",
+     "start": 22.48,
+     "end": 24.015
+    }
+   ]
+  },
+  {
+   "start": 24.415,
+   "dur": 7.197,
+   "sentences": [
+    {
+     "text": "Price shows what happened.",
+     "start": 24.415,
+     "end": 26.513
+    },
+    {
+     "text": "Volume shows how many showed up.",
+     "start": 26.693,
+     "end": 29.157
+    },
+    {
+     "text": "Survive first.",
+     "start": 29.337,
+     "end": 30.512
+    },
+    {
+     "text": "Follow.",
+     "start": 30.692,
+     "end": 31.432
+    }
+   ]
+  }
+ ]
+}

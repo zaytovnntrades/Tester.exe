@@ -1,0 +1,134 @@
+{
+ "id": "d20",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 38.352,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 3.123,
+   "sentences": [
+    {
+     "text": "Small money can control big trades.",
+     "start": 0.15,
+     "end": 2.873
+    }
+   ]
+  },
+  {
+   "start": 3.273,
+   "dur": 7.447,
+   "sentences": [
+    {
+     "text": "That's leverage.",
+     "start": 3.273,
+     "end": 4.442
+    },
+    {
+     "text": "It magnifies everything.",
+     "start": 4.622,
+     "end": 6.868
+    },
+    {
+     "text": "Your wins.",
+     "start": 7.048,
+     "end": 7.979
+    },
+    {
+     "text": "And your losses.",
+     "start": 8.159,
+     "end": 9.384
+    },
+    {
+     "text": "Equally.",
+     "start": 9.564,
+     "end": 10.32
+    }
+   ]
+  },
+  {
+   "start": 10.72,
+   "dur": 7.426,
+   "sentences": [
+    {
+     "text": "Here's how.",
+     "start": 10.72,
+     "end": 11.656
+    },
+    {
+     "text": "You put down a deposit called margin.",
+     "start": 11.836,
+     "end": 14.873
+    },
+    {
+     "text": "It controls a much bigger position.",
+     "start": 15.053,
+     "end": 17.746
+    }
+   ]
+  },
+  {
+   "start": 18.146,
+   "dur": 5.309,
+   "sentences": [
+    {
+     "text": "So a small move in price becomes a big move in your account.",
+     "start": 18.146,
+     "end": 21.703
+    },
+    {
+     "text": "Up or down.",
+     "start": 21.883,
+     "end": 23.054
+    }
+   ]
+  },
+  {
+   "start": 23.454,
+   "dur": 8.072,
+   "sentences": [
+    {
+     "text": "Many products use it.",
+     "start": 23.454,
+     "end": 25.353
+    },
+    {
+     "text": "Leverage magnifies losses.",
+     "start": 25.533,
+     "end": 28.121
+    },
+    {
+     "text": "They can even be bigger than your deposit.",
+     "start": 28.301,
+     "end": 31.126
+    }
+   ]
+  },
+  {
+   "start": 31.526,
+   "dur": 6.826,
+   "sentences": [
+    {
+     "text": "Learn it on sim, with the smallest size.",
+     "start": 31.526,
+     "end": 34.481
+    },
+    {
+     "text": "I'm on sim.",
+     "start": 34.661,
+     "end": 35.897
+    },
+    {
+     "text": "Survive first.",
+     "start": 36.077,
+     "end": 37.252
+    },
+    {
+     "text": "Follow.",
+     "start": 37.432,
+     "end": 38.172
+    }
+   ]
+  }
+ ]
+}

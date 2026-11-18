@@ -3,7 +3,7 @@ id: d08
 series: Trading Basics, day 8 of 30
 pillar: 2
 hook_type: contrarian
-length_target: 31s
+length_target: 30s
 status: draft        # draft | approved | blocked | produced | posted
 teaches: [volume]
 sources: []          # no figures used, so nothing to source (§6.6)
@@ -11,7 +11,7 @@ sources: []          # no figures used, so nothing to source (§6.6)
 # Day 8 · What volume tells you
 
 HOOK (0–3s)
-  VO: Those bars under your chart? That's volume.
+  VO: See those bars? That's volume.
   ON-SCREEN: Those bars = volume · VOLUME
   VISUAL: A row of green and red candles with volume bars underneath (illustration).
 
@@ -20,7 +20,7 @@ STAKES (3–9s): what it costs to get this wrong
   ON-SCREEN: Real move or weak move? · VOLUME
   VISUAL: A row of green and red candles with volume bars underneath (illustration).
 
-LESSON (9–26s): 3 beats, one idea each
+LESSON (9–25s): 3 beats, one idea each
   Beat 1:
   VO: Volume counts how much was traded in each candle. Tall bar, lots of trading.
   ON-SCREEN: Volume = how much traded · tall bar = busy · VOLUME
@@ -36,7 +36,7 @@ LESSON (9–26s): 3 beats, one idea each
   ON-SCREEN: Big move + low volume · fewer behind it · MOVE · VOLUME
   VISUAL: Bars growing from a baseline (illustration): MOVE, VOLUME in red.
 
-LOOP / CTA (26–31s)
+LOOP / CTA (25–31s)
   VO: Price shows what happened. Volume shows how many showed up. Survive first. Follow.
   ON-SCREEN: Price + volume · Survive first. · Follow · Next: Long vs short · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -47,7 +47,7 @@ HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #volume #cha
 PINNED COMMENT: Do you have volume switched on in your chart? Yes / No 👇
 COVER / THUMBNAIL: frame 0 of the video ("Those bars = volume").
 IRL COMPANION: your own real-life video for day 8, filmed by you. Not scripted here.
-WORD COUNT: 77 (≈31s at 2.5 words/sec)
+WORD COUNT: 75 (≈30s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

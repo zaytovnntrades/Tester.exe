@@ -1,0 +1,144 @@
+{
+ "id": "d04",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 43.543,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 1.838,
+   "sentences": [
+    {
+     "text": "Can you read this shape?",
+     "start": 0.15,
+     "end": 1.587
+    }
+   ]
+  },
+  {
+   "start": 1.988,
+   "dur": 6.873,
+   "sentences": [
+    {
+     "text": "It's called a candle.",
+     "start": 1.988,
+     "end": 3.529
+    },
+    {
+     "text": "It's on almost every chart.",
+     "start": 3.709,
+     "end": 5.892
+    },
+    {
+     "text": "If you can't read it, you're guessing.",
+     "start": 6.072,
+     "end": 8.46
+    }
+   ]
+  },
+  {
+   "start": 8.861,
+   "dur": 5.748,
+   "sentences": [
+    {
+     "text": "One candle covers one slice of time.",
+     "start": 8.861,
+     "end": 11.447
+    },
+    {
+     "text": "Inside it are four prices.",
+     "start": 11.627,
+     "end": 14.209
+    }
+   ]
+  },
+  {
+   "start": 14.609,
+   "dur": 11.192,
+   "sentences": [
+    {
+     "text": "The thick part is the body.",
+     "start": 14.609,
+     "end": 16.898
+    },
+    {
+     "text": "It shows where price opened and where it closed.",
+     "start": 17.078,
+     "end": 20.332
+    },
+    {
+     "text": "Green means it closed higher.",
+     "start": 20.512,
+     "end": 22.885
+    },
+    {
+     "text": "Red means it closed lower.",
+     "start": 23.065,
+     "end": 25.401
+    }
+   ]
+  },
+  {
+   "start": 25.801,
+   "dur": 9.676,
+   "sentences": [
+    {
+     "text": "The thin lines are wicks.",
+     "start": 25.801,
+     "end": 28.038
+    },
+    {
+     "text": "They show the highest and lowest price in that time.",
+     "start": 28.218,
+     "end": 31.666
+    },
+    {
+     "text": "Colours vary by platform, so check yours.",
+     "start": 31.846,
+     "end": 35.077
+    }
+   ]
+  },
+  {
+   "start": 35.477,
+   "dur": 8.066,
+   "sentences": [
+    {
+     "text": "Open.",
+     "start": 35.477,
+     "end": 36.196
+    },
+    {
+     "text": "High.",
+     "start": 36.376,
+     "end": 36.984
+    },
+    {
+     "text": "Low.",
+     "start": 37.164,
+     "end": 37.806
+    },
+    {
+     "text": "Close.",
+     "start": 37.986,
+     "end": 38.703
+    },
+    {
+     "text": "Four prices, one shape.",
+     "start": 38.883,
+     "end": 41.088
+    },
+    {
+     "text": "Survive first.",
+     "start": 41.268,
+     "end": 42.444
+    },
+    {
+     "text": "Follow.",
+     "start": 42.623,
+     "end": 43.363
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+{
+ "id": "d13",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 37.371,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.262,
+   "sentences": [
+    {
+     "text": "Know where you'll take profit.",
+     "start": 0.15,
+     "end": 2.012
+    }
+   ]
+  },
+  {
+   "start": 2.412,
+   "dur": 4.832,
+   "sentences": [
+    {
+     "text": "Without a plan, traders hold winners too long and watch them turn into losers.",
+     "start": 2.412,
+     "end": 6.844
+    }
+   ]
+  },
+  {
+   "start": 7.244,
+   "dur": 7.501,
+   "sentences": [
+    {
+     "text": "A target is the price where you plan to close a winning trade.",
+     "start": 7.244,
+     "end": 10.931
+    },
+    {
+     "text": "Many traders set it with a take-profit order.",
+     "start": 11.111,
+     "end": 14.346
+    }
+   ]
+  },
+  {
+   "start": 14.746,
+   "dur": 8.973,
+   "sentences": [
+    {
+     "text": "Set it before you enter, at the same time as your stop loss.",
+     "start": 14.746,
+     "end": 18.163
+    },
+    {
+     "text": "Exit for a loss.",
+     "start": 18.343,
+     "end": 20.134
+    },
+    {
+     "text": "Exit for a win.",
+     "start": 20.314,
+     "end": 22.046
+    },
+    {
+     "text": "Both planned.",
+     "start": 22.226,
+     "end": 23.319
+    }
+   ]
+  },
+  {
+   "start": 23.719,
+   "dur": 6.58,
+   "sentences": [
+    {
+     "text": "Price may never reach it.",
+     "start": 23.719,
+     "end": 25.864
+    },
+    {
+     "text": "That's fine.",
+     "start": 26.044,
+     "end": 27.038
+    },
+    {
+     "text": "A target is a plan, not a promise.",
+     "start": 27.218,
+     "end": 29.899
+    }
+   ]
+  },
+  {
+   "start": 30.299,
+   "dur": 7.072,
+   "sentences": [
+    {
+     "text": "Two exits before every entry.",
+     "start": 30.299,
+     "end": 32.793
+    },
+    {
+     "text": "Practice it on sim.",
+     "start": 32.973,
+     "end": 34.916
+    },
+    {
+     "text": "Survive first.",
+     "start": 35.096,
+     "end": 36.271
+    },
+    {
+     "text": "Follow.",
+     "start": 36.451,
+     "end": 37.191
+    }
+   ]
+  }
+ ]
+}

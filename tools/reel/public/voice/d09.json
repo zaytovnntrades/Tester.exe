@@ -1,0 +1,124 @@
+{
+ "id": "d09",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 37.538,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.665,
+   "sentences": [
+    {
+     "text": "You can trade a falling market.",
+     "start": 0.15,
+     "end": 2.415
+    }
+   ]
+  },
+  {
+   "start": 2.815,
+   "dur": 6.152,
+   "sentences": [
+    {
+     "text": "It's called going short.",
+     "start": 2.815,
+     "end": 4.582
+    },
+    {
+     "text": "Mix up the two directions, and you're working against yourself.",
+     "start": 4.762,
+     "end": 8.567
+    }
+   ]
+  },
+  {
+   "start": 8.967,
+   "dur": 7.521,
+   "sentences": [
+    {
+     "text": "Going long means you buy first.",
+     "start": 8.967,
+     "end": 11.451
+    },
+    {
+     "text": "You gain if price rises.",
+     "start": 11.631,
+     "end": 13.967
+    },
+    {
+     "text": "You lose if it falls.",
+     "start": 14.147,
+     "end": 16.088
+    }
+   ]
+  },
+  {
+   "start": 16.488,
+   "dur": 7.601,
+   "sentences": [
+    {
+     "text": "Going short means you sell first.",
+     "start": 16.488,
+     "end": 19.203
+    },
+    {
+     "text": "You gain if price falls.",
+     "start": 19.383,
+     "end": 21.571
+    },
+    {
+     "text": "You lose if it rises.",
+     "start": 21.751,
+     "end": 23.689
+    }
+   ]
+  },
+  {
+   "start": 24.089,
+   "dur": 6.173,
+   "sentences": [
+    {
+     "text": "Either way, both directions can lose.",
+     "start": 24.089,
+     "end": 26.854
+    },
+    {
+     "text": "Know which one you're in before you click.",
+     "start": 27.034,
+     "end": 29.862
+    }
+   ]
+  },
+  {
+   "start": 30.262,
+   "dur": 7.277,
+   "sentences": [
+    {
+     "text": "Long is up.",
+     "start": 30.262,
+     "end": 31.32
+    },
+    {
+     "text": "Short is down.",
+     "start": 31.5,
+     "end": 32.724
+    },
+    {
+     "text": "Practice both on sim.",
+     "start": 32.904,
+     "end": 35.084
+    },
+    {
+     "text": "Survive first.",
+     "start": 35.264,
+     "end": 36.439
+    },
+    {
+     "text": "Follow.",
+     "start": 36.619,
+     "end": 37.358
+    }
+   ]
+  }
+ ]
+}

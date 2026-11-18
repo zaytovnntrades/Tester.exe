@@ -3,7 +3,7 @@ id: d21
 series: Trading Basics, day 21 of 30
 pillar: 2
 hook_type: contrarian
-length_target: 32s
+length_target: 31s
 status: draft        # draft | approved | blocked | produced | posted
 teaches: [futures, micro]
 sources: []          # no figures used, so nothing to source (§6.6)
@@ -11,7 +11,7 @@ sources: []          # no figures used, so nothing to source (§6.6)
 # Day 21 · Futures and micro futures
 
 HOOK (0–3s)
-  VO: Futures sound scary. They're agreements.
+  VO: Futures are just agreements.
   ON-SCREEN: They're agreements. · BUYER · SELLER
   VISUAL: Two columns side by side: BUYER and SELLER.
 
@@ -48,7 +48,7 @@ HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #futurestrad
 PINNED COMMENT: What part of futures confuses you most? I'll make a video on it 👇
 COVER / THUMBNAIL: frame 0 of the video ("They're agreements.").
 IRL COMPANION: your own real-life video for day 21, filmed by you. Not scripted here.
-WORD COUNT: 79 (≈32s at 2.5 words/sec)
+WORD COUNT: 78 (≈31s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

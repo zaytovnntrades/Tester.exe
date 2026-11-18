@@ -1,0 +1,134 @@
+{
+ "id": "d10",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 38.879,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.516,
+   "sentences": [
+    {
+     "text": "The wrong click costs you money.",
+     "start": 0.15,
+     "end": 2.266
+    }
+   ]
+  },
+  {
+   "start": 2.666,
+   "dur": 8.693,
+   "sentences": [
+    {
+     "text": "Click buy the wrong way, and you pay a price you never agreed to.",
+     "start": 2.666,
+     "end": 6.287
+    },
+    {
+     "text": "There are two basic order types.",
+     "start": 6.467,
+     "end": 8.834
+    },
+    {
+     "text": "They do opposite jobs.",
+     "start": 9.014,
+     "end": 10.959
+    }
+   ]
+  },
+  {
+   "start": 11.359,
+   "dur": 6.524,
+   "sentences": [
+    {
+     "text": "A market order says: fill me now.",
+     "start": 11.359,
+     "end": 13.949
+    },
+    {
+     "text": "You get speed.",
+     "start": 14.129,
+     "end": 15.24
+    },
+    {
+     "text": "You don't control the price.",
+     "start": 15.42,
+     "end": 17.483
+    }
+   ]
+  },
+  {
+   "start": 17.883,
+   "dur": 7.246,
+   "sentences": [
+    {
+     "text": "A limit order says: fill me at this price or better.",
+     "start": 17.883,
+     "end": 20.907
+    },
+    {
+     "text": "You control the price.",
+     "start": 21.087,
+     "end": 22.955
+    },
+    {
+     "text": "It might never fill.",
+     "start": 23.135,
+     "end": 24.729
+    }
+   ]
+  },
+  {
+   "start": 25.129,
+   "dur": 5.845,
+   "sentences": [
+    {
+     "text": "Speed or price.",
+     "start": 25.129,
+     "end": 26.718
+    },
+    {
+     "text": "You pick one.",
+     "start": 26.898,
+     "end": 27.9
+    },
+    {
+     "text": "Know which you picked before you click.",
+     "start": 28.08,
+     "end": 30.574
+    }
+   ]
+  },
+  {
+   "start": 30.974,
+   "dur": 7.906,
+   "sentences": [
+    {
+     "text": "Market for speed.",
+     "start": 30.974,
+     "end": 32.428
+    },
+    {
+     "text": "Limit for price.",
+     "start": 32.608,
+     "end": 34.065
+    },
+    {
+     "text": "Practice both on sim.",
+     "start": 34.245,
+     "end": 36.424
+    },
+    {
+     "text": "Survive first.",
+     "start": 36.604,
+     "end": 37.779
+    },
+    {
+     "text": "Follow.",
+     "start": 37.959,
+     "end": 38.699
+    }
+   ]
+  }
+ ]
+}

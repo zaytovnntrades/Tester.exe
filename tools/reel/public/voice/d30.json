@@ -1,0 +1,134 @@
+{
+ "id": "d30",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 36.985,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 3.115,
+   "sentences": [
+    {
+     "text": "Ready for real money?",
+     "start": 0.15,
+     "end": 1.909
+    },
+    {
+     "text": "Check first.",
+     "start": 1.969,
+     "end": 2.865
+    }
+   ]
+  },
+  {
+   "start": 3.265,
+   "dur": 6.582,
+   "sentences": [
+    {
+     "text": "Feelings don't decide it.",
+     "start": 3.265,
+     "end": 5.42
+    },
+    {
+     "text": "Go live too early, and you pay real money for beginner mistakes.",
+     "start": 5.6,
+     "end": 9.447
+    }
+   ]
+  },
+  {
+   "start": 9.847,
+   "dur": 6.51,
+   "sentences": [
+    {
+     "text": "Sign one.",
+     "start": 9.847,
+     "end": 10.808
+    },
+    {
+     "text": "You follow your own rules on sim, for weeks.",
+     "start": 10.988,
+     "end": 14.094
+    },
+    {
+     "text": "Even on bad days.",
+     "start": 14.274,
+     "end": 15.957
+    }
+   ]
+  },
+  {
+   "start": 16.357,
+   "dur": 5.421,
+   "sentences": [
+    {
+     "text": "Sign two.",
+     "start": 16.357,
+     "end": 17.343
+    },
+    {
+     "text": "You have a written plan, and you use it.",
+     "start": 17.523,
+     "end": 20.074
+    },
+    {
+     "text": "Every trade.",
+     "start": 20.254,
+     "end": 21.378
+    }
+   ]
+  },
+  {
+   "start": 21.778,
+   "dur": 7.678,
+   "sentences": [
+    {
+     "text": "Sign three.",
+     "start": 21.778,
+     "end": 22.877
+    },
+    {
+     "text": "It's money you can afford to lose.",
+     "start": 23.057,
+     "end": 25.661
+    },
+    {
+     "text": "All of it.",
+     "start": 25.841,
+     "end": 26.733
+    },
+    {
+     "text": "Ready doesn't mean you'll profit.",
+     "start": 26.913,
+     "end": 29.056
+    }
+   ]
+  },
+  {
+   "start": 29.456,
+   "dur": 7.529,
+   "sentences": [
+    {
+     "text": "Even then, start with the smallest size.",
+     "start": 29.456,
+     "end": 32.417
+    },
+    {
+     "text": "I'm still on sim.",
+     "start": 32.597,
+     "end": 34.53
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.71,
+     "end": 35.885
+    },
+    {
+     "text": "Follow.",
+     "start": 36.065,
+     "end": 36.805
+    }
+   ]
+  }
+ ]
+}

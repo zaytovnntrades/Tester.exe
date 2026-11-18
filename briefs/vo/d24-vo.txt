@@ -1,6 +1,6 @@
-Pilots use checklists. Traders need one.
+Traders need a checklist.
 
-Before every flight, every time. Without one, you decide everything in the heat of the moment.
+Pilots run one before every flight. Without one, you decide everything in the heat of the moment.
 
 One. Why am I entering? If you can't answer in a sentence, stop.
 

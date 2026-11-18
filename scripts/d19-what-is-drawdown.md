@@ -3,7 +3,7 @@ id: d19
 series: Trading Basics, day 19 of 30
 pillar: 1
 hook_type: bold claim
-length_target: 30s
+length_target: 32s
 status: draft        # draft | approved | blocked | produced | posted
 teaches: [drawdown]
 sources: []          # no figures used, so nothing to source (§6.6)
@@ -11,7 +11,7 @@ sources: []          # no figures used, so nothing to source (§6.6)
 # Day 19 · What drawdown means
 
 HOOK (0–3s)
-  VO: Every trader meets this word. Drawdown.
+  VO: Every trader meets drawdown.
   ON-SCREEN: Drawdown
   VISUAL: A line that climbs to a peak, then falls (illustration).
 
@@ -20,7 +20,7 @@ STAKES (3–7s): what it costs to get this wrong
   ON-SCREEN: Bad stretch → blown account
   VISUAL: A red price line stepping downward (illustration).
 
-LESSON (7–26s): 3 beats, one idea each
+LESSON (7–28s): 3 beats, one idea each
   Beat 1:
   VO: Drawdown is how far your account has fallen from its highest point.
   ON-SCREEN: From the peak, how far down? · PEAK · NOW
@@ -32,11 +32,11 @@ LESSON (7–26s): 3 beats, one idea each
   VISUAL: Bars growing from a baseline (illustration): LOSS in red, GAIN NEEDED in green.
 
   Beat 3:
-  VO: So traders set a limit. Reach it, and they stop and review. Before the hole gets deep.
+  VO: So traders set a limit. Reach it, and they stop and review. Before the hole gets too deep to climb out of.
   ON-SCREEN: Set a limit. Stop there. · PEAK · MY LIMIT
   VISUAL: A line that climbs to a peak, then falls (illustration).
 
-LOOP / CTA (26–31s)
+LOOP / CTA (28–33s)
   VO: Small drawdowns are normal. Deep ones end accounts. Survive first. Follow.
   ON-SCREEN: Keep it small. · Survive first. · Follow · Next: What leverage is · Zaytovnn Trades
   VISUAL: End card with the channel name.
@@ -47,7 +47,7 @@ HASHTAGS (3–5): #tradingforbeginners #tradingbasics #learntotrade #drawdown #r
 PINNED COMMENT: Had you heard the word "drawdown" before this video? Yes / No 👇
 COVER / THUMBNAIL: frame 0 of the video ("Drawdown").
 IRL COMPANION: your own real-life video for day 19, filmed by you. Not scripted here.
-WORD COUNT: 76 (≈30s at 2.5 words/sec)
+WORD COUNT: 79 (≈32s at 2.5 words/sec)
 
 ## Compliance check (§6)
 1. Education, not advice: ✅ explains a concept or a habit; no buy or sell calls, no price targets

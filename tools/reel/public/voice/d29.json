@@ -1,0 +1,124 @@
+{
+ "id": "d29",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 36.692,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.636,
+   "sentences": [
+    {
+     "text": "Some trading offers are traps.",
+     "start": 0.15,
+     "end": 2.386
+    }
+   ]
+  },
+  {
+   "start": 2.786,
+   "dur": 4.496,
+   "sentences": [
+    {
+     "text": "Fall for one, and you can lose money without ever placing a single trade.",
+     "start": 2.786,
+     "end": 6.882
+    }
+   ]
+  },
+  {
+   "start": 7.282,
+   "dur": 7.502,
+   "sentences": [
+    {
+     "text": "Red flag one.",
+     "start": 7.282,
+     "end": 8.99
+    },
+    {
+     "text": "Promises of profit with no risk.",
+     "start": 9.17,
+     "end": 11.963
+    },
+    {
+     "text": "Every real trade has risk.",
+     "start": 12.143,
+     "end": 14.384
+    }
+   ]
+  },
+  {
+   "start": 14.784,
+   "dur": 8.01,
+   "sentences": [
+    {
+     "text": "Red flag two.",
+     "start": 14.784,
+     "end": 16.29
+    },
+    {
+     "text": "Just copy our signals.",
+     "start": 16.47,
+     "end": 18.6
+    },
+    {
+     "text": "You hand over your decisions.",
+     "start": 18.78,
+     "end": 21.098
+    },
+    {
+     "text": "Then your money.",
+     "start": 21.278,
+     "end": 22.394
+    }
+   ]
+  },
+  {
+   "start": 22.794,
+   "dur": 8.304,
+   "sentences": [
+    {
+     "text": "Red flag three.",
+     "start": 22.794,
+     "end": 24.5
+    },
+    {
+     "text": "We're registered.",
+     "start": 24.68,
+     "end": 25.924
+    },
+    {
+     "text": "Check that yourself, on the regulator's own website.",
+     "start": 26.104,
+     "end": 29.579
+    },
+    {
+     "text": "Not theirs.",
+     "start": 29.759,
+     "end": 30.698
+    }
+   ]
+  },
+  {
+   "start": 31.098,
+   "dur": 5.593,
+   "sentences": [
+    {
+     "text": "If it sounds too good to be true, walk away.",
+     "start": 31.098,
+     "end": 34.237
+    },
+    {
+     "text": "Survive first.",
+     "start": 34.417,
+     "end": 35.592
+    },
+    {
+     "text": "Follow.",
+     "start": 35.772,
+     "end": 36.512
+    }
+   ]
+  }
+ ]
+}

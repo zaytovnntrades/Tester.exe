@@ -1,0 +1,119 @@
+{
+ "id": "d11",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 34.034,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.526,
+   "sentences": [
+    {
+     "text": "You clicked one price.",
+     "start": 0.15,
+     "end": 1.486
+    },
+    {
+     "text": "Got another.",
+     "start": 1.546,
+     "end": 2.276
+    }
+   ]
+  },
+  {
+   "start": 2.676,
+   "dur": 3.958,
+   "sentences": [
+    {
+     "text": "That gap has a name.",
+     "start": 2.676,
+     "end": 4.495
+    },
+    {
+     "text": "And it costs you.",
+     "start": 4.675,
+     "end": 6.234
+    }
+   ]
+  },
+  {
+   "start": 6.634,
+   "dur": 5.012,
+   "sentences": [
+    {
+     "text": "Slippage is the difference between the price you expected and the price you got.",
+     "start": 6.634,
+     "end": 11.246
+    }
+   ]
+  },
+  {
+   "start": 11.646,
+   "dur": 7.047,
+   "sentences": [
+    {
+     "text": "It shows up when price moves fast.",
+     "start": 11.646,
+     "end": 14.475
+    },
+    {
+     "text": "Like around big news, or when few traders are active.",
+     "start": 14.655,
+     "end": 18.293
+    }
+   ]
+  },
+  {
+   "start": 18.693,
+   "dur": 10.417,
+   "sentences": [
+    {
+     "text": "It's part of trading.",
+     "start": 18.693,
+     "end": 20.303
+    },
+    {
+     "text": "Calmer markets and limit orders can reduce it.",
+     "start": 20.483,
+     "end": 23.764
+    },
+    {
+     "text": "Nothing removes it.",
+     "start": 23.944,
+     "end": 25.661
+    },
+    {
+     "text": "So count it as a cost, every time.",
+     "start": 25.841,
+     "end": 28.71
+    }
+   ]
+  },
+  {
+   "start": 29.11,
+   "dur": 4.924,
+   "sentences": [
+    {
+     "text": "Expect the gap.",
+     "start": 29.11,
+     "end": 30.309
+    },
+    {
+     "text": "Plan for it.",
+     "start": 30.489,
+     "end": 31.579
+    },
+    {
+     "text": "Survive first.",
+     "start": 31.759,
+     "end": 32.934
+    },
+    {
+     "text": "Follow.",
+     "start": 33.114,
+     "end": 33.854
+    }
+   ]
+  }
+ ]
+}

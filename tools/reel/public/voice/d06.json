@@ -1,0 +1,139 @@
+{
+ "id": "d06",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 39.303,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.638,
+   "sentences": [
+    {
+     "text": "Which way is the market going?",
+     "start": 0.15,
+     "end": 2.388
+    }
+   ]
+  },
+  {
+   "start": 2.788,
+   "dur": 5.978,
+   "sentences": [
+    {
+     "text": "Answer that before anything else.",
+     "start": 2.788,
+     "end": 5.228
+    },
+    {
+     "text": "Trade against it, and you're swimming upstream.",
+     "start": 5.408,
+     "end": 8.366
+    }
+   ]
+  },
+  {
+   "start": 8.766,
+   "dur": 8.352,
+   "sentences": [
+    {
+     "text": "An uptrend makes higher highs and higher lows.",
+     "start": 8.766,
+     "end": 11.641
+    },
+    {
+     "text": "Each push goes further than the last.",
+     "start": 11.821,
+     "end": 14.504
+    },
+    {
+     "text": "Each dip stops higher.",
+     "start": 14.684,
+     "end": 16.718
+    }
+   ]
+  },
+  {
+   "start": 17.118,
+   "dur": 5.118,
+   "sentences": [
+    {
+     "text": "A downtrend is the mirror.",
+     "start": 17.118,
+     "end": 19.27
+    },
+    {
+     "text": "Lower highs.",
+     "start": 19.45,
+     "end": 20.553
+    },
+    {
+     "text": "Lower lows.",
+     "start": 20.733,
+     "end": 21.836
+    }
+   ]
+  },
+  {
+   "start": 22.236,
+   "dur": 9.795,
+   "sentences": [
+    {
+     "text": "No clear steps either way?",
+     "start": 22.236,
+     "end": 24.622
+    },
+    {
+     "text": "That's sideways.",
+     "start": 24.802,
+     "end": 26.041
+    },
+    {
+     "text": "Price just chops back and forth.",
+     "start": 26.221,
+     "end": 28.845
+    },
+    {
+     "text": "It's where forced trades go to die.",
+     "start": 29.025,
+     "end": 31.631
+    }
+   ]
+  },
+  {
+   "start": 32.031,
+   "dur": 7.272,
+   "sentences": [
+    {
+     "text": "Up.",
+     "start": 32.031,
+     "end": 32.529
+    },
+    {
+     "text": "Down.",
+     "start": 32.709,
+     "end": 33.398
+    },
+    {
+     "text": "Sideways.",
+     "start": 33.578,
+     "end": 34.53
+    },
+    {
+     "text": "Name it before you trade it.",
+     "start": 34.71,
+     "end": 36.848
+    },
+    {
+     "text": "Survive first.",
+     "start": 37.028,
+     "end": 38.203
+    },
+    {
+     "text": "Follow.",
+     "start": 38.383,
+     "end": 39.123
+    }
+   ]
+  }
+ ]
+}

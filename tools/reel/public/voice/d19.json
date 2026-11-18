@@ -1,0 +1,104 @@
+{
+ "id": "d19",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 33.05,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.607,
+   "sentences": [
+    {
+     "text": "Every trader meets drawdown.",
+     "start": 0.15,
+     "end": 2.357
+    }
+   ]
+  },
+  {
+   "start": 2.757,
+   "dur": 4.049,
+   "sentences": [
+    {
+     "text": "Ignore it, and a bad stretch quietly becomes a blown account.",
+     "start": 2.757,
+     "end": 6.405
+    }
+   ]
+  },
+  {
+   "start": 6.805,
+   "dur": 4.037,
+   "sentences": [
+    {
+     "text": "Drawdown is how far your account has fallen from its highest point.",
+     "start": 6.805,
+     "end": 10.442
+    }
+   ]
+  },
+  {
+   "start": 10.842,
+   "dur": 6.279,
+   "sentences": [
+    {
+     "text": "The deeper it gets, the harder the climb back.",
+     "start": 10.842,
+     "end": 13.779
+    },
+    {
+     "text": "A big hole needs an even bigger gain to fill.",
+     "start": 13.959,
+     "end": 16.722
+    }
+   ]
+  },
+  {
+   "start": 17.122,
+   "dur": 8.757,
+   "sentences": [
+    {
+     "text": "So traders set a limit.",
+     "start": 17.122,
+     "end": 19.29
+    },
+    {
+     "text": "Reach it, and they stop and review.",
+     "start": 19.47,
+     "end": 22.15
+    },
+    {
+     "text": "Before the hole gets too deep to climb out of.",
+     "start": 22.33,
+     "end": 25.478
+    }
+   ]
+  },
+  {
+   "start": 25.878,
+   "dur": 7.172,
+   "sentences": [
+    {
+     "text": "Small drawdowns are normal.",
+     "start": 25.878,
+     "end": 28.2
+    },
+    {
+     "text": "Deep ones end accounts.",
+     "start": 28.38,
+     "end": 30.595
+    },
+    {
+     "text": "Survive first.",
+     "start": 30.775,
+     "end": 31.95
+    },
+    {
+     "text": "Follow.",
+     "start": 32.13,
+     "end": 32.87
+    }
+   ]
+  }
+ ]
+}

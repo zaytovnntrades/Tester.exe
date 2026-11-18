@@ -1,0 +1,129 @@
+{
+ "id": "d27",
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "total": 38.252,
+ "scenes": [
+  {
+   "start": 0.15,
+   "dur": 2.594,
+   "sentences": [
+    {
+     "text": "Price is flying.",
+     "start": 0.15,
+     "end": 1.466
+    },
+    {
+     "text": "You want in.",
+     "start": 1.526,
+     "end": 2.344
+    }
+   ]
+  },
+  {
+   "start": 2.744,
+   "dur": 8.985,
+   "sentences": [
+    {
+     "text": "Everyone's talking about it.",
+     "start": 2.744,
+     "end": 4.928
+    },
+    {
+     "text": "That feeling is FOMO.",
+     "start": 5.107,
+     "end": 6.973
+    },
+    {
+     "text": "Fear of missing out.",
+     "start": 7.153,
+     "end": 8.757
+    },
+    {
+     "text": "It's a terrible entry signal.",
+     "start": 8.937,
+     "end": 11.329
+    }
+   ]
+  },
+  {
+   "start": 11.729,
+   "dur": 4.119,
+   "sentences": [
+    {
+     "text": "By the time a move feels obvious, a lot of it has already happened.",
+     "start": 11.729,
+     "end": 15.449
+    }
+   ]
+  },
+  {
+   "start": 15.849,
+   "dur": 8.876,
+   "sentences": [
+    {
+     "text": "Chasing means entering far from any sensible exit.",
+     "start": 15.849,
+     "end": 19.398
+    },
+    {
+     "text": "Your stop sits far below you.",
+     "start": 19.578,
+     "end": 22.139
+    },
+    {
+     "text": "Your risk gets bigger.",
+     "start": 22.319,
+     "end": 24.325
+    }
+   ]
+  },
+  {
+   "start": 24.725,
+   "dur": 6.612,
+   "sentences": [
+    {
+     "text": "So here's the rule.",
+     "start": 24.725,
+     "end": 26.352
+    },
+    {
+     "text": "No plan before the move?",
+     "start": 26.532,
+     "end": 28.813
+    },
+    {
+     "text": "No trade during it.",
+     "start": 28.993,
+     "end": 30.937
+    }
+   ]
+  },
+  {
+   "start": 31.337,
+   "dur": 6.915,
+   "sentences": [
+    {
+     "text": "There's always another trade.",
+     "start": 31.337,
+     "end": 33.237
+    },
+    {
+     "text": "There isn't always another account.",
+     "start": 33.417,
+     "end": 35.797
+    },
+    {
+     "text": "Survive first.",
+     "start": 35.977,
+     "end": 37.152
+    },
+    {
+     "text": "Follow.",
+     "start": 37.332,
+     "end": 38.072
+    }
+   ]
+  }
+ ]
+}
