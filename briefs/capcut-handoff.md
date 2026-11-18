@@ -1,3 +1,5 @@
+> **Superseded on 2026-11-18:** the finished lessons now come with voice and captions (`renders/final/dNN.mp4`). Use this only if you want to re-voice a lesson yourself in CapCut.
+
 # CapCut handoff: voice and captions for the 30 lessons
 
 You add the voice and captions in CapCut. Everything else is built here.

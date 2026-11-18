@@ -26,7 +26,10 @@ python tools/scout/rss_spider.py --dev   # cached while you tweak feeds.txt
 - Writer: social-media-skills plugin
 - Studio: claude-code-video-toolkit, cloned next to this repo at `../claude-code-video-toolkit` (not in use right now: see below)
 
-## How videos get made right now (v2)
+## How videos get made right now (v2, finished with voice)
+0. Finished lessons: `python tools/voice/fetch_model.py` (once), `python tools/voice/make_voice.py`, `python tools/voice/check_voice.py`, then `bash tools/reel/render-lessons.sh` → `renders/final/dNN.mp4`.
+
+### Older silent route
 1. Visuals are drawn in code here: `bash tools/render-all.sh` (all 30) or `bash tools/render-all.sh d04` (one day)
 2. Voice and captions are added in CapCut. Steps: `briefs/capcut-handoff.md`. Text to paste: `briefs/vo/`.
 3. Send the six voice-clip lengths back and the video is re-timed to match: see `briefs/capcut-handoff.md`.

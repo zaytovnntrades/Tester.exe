@@ -1,17 +1,16 @@
 # Reel and TikTok production system: Zaytovnn Trades
 
 One page for how a video goes from idea to posted. It overrides the defaults in CLAUDE.md where they differ.
-Last updated 2026-11-13 (v2: 30-day beginner curriculum d01–d30; the v1 set is in `archive/v1`).
+Last updated 2026-11-18 (v2: 30-day beginner curriculum d01–d30, built in Remotion with a free voice; the v1 set is in `archive/v1`).
 
 ## The daily loop
 | Step | What happens | Who | Where it lands |
 |------|--------------|-----|----------------|
 | 1. Topic | Take the next day from the 30-day plan. Post package ready by 11:30 am Eastern. Film your IRL video for the same day. | Plan | `ideas/calendar-30-day.md` |
 | 2. Script | Hook (under 3 seconds), stakes, 3 lesson beats, CTA. 30–45 seconds. Compliance check at the bottom. Uses only terms taught on earlier days. | Claude writes, you approve | `scripts/dNN-*.md` |
-| 3. Visuals | Silent, caption-free video drawn in code. | Claude | `renders/clean/dNN-clean.mp4` (`bash tools/render-all.sh`) |
-| 4. Voice | Paste the six paragraphs into CapCut text-to-speech. Voice: **the male "sly villain" voice in CapCut** (your choice, 2026-11-13). Same voice every video. | You | CapCut |
-| 5. Re-time | Send the six clip lengths. The video is re-rendered so every cut lands on your voice. | You → Claude | `renders/` |
-| 6. Captions, music, export | CapCut auto-captions, proofread. Highlight the red headline word. Music under the voice. | You | `###-final.mp4` |
+| 3. Voice | Free voice (Kokoro "Onyx", Apache-2.0), approved on the day-1 pilot. Every word checked against the script by a local transcriber. | Claude | `python tools/voice/make_voice.py`, `check_voice.py` |
+| 3b. Video | Remotion: polished background, the lesson charts, voice-synced captions, the voice. | Claude | `renders/final/dNN.mp4` (`bash tools/reel/render-lessons.sh`) |
+| 6. Music (optional) | Add music under the voice in CapCut if you want it. Captions and voice are already in. | You | CapCut |
 | 7. Pre-post check | Compliance (CLAUDE.md §6) and a quick editorial score. | Claude | `published/` |
 | 8. Post | TikTok and Instagram Reels, same file. Use the caption, hashtags and pinned comment from the script. | You | — |
 | 9. Stats | After 48 hours, paste the numbers. Every 10 posts, the plan is re-ranked. | You → Claude | `published/log.csv`, `ideas/insights.md` |
