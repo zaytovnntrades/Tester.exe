@@ -68,7 +68,7 @@ function vAnatomy(o,q){const X=330,H=600,T=720,B=980,L=1100,lab2=(s,x1,y,c,t0,sz
 const DRAW={anatomy:vAnatomy,line:vLine,bars:vBars,steps:vSteps,vs:vVs,word:vWord,ladder:vLadder,loop:vLoop,levels:vLevels,candles:vCandles},ILLS=['line','bars','levels','candles','anatomy'];
 const WORDS=V.s.map(s=>s[0].split(/\s+/).length),D=WORDS.map(n=>Math.max(2.6,n/2.5)),ST=[];D.reduce((a,v,i)=>(ST[i]=a,a+v),0);const END=ST[5]+D[5];
 const mk=i=>u=>{const [vo,title,sub,vis]=V.s[i],d=D[i],q=clamp(u/d);
-  if(V.lev)txt('Leverage magnifies losses.',CX,1404,32,RED,ON,{w:800});
+  if(V.lev)txt('Leverage magnifies losses.',CX,1505,32,RED,ON,{w:800});
   if(i===5){rich(parse(title),CX,330,84,ap(u,0.05));const n=WORDS[5];endCard(u,d*(n-3)/n,d*(n-1)/n,d+0.15,720,V.next?'Next: '+V.next:'');return}
   rich(parse(title),CX,310,84,ap(u,0.05));if(sub)rich(parse(sub,GR),CX,420,48,ap(u,Math.min(1.2,d*0.3)),{w:800});
   DRAW[vis[0]](vis[1],q);if(ILLS.includes(vis[0]))ILL(1192)};
