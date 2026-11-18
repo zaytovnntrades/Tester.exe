@@ -11,6 +11,20 @@ VOICE, SPEED, LANG = 'am_onyx', 0.92, 'en-us'   # one voice for all 30 (approved
 HOOK_SPEED, HOOK_GAP = 1.06, 0.06               # the hook (scene 1) is read a touch quicker and tighter, so it lands in 3 seconds
 GAP, SCENE_GAP, LEAD = 0.18, 0.40, 0.15          # pauses (seconds): between sentences, between scenes, before the first word
 SR = 24000
+# Spoken spelling only (captions keep the real word). Each one was checked with the transcriber: the plain spelling was misread (forex came out as "forks").
+SAY = {r'\bforex\b': 'fore-ex', r'\bForex\b': 'Fore-ex', r'\bCalmer\b': 'Kahlmer', r'\bcalmer\b': 'kahlmer'}
+def say(s):
+    for a, b in SAY.items(): s = re.sub(a, b, s)
+    return s
+def groups(sents):
+    # One- and two-word lines ("Up.", "Fast.", "Follow.") sound clipped when read alone, so they're read together
+    # with the line before them (or after, if they open the scene).
+    short = lambda x: len(x.split()) <= 2
+    g = []
+    for x in sents:
+        if g and (short(x) or all(map(short, g[-1]))): g[-1].append(x)
+        else: g.append([x])
+    return g
 data = json.loads(subprocess.check_output(['node', '-e', "const {SERIES,ORDER}=require('./tools/studio/series.js');console.log(JSON.stringify(ORDER.map(id=>({id,vo:SERIES[id].s.map(s=>s[0])}))))"], cwd=ROOT))
 ids = sys.argv[1:] or [d['id'] for d in data]
 k = Kokoro(os.path.join(HERE, 'models/onnx/model.onnx'), os.path.join(HERE, 'models/voices.npz'))
@@ -24,9 +38,11 @@ for d in [d for d in data if d['id'] in ids]:
     parts, t, scenes = [sil(LEAD)], LEAD, []
     for si, line in enumerate(d['vo']):
         start, sents = t, []
-        for s in [x for x in re.split(r'(?<=[.?!])\s+', line) if x]:
-            a, sr = k.create(s, voice=VOICE, speed=HOOK_SPEED if si == 0 else SPEED, lang=LANG); assert sr == SR
-            a = trim(a); sents.append({'text': s, 'start': round(t, 3), 'end': round(t + len(a) / SR, 3)})
+        for grp in groups([x for x in re.split(r'(?<=[.?!])\s+', line) if x]):
+            a, sr = k.create(say(' '.join(grp)), voice=VOICE, speed=HOOK_SPEED if si == 0 else SPEED, lang=LANG); assert sr == SR
+            a = trim(a); dur, tot, c = len(a) / SR, sum(len(x) + 1 for x in grp), 0
+            for x in grp:  # caption timing inside a group: split by length
+                sents.append({'text': x, 'start': round(t + dur * c / tot, 3), 'end': round(t + dur * (c + len(x) + 1) / tot, 3)}); c += len(x) + 1
             g = HOOK_GAP if si == 0 else GAP
             parts.append(a); t += len(a) / SR; parts.append(sil(g)); t += g
         if si < len(d['vo']) - 1: parts.append(sil(SCENE_GAP - g)); t += SCENE_GAP - g
