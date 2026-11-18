@@ -2,7 +2,7 @@
  "id": "d16",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 33.385,
+ "total": 32.132,
  "scenes": [
   {
    "start": 0.15,
@@ -81,7 +81,7 @@
   },
   {
    "start": 26.836,
-   "dur": 6.549,
+   "dur": 5.296,
    "sentences": [
     {
      "text": "Know your risk.",
@@ -91,22 +91,22 @@
     {
      "text": "Know your reward.",
      "start": 28.184,
-     "end": 29.629
+     "end": 29.44
     },
     {
      "text": "Then decide.",
-     "start": 29.809,
-     "end": 30.93
+     "start": 29.44,
+     "end": 30.347
     },
     {
      "text": "Survive first.",
-     "start": 31.11,
-     "end": 32.285
+     "start": 30.347,
+     "end": 31.394
     },
     {
      "text": "Follow.",
-     "start": 32.465,
-     "end": 33.205
+     "start": 31.394,
+     "end": 31.952
     }
    ]
   }

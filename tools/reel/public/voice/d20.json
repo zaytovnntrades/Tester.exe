@@ -2,7 +2,7 @@
  "id": "d20",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 38.352,
+ "total": 35.095,
  "scenes": [
   {
    "start": 0.15,
@@ -17,116 +17,116 @@
   },
   {
    "start": 3.273,
-   "dur": 7.447,
+   "dur": 5.935,
    "sentences": [
     {
      "text": "That's leverage.",
      "start": 3.273,
-     "end": 4.442
+     "end": 4.307
     },
     {
      "text": "It magnifies everything.",
-     "start": 4.622,
-     "end": 6.868
+     "start": 4.307,
+     "end": 5.827
     },
     {
      "text": "Your wins.",
-     "start": 7.048,
-     "end": 7.979
+     "start": 5.827,
+     "end": 6.496
     },
     {
      "text": "And your losses.",
-     "start": 8.159,
-     "end": 9.384
+     "start": 6.676,
+     "end": 8.07
     },
     {
      "text": "Equally.",
-     "start": 9.564,
-     "end": 10.32
+     "start": 8.07,
+     "end": 8.808
     }
    ]
   },
   {
-   "start": 10.72,
-   "dur": 7.426,
+   "start": 9.208,
+   "dur": 6.34,
    "sentences": [
     {
      "text": "Here's how.",
-     "start": 10.72,
-     "end": 11.656
+     "start": 9.208,
+     "end": 9.944
     },
     {
      "text": "You put down a deposit called margin.",
-     "start": 11.836,
-     "end": 14.873
+     "start": 9.944,
+     "end": 12.275
     },
     {
      "text": "It controls a much bigger position.",
-     "start": 15.053,
-     "end": 17.746
+     "start": 12.455,
+     "end": 15.148
     }
    ]
   },
   {
-   "start": 18.146,
+   "start": 15.548,
    "dur": 5.309,
    "sentences": [
     {
      "text": "So a small move in price becomes a big move in your account.",
-     "start": 18.146,
-     "end": 21.703
+     "start": 15.548,
+     "end": 19.105
     },
     {
      "text": "Up or down.",
-     "start": 21.883,
-     "end": 23.054
+     "start": 19.285,
+     "end": 20.457
     }
    ]
   },
   {
-   "start": 23.454,
+   "start": 20.857,
    "dur": 8.072,
    "sentences": [
     {
      "text": "Many products use it.",
-     "start": 23.454,
-     "end": 25.353
+     "start": 20.857,
+     "end": 22.755
     },
     {
      "text": "Leverage magnifies losses.",
-     "start": 25.533,
-     "end": 28.121
+     "start": 22.935,
+     "end": 25.524
     },
     {
      "text": "They can even be bigger than your deposit.",
-     "start": 28.301,
-     "end": 31.126
+     "start": 25.704,
+     "end": 28.528
     }
    ]
   },
   {
-   "start": 31.526,
-   "dur": 6.826,
+   "start": 28.928,
+   "dur": 6.167,
    "sentences": [
     {
      "text": "Learn it on sim, with the smallest size.",
-     "start": 31.526,
-     "end": 34.481
+     "start": 28.928,
+     "end": 31.884
     },
     {
      "text": "I'm on sim.",
-     "start": 34.661,
-     "end": 35.897
+     "start": 32.064,
+     "end": 33.041
     },
     {
      "text": "Survive first.",
-     "start": 36.077,
-     "end": 37.252
+     "start": 33.041,
+     "end": 34.264
     },
     {
      "text": "Follow.",
-     "start": 37.432,
-     "end": 38.172
+     "start": 34.264,
+     "end": 34.915
     }
    ]
   }

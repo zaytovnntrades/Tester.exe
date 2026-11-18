@@ -2,7 +2,7 @@
  "id": "d25",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 37.172,
+ "total": 33.302,
  "scenes": [
   {
    "start": 0.15,
@@ -17,121 +17,121 @@
   },
   {
    "start": 3.194,
-   "dur": 5.428,
+   "dur": 4.481,
    "sentences": [
     {
      "text": "A notebook.",
      "start": 3.194,
-     "end": 4.146
+     "end": 3.856
     },
     {
      "text": "Without it, you repeat the same mistake and call it bad luck.",
-     "start": 4.326,
-     "end": 8.222
+     "start": 3.856,
+     "end": 7.275
     }
    ]
   },
   {
-   "start": 8.622,
-   "dur": 5.965,
+   "start": 7.675,
+   "dur": 5.692,
    "sentences": [
     {
      "text": "A trading journal is a record of every trade.",
-     "start": 8.622,
-     "end": 11.529
+     "start": 7.675,
+     "end": 10.582
     },
     {
      "text": "Why you took it.",
-     "start": 11.709,
-     "end": 12.995
+     "start": 10.762,
+     "end": 11.933
     },
     {
      "text": "What happened.",
-     "start": 13.175,
-     "end": 14.188
+     "start": 11.933,
+     "end": 12.967
     }
    ]
   },
   {
-   "start": 14.588,
-   "dur": 7.308,
+   "start": 13.367,
+   "dur": 5.556,
    "sentences": [
     {
      "text": "Add one line on how you felt.",
-     "start": 14.588,
-     "end": 16.895
+     "start": 13.367,
+     "end": 15.225
     },
     {
      "text": "Calm.",
-     "start": 17.075,
-     "end": 17.724
+     "start": 15.225,
+     "end": 15.596
     },
     {
      "text": "Rushed.",
-     "start": 17.904,
-     "end": 18.612
+     "start": 15.596,
+     "end": 16.092
     },
     {
      "text": "Angry.",
-     "start": 18.792,
-     "end": 19.498
+     "start": 16.092,
+     "end": 16.525
     },
     {
      "text": "That's where patterns hide.",
-     "start": 19.678,
-     "end": 21.496
+     "start": 16.705,
+     "end": 18.523
     }
    ]
   },
   {
-   "start": 21.896,
+   "start": 18.923,
    "dur": 9.413,
    "sentences": [
     {
      "text": "Read it back every week.",
-     "start": 21.896,
-     "end": 23.987
+     "start": 18.923,
+     "end": 21.014
     },
     {
      "text": "Your mistakes will repeat.",
-     "start": 24.167,
-     "end": 26.331
+     "start": 21.194,
+     "end": 23.358
     },
     {
      "text": "Now you can see them.",
-     "start": 26.511,
-     "end": 28.515
+     "start": 23.538,
+     "end": 25.542
     },
     {
      "text": "And fix one at a time.",
-     "start": 28.695,
-     "end": 30.909
+     "start": 25.722,
+     "end": 27.936
     }
    ]
   },
   {
-   "start": 31.309,
-   "dur": 5.863,
+   "start": 28.336,
+   "dur": 4.965,
    "sentences": [
     {
      "text": "Write it down.",
-     "start": 31.309,
-     "end": 32.423
+     "start": 28.336,
+     "end": 29.45
     },
     {
      "text": "Sim trades count too.",
-     "start": 32.603,
-     "end": 34.717
+     "start": 29.63,
+     "end": 31.337
     },
     {
      "text": "Survive first.",
-     "start": 34.897,
-     "end": 36.072
+     "start": 31.337,
+     "end": 32.501
     },
     {
      "text": "Follow.",
-     "start": 36.252,
-     "end": 36.992
+     "start": 32.501,
+     "end": 33.122
     }
    ]
   }

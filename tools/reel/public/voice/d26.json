@@ -2,7 +2,7 @@
  "id": "d26",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 38.675,
+ "total": 36.17,
  "scenes": [
   {
    "start": 0.15,
@@ -38,7 +38,7 @@
   },
   {
    "start": 9.949,
-   "dur": 6.762,
+   "dur": 6.571,
    "sentences": [
     {
      "text": "It starts the same way every time.",
@@ -53,90 +53,90 @@
     {
      "text": "You want it back.",
      "start": 14.332,
-     "end": 15.508
+     "end": 15.732
     },
     {
      "text": "Now.",
-     "start": 15.688,
-     "end": 16.312
+     "start": 15.732,
+     "end": 16.121
     }
    ]
   },
   {
-   "start": 16.712,
-   "dur": 6.779,
+   "start": 16.521,
+   "dur": 6.1,
    "sentences": [
     {
      "text": "So you rush in.",
-     "start": 16.712,
-     "end": 17.997
+     "start": 16.521,
+     "end": 17.768
     },
     {
      "text": "Bigger size.",
-     "start": 18.177,
-     "end": 19.243
+     "start": 17.768,
+     "end": 18.781
     },
     {
      "text": "No plan.",
-     "start": 19.423,
-     "end": 20.353
+     "start": 18.781,
+     "end": 19.483
     },
     {
      "text": "That's how one loss becomes three.",
-     "start": 20.533,
-     "end": 23.091
+     "start": 19.663,
+     "end": 22.22
     }
    ]
   },
   {
-   "start": 23.491,
-   "dur": 7.892,
+   "start": 22.62,
+   "dur": 7.362,
    "sentences": [
     {
      "text": "The fix is a rule made in advance.",
-     "start": 23.491,
-     "end": 26.196
+     "start": 22.62,
+     "end": 25.326
     },
     {
      "text": "After a loss, you stop.",
-     "start": 26.376,
-     "end": 28.396
+     "start": 25.506,
+     "end": 27.346
     },
     {
      "text": "Walk away.",
-     "start": 28.576,
-     "end": 29.59
+     "start": 27.346,
+     "end": 28.19
     },
     {
      "text": "Come back later.",
-     "start": 29.77,
-     "end": 30.983
+     "start": 28.37,
+     "end": 29.583
     }
    ]
   },
   {
-   "start": 31.383,
-   "dur": 7.292,
+   "start": 29.983,
+   "dur": 6.187,
    "sentences": [
     {
      "text": "The market will be there tomorrow.",
-     "start": 31.383,
-     "end": 33.753
+     "start": 29.983,
+     "end": 32.353
     },
     {
      "text": "Make sure your account is too.",
-     "start": 33.933,
-     "end": 36.22
+     "start": 32.533,
+     "end": 34.517
     },
     {
      "text": "Survive first.",
-     "start": 36.4,
-     "end": 37.575
+     "start": 34.517,
+     "end": 35.478
     },
     {
      "text": "Follow.",
-     "start": 37.755,
-     "end": 38.495
+     "start": 35.478,
+     "end": 35.99
     }
    ]
   }

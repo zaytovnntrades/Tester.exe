@@ -2,106 +2,106 @@
  "id": "d22",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 33.088,
+ "total": 32.238,
  "scenes": [
   {
    "start": 0.15,
-   "dur": 2.677,
+   "dur": 2.629,
    "sentences": [
     {
      "text": "Price doesn't glide.",
      "start": 0.15,
-     "end": 1.549
+     "end": 1.66
     },
     {
      "text": "It steps.",
-     "start": 1.609,
-     "end": 2.427
+     "start": 1.66,
+     "end": 2.379
     }
    ]
   },
   {
-   "start": 2.827,
+   "start": 2.779,
    "dur": 8.12,
    "sentences": [
     {
      "text": "It moves in tiny steps.",
-     "start": 2.827,
-     "end": 5.234
+     "start": 2.779,
+     "end": 5.186
     },
     {
      "text": "Each step is worth money.",
-     "start": 5.414,
-     "end": 7.573
+     "start": 5.366,
+     "end": 7.525
     },
     {
      "text": "Not knowing how much is trading blind.",
-     "start": 7.753,
-     "end": 10.548
+     "start": 7.705,
+     "end": 10.5
     }
    ]
   },
   {
-   "start": 10.948,
+   "start": 10.9,
    "dur": 3.706,
    "sentences": [
     {
      "text": "In futures, the smallest step is called a tick.",
-     "start": 10.948,
-     "end": 14.254
+     "start": 10.9,
+     "end": 14.206
     }
    ]
   },
   {
-   "start": 14.654,
-   "dur": 3.417,
+   "start": 14.606,
+   "dur": 3.492,
    "sentences": [
     {
      "text": "In forex, the common unit is called a pip.",
-     "start": 14.654,
-     "end": 17.671
+     "start": 14.606,
+     "end": 17.697
     }
    ]
   },
   {
-   "start": 18.071,
+   "start": 18.097,
    "dur": 10.231,
    "sentences": [
     {
      "text": "Every market sets its own value per step.",
-     "start": 18.071,
-     "end": 21.218
+     "start": 18.097,
+     "end": 21.244
     },
     {
      "text": "Look it up on the exchange or your platform before you trade it.",
-     "start": 21.398,
-     "end": 25.017
+     "start": 21.424,
+     "end": 25.044
     },
     {
      "text": "With leverage, steps add up fast.",
-     "start": 25.197,
-     "end": 27.902
+     "start": 25.224,
+     "end": 27.928
     }
    ]
   },
   {
-   "start": 28.302,
-   "dur": 4.786,
+   "start": 28.328,
+   "dur": 3.91,
    "sentences": [
     {
      "text": "Know what one step costs you.",
-     "start": 28.302,
-     "end": 30.633
+     "start": 28.328,
+     "end": 30.44
     },
     {
      "text": "Survive first.",
-     "start": 30.813,
-     "end": 31.988
+     "start": 30.44,
+     "end": 31.495
     },
     {
      "text": "Follow.",
-     "start": 32.168,
-     "end": 32.908
+     "start": 31.495,
+     "end": 32.058
     }
    ]
   }

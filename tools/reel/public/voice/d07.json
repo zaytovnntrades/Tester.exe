@@ -2,7 +2,7 @@
  "id": "d07",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 37.01,
+ "total": 35.878,
  "scenes": [
   {
    "start": 0.15,
@@ -91,7 +91,7 @@
   },
   {
    "start": 30.647,
-   "dur": 6.363,
+   "dur": 5.232,
    "sentences": [
     {
      "text": "Find the floor.",
@@ -101,22 +101,22 @@
     {
      "text": "Find the ceiling.",
      "start": 31.941,
-     "end": 33.254
+     "end": 33.194
     },
     {
      "text": "Then decide.",
-     "start": 33.434,
-     "end": 34.555
+     "start": 33.194,
+     "end": 34.098
     },
     {
      "text": "Survive first.",
-     "start": 34.735,
-     "end": 35.91
+     "start": 34.098,
+     "end": 35.142
     },
     {
      "text": "Follow.",
-     "start": 36.09,
-     "end": 36.83
+     "start": 35.142,
+     "end": 35.698
     }
    ]
   }

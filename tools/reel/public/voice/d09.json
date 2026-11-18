@@ -2,7 +2,7 @@
  "id": "d09",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 37.538,
+ "total": 36.506,
  "scenes": [
   {
    "start": 0.15,
@@ -91,7 +91,7 @@
   },
   {
    "start": 30.262,
-   "dur": 7.277,
+   "dur": 6.244,
    "sentences": [
     {
      "text": "Long is up.",
@@ -106,17 +106,17 @@
     {
      "text": "Practice both on sim.",
      "start": 32.904,
-     "end": 35.084
+     "end": 34.577
     },
     {
      "text": "Survive first.",
-     "start": 35.264,
-     "end": 36.439
+     "start": 34.577,
+     "end": 35.718
     },
     {
      "text": "Follow.",
-     "start": 36.619,
-     "end": 37.358
+     "start": 35.718,
+     "end": 36.326
     }
    ]
   }

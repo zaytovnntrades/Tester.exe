@@ -2,7 +2,7 @@
  "id": "d14",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 40.067,
+ "total": 37.064,
  "scenes": [
   {
    "start": 0.15,
@@ -33,95 +33,95 @@
   },
   {
    "start": 8.176,
-   "dur": 9.202,
+   "dur": 7.351,
    "sentences": [
     {
      "text": "Many markets trade across time zones.",
      "start": 8.176,
-     "end": 11.111
+     "end": 10.591
     },
     {
      "text": "Asia.",
-     "start": 11.291,
-     "end": 12.049
+     "start": 10.591,
+     "end": 10.973
     },
     {
      "text": "Then Europe.",
-     "start": 12.229,
-     "end": 13.236
+     "start": 10.973,
+     "end": 11.799
     },
     {
      "text": "Then America.",
-     "start": 13.416,
-     "end": 14.54
+     "start": 11.799,
+     "end": 12.689
     },
     {
      "text": "Each region is a session.",
-     "start": 14.72,
-     "end": 16.977
+     "start": 12.869,
+     "end": 15.127
     }
    ]
   },
   {
-   "start": 17.377,
+   "start": 15.527,
    "dur": 7.386,
    "sentences": [
     {
      "text": "When a big region opens, more traders show up.",
-     "start": 17.377,
-     "end": 20.569
+     "start": 15.527,
+     "end": 18.718
     },
     {
      "text": "Moves tend to get bigger, and spreads often get smaller.",
-     "start": 20.749,
-     "end": 24.364
+     "start": 18.898,
+     "end": 22.513
     }
    ]
   },
   {
-   "start": 24.764,
-   "dur": 7.716,
+   "start": 22.913,
+   "dur": 7.491,
    "sentences": [
     {
      "text": "When two regions are open together, it's often the busiest time of the day.",
-     "start": 24.764,
-     "end": 28.811
+     "start": 22.913,
+     "end": 26.96
     },
     {
      "text": "Busier can mean faster.",
-     "start": 28.991,
-     "end": 30.86
+     "start": 27.14,
+     "end": 29.104
     },
     {
      "text": "Not safer.",
-     "start": 31.04,
-     "end": 32.079
+     "start": 29.104,
+     "end": 30.004
     }
    ]
   },
   {
-   "start": 32.479,
-   "dur": 7.588,
+   "start": 30.404,
+   "dur": 6.66,
    "sentences": [
     {
      "text": "Learn when your market is awake.",
-     "start": 32.479,
-     "end": 34.861
+     "start": 30.404,
+     "end": 32.786
     },
     {
      "text": "Check its hours before you trade.",
-     "start": 35.041,
-     "end": 37.612
+     "start": 32.966,
+     "end": 35.303
     },
     {
      "text": "Survive first.",
-     "start": 37.792,
-     "end": 38.967
+     "start": 35.303,
+     "end": 36.334
     },
     {
      "text": "Follow.",
-     "start": 39.147,
-     "end": 39.887
+     "start": 36.334,
+     "end": 36.884
     }
    ]
   }

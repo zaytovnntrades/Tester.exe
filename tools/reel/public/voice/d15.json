@@ -2,121 +2,121 @@
  "id": "d15",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 36.352,
+ "total": 34.62,
  "scenes": [
   {
    "start": 0.15,
-   "dur": 2.322,
+   "dur": 2.352,
    "sentences": [
     {
      "text": "Not where to enter.",
      "start": 0.15,
-     "end": 1.286
+     "end": 1.451
     },
     {
      "text": "How much.",
-     "start": 1.346,
-     "end": 2.072
+     "start": 1.451,
+     "end": 2.102
     }
    ]
   },
   {
-   "start": 2.472,
+   "start": 2.502,
    "dur": 6.94,
    "sentences": [
     {
      "text": "That's the biggest decision in a trade.",
-     "start": 2.472,
-     "end": 5.167
+     "start": 2.502,
+     "end": 5.197
     },
     {
      "text": "Too big, and one normal loss does real damage to your account.",
-     "start": 5.347,
-     "end": 9.012
+     "start": 5.377,
+     "end": 9.041
     }
    ]
   },
   {
-   "start": 9.412,
+   "start": 9.441,
    "dur": 5.984,
    "sentences": [
     {
      "text": "Position size is how much you trade.",
-     "start": 9.412,
-     "end": 12.323
+     "start": 9.441,
+     "end": 12.352
     },
     {
      "text": "How many shares or contracts.",
-     "start": 12.503,
-     "end": 14.996
+     "start": 12.532,
+     "end": 15.025
     }
    ]
   },
   {
-   "start": 15.396,
+   "start": 15.425,
    "dur": 4.935,
    "sentences": [
     {
      "text": "Bigger size means every move in price counts for more.",
-     "start": 15.396,
-     "end": 18.588
+     "start": 15.425,
+     "end": 18.617
     },
     {
      "text": "Up and down.",
-     "start": 18.768,
-     "end": 19.931
+     "start": 18.797,
+     "end": 19.96
     }
    ]
   },
   {
-   "start": 20.331,
+   "start": 20.36,
    "dur": 9.747,
    "sentences": [
     {
      "text": "So decide the loss you can accept first.",
-     "start": 20.331,
-     "end": 23.343
+     "start": 20.36,
+     "end": 23.372
     },
     {
      "text": "Set your stop loss.",
-     "start": 23.523,
-     "end": 25.16
+     "start": 23.552,
+     "end": 25.189
     },
     {
      "text": "Then size the trade to fit it.",
-     "start": 25.34,
-     "end": 27.847
+     "start": 25.369,
+     "end": 27.877
     },
     {
      "text": "Not the other way round.",
-     "start": 28.027,
-     "end": 29.678
+     "start": 28.057,
+     "end": 29.707
     }
    ]
   },
   {
-   "start": 30.078,
-   "dur": 6.275,
+   "start": 30.107,
+   "dur": 4.513,
    "sentences": [
     {
      "text": "Start with the smallest size there is.",
-     "start": 30.078,
-     "end": 32.824
+     "start": 30.107,
+     "end": 32.521
     },
     {
      "text": "On sim.",
-     "start": 33.004,
-     "end": 33.897
+     "start": 32.521,
+     "end": 33.016
     },
     {
      "text": "Survive first.",
-     "start": 34.077,
-     "end": 35.252
+     "start": 33.016,
+     "end": 33.945
     },
     {
      "text": "Follow.",
-     "start": 35.432,
-     "end": 36.172
+     "start": 33.945,
+     "end": 34.44
     }
    ]
   }

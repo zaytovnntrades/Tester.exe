@@ -2,7 +2,7 @@
  "id": "d12",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 36.877,
+ "total": 33.609,
  "scenes": [
   {
    "start": 0.15,
@@ -17,7 +17,7 @@
   },
   {
    "start": 2.817,
-   "dur": 5.862,
+   "dur": 5.532,
    "sentences": [
     {
      "text": "No exit plan?",
@@ -27,111 +27,111 @@
     {
      "text": "Then a small loss can grow into a big one.",
      "start": 4.415,
-     "end": 7.389
+     "end": 7.516
     },
     {
      "text": "Fast.",
-     "start": 7.569,
-     "end": 8.279
+     "start": 7.516,
+     "end": 7.949
     }
    ]
   },
   {
-   "start": 8.679,
+   "start": 8.349,
    "dur": 6.869,
    "sentences": [
     {
      "text": "A stop loss is an order you set before you enter.",
-     "start": 8.679,
-     "end": 11.96
+     "start": 8.349,
+     "end": 11.629
     },
     {
      "text": "It closes your trade at a price you pick.",
-     "start": 12.14,
-     "end": 15.148
+     "start": 11.809,
+     "end": 14.817
     }
    ]
   },
   {
-   "start": 15.548,
-   "dur": 6.021,
+   "start": 15.217,
+   "dur": 5.474,
    "sentences": [
     {
      "text": "Price hits it?",
-     "start": 15.548,
-     "end": 16.719
+     "start": 15.217,
+     "end": 16.282
     },
     {
      "text": "You're out.",
-     "start": 16.899,
-     "end": 17.62
+     "start": 16.282,
+     "end": 17.133
     },
     {
      "text": "Small loss.",
-     "start": 17.8,
-     "end": 18.862
+     "start": 17.133,
+     "end": 17.985
     },
     {
      "text": "You trade again tomorrow.",
-     "start": 19.042,
-     "end": 21.169
+     "start": 18.165,
+     "end": 20.292
     }
    ]
   },
   {
-   "start": 21.569,
-   "dur": 8.274,
+   "start": 20.692,
+   "dur": 7.922,
    "sentences": [
     {
      "text": "It's not a promise.",
-     "start": 21.569,
-     "end": 23.132
+     "start": 20.692,
+     "end": 22.255
     },
     {
      "text": "In a fast market, price can jump past it.",
-     "start": 23.312,
-     "end": 26.501
+     "start": 22.435,
+     "end": 25.344
     },
     {
      "text": "That's slippage.",
-     "start": 26.681,
-     "end": 27.751
+     "start": 25.344,
+     "end": 26.522
     },
     {
      "text": "But it beats hoping.",
-     "start": 27.931,
-     "end": 29.443
+     "start": 26.702,
+     "end": 28.214
     }
    ]
   },
   {
-   "start": 29.843,
-   "dur": 7.034,
+   "start": 28.614,
+   "dur": 4.995,
    "sentences": [
     {
      "text": "Exit first.",
-     "start": 29.843,
-     "end": 30.903
+     "start": 28.614,
+     "end": 29.452
     },
     {
      "text": "Entry second.",
-     "start": 31.083,
-     "end": 32.3
+     "start": 29.452,
+     "end": 30.429
     },
     {
      "text": "Practice it on sim.",
-     "start": 32.48,
-     "end": 34.423
+     "start": 30.429,
+     "end": 31.824
     },
     {
      "text": "Survive first.",
-     "start": 34.603,
-     "end": 35.778
+     "start": 31.824,
+     "end": 32.871
     },
     {
      "text": "Follow.",
-     "start": 35.958,
-     "end": 36.697
+     "start": 32.871,
+     "end": 33.429
     }
    ]
   }

@@ -2,7 +2,7 @@
  "id": "d01",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 38.886,
+ "total": 37.903,
  "scenes": [
   {
    "start": 0.15,
@@ -91,7 +91,7 @@
   },
   {
    "start": 32.243,
-   "dur": 6.643,
+   "dur": 5.66,
    "sentences": [
     {
      "text": "Respect the other side.",
@@ -101,17 +101,17 @@
     {
      "text": "Learn before you risk money.",
      "start": 34.267,
-     "end": 36.431
+     "end": 36.195
     },
     {
      "text": "Survive first.",
-     "start": 36.611,
-     "end": 37.786
+     "start": 36.195,
+     "end": 37.192
     },
     {
      "text": "Follow.",
-     "start": 37.966,
-     "end": 38.706
+     "start": 37.192,
+     "end": 37.723
     }
    ]
   }

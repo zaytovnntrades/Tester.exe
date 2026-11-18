@@ -2,131 +2,131 @@
  "id": "d05",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 36.547,
+ "total": 34.091,
  "scenes": [
   {
    "start": 0.15,
-   "dur": 2.521,
+   "dur": 2.636,
    "sentences": [
     {
      "text": "Same market.",
      "start": 0.15,
-     "end": 1.164
+     "end": 1.058
     },
     {
      "text": "Different stories.",
-     "start": 1.224,
-     "end": 2.271
+     "start": 1.058,
+     "end": 2.386
     }
    ]
   },
   {
-   "start": 2.671,
+   "start": 2.786,
    "dur": 3.905,
    "sentences": [
     {
      "text": "Pick the wrong timeframe, and a small dip can look like a crash.",
-     "start": 2.671,
-     "end": 6.176
+     "start": 2.786,
+     "end": 6.291
     }
    ]
   },
   {
-   "start": 6.576,
-   "dur": 8.3,
+   "start": 6.691,
+   "dur": 6.68,
    "sentences": [
     {
      "text": "A timeframe is how much time each candle covers.",
-     "start": 6.576,
-     "end": 10.153
+     "start": 6.691,
+     "end": 9.79
     },
     {
      "text": "One minute.",
-     "start": 10.333,
-     "end": 11.236
+     "start": 9.79,
+     "end": 10.549
     },
     {
      "text": "One hour.",
-     "start": 11.416,
-     "end": 12.271
+     "start": 10.549,
+     "end": 11.182
     },
     {
      "text": "One day.",
-     "start": 12.451,
-     "end": 13.256
+     "start": 11.182,
+     "end": 11.751
     },
     {
      "text": "You choose it.",
-     "start": 13.436,
-     "end": 14.475
+     "start": 11.931,
+     "end": 12.97
     }
    ]
   },
   {
-   "start": 14.875,
+   "start": 13.37,
    "dur": 6.837,
    "sentences": [
     {
      "text": "Short timeframes show every wiggle.",
-     "start": 14.875,
-     "end": 17.568
+     "start": 13.37,
+     "end": 16.063
     },
     {
      "text": "Lots of noise.",
-     "start": 17.748,
-     "end": 18.945
+     "start": 16.243,
+     "end": 17.44
     },
     {
      "text": "Lots of false alarms.",
-     "start": 19.125,
-     "end": 21.312
+     "start": 17.62,
+     "end": 19.807
     }
    ]
   },
   {
-   "start": 21.712,
+   "start": 20.207,
    "dur": 7.83,
    "sentences": [
     {
      "text": "Long timeframes show the bigger direction.",
-     "start": 21.712,
-     "end": 24.299
+     "start": 20.207,
+     "end": 22.794
     },
     {
      "text": "Many traders check the bigger one first.",
-     "start": 24.479,
-     "end": 27.467
+     "start": 22.974,
+     "end": 25.962
     },
     {
      "text": "Then they zoom in.",
-     "start": 27.647,
-     "end": 29.142
+     "start": 26.142,
+     "end": 27.637
     }
    ]
   },
   {
-   "start": 29.542,
-   "dur": 7.005,
+   "start": 28.037,
+   "dur": 6.054,
    "sentences": [
     {
      "text": "Pick your timeframe on purpose.",
-     "start": 29.542,
-     "end": 31.97
+     "start": 28.037,
+     "end": 30.465
     },
     {
      "text": "Practice it on sim.",
-     "start": 32.15,
-     "end": 34.093
+     "start": 30.645,
+     "end": 32.164
     },
     {
      "text": "Survive first.",
-     "start": 34.273,
-     "end": 35.448
+     "start": 32.164,
+     "end": 33.303
     },
     {
      "text": "Follow.",
-     "start": 35.628,
-     "end": 36.367
+     "start": 33.303,
+     "end": 33.911
     }
    ]
   }

@@ -2,7 +2,7 @@
  "id": "d02",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 42.295,
+ "total": 38.893,
  "scenes": [
   {
    "start": 0.15,
@@ -38,7 +38,7 @@
   },
   {
    "start": 11.166,
-   "dur": 7.234,
+   "dur": 6.864,
    "sentences": [
     {
      "text": "Sim is a practice account.",
@@ -53,85 +53,85 @@
     {
      "text": "The same prices.",
      "start": 15.116,
-     "end": 16.534
+     "end": 16.451
     },
     {
      "text": "Pretend money.",
-     "start": 16.714,
-     "end": 17.999
+     "start": 16.451,
+     "end": 17.63
     }
    ]
   },
   {
-   "start": 18.399,
-   "dur": 7.624,
+   "start": 18.03,
+   "dur": 5.456,
    "sentences": [
     {
      "text": "Use it to practice one skill at a time.",
-     "start": 18.399,
-     "end": 21.367
+     "start": 18.03,
+     "end": 20.302
     },
     {
      "text": "Reading charts.",
-     "start": 21.547,
-     "end": 22.787
+     "start": 20.302,
+     "end": 21.211
     },
     {
      "text": "Placing orders.",
-     "start": 22.966,
-     "end": 24.129
+     "start": 21.211,
+     "end": 22.12
     },
     {
      "text": "Following rules.",
-     "start": 24.309,
-     "end": 25.623
+     "start": 22.12,
+     "end": 23.086
     }
    ]
   },
   {
-   "start": 26.023,
+   "start": 23.486,
    "dur": 8.719,
    "sentences": [
     {
      "text": "Sim won't feel like real money.",
-     "start": 26.023,
-     "end": 28.543
+     "start": 23.486,
+     "end": 26.006
     },
     {
      "text": "Your emotions stay quieter.",
-     "start": 28.723,
-     "end": 31.033
+     "start": 26.186,
+     "end": 28.496
     },
     {
      "text": "But it shows whether you can follow your own rules.",
-     "start": 31.213,
-     "end": 34.342
+     "start": 28.676,
+     "end": 31.805
     }
    ]
   },
   {
-   "start": 34.742,
-   "dur": 7.553,
+   "start": 32.205,
+   "dur": 6.688,
    "sentences": [
     {
      "text": "Every lesson in this series, practice it on sim.",
-     "start": 34.742,
-     "end": 38.003
+     "start": 32.205,
+     "end": 35.466
     },
     {
      "text": "I'm on sim too.",
-     "start": 38.183,
-     "end": 39.841
+     "start": 35.646,
+     "end": 36.904
     },
     {
      "text": "Survive first.",
-     "start": 40.021,
-     "end": 41.196
+     "start": 36.904,
+     "end": 38.084
     },
     {
      "text": "Follow.",
-     "start": 41.376,
-     "end": 42.115
+     "start": 38.084,
+     "end": 38.713
     }
    ]
   }

@@ -2,7 +2,7 @@
  "id": "d29",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 36.692,
+ "total": 34.061,
  "scenes": [
   {
    "start": 0.15,
@@ -75,48 +75,48 @@
   },
   {
    "start": 22.794,
-   "dur": 8.304,
+   "dur": 7.074,
    "sentences": [
     {
      "text": "Red flag three.",
      "start": 22.794,
-     "end": 24.5
+     "end": 24.06
     },
     {
      "text": "We're registered.",
-     "start": 24.68,
-     "end": 25.924
+     "start": 24.06,
+     "end": 25.483
     },
     {
      "text": "Check that yourself, on the regulator's own website.",
-     "start": 26.104,
-     "end": 29.579
+     "start": 25.663,
+     "end": 28.766
     },
     {
      "text": "Not theirs.",
-     "start": 29.759,
-     "end": 30.698
+     "start": 28.766,
+     "end": 29.468
     }
    ]
   },
   {
-   "start": 31.098,
-   "dur": 5.593,
+   "start": 29.868,
+   "dur": 4.193,
    "sentences": [
     {
      "text": "If it sounds too good to be true, walk away.",
-     "start": 31.098,
-     "end": 34.237
+     "start": 29.868,
+     "end": 32.524
     },
     {
      "text": "Survive first.",
-     "start": 34.417,
-     "end": 35.592
+     "start": 32.524,
+     "end": 33.409
     },
     {
      "text": "Follow.",
-     "start": 35.772,
-     "end": 36.512
+     "start": 33.409,
+     "end": 33.881
     }
    ]
   }

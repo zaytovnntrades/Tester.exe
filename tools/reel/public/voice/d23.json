@@ -2,7 +2,7 @@
  "id": "d23",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 36.546,
+ "total": 33.899,
  "scenes": [
   {
    "start": 0.15,
@@ -59,7 +59,7 @@
   },
   {
    "start": 15.802,
-   "dur": 7.259,
+   "dur": 7.23,
    "sentences": [
     {
      "text": "It also says how you exit.",
@@ -69,69 +69,69 @@
     {
      "text": "Your stop loss.",
      "start": 18.171,
-     "end": 19.411
+     "end": 19.515
     },
     {
      "text": "Your target.",
-     "start": 19.591,
-     "end": 20.635
+     "start": 19.515,
+     "end": 20.606
     },
     {
      "text": "Your max daily loss.",
-     "start": 20.815,
-     "end": 22.661
+     "start": 20.786,
+     "end": 22.632
     }
    ]
   },
   {
-   "start": 23.061,
+   "start": 23.032,
    "dur": 6.697,
    "sentences": [
     {
      "text": "Write it when you're calm.",
-     "start": 23.061,
-     "end": 24.564
+     "start": 23.032,
+     "end": 24.536
     },
     {
      "text": "Follow it when you're not.",
-     "start": 24.744,
-     "end": 26.254
+     "start": 24.716,
+     "end": 26.225
     },
     {
      "text": "Change it only after the market closes.",
-     "start": 26.434,
-     "end": 29.358
+     "start": 26.405,
+     "end": 29.329
     }
    ]
   },
   {
-   "start": 29.758,
-   "dur": 6.789,
+   "start": 29.729,
+   "dur": 4.17,
    "sentences": [
     {
      "text": "One page.",
-     "start": 29.758,
-     "end": 30.769
+     "start": 29.729,
+     "end": 30.362
     },
     {
      "text": "Written down.",
-     "start": 30.949,
-     "end": 32.065
+     "start": 30.362,
+     "end": 31.249
     },
     {
      "text": "Test it on sim.",
-     "start": 32.245,
-     "end": 34.092
+     "start": 31.249,
+     "end": 32.262
     },
     {
      "text": "Survive first.",
-     "start": 34.272,
-     "end": 35.447
+     "start": 32.262,
+     "end": 33.212
     },
     {
      "text": "Follow.",
-     "start": 35.627,
-     "end": 36.366
+     "start": 33.212,
+     "end": 33.719
     }
    ]
   }

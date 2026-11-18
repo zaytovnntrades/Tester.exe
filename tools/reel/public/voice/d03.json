@@ -2,7 +2,7 @@
  "id": "d03",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 32.831,
+ "total": 29.987,
  "scenes": [
   {
    "start": 0.15,
@@ -71,37 +71,37 @@
   },
   {
    "start": 25.342,
-   "dur": 7.489,
+   "dur": 4.645,
    "sentences": [
     {
      "text": "Bid.",
      "start": 25.342,
-     "end": 25.926
+     "end": 25.644
     },
     {
      "text": "Ask.",
-     "start": 26.106,
-     "end": 26.771
+     "start": 25.644,
+     "end": 25.946
     },
     {
      "text": "Spread.",
-     "start": 26.951,
-     "end": 27.684
+     "start": 25.946,
+     "end": 26.428
     },
     {
      "text": "Know your cost before you click.",
-     "start": 27.864,
-     "end": 30.376
+     "start": 26.428,
+     "end": 28.419
     },
     {
      "text": "Survive first.",
-     "start": 30.556,
-     "end": 31.732
+     "start": 28.419,
+     "end": 29.325
     },
     {
      "text": "Follow.",
-     "start": 31.912,
-     "end": 32.651
+     "start": 29.325,
+     "end": 29.807
     }
    ]
   }

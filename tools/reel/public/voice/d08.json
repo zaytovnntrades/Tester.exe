@@ -2,106 +2,106 @@
  "id": "d08",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 31.612,
+ "total": 30.586,
  "scenes": [
   {
    "start": 0.15,
-   "dur": 2.774,
+   "dur": 2.647,
    "sentences": [
     {
      "text": "See those bars?",
      "start": 0.15,
-     "end": 1.367
+     "end": 1.31
     },
     {
      "text": "That's volume.",
-     "start": 1.427,
-     "end": 2.524
+     "start": 1.31,
+     "end": 2.397
     }
    ]
   },
   {
-   "start": 2.924,
+   "start": 2.797,
    "dur": 5.589,
    "sentences": [
     {
      "text": "They aren't decoration.",
-     "start": 2.924,
-     "end": 4.646
+     "start": 2.797,
+     "end": 4.52
     },
     {
      "text": "Ignore them, and you can't tell a real move from a weak one.",
-     "start": 4.826,
-     "end": 8.113
+     "start": 4.7,
+     "end": 7.986
     }
    ]
   },
   {
-   "start": 8.513,
+   "start": 8.386,
    "dur": 6.5,
    "sentences": [
     {
      "text": "Volume counts how much was traded in each candle.",
-     "start": 8.513,
-     "end": 12.128
+     "start": 8.386,
+     "end": 12.001
     },
     {
      "text": "Tall bar, lots of trading.",
-     "start": 12.308,
-     "end": 14.613
+     "start": 12.181,
+     "end": 14.486
     }
    ]
   },
   {
-   "start": 15.013,
+   "start": 14.886,
    "dur": 3.816,
    "sentences": [
     {
      "text": "A big move on high volume means many traders took part.",
-     "start": 15.013,
-     "end": 18.429
+     "start": 14.886,
+     "end": 18.302
     }
    ]
   },
   {
-   "start": 18.829,
+   "start": 18.702,
    "dur": 5.586,
    "sentences": [
     {
      "text": "The same move on low volume had fewer traders behind it.",
-     "start": 18.829,
-     "end": 22.3
+     "start": 18.702,
+     "end": 22.174
     },
     {
      "text": "Treat it with more doubt.",
-     "start": 22.48,
-     "end": 24.015
+     "start": 22.354,
+     "end": 23.888
     }
    ]
   },
   {
-   "start": 24.415,
-   "dur": 7.197,
+   "start": 24.288,
+   "dur": 6.298,
    "sentences": [
     {
      "text": "Price shows what happened.",
-     "start": 24.415,
-     "end": 26.513
+     "start": 24.288,
+     "end": 26.387
     },
     {
      "text": "Volume shows how many showed up.",
-     "start": 26.693,
-     "end": 29.157
+     "start": 26.567,
+     "end": 28.829
     },
     {
      "text": "Survive first.",
-     "start": 29.337,
-     "end": 30.512
+     "start": 28.829,
+     "end": 29.858
     },
     {
      "text": "Follow.",
-     "start": 30.692,
-     "end": 31.432
+     "start": 29.858,
+     "end": 30.406
     }
    ]
   }

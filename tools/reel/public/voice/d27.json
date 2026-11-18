@@ -2,7 +2,7 @@
  "id": "d27",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 38.252,
+ "total": 37.382,
  "scenes": [
   {
    "start": 0.15,
@@ -101,7 +101,7 @@
   },
   {
    "start": 31.337,
-   "dur": 6.915,
+   "dur": 6.045,
    "sentences": [
     {
      "text": "There's always another trade.",
@@ -111,17 +111,17 @@
     {
      "text": "There isn't always another account.",
      "start": 33.417,
-     "end": 35.797
+     "end": 35.727
     },
     {
      "text": "Survive first.",
-     "start": 35.977,
-     "end": 37.152
+     "start": 35.727,
+     "end": 36.689
     },
     {
      "text": "Follow.",
-     "start": 37.332,
-     "end": 38.072
+     "start": 36.689,
+     "end": 37.202
     }
    ]
   }

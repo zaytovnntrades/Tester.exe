@@ -2,7 +2,7 @@
  "id": "d10",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 38.879,
+ "total": 37.847,
  "scenes": [
   {
    "start": 0.15,
@@ -101,7 +101,7 @@
   },
   {
    "start": 30.974,
-   "dur": 7.906,
+   "dur": 6.874,
    "sentences": [
     {
      "text": "Market for speed.",
@@ -116,17 +116,17 @@
     {
      "text": "Practice both on sim.",
      "start": 34.245,
-     "end": 36.424
+     "end": 35.918
     },
     {
      "text": "Survive first.",
-     "start": 36.604,
-     "end": 37.779
+     "start": 35.918,
+     "end": 37.059
     },
     {
      "text": "Follow.",
-     "start": 37.959,
-     "end": 38.699
+     "start": 37.059,
+     "end": 37.667
     }
    ]
   }

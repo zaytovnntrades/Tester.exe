@@ -2,7 +2,7 @@
  "id": "d04",
  "voice": "am_onyx",
  "speed": 0.92,
- "total": 43.543,
+ "total": 39.901,
  "scenes": [
   {
    "start": 0.15,
@@ -101,42 +101,42 @@
   },
   {
    "start": 35.477,
-   "dur": 8.066,
+   "dur": 4.424,
    "sentences": [
     {
      "text": "Open.",
      "start": 35.477,
-     "end": 36.196
+     "end": 35.836
     },
     {
      "text": "High.",
-     "start": 36.376,
-     "end": 36.984
+     "start": 35.836,
+     "end": 36.194
     },
     {
      "text": "Low.",
-     "start": 37.164,
-     "end": 37.806
+     "start": 36.194,
+     "end": 36.493
     },
     {
      "text": "Close.",
-     "start": 37.986,
-     "end": 38.703
+     "start": 36.493,
+     "end": 36.912
     },
     {
      "text": "Four prices, one shape.",
-     "start": 38.883,
-     "end": 41.088
+     "start": 36.912,
+     "end": 38.346
     },
     {
      "text": "Survive first.",
-     "start": 41.268,
-     "end": 42.444
+     "start": 38.346,
+     "end": 39.243
     },
     {
      "text": "Follow.",
-     "start": 42.623,
-     "end": 43.363
+     "start": 39.243,
+     "end": 39.721
     }
    ]
   }
