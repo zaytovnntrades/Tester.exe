@@ -9,3 +9,6 @@
 - Day 11: https://www.youtube.com/watch?v=BqY6amdONOM
 - Day 12: https://www.youtube.com/watch?v=cJM6gL32BRM
 - Day 13: https://www.youtube.com/watch?v=wDkwGp2n5aY
+- Day 14: https://www.youtube.com/watch?v=xgGHGJ2urAI
+- Day 15: https://www.youtube.com/watch?v=7H5ebJ_5Wuc
+- Day 16: https://www.youtube.com/watch?v=t7WaXJ1u3No

@@ -1,21 +1,21 @@
-day,new_date_et,post_id,revision,youtube_publication_id
-11,2026-11-30 11:30,9003e8f8-3acb-42e0-947e-751ccfcef3d4,3c32fcf2-6602adb4,f85e4617-6e95-47a1-9516-2bd6d4f4d935,done,https://www.youtube.com/watch?v=BqY6amdONOM
-12,2026-12-01 11:30,8247669d-aecc-4e89-b362-8cd74f8ce0cc,4a411199-7bf84c11,3b10aad0-b29d-42dd-97cc-9b37eb793214,done,https://www.youtube.com/watch?v=cJM6gL32BRM
-13,2026-12-02 11:30,04cc9882-2c51-4523-8554-ef804ed9da91,669b8f5e-abc3b458,a753b62b-0a3e-42b2-bab2-357ebb91d85b,done,https://www.youtube.com/watch?v=wDkwGp2n5aY
-14,2026-12-03 11:30,b936588f-6848-45ba-a25d-e4ef43cb90ee,98aa9da9-ce05aac5,36985b8a-a4b8-48dd-8f1a-f3b2670ac366
-15,2026-12-04 11:30,d539d9e3-e902-4108-af85-6670c9d58604,64fc7c99-84e43116,52502d48-401b-4944-9071-baabb05ef686
-16,2026-12-05 11:30,c1c43e35-f91b-442d-a174-dcb4f53ccfb1,4cd60027-d25f1984,81868d20-c0d7-4381-a364-1556ff158e3d
-17,2026-12-06 11:30,9dab9e32-e493-469d-92ba-d7c9a4ea3ef5,1dd73df2-d38266b2,16430a4b-9129-426c-928c-8e4d71ad5c23
-18,2026-12-07 11:30,9c8708b9-30f2-4d3a-ac10-c82c2f5f7e88,436c8867-eba2234a,5628e555-4261-48b0-85fa-7f629c2ec00e
-19,2026-12-08 11:30,82d882f4-ea4c-4bf9-940a-288baa0af084,06676a08-7ec7f52b,e6634788-7172-4fdd-9aa0-571597eaee82
-20,2026-12-09 11:30,9bd8988e-0adb-43c8-aa65-610d83113b8b,8f8264a7-9b9d90a0,6c3d2d8c-7e31-48cc-aab8-95195f509de8
-21,2026-12-10 11:30,04e0580c-b827-48c4-8be7-3a5275f97ddf,ac43c9fa-b65217db,4c96133d-1e19-4903-b9ff-41dc7d404aac
-22,2026-12-11 11:30,d773c11a-fea3-4b52-969e-718d91ebfb39,1fcbfe59-ee427fc6,3e0ae158-6f60-4565-818c-a37e1c862e6d
-23,2026-12-12 11:30,b549e613-008e-4066-a14a-03eba80e5fba,94c734ac-ef650e79,a676c901-6121-4d64-a698-274fd4b95390
-24,2026-12-13 11:30,8f5b322d-c769-4f7c-ad36-496a629c993c,d1bed8b7-f3422268,dfe5beb9-8f18-4dd8-b297-c5ec596210bd
-25,2026-12-14 11:30,0c611788-7a82-45d2-a22c-247be08a0e82,c2fef66a-fa52f519,ee36112d-c29d-49e7-84d7-b0a11ce75a63
-26,2026-12-15 11:30,0b29d63b-f183-4b85-b71c-74a8b4e270d7,8c00d274-8f7024e9,38e37b8f-bd4c-4282-9e38-1d51f7a4b385
-27,2026-12-16 11:30,586c464e-58ef-477b-a300-27f91bfab1f2,6e4f4dbf-9fcc21f6,09edae6a-df30-44a4-ac9f-4b4905ac12e2
-28,2026-12-17 11:30,f930605a-a387-4106-bc22-e4451105721d,001feb70-a6f135fe,7484ab67-a144-4188-b41c-dd615776aca8
-29,2026-12-18 11:30,72a5f397-8f43-463e-8c87-0095341835cf,9f32b1a8-e15bd476,6394d4b1-715c-4c79-938d-762a16065c39
-30,2026-12-19 11:30,1261c129-ef91-4f41-b4ed-1454ca07b49d,09940b35-4746e013,6b104c01-29de-4418-8a48-3e8ef72c55e8
+day,new_date_et,post_id,revision,youtube_publication_id,youtube_title,status,url
+11,2026-11-30 11:30,9003e8f8-3acb-42e0-947e-751ccfcef3d4,3c32fcf2-6602adb4,f85e4617-6e95-47a1-9516-2bd6d4f4d935,,done,https://www.youtube.com/watch?v=BqY6amdONOM
+12,2026-12-01 11:30,8247669d-aecc-4e89-b362-8cd74f8ce0cc,4a411199-7bf84c11,3b10aad0-b29d-42dd-97cc-9b37eb793214,,done,https://www.youtube.com/watch?v=cJM6gL32BRM
+13,2026-12-02 11:30,04cc9882-2c51-4523-8554-ef804ed9da91,669b8f5e-abc3b458,a753b62b-0a3e-42b2-bab2-357ebb91d85b,,done,https://www.youtube.com/watch?v=wDkwGp2n5aY
+14,2026-12-03 11:30,b936588f-6848-45ba-a25d-e4ef43cb90ee,98aa9da9-ce05aac5,36985b8a-a4b8-48dd-8f1a-f3b2670ac366,When markets are busy | Trading basics day 14 of 30 #shorts,done,https://www.youtube.com/watch?v=xgGHGJ2urAI
+15,2026-12-04 11:30,d539d9e3-e902-4108-af85-6670c9d58604,64fc7c99-84e43116,52502d48-401b-4944-9071-baabb05ef686,Position size | Trading basics day 15 of 30 #shorts,done,https://www.youtube.com/watch?v=7H5ebJ_5Wuc
+16,2026-12-05 11:30,c1c43e35-f91b-442d-a174-dcb4f53ccfb1,4cd60027-d25f1984,81868d20-c0d7-4381-a364-1556ff158e3d,Risk vs reward | Trading basics day 16 of 30 #shorts,done,https://www.youtube.com/watch?v=t7WaXJ1u3No
+17,2026-12-06 11:30,9dab9e32-e493-469d-92ba-d7c9a4ea3ef5,1dd73df2-d38266b2,16430a4b-9129-426c-928c-8e4d71ad5c23,Why win rate lies | Trading basics day 17 of 30 #shorts
+18,2026-12-07 11:30,9c8708b9-30f2-4d3a-ac10-c82c2f5f7e88,436c8867-eba2234a,5628e555-4261-48b0-85fa-7f629c2ec00e,Max daily loss | Trading basics day 18 of 30 #shorts
+19,2026-12-08 11:30,82d882f4-ea4c-4bf9-940a-288baa0af084,06676a08-7ec7f52b,e6634788-7172-4fdd-9aa0-571597eaee82,What drawdown means | Trading basics day 19 of 30 #shorts
+20,2026-12-09 11:30,9bd8988e-0adb-43c8-aa65-610d83113b8b,8f8264a7-9b9d90a0,6c3d2d8c-7e31-48cc-aab8-95195f509de8,What leverage is | Trading basics day 20 of 30 #shorts
+21,2026-12-10 11:30,04e0580c-b827-48c4-8be7-3a5275f97ddf,ac43c9fa-b65217db,4c96133d-1e19-4903-b9ff-41dc7d404aac,Futures and micro futures | Trading basics day 21 of 30 #shorts
+22,2026-12-11 11:30,d773c11a-fea3-4b52-969e-718d91ebfb39,1fcbfe59-ee427fc6,3e0ae158-6f60-4565-818c-a37e1c862e6d,Ticks and pips | Trading basics day 22 of 30 #shorts
+23,2026-12-12 11:30,b549e613-008e-4066-a14a-03eba80e5fba,94c734ac-ef650e79,a676c901-6121-4d64-a698-274fd4b95390,Your trading plan | Trading basics day 23 of 30 #shorts
+24,2026-12-13 11:30,8f5b322d-c769-4f7c-ad36-496a629c993c,d1bed8b7-f3422268,dfe5beb9-8f18-4dd8-b297-c5ec596210bd,3 questions before every trade | Trading basics day 24 of 30 #shorts
+25,2026-12-14 11:30,0c611788-7a82-45d2-a22c-247be08a0e82,c2fef66a-fa52f519,ee36112d-c29d-49e7-84d7-b0a11ce75a63,The trading journal | Trading basics day 25 of 30 #shorts
+26,2026-12-15 11:30,0b29d63b-f183-4b85-b71c-74a8b4e270d7,8c00d274-8f7024e9,38e37b8f-bd4c-4282-9e38-1d51f7a4b385,Revenge trading | Trading basics day 26 of 30 #shorts
+27,2026-12-16 11:30,586c464e-58ef-477b-a300-27f91bfab1f2,6e4f4dbf-9fcc21f6,09edae6a-df30-44a4-ac9f-4b4905ac12e2,FOMO | Trading basics day 27 of 30 #shorts
+28,2026-12-17 11:30,f930605a-a387-4106-bc22-e4451105721d,001feb70-a6f135fe,7484ab67-a144-4188-b41c-dd615776aca8,Overtrading | Trading basics day 28 of 30 #shorts
+29,2026-12-18 11:30,72a5f397-8f43-463e-8c87-0095341835cf,9f32b1a8-e15bd476,6394d4b1-715c-4c79-938d-762a16065c39,Spotting trading scams | Trading basics day 29 of 30 #shorts
+30,2026-12-19 11:30,1261c129-ef91-4f41-b4ed-1454ca07b49d,09940b35-4746e013,6b104c01-29de-4418-8a48-3e8ef72c55e8,When to leave sim | Trading basics day 30 of 30 #shorts
