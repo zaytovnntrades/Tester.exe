@@ -13,3 +13,6 @@
 - Day 14: https://www.youtube.com/watch?v=xgGHGJ2urAI
 - Day 15: https://www.youtube.com/watch?v=7H5ebJ_5Wuc
 - Day 16: https://www.youtube.com/watch?v=t7WaXJ1u3No
+- Day 17: https://www.youtube.com/watch?v=o8Bczn7Kyhk
+- Day 18: https://www.youtube.com/watch?v=Gz50LDSAuwI
+- Day 19: https://www.youtube.com/watch?v=SffSrvGm-go
