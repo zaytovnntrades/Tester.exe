@@ -6,6 +6,7 @@
 | 2 | Sat Nov 21 | https://www.tiktok.com/@zaytovnntrades/video/7710644972214603022 | https://www.instagram.com/reel/DgAioTdky5S/ | https://www.youtube.com/watch?v=Zaf2csiSWSo (change date in Studio) | https://x.com/i/status/2124262344788214243 |
 | 3 | Sun Nov 22 | https://www.tiktok.com/@zaytovnntrades/video/7711033870514146574 | https://www.instagram.com/reel/DgDPOm_CC_n/ | https://www.youtube.com/watch?v=T17kV6J599s (fix date in Studio) | https://x.com/i/status/2124540941025378535 |
 | 4 | Mon Nov 23 | https://www.tiktok.com/@zaytovnntrades/video/7711404930065566990 | https://www.instagram.com/reel/DgF0BKQD32Y/ | https://www.youtube.com/watch?v=M5mVfQlGQrY (fix date in Studio) | https://x.com/i/status/2124903326160449890 |
+| 5 | Tue Nov 24 | https://www.tiktok.com/@zaytovnntrades/video/7711752035992882446 | https://www.instagram.com/reel/DgIOLsKDhnK/ | https://www.youtube.com/watch?v=smkt-Gfw2BA (public Nov 25, or set in Studio) | https://x.com/i/status/2125242333612441920 |
 ## YouTube uploads (private until their go-live date)
 - Day 11: https://www.youtube.com/watch?v=BqY6amdONOM
 - Day 12: https://www.youtube.com/watch?v=cJM6gL32BRM
