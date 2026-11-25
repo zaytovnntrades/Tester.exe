@@ -17,3 +17,6 @@
 - Day 17: https://www.youtube.com/watch?v=o8Bczn7Kyhk
 - Day 18: https://www.youtube.com/watch?v=Gz50LDSAuwI
 - Day 19: https://www.youtube.com/watch?v=SffSrvGm-go
+- Day 20: https://www.youtube.com/watch?v=J482o2HXq18
+- Day 21: https://www.youtube.com/watch?v=vu1i4YTfgk4
+- Day 22: https://www.youtube.com/watch?v=DAM71iIGTZs
