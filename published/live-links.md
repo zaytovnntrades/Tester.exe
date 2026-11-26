@@ -20,3 +20,6 @@
 - Day 20: https://www.youtube.com/watch?v=J482o2HXq18
 - Day 21: https://www.youtube.com/watch?v=vu1i4YTfgk4
 - Day 22: https://www.youtube.com/watch?v=DAM71iIGTZs
+- Day 23: https://www.youtube.com/watch?v=GwM2Bmti6oQ
+- Day 24: https://www.youtube.com/watch?v=Z-_KUZGSJf4
+- Day 25: https://www.youtube.com/watch?v=thGMIeNMCyA
