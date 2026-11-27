@@ -23,3 +23,6 @@
 - Day 23: https://www.youtube.com/watch?v=GwM2Bmti6oQ
 - Day 24: https://www.youtube.com/watch?v=Z-_KUZGSJf4
 - Day 25: https://www.youtube.com/watch?v=thGMIeNMCyA
+- Day 26: https://www.youtube.com/watch?v=YkgBO9MYPPk
+- Day 27: https://www.youtube.com/watch?v=4n--QNAZD9c
+- Day 28: https://www.youtube.com/watch?v=ZliJ-cUjGkc
