@@ -26,3 +26,5 @@
 - Day 26: https://www.youtube.com/watch?v=YkgBO9MYPPk
 - Day 27: https://www.youtube.com/watch?v=4n--QNAZD9c
 - Day 28: https://www.youtube.com/watch?v=ZliJ-cUjGkc
+- Day 29: https://www.youtube.com/watch?v=I_XVnYUbR8g
+- Day 30: https://www.youtube.com/watch?v=gvv2qJXV2lI
